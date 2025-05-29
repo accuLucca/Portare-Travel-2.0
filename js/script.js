@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmationMessageGlobal = document.getElementById('confirmation-message-global');
     const travelStyleButtonsContainer = document.getElementById('travel-style-buttons-container');
     const clearTravelStyleButton = document.getElementById('clear-travel-style-button');
-
+    const headerLogo = document.getElementById('header-logo'); // Get the logo element
 
     // Estado da Aplicação
     let allTours = [];
@@ -42,6 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoUrl = "./Marca.png"; // Certifique-se que este caminho está correto
 
     // Dados dos Passeios
+    // NOTE: In a production application, this data would typically be fetched from a backend API
+    // or managed in a more dynamic way rather than hardcoded in the JS file.
     const toursData = [
         // COLE AQUI O CONTEÚDO COMPLETO DA VARIÁVEL newToursData DO CÓDIGO REACT ANTERIOR
         // Exemplo de como começar a colar:
@@ -448,7 +450,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Funções da API Gemini
     async function callGeminiAPI(prompt) {
-        const apiKey = ""; // Canvas will provide
+        // NOTE: Hardcoding API keys directly in client-side code is a security risk.
+        // For a production application, consider using a backend proxy or environment variables.
+        const apiKey = "AIzaSyDpRyvbYUE4tDhBqw7v8GaFiA7m4760Ltk"; // API AQUI!!!
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
         const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
 
@@ -462,6 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 const errorResult = await response.json().catch(() => ({ error: { message: "Falha ao analisar resposta de erro da API." } }));
                 throw new Error(errorResult.error?.message || `Erro da API: ${response.statusText}`);
+           
             }
             const result = await response.json();
             if (result.candidates && result.candidates[0]?.content?.parts[0]?.text) {
@@ -475,8 +480,6 @@ document.addEventListener('DOMContentLoaded', () => {
             throw error; // Re-throw para ser pego pela função chamadora
         }
     }
-
-   
 
     async function handleGenerateEnhancedDescription(tour) {
         if (!tour) return;
@@ -535,6 +538,12 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
         renderPage();
     });
 
+    // Add event listener for the header logo
+    headerLogo.addEventListener('click', () => {
+        currentPage = 'countrySelection';
+        renderPage();
+    });
+
     whatsappQuoteButton.addEventListener('click', () => {
         if (cart.length === 0) {
             showConfirmationMessage("Seu carrinho está vazio. Adicione passeios antes de solicitar um orçamento.");
@@ -586,11 +595,5 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
     renderPage();
     renderCart(); // Para estado inicial do carrinho
     renderTravelStyleButtons();
-
-    // Adiciona a função ao objeto window para acesso global
-    window.headerLogoClick = () => {
-        currentPage = 'countrySelection';
-        renderPage();
-    };
 });
 // Fim do JavaScript
