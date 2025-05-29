@@ -4,6 +4,9 @@ body {
     font-weight: 300;
     background-color: #FFF9D7;
     color: #1f2937; /* text-gray-800 */
+    display: flex; /* Add flexbox */
+    flex-direction: column; /* Stack children vertically */
+    min-height: 100vh; /* Ensure body takes at least full viewport height */
 }
 
 .font-geologica-bold {
@@ -49,6 +52,12 @@ body {
     display: block; /* Garante que <br> funcione como quebra de linha */
     margin-bottom: 0.5em; /* Adiciona um pequeno espaço após a quebra */
     content: "";
+}
+
+/* Main content area to push footer down */
+#page-content {
+    flex-grow: 1; /* Allow this area to take up available space */
+    padding-top: 6rem; /* Keep existing padding for fixed header */
 }
 
 
