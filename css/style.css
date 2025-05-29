@@ -4,7 +4,6 @@ body {
     font-weight: 300;
     background-color: #FFF9D7;
     color: #1f2937; /* text-gray-800 */
-    margin-top: 80px; /* Espaço para o header fixo, ajuste conforme necessário */
 }
 
 .font-geologica-bold {
@@ -116,7 +115,4 @@ body {
 
 /* Ajuste para header fixo */
 @media (min-width: 640px) { /* sm breakpoint de Tailwind */
-    body {
-        margin-top: 72px; /* Altura aproximada do header em telas maiores */
-    }
 }
