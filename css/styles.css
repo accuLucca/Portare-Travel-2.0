@@ -122,7 +122,6 @@ body {
 }
 /* Ajuste para o hero section não ficar sob o header */
 #hero-section {
-     margin-top: 72px; /* Deve ser igual ou maior que a altura do header */
 }
 #country-selection-page{
     padding-top: 88px; /* header height + some padding */
