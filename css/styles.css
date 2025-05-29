@@ -1,0 +1,129 @@
+/* Estilos Globais e Customizados */
+body {
+    font-family: 'Geologica', sans-serif;
+    font-weight: 300;
+    background-color: #FFF9D7;
+    color: #1f2937; /* text-gray-800 */
+    margin-top: 80px; /* Espaço para o header fixo, ajuste conforme necessário */
+}
+
+.font-geologica-bold {
+    font-family: 'Geologica', sans-serif;
+    font-weight: 700;
+}
+.font-geologica-light {
+    font-family: 'Geologica', sans-serif;
+    font-weight: 300;
+}
+.font-southland {
+    font-family: 'Southland', cursive;
+}
+
+/* Estilos para conteúdo gerado pela IA (similar ao .prose do Tailwind) */
+.ai-generated-content h1,
+.ai-generated-content h2,
+.ai-generated-content h3,
+.ai-generated-content h4,
+.ai-generated-content h5,
+.ai-generated-content h6 {
+    font-family: 'Geologica', sans-serif;
+    font-weight: 700;
+    color: #0D7C6C;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+.ai-generated-content p,
+.ai-generated-content li {
+    font-family: 'Geologica', sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 1em;
+}
+.ai-generated-content strong {
+    font-weight: 700;
+}
+.ai-generated-content ul {
+    list-style-type: disc;
+    padding-left: 1.5em;
+}
+.ai-generated-content br {
+    display: block; /* Garante que <br> funcione como quebra de linha */
+    margin-bottom: 0.5em; /* Adiciona um pequeno espaço após a quebra */
+    content: "";
+}
+
+
+/* Sidebar do Carrinho */
+#cart-sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+.translate-x-full {
+    transform: translateX(100%);
+}
+
+/* Modals */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 30; /* Abaixo do modal de descrição detalhada, se aberto */
+    padding: 1rem;
+}
+.modal-content {
+    background-color: white;
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); /* shadow-2xl */
+    padding: 1.5rem; /* p-6 */
+    width: 100%;
+    max-width: 42rem; /* max-w-2xl para roteiro */
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+ .modal-content-sm { /* Para o modal de descrição detalhada */
+    max-width: 36rem; /* max-w-xl */
+}
+
+.modal-close-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: #6b7280; /* text-gray-500 */
+    cursor: pointer;
+}
+.modal-close-button:hover {
+    color: #4b5563; /* text-gray-700 */
+}
+
+/* Loading spinner */
+.loader {
+    border: 4px solid #f3f3f3; /* Light grey */
+    border-top: 4px solid #0D7C6C; /* Cor principal */
+    border-radius: 50%;
+    width: 48px; /* h-12 w-12 */
+    height: 48px; /* h-12 w-12 */
+    animation: spin 1s linear infinite;
+    margin: 0 auto; /* Centralizar */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Ajuste para header fixo */
+@media (min-width: 640px) { /* sm breakpoint de Tailwind */
+    body {
+        margin-top: 72px; /* Altura aproximada do header em telas maiores */
+    }
+}
+/* Ajuste para o hero section não ficar sob o header */
+#hero-section {
+     margin-top: 72px; /* Deve ser igual ou maior que a altura do header */
+}
+#country-selection-page{
+    padding-top: 88px; /* header height + some padding */
+}
