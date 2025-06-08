@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const whatsappQuoteButton = document.getElementById('whatsapp-quote-button');
     const generateItineraryButton = document.getElementById('generate-itinerary-button');
     const backToCountryButton = document.getElementById('back-to-country-button');
+    const customerNameInput = document.getElementById('customer-name'); // Get customer name input
+    const numberOfPeopleInput = document.getElementById('number-of-people'); // Get number of people input
 
     const itineraryModalOverlay = document.getElementById('itinerary-modal-overlay');
     const itineraryModalContentArea = document.getElementById('itinerary-modal-content-area');
@@ -36,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const headerLogo = document.getElementById('header-logo'); // Get the logo element
     const toursPageTitle = document.getElementById('tours-page-title'); // Get the tours page title element
     const toursPageHero = document.getElementById('hero-section'); // Get the hero section element
+    const tourSearchInput = document.getElementById('tour-search-input'); // Get the search input element
 
     // Estado da Aplicação
     let allTours = []; // This will now hold data for the selected country
@@ -44,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedSubcategory = 'all';
     let selectedTravelStyle = '';
     let currentCountry = null; // Track the currently selected country
+    let searchQuery = ''; // New state variable for search query
 
     const logoUrl = "./Marca.png"; // Certifique-se que este caminho está correto
 
@@ -223,7 +227,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         toursGridTarget.innerHTML = '';
         // Use the allTours array which is now populated based on the selected country
-        const filteredTours = allTours.filter(tour => selectedSubcategory === 'all' || tour.category === selectedSubcategory);
+        let filteredTours = allTours.filter(tour => selectedSubcategory === 'all' || tour.category === selectedSubcategory);
+
+        // Apply search filter
+        if (searchQuery) {
+            const lowerCaseQuery = searchQuery.toLowerCase();
+            filteredTours = filteredTours.filter(tour =>
+                tour.name.toLowerCase().includes(lowerCaseQuery) ||
+                tour.description.toLowerCase().includes(lowerCaseQuery) ||
+                tour.category.toLowerCase().includes(lowerCaseQuery) // Optional: search in category too
+            );
+        }
+
 
         if (filteredTours.length === 0) {
             toursGridTarget.innerHTML = '<p class="col-span-full text-center text-gray-500 text-lg font-geologica-light">Nenhum passeio encontrado para esta categoria no momento.</p>';
@@ -489,10 +504,20 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
     closeEnhancedDescModalButton.addEventListener('click', () => enhancedDescModalOverlay.style.display = 'none');
     generateItineraryButton.addEventListener('click', handleGenerateItinerary);
 
+    // Add event listener for search input
+    if (tourSearchInput) {
+        tourSearchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value;
+            renderTours(); // Re-render tours with the new search query
+        });
+    }
+
     backToCountryButton.addEventListener('click', () => {
         currentPage = 'countrySelection';
         cart = []; // Clear cart when going back to country selection
         renderCart(); // Update cart display
+        searchQuery = ''; // Clear search query
+        if (tourSearchInput) tourSearchInput.value = ''; // Clear search input field
         renderPage();
     });
 
@@ -509,39 +534,69 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
             showConfirmationMessage("Seu carrinho está vazio. Adicione passeios antes de solicitar um orçamento.");
             return;
         }
-        // Build the message using an array of lines for clarity and robust formatting
+
+        const customerName = customerNameInput ? customerNameInput.value.trim() : 'Cliente';
+        const numberOfPeople = numberOfPeopleInput ? parseInt(numberOfPeopleInput.value, 10) : 1;
+
+        // Generate Invoice Number (Simple format: DDMMYY-PT-001)
+        const now = new Date();
+        const day = String(now.getDate()).padStart(2, '0');
+        const month = String(now.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+        const year = String(now.getFullYear()).slice(-2);
+        const invoiceNumber = `${day}${month}${year}-PT-001`; // Using a static counter 001
+
+        // Format Invoice Date
+        const invoiceDate = now.toLocaleDateString('pt-BR'); // Format as DD/MM/YYYY
+
+        // Build the message using an array of lines for clarity
         const messageLines = [
-            "Olá, Portare Travel! Gostaria de solicitar um orçamento para os seguintes passeios:",
-            "" // Add an empty line for spacing
+            "INVOICE",
+            "",
+            `Número do Invoice: ${invoiceNumber}`,
+            `Data do Invoice: ${invoiceDate}`,
+            "",
+            "Faturado Para:",
+            `${customerName}`,
+            `${numberOfPeople} Pessoa(s)`,
+            "--------------------------------------------------------------------------------",
+            "Descrição do Item", // Header line 1
+            "Quantidade     Preço Unit.     Total", // Header line 2 (simplified alignment)
+            "--------------------------------------------------------------------------------",
         ];
 
+        let subtotal = 0;
+
         cart.forEach((item) => {
-            // Find the original tour data to check the description
-            // Need to search in the correct country data based on the item's origin (if possible, or assume currentCountry data)
-            // For simplicity now, we'll just use the item's own description text to guess the pricing model
+            const itemTotal = item.price * item.quantity;
+            subtotal += itemTotal;
+
             let quantityText = `${item.quantity}x`; // Default format
 
             // Check if the item's description indicates "per person" pricing
             if (item.description.includes("Preço por pessoa")) {
-                 quantityText = `${item.quantity} pessoa(s)`; // Corrected pluralization
+                 quantityText = `${item.quantity} pessoa(s)`;
             } else if (item.description.includes("Valor total pelo serviço")) {
                  quantityText = `${item.quantity} serviço(s)`;
-            } else if (item.description.includes("Valor total pelo aluguel")) { // Added check for rental
+            } else if (item.description.includes("Valor total pelo aluguel")) {
                  quantityText = `${item.quantity} aluguel(is)`;
             }
 
-
-            messageLines.push(`- ${quantityText} ${item.name} - AED ${item.price.toFixed(2)} cada`);
+            // Simple formatting for item line - difficult to make a perfect table in plain text
+            messageLines.push(`${item.name}`);
+            messageLines.push(`  ${quantityText}     AED ${item.price.toFixed(2)}     AED ${itemTotal.toFixed(2)}`);
         });
 
-        const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-        const serviceFee = totalPrice * 0.15;
-        const totalWithFee = totalPrice + serviceFee;
+        const serviceFee = subtotal * 0.15;
+        const totalWithFee = subtotal + serviceFee;
 
-        messageLines.push(`\nSubtotal: AED ${totalPrice.toFixed(2)}`);
-        messageLines.push(`Taxa de Serviço (15%): AED ${serviceFee.toFixed(2)}`);
-        messageLines.push(`Total Estimado: AED ${totalWithFee.toFixed(2)}`); // Add total after items
-        messageLines.push("Por favor, entre em contato para mais detalhes.");
+        messageLines.push("--------------------------------------------------------------------------------");
+        messageLines.push(`Subtotal:                                                              AED ${subtotal.toFixed(2)}`);
+        messageLines.push(`Taxa de Serviço (15%):                                                 AED ${serviceFee.toFixed(2)}`);
+        messageLines.push(`Total:                                                          AED ${totalWithFee.toFixed(2)}`); // Add total after items
+        messageLines.push("--------------------------------------------------------------------------------");
+        messageLines.push("Observações:");
+        messageLines.push("Obrigado por escolher a Portare Travel para sua viagem!");
+
 
         const message = messageLines.join('\n'); // Join all lines with newline characters
 
