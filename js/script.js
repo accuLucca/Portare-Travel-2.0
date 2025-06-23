@@ -60,10 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Define subcategories per country
     const countrySubcategories = {
         'Dubai e Abu Dhabi': [
-            { label: "Todos", value: "all" }, { label: "TOUR EM GRUPO", value: "TOUR EM GRUPO" }, { label: "TOUR DUBAI", value: "TOUR DUBAI" }, { label: "TOUR ABU DHABI", value: "TOUR ABU DHABI" }, { label: "TOUR RAK", value: "TOUR RAK" },  { label: "HATTA", value: "HATTA" }, { label: "TRANSLADO", value: "TRANSLADO" }, { label: "CARRO COM MOTORISTA", value: "CARRO COM MOTORISTA" }, { label: "ABU DHABI CARRO", value: "ABU DHABI CARRO" },  { label: "DESERTO", value: "DESERTO" }, { label: "WATER", value: "WATER" }, { label: "AIR", value: "AIR" }, { label: "DUBAI TICKETS", value: "DUBAI TICKETS" }, { label: "DUBAI PARKS", value: "DUBAI PARKS" }, { label: "ABU DHABI TICKETS", value: "ABU DHABI TICKETS" }, { label: "ABU DHABI PARKS", value: "ABU DHABI PARKS" }, { label: "LA PERLE", value: "LA PERLE" }, { label: "PORTARE SERVIÇOS", value: "PORTARE SERVIÇOS" },  { label: "EVENTOS", value: "EVENTOS" },
+            { label: "Todos", value: "all" }, { label: "TOUR EM GRUPO", value: "TOUR EM GRUPO" }, { label: "TOUR DUBAI", value: "TOUR DUBAI" }, { label: "TOUR ABU DHABI", value: "TOUR ABU DHABI" }, { label: "TOUR RAK", value: "TOUR RAK" },  { label: "HATTA", value: "HATTA" }, { label: "TRANSLADO", value: "TRANSLADO" }, { label: "CARRO COM MOTORISTA", value: "CARRO COM MOTORISTA" }, { label: "ABU DHABI CARRO", value: "ABU DHABI CARRO" },  { label: "DESERTO", value: "DESERTO" }, { label: "AVENTURAS AQUÁTICAS", value: "AVENTURAS AQUÁTICAS" }, { label: "EXPERIÊNCIAS AÉREAS", value: "EXPERIENCIAS AÉREAS" }, { label: "DUBAI TICKETS", value: "DUBAI TICKETS" }, { label: "DUBAI PARKS", value: "DUBAI PARKS" }, { label: "ABU DHABI TICKETS", value: "ABU DHABI TICKETS" }, { label: "ABU DHABI PARKS", value: "ABU DHABI PARKS" }, { label: "LA PERLE", value: "LA PERLE" }, { label: "PORTARE SERVIÇOS", value: "PORTARE SERVIÇOS" },  { label: "EVENTOS", value: "EVENTOS" },
         ],
         'Egito': [
-             { label: "Todos", value: "all" }, { label: "EGITO CLÁSSICO", value: "EGITO CLÁSSICO" }, { label: "CRUZEIRO NILO", value: "CRUZEIRO NILO" }, { label: "PASSEIOS CAIRO", value: "PASSEIOS CAIRO" }, { label: "PASSEIOS LUXOR", value: "PASSEIOS LUXOR" }, { label: "PASSEIOS ASWAN", value: "PASSEIOS ASWAN" }, { label: "PASSEIOS HURGHADA", value: "PASSEIOS HURGHADA" }, { label: "PASSEIOS SHARM", value: "PASSEIOS SHARM" }, { label: "SERVIÇOS EGITO", value: "SERVIÇOS EGITO" },
+             { label: "Todos", value: "all" }, { label: "Tour em grupo", value: "Tour em grupo" }, { label: "Tour privativo", value: "Tour privativo" },
         ],
         'Maldivas': [
             { label: "Todos", value: "all" }, // Add Maldives specific categories later
@@ -527,6 +527,19 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
         cart = []; // Clear cart when going back to country selection
         renderCart(); // Update cart display
         renderPage();
+    });
+
+    // Close modals when clicking outside
+    itineraryModalOverlay.addEventListener('click', (event) => {
+        if (event.target === itineraryModalOverlay) {
+            itineraryModalOverlay.style.display = 'none';
+        }
+    });
+
+    enhancedDescModalOverlay.addEventListener('click', (event) => {
+        if (event.target === enhancedDescModalOverlay) {
+            enhancedDescModalOverlay.style.display = 'none';
+        }
     });
 
     whatsappQuoteButton.addEventListener('click', () => {
