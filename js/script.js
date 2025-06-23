@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedTravelStyle = '';
     let currentCountry = null; // Track the currently selected country
     let searchQuery = ''; // New state variable for search query
+    let currentAbortController = null; // To manage ongoing API requests
 
     const logoUrl = "./Marca.png"; // Certifique-se que este caminho está correto
 
@@ -420,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Funções da API Gemini
-    async function callGeminiAPI(prompt) {
+    async function callGeminiAPI(prompt, signal) {
         // NOTE: Hardcoding API keys directly in client-side code is a security risk.
         // For a production application, consider using a backend proxy or environment variables.
         const apiKey = "AIzaSyDpRyvbYUE4tDhBqw7v8GaFiA7m4760Ltk"; // API AQUI!!!
@@ -431,13 +432,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: JSON.stringify(payload),
+                signal: signal // Pass the signal here
             });
 
             if (!response.ok) {
                 const errorResult = await response.json().catch(() => ({ error: { message: "Falha ao analisar resposta de erro da API." } }));
                 throw new Error(errorResult.error?.message || `Erro da API: ${response.statusText}`);
-           
             }
             const result = await response.json();
             if (result.candidates && result.candidates[0]?.content?.parts[0]?.text) {
@@ -447,13 +448,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 throw new Error("Resposta inesperada da API ao gerar conteúdo.");
             }
         } catch (error) {
-            console.error("Error calling Gemini API:", error);
-            throw error; // Re-throw para ser pego pela função chamadora
+            // Check if the error is due to abortion
+            if (error.name === 'AbortError') {
+                console.log('API request aborted by user.');
+                // Do not show an error message for user-initiated aborts
+                throw error; // Re-throw the AbortError so the caller can handle cleanup
+            } else {
+                console.error("Error calling Gemini API:", error);
+                throw error; // Re-throw other errors
+            }
         }
     }
 
     async function handleGenerateEnhancedDescription(tour) {
         if (!tour) return;
+
+        // Abort any ongoing request before starting a new one
+        if (currentAbortController) {
+            currentAbortController.abort();
+        }
+        currentAbortController = new AbortController();
+        const signal = currentAbortController.signal;
+
         enhancedDescModalTitle.textContent = tour.name;
         enhancedDescModalOverlay.style.display = 'flex';
         showLoading(enhancedDescModalContentArea, "Gerando descrição detalhada...");
@@ -466,10 +482,18 @@ Preço: AED ${tour.price.toFixed(2)}
 A descrição deve ser mais elaborada, destacando os principais atrativos, experiências únicas, e o que o torna especial. Use um tone convidativo e informativo. Se possível, adicione uma curiosidade ou dica relacionada ao passeio. Formate com parágrafos para fácil leitura.`;
 
         try {
-            const description = await callGeminiAPI(prompt);
+            const description = await callGeminiAPI(prompt, signal);
             enhancedDescModalContentArea.innerHTML = `<div class="ai-generated-content">${formatAIResponse(description)}</div>`;
         } catch (error) {
-            showError(enhancedDescModalContentArea, `Ocorreu um erro: ${error.message}. Por favor, tente novamente.`);
+            if (error.name !== 'AbortError') { // Only show error if it wasn't an abort
+                showError(enhancedDescModalContentArea, `Ocorreu um erro: ${error.message}. Por favor, tente novamente.`);
+            }
+            // If it was an AbortError, the modal is already closing via the overlay click handler
+        } finally {
+            // Clear the controller reference once the request is done (success, error, or abort)
+            if (currentAbortController === currentAbortController) { // Ensure it's the same controller
+                 currentAbortController = null;
+            }
         }
     }
 
@@ -478,6 +502,15 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
             showConfirmationMessage("Adicione passeios ao carrinho para gerar um roteiro!");
             return;
         }
+
+        // Abort any ongoing request before starting a new one
+        if (currentAbortController) {
+            currentAbortController.abort();
+        }
+        currentAbortController = new AbortController();
+        const signal = currentAbortController.signal;
+
+
         itineraryModalOverlay.style.display = 'flex';
         showLoading(itineraryModalContentArea, "Gerando seu roteiro...");
 
@@ -489,10 +522,18 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
         prompt += ` Inclua uma sugestão de ordem para os passeios, considerando a logística e horários. Adicione também sugestões de atividades complementares (como restaurantes, compras, ou outros pontos de interesse próximos aos passeios selecionados) e dicas gerais para aproveitar ao máximo a viagem aos Emirados Árabes. Formate a resposta de forma clara e organizada, com títulos para cada dia ou seção.`;
 
         try {
-            const itinerary = await callGeminiAPI(prompt);
+            const itinerary = await callGeminiAPI(prompt, signal);
             itineraryModalContentArea.innerHTML = `<div class="ai-generated-content">${formatAIResponse(itinerary)}</div>`;
         } catch (error) {
-            showError(itineraryModalContentArea, `Ocorreu um erro: ${error.message}. Por favor, tente novamente.`);
+             if (error.name !== 'AbortError') { // Only show error if it wasn't an abort
+                showError(itineraryModalContentArea, `Ocorreu um erro: ${error.message}. Por favor, tente novamente.`);
+            }
+             // If it was an AbortError, the modal is already closing via the overlay click handler
+        } finally {
+             // Clear the controller reference once the request is done (success, error, or abort)
+             if (currentAbortController === currentAbortController) { // Ensure it's the same controller
+                 currentAbortController = null;
+            }
         }
     }
 
@@ -500,8 +541,39 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
     // Event Listeners
     cartButton.addEventListener('click', openCartSidebar);
     closeCartButton.addEventListener('click', closeCartSidebar);
-    closeItineraryModalButton.addEventListener('click', () => itineraryModalOverlay.style.display = 'none');
-    closeEnhancedDescModalButton.addEventListener('click', () => enhancedDescModalOverlay.style.display = 'none');
+
+    // Close modals when clicking the close button OR clicking outside
+    closeItineraryModalButton.addEventListener('click', () => {
+        if (currentAbortController) {
+            currentAbortController.abort();
+        }
+        itineraryModalOverlay.style.display = 'none';
+    });
+    itineraryModalOverlay.addEventListener('click', (event) => {
+        if (event.target === itineraryModalOverlay) {
+             if (currentAbortController) {
+                currentAbortController.abort();
+            }
+            itineraryModalOverlay.style.display = 'none';
+        }
+    });
+
+    closeEnhancedDescModalButton.addEventListener('click', () => {
+         if (currentAbortController) {
+            currentAbortController.abort();
+        }
+        enhancedDescModalOverlay.style.display = 'none';
+    });
+     enhancedDescModalOverlay.addEventListener('click', (event) => {
+        if (event.target === enhancedDescModalOverlay) {
+             if (currentAbortController) {
+                currentAbortController.abort();
+            }
+            enhancedDescModalOverlay.style.display = 'none';
+        }
+    });
+
+
     generateItineraryButton.addEventListener('click', handleGenerateItinerary);
 
     // Add event listener for search input
@@ -541,6 +613,19 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
             enhancedDescModalOverlay.style.display = 'none';
         }
     });
+
+    // Close cart sidebar when clicking outside
+    document.body.addEventListener('click', (event) => {
+        // Check if the cart sidebar is open AND the click is outside the sidebar and not on the cart button itself
+        if (!cartSidebar.classList.contains('translate-x-full') &&
+            !cartSidebar.contains(event.target) &&
+            event.target !== cartButton && // Exclude the cart button
+            !cartButton.contains(event.target)) // Exclude elements inside the cart button
+        {
+            closeCartSidebar();
+        }
+    });
+
 
     whatsappQuoteButton.addEventListener('click', () => {
         if (cart.length === 0) {
