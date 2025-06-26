@@ -14,10 +14,11 @@ export const egyptData = [
     {
         id: 203,
         name: "EGITO COMPLETO COM MAR VERMELHO - 10 DIAS",
-        description: "Uma jornada completa de 10 dias pelo Egito, incluindo os sítios históricos e um período de relaxamento no Mar Vermelho. Tour compartilhado com acomodação e atividades. (Descrição detalhada e preço a serem confirmados)", // Placeholder description
+        description: "Viva uma jornada inesquecível de 10 dias pelo Egito com guia em português. Explore as Pirâmides de Gizé, navegue pelo Rio Nilo em um cruzeiro com pensão completa e relaxe nas praias de Hurghada, no Mar Vermelho. Uma combinação perfeita de história, cultura e lazer. (Descrição detalhada e preço a serem confirmados)", // Updated description
         price: 0.00, // Placeholder price - UPDATE THIS
         imageUrl: "https://placehold.co/400x250/C0C0C0/000000?text=Egito+Mar+Vermelho", // Placeholder image
-        category: "Tour em grupo"
+        category: "Tour em grupo",
+        pdfUrl: "/img/pdf/EgitoCompartilhado10dias.pdf" // Corrected PDF URL
     },
     // EGITO HISTÓRICO C/ CRUZEIRO PRIVATIVO 8 DIAS
     {

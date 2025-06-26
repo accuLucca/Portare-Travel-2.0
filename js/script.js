@@ -319,6 +319,15 @@ document.addEventListener('DOMContentLoaded', () => {
             aiDetailsButton.onclick = () => handleGenerateEnhancedDescription(tour);
             actionDiv.appendChild(aiDetailsButton);
 
+            // Add PDF button if pdfUrl exists
+            if (tour.pdfUrl) {
+                const pdfButton = document.createElement('button');
+                pdfButton.className = "w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-sm mt-2";
+                pdfButton.textContent = "📄 Ver Roteiro Detalhado (PDF)";
+                pdfButton.onclick = () => window.open(tour.pdfUrl, '_blank');
+                actionDiv.appendChild(pdfButton);
+            }
+
             contentDiv.appendChild(textDiv);
             contentDiv.appendChild(actionDiv);
             tourCard.appendChild(img);
