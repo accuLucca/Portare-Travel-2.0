@@ -94,6 +94,19 @@ body {
  .modal-content-sm { /* Para o modal de descrição detalhada */
     max-width: 36rem; /* max-w-xl */
 }
+.modal-content-pdf {
+    max-width: 90%; /* Make PDF modal wider */
+    width: 90%;
+    height: 90vh; /* Make PDF modal taller */
+    max-height: 90vh;
+    padding: 1rem; /* Adjust padding for iframe */
+    display: flex; /* Use flexbox for iframe */
+    flex-direction: column;
+}
+
+#pdf-viewer {
+    flex-grow: 1; /* Allow iframe to fill available space */
+}
 
 .modal-close-button {
     position: absolute;

@@ -32,6 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const enhancedDescModalContentArea = document.getElementById('enhanced-desc-modal-content-area');
     const closeEnhancedDescModalButton = document.getElementById('close-enhanced-desc-modal-button');
 
+    // New PDF Modal Elements
+    const pdfModalOverlay = document.getElementById('pdf-modal-overlay');
+    const pdfViewer = document.getElementById('pdf-viewer');
+    const closePdfModalButton = document.getElementById('close-pdf-modal-button');
+    // End New PDF Modal Elements
+
     const confirmationMessageGlobal = document.getElementById('confirmation-message-global');
     const travelStyleButtonsContainer = document.getElementById('travel-style-buttons-container');
     const clearTravelStyleButton = document.getElementById('clear-travel-style-button');
@@ -324,7 +330,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const pdfButton = document.createElement('button');
                 pdfButton.className = "w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-sm mt-2";
                 pdfButton.textContent = "📄 Ver Roteiro Detalhado (PDF)";
-                pdfButton.onclick = () => window.open(tour.pdfUrl, '_blank');
+                // Modify the click handler to open the PDF modal
+                pdfButton.onclick = (e) => {
+                    e.stopPropagation(); // Prevent card click
+                    openPdfModal(tour.pdfUrl);
+                };
                 actionDiv.appendChild(pdfButton);
             }
 
@@ -428,6 +438,19 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeCartSidebar() {
         cartSidebar.classList.add('translate-x-full');
     }
+
+    // New PDF Modal Functions
+    function openPdfModal(pdfUrl) {
+        pdfViewer.src = pdfUrl;
+        pdfModalOverlay.style.display = 'flex';
+    }
+
+    function closePdfModal() {
+        pdfModalOverlay.style.display = 'none';
+        pdfViewer.src = ''; // Clear the iframe source when closing
+    }
+    // End New PDF Modal Functions
+
 
     // Funções da API Gemini
     async function callGeminiAPI(prompt, signal) {
@@ -581,6 +604,15 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
             enhancedDescModalOverlay.style.display = 'none';
         }
     });
+
+    // New PDF Modal Event Listeners
+    closePdfModalButton.addEventListener('click', closePdfModal);
+    pdfModalOverlay.addEventListener('click', (event) => {
+        if (event.target === pdfModalOverlay) {
+            closePdfModal();
+        }
+    });
+    // End New PDF Modal Event Listeners
 
 
     generateItineraryButton.addEventListener('click', handleGenerateItinerary);
