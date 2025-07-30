@@ -3,7 +3,7 @@ export const toursData = [
     {
         id: 110,
         name: "Tour Dubai Compartilhado - No Idioma Da Sua Preferencia (6h)",
-        description: "Tour compartilhado pelos principais pontos de Dubai com guia. Incluso: Guia em seu idioma nativo, Transporte do Hotel. Solicite Itinerário completo. Adulto ou kids +3 anos. PP.(XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX COLOCAR NEGOCIO PRA ESCOLHER IDIOMA)",
+        description: "Tour compartilhado pelos principais pontos de Dubai com guia. Incluso: Guia em seu idioma nativo, Transporte do Hotel. Solicite Itinerário completo. Adulto ou kids +3 anos. PP.",
         price: 550.50,
         imageUrl: "img/toursdubai/15.jpg",
         category: "TOUR EM GRUPO"
