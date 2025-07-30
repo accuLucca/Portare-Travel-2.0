@@ -723,155 +723,155 @@ export const toursData = [
     },
     {
         id: 90,
-        name: "Ingresso Palácio Presidencial (Qasr Al Watan)",
-        description: "Visite o Qasr Al Watan, o magnífico Palácio Presidencial de Abu Dhabi. Explore a arquitetura deslumbrante, salões grandiosos e aprenda sobre a cultura e história dos Emirados Árabes Unidos. (Preço por pessoa, aplicável para adultos)",
-        price: 18.00,
+        name: "Ingresso Palácio Presidencial (Qasr Al Watan) - adulto",
+        description: "Visite o Qasr Al Watan, o magnífico Palácio Presidencial de Abu Dhabi. Explore a arquitetura deslumbrante, salões grandiosos e aprenda sobre a cultura e história dos Emirados Árabes Unidos.",
+        price: 66.06,
         imageUrl: "img/toursdubai/90.jpg",
         category: "ABU DHABI TICKETS"
     },
     {
         id: 91,
-        name: "Ingresso Museu do Louvre Abu Dhabi",
-        description: "Acesso ao Museu do Louvre Abu Dhabi, uma obra-prima arquitetônica que abriga uma coleção de arte e artefatos que conectam diferentes culturas e civilizações. (Preço por pessoa, aplicável para adultos)",
-        price: 18.00,
+        name: "Ingresso Museu do Louvre Abu Dhabi - adulto",
+        description: "Acesso ao Museu do Louvre Abu Dhabi, uma obra-prima arquitetônica que abriga uma coleção de arte e artefatos que conectam diferentes culturas e civilizações.",
+        price: 66.06,
         imageUrl: "img/toursdubai/91.jpg",
         category: "ABU DHABI TICKETS"
     },
     {
         id: 92,
-        name: "Ingresso Grande Mesquita Sheikh Zayed",
-        description: "A entrada na Grande Mesquita Sheikh Zayed em Abu Dhabi é gratuita. Este item é apenas informativo. É altamente recomendado agendar sua visita online com antecedência. (Entrada gratuita)",
+        name: "Ingresso Grande Mesquita",
+        description: "A entrada na Grande Mesquita Sheikh Zayed em Abu Dhabi é gratuita. Este item é apenas informativo. É altamente recomendado agendar sua visita online com antecedência.",
         price: 0.00,
         imageUrl: "img/toursdubai/92.jpg",
         category: "ABU DHABI TICKETS"
     },
     {
         id: 93,
-        name: "Etihad Tower Observation Deck c/ Café da Tarde",
-        description: "Desfrute de vistas panorâmicas de Abu Dhabi a partir do Observation Deck at 300, localizado nas Etihad Towers, incluindo um delicioso café da tarde. (Preço por pessoa, aplicável para adultos)",
-        price: 27.25,
+        name: "Etihad Tower Observation Deck - com café da tarde (adulto)",
+        description: "Desfrute de vistas panorâmicas de Abu Dhabi a partir do Observation Deck at 300, localizado nas Etihad Towers, incluindo um delicioso café da tarde.",
+        price: 100.00,
         imageUrl: "img/toursdubai/93.jpg",
         category: "ABU DHABI TICKETS"
     },
     {
         id: 94,
-        name: "Ingresso Tour Yas Marina Circuit (2 horas)",
-        description: "Faça um tour guiado pelo Yas Marina Circuit, o famoso circuito de Fórmula 1 em Abu Dhabi. Conheça os bastidores, boxes, sala de controle e sinta a atmosfera do automobilismo. (Preço por pessoa, aplicável para adultos)",
-        price: 43.60,
+        name: "Ingresso Tour Yas Marina Circuit (2 horas) - adulto",
+        description: "Faça um tour guiado pelo Yas Marina Circuit, o famoso circuito de Fórmula 1 em Abu Dhabi. Conheça os bastidores, boxes, sala de controle e sinta a atmosfera do automobilismo.",
+        price: 160.00,
         imageUrl: "img/toursdubai/94.jpg",
         category: "ABU DHABI TICKETS"
     },
     {
         id: 95,
-        name: "Ingresso Parque da Ferrari Abu Dhabi",
-        description: "Acesso ao Ferrari World Abu Dhabi, o primeiro parque temático da Ferrari no mundo. Desfrute de montanhas-russas emocionantes, simuladores e atrações que celebram a marca italiana. (Preço por pessoa, aplicável para adultos)",
-        price: 95.00,
+        name: "Ingresso Parque da Ferrari Abu Dhabi - adulto",
+        description: "Acesso ao Ferrari World Abu Dhabi, o primeiro parque temático da Ferrari no mundo. Desfrute de montanhas-russas emocionantes, simuladores e atrações que celebram a marca italiana.",
+        price: 348.65,
         imageUrl: "img/toursdubai/95.jpg",
         category: "ABU DHABI PARKS"
     },
     {
         id: 96,
-        name: "Ingresso Parque Warner Bros World Abu Dhabi",
-        description: "Acesso ao Warner Bros. World Abu Dhabi, um parque temático indoor com zonas imersivas baseadas em personagens da Warner Bros., como Batman, Superman, Looney Tunes e Flintstones. (Preço por pessoa, aplicável para adultos)",
-        price: 104.00,
+        name: "Ingresso Parque Warner Bros - adulto",
+        description: "Acesso ao Warner Bros. World Abu Dhabi, um parque temático indoor com zonas imersivas baseadas em personagens da Warner Bros., como Batman, Superman, Looney Tunes e Flintstones.",
+        price: 381.68,
         imageUrl: "img/toursdubai/96.jpg",
         category: "ABU DHABI PARKS"
     },
     {
         id: 97,
-        name: "Ingresso Sea World Abu Dhabi",
-        description: "Acesso ao SeaWorld Yas Island, Abu Dhabi, um parque temático marinho que oferece experiências imersivas com animais marinhos, shows e atrações educativas. (Preço por pessoa, aplicável para adultos)",
-        price: 104.00,
+        name: "Ingresso Sea World Abu Dhabi - adulto",
+        description: "Acesso ao SeaWorld Yas Island, Abu Dhabi, um parque temático marinho que oferece experiências imersivas com animais marinhos, shows e atrações educativas.",
+        price: 381.68,
         imageUrl: "img/toursdubai/97.jpg",
         category: "ABU DHABI PARKS"
     },
     {
         id: 98,
-        name: "Ingresso 2 Parques Abu Dhabi (a escolher)",
-        description: "Acesso a dois parques temáticos na Ilha Yas, Abu Dhabi (Ferrari World, Warner Bros. World, SeaWorld ou Yas Waterworld - verificar opções disponíveis). Escolha seus dois parques favoritos para um dia de diversão. (Preço por pessoa, aplicável para adultos)",
-        price: 129.43,
+        name: "Ingresso 2 Parques Abu Dhabi a escolher - adulto",
+        description: "Acesso a dois parques temáticos na Ilha Yas, Abu Dhabi (Ferrari World, Warner Bros. World, SeaWorld ou Yas Waterworld - verificar opções disponíveis). Escolha seus dois parques favoritos para um dia de diversão.",
+        price: 475.00,
         imageUrl: "img/toursdubai/98.jpg",
         category: "ABU DHABI PARKS"
     },
     {
         id: 99,
-        name: "Ingresso 3 Parques Abu Dhabi (a escolher)",
-        description: "Acesso a três parques temáticos na Ilha Yas, Abu Dhabi (Ferrari World, Warner Bros. World, SeaWorld ou Yas Waterworld - verificar opções disponíveis). Aproveite um combo para visitar três parques em dias diferentes. (Preço por pessoa, aplicável para adultos)",
-        price: 156.68,
+        name: "Ingresso 3 Parques Abu Dhabi a escolher - adulto",
+        description: "Acesso a três parques temáticos na Ilha Yas, Abu Dhabi (Ferrari World, Warner Bros. World, SeaWorld ou Yas Waterworld - verificar opções disponíveis). Aproveite um combo para visitar três parques em dias diferentes.",
+        price: 575.00,
         imageUrl: "img/toursdubai/99.jpg",
         category: "ABU DHABI PARKS"
     },
     {
         id: 100,
-        name: "Ingresso 2 Parques Abu Dhabi (a escolher)",
-        description: "Acesso a dois parques temáticos na Ilha Yas, Abu Dhabi (Ferrari World, Warner Bros. World, SeaWorld ou Yas Waterworld - verificar opções disponíveis) para crianças. Escolha dois parques para a diversão dos pequenos. (Preço por pessoa, aplicável para crianças)",
-        price: 129.43,
+        name: "Ingresso 2 Parques Abu Dhabi a escolher - criança",
+        description: "Acesso a dois parques temáticos na Ilha Yas, Abu Dhabi (Ferrari World, Warner Bros. World, SeaWorld ou Yas Waterworld - verificar opções disponíveis) para crianças. Escolha dois parques para a diversão dos pequenos.",
+        price: 475.00,
         imageUrl: "img/toursdubai/100.jpg",
         category: "ABU DHABI PARKS"
     },
     {
         id: 101,
         name: "La Perle - Assento Normal",
-        description: "Ingresso para o espetáculo aquático e acrobático La Perle by Dragone em Dubai. Escolha entre as categorias de assento Bronze, Silver ou Gold (verificar disponibilidade) para uma experiência visualmente deslumbrante. (Preço por pessoa)",
-        price: 81.74,
+        description: "Ingresso para o espetáculo aquático e acrobático La Perle by Dragone em Dubai. Escolha entre as categorias de assento Bronze, Silver ou Gold (verificar disponibilidade) para uma experiência visualmente deslumbrante.",
+        price: 300.00,
         imageUrl: "img/toursdubai/101.jpg",
         category: "LA PERLE"
     },
     {
         id: 102,
         name: "La Perle - Assento Platinum + Foods & Drinks",
-        description: "Desfrute do espetáculo La Perle com os melhores assentos na categoria Platinum. Inclui acesso a um lounge VIP exclusivo com snacks e bebidas antes do show. Uma experiência premium. (Preço por pessoa)",
-        price: 141.69,
+        description: "Desfrute do espetáculo La Perle com os melhores assentos na categoria Platinum. Inclui acesso a um lounge VIP exclusivo com snacks e bebidas antes do show. Uma experiência premium.",
+        price: 520.00,
         imageUrl: "img/toursdubai/102.jpg",
         category: "LA PERLE"
     },
     {
         id: 103,
         name: "Serviço de Reservas e Indicações",
-        description: "Conte com nossa expertise para auxiliar com reservas e indicações de restaurantes, beach clubs e outros locais em Dubai e Abu Dhabi. Economize tempo e garanta os melhores lugares. (Valor único pelo serviço de consultoria e reservas)",
-        price: 50.00,
+        description: "Recomendações e Reservas de Restaurantes, Day Use em Resorts e Beach Clubs de acordo com o seu perfil.",
+        price: 183.50,
         imageUrl: "img/toursdubai/103.jpg",
         category: "PORTARE SERVIÇOS"
     },
     {
         id: 104,
         name: "Roteiro Personalizado",
-        description: "Receba um roteiro de viagem detalhado e personalizado para Dubai e Abu Dhabi, criado de acordo com seus interesses, tempo disponível e orçamento. O planejamento perfeito para sua viagem. (Valor único pelo serviço de elaboração do roteiro)",
-        price: 200.00,
+        description: "Descritivo completo de todo o itinerário, endereços com localizações clicáveis, explicação de como chegar e dicas. Sua viagem toda por escrito para tornar sua experiência ainda mais prática.",
+        price: 734.00,
         imageUrl: "img/toursdubai/104.jpg",
         category: "PORTARE SERVIÇOS"
     },
     {
         id: 105,
-        name: "Atendimento VIP 24h + Roteiro",
-        description: "Tenha suporte telefônico contínuo 24 horas por dia durante sua viagem, além da elaboração de um roteiro personalizado. Tranquilidade e assistência a qualquer momento. (Valor por dia de serviço)",
-        price: 100.00,
+        name: "Upgrade para Assistência Premium (valor por dia)",
+        description: "Profissional disponível em tempo real por whatsapp (respostas imediatas) para dúvidas durante a viagem. Horário de atendimento: 09:00 AM às 06:00 PM.",
+        price: 150.00,
         imageUrl: "img/toursdubai/105.jpg",
         category: "PORTARE SERVIÇOS"
     },
     {
         id: 106,
-        name: "Staff (Acompanhante não Guia) em Português - Dia Todo",
-        description: "Tenha um acompanhante falando português à sua disposição por 8 horas em Dubai (sem carro). Ideal para auxiliar com compras, navegação pela cidade ou simplesmente ter companhia. (Valor por staff por dia)",
-        price: 177.11,
+        name: "Upgrade para Assistência VIP (valor por dia)",
+        description: "Profissional disponível em tempo real por whatsapp ou chamada de voz (respostas imediatas) para dúvidas durante a viagem. Horário de atendimento: 07:00 AM às 00:30 AM.",
+        price: 350.00,
         imageUrl: "img/toursdubai/106.jpg",
         category: "PORTARE SERVIÇOS"
     },
     {
         id: 107,
-        name: "Staff (Acompanhante não Guia) em Português - Meio Período",
-        description: "Tenha um acompanhante falando português à sua disposição por 4 horas em Dubai (sem carro). Flexibilidade para pequenas necessidades de acompanhamento. (Valor por staff por meio-período)",
-        price: 108.99,
+        name: "Profissional Staff (acompanhante não guia) em Português - Dia todo (10h) - Transporte não Incluso",
+        description: "Profissional disponível em português por 10 horas para acompanhamento, sem transporte incluso.",
+        price: 800.00,
         imageUrl: "img/toursdubai/107.jpg",
         category: "PORTARE SERVIÇOS"
     },
     {
         id: 108,
-        name: "Sala de Conferência + Coffee Break (Abu Dhabi)",
-        description: "Aluguel de sala de conferência em um hotel em Abu Dhabi por até 5 horas, incluindo um coffee break. Ideal para pequenas reuniões ou eventos corporativos. (Valor por pessoa)",
-        price: 57.22,
+        name: "Staff (acompanhante não guia) em Português - Meio Período (5h) sem transporte",
+        description: "Profissional disponível em português por 5 horas para acompanhamento, sem transporte incluso.",
+        price: 500.00,
         imageUrl: "img/toursdubai/108.jpg",
-        category: "EVENTOS"
+        category: "PORTARE SERVIÇOS"
     },
     {
         id: 109,
