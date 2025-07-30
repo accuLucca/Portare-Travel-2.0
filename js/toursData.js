@@ -1,26 +1,26 @@
 export const toursData = [
     // TOUR EM GRUPO
     {
-        id: 15,
-        name: "Tour Dubai Compartilhado Meio Periodo (6h)",
-        description: "Explore os destaques de Dubai em um tour compartilhado de 6 horas. Visite pontos icônicos como o Burj Khalifa (vista externa), a Mesquita Jumeirah, o bairro histórico de Al Fahidi e os souks. Ideal para quem busca uma experiência completa e econômica. Inclui transporte em grupo. (Preço por pessoa, aplicável para adultos e crianças a partir de 3 anos)",
-        price: 60.00,
+        id: 110,
+        name: "Tour Dubai Compartilhado - No Idioma Da Sua Preferencia (6h)",
+        description: "Tour compartilhado pelos principais pontos de Dubai com guia. Incluso: Guia em seu idioma nativo, Transporte do Hotel. Solicite Itinerário completo. Adulto ou kids +3 anos. PP.(XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX COLOCAR NEGOCIO PRA ESCOLHER IDIOMA)",
+        price: 550.50,
         imageUrl: "img/toursdubai/15.jpg",
         category: "TOUR EM GRUPO"
     },
     {
         id: 16,
         name: "Tour Abu Dhabi Compartilhado - Tradicional / Dia Todo (8h)",
-        description: "Descubra a capital dos Emirados Árabes Unidos em um tour compartilhado de dia inteiro (8 horas). Visite a majestosa Grande Mesquita Sheikh Zayed, o Palácio Presidencial Qasr Al Watan (vista externa) e passeie pela Corniche. Uma imersão na cultura e modernidade de Abu Dhabi. Inclui transporte em grupo. (Preço por pessoa, aplicável para adultos e crianças a partir de 3 anos)",
-        price: 100.00,
+        description: "Tour compartilhado tradicional em Abu Dhabi. Incluso: Guia em Inglês, 1 Ingresso (à escolher), Transporte do Hotel (Dubai). Solicite Itinerário completo. Adulto ou kids +3 anos. PP.",
+        price: 367.00,
         imageUrl: "img/toursdubai/16.jpg",
         category: "TOUR EM GRUPO"
     },
     {
         id: 17,
-        name: "Tour Abu Dhabi Compartilhado c/ Parque - Dia Todo (8h)",
-        description: "Combine a visita aos principais pontos turísticos de Abu Dhabi com a diversão de um parque temático (ingresso do parque não incluso). Tour compartilhado de dia inteiro (8 horas) visitando a Grande Mesquita e outros locais, com tempo livre para visitar um dos parques da Ilha Yas (Ferrari World, Warner Bros. World ou SeaWorld). Inclui transporte em grupo. (Preço por pessoa, aplicável para adultos e crianças a partir de 3 anos)",
-        price: 167.00,
+        name: "Tour Abu Dhabi Compartilhado c/ 1 Parque à sua escolha - Dia Todo (8h)",
+        description: "Tour compartilhado em Abu Dhabi com parque à escolha. Incluso: Guia em Inglês, Ingresso Mesquita + 1 Parque (consultar opções), Transporte do Hotel (Dubai). Adulto ou kids +3 anos. PP.",
+        price: 734.00,
         imageUrl: "img/toursdubai/17.jpg",
         category: "TOUR EM GRUPO"
     },
@@ -79,7 +79,7 @@ export const toursData = [
         description: "Receba assistência personalizada em português na sua chegada ao Aeroporto Internacional de Dubai (DXB). Nosso representante irá encontrá-lo após a imigração para auxiliar com bagagem e direcioná-lo ao seu transporte. (Valor total pelo serviço)",
         price: 163.49,
         imageUrl: "img/toursdubai/25.jpg",
-        category: "TRANSLADO"
+        category: "TRASLADO"
     },
     {
         id: 26,
@@ -87,7 +87,7 @@ export const toursData = [
         description: "Tenha uma recepção VIP no Aeroporto Internacional de Dubai (DXB) com assistência em inglês. Um membro da equipe irá encontrá-lo dentro do terminal para agilizar os procedimentos de chegada, incluindo imigração e bagagem. (Valor total pelo serviço)",
         price: 217.98,
         imageUrl: "img/toursdubai/26.jpg",
-        category: "TRANSLADO"
+        category: "TRASLADO"
     },
     {
         id: 27,
@@ -95,7 +95,7 @@ export const toursData = [
         description: "Garanta seu transporte privativo e confortável entre o Aeroporto Internacional de Dubai (DXB) e seu hotel em Dubai. Serviço para um trecho (chegada ou partida). (Preço total por trecho para 1 pessoa. Consulte para mais pessoas ou tipos de veículo)",
         price: 95.00,
         imageUrl: "img/toursdubai/27.jpg",
-        category: "TRANSLADO"
+        category: "TRASLADO"
     },
     {
         id: 28,
@@ -103,7 +103,7 @@ export const toursData = [
         description: "Transporte privativo em ônibus com capacidade para até 35 pessoas entre o Aeroporto Internacional de Dubai (DXB) e hotéis em Dubai. Ideal para grupos grandes, eventos ou viagens corporativas. Serviço para um trecho. (Preço total pelo serviço do ônibus)",
         price: 386.92,
         imageUrl: "img/toursdubai/28.jpg",
-        category: "TRANSLADO"
+        category: "TRASLADO"
     },
     {
         id: 29,
@@ -111,7 +111,7 @@ export const toursData = [
         description: "Transporte privativo e confortável entre Abu Dhabi e Dubai (ou vice-versa). Serviço para um trecho, ideal para quem chega ou parte por aeroportos diferentes ou deseja se deslocar entre as cidades. (Preço total por trecho para 1-3 pessoas. Consulte para grupos maiores)",
         price: 190.74,
         imageUrl: "img/toursdubai/29.jpg",
-        category: "TRANSLADO"
+        category: "TRASLADO"
     },
     {
         id: 30,
