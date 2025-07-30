@@ -34,20 +34,28 @@ export const toursData = [
     },
     // TOUR DUBAI
     {
-        id: 19,
+        id: 'tour-dubai-meio-periodo',
         name: "Tour Dubai Meio Periodo (4h)",
-        description: "Um tour privativo de 4 horas por Dubai com guia e carro exclusivos para o seu grupo. Personalize o roteiro para visitar os locais que mais lhe interessam, com a flexibilidade e conforto de um serviço dedicado. Ideal para famílias ou pequenos grupos. (Preço por pessoa, baseado em 4+ pessoas. Consulte para outros tamanhos de grupo)",
-        price: 87.50,
+        description: "Tour privativo de 4 horas por Dubai com veículo, motorista, guia licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
+        price: 321.13, // Valor base para 4+ pessoas, mas será sobrescrito pelo cálculo dinâmico
         imageUrl: "img/toursdubai/19.jpg",
         category: "TOUR DUBAI"
     },
     {
-        id: 20,
+        id: 'tour-dubai-dia-todo',
         name: "Tour Dubai Dia Todo (8h)",
-        description: "Explore Dubai em profundidade com um tour privativo de dia inteiro (8 horas), incluindo guia e carro à sua disposição. Tenha a liberdade de criar um roteiro completo, visitando tanto os pontos turísticos clássicos quanto os mais modernos, no seu próprio ritmo. (Preço por pessoa, baseado em 4+ pessoas. Consulte para outros tamanhos de grupo)",
-        price: 137.50,
+        description: "Tour privativo de 8 horas por Dubai com veículo, motorista, guia brasileiro(a) licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
+        price: 504.63, // Valor base para 4+ pessoas, será sobrescrito pelo cálculo dinâmico
         imageUrl: "img/toursdubai/20.jpg",
         category: "TOUR DUBAI"
+    },
+    {
+        id: 'tour-abu-dhabi-dia-todo-10h',
+        name: "Tour Abu Dhabi Dia Todo (10h)",
+        description: "Tour privativo de 10 horas por Abu Dhabi com veículo, motorista e guia brasileiro(a) licenciado(a), reserva da Grande Mesquita e recomendação de itinerário. Outros ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
+        price: 631.24, // Valor base para 4+ pessoas, será sobrescrito pelo cálculo dinâmico
+        imageUrl: "img/toursdubai/21.jpg", // Use uma imagem apropriada
+        category: "TOUR ABU DHABI"
     },
     {
         id: 22,
@@ -75,41 +83,41 @@ export const toursData = [
     },
     {
         id: 25,
-        name: "Representante no Aeroporto (Português)",
-        description: "Receba assistência personalizada em português na sua chegada ao Aeroporto Internacional de Dubai (DXB). Nosso representante irá encontrá-lo após a imigração para auxiliar com bagagem e direcioná-lo ao seu transporte. (Valor total pelo serviço)",
-        price: 163.49,
+        name: "Representante em Português no Aeroporto - fora da imigração",
+        description: "Profissional aguardará os clientes após a retirada da bagagem, recepção no terminal e auxílio no check in do hotel (não inclui serviços dentro da imigração). Serviço válido apenas na contratação conjunta do translado aeroporto-hotel.",
+        price: 600.00,
         imageUrl: "img/toursdubai/25.jpg",
         category: "TRASLADO"
     },
     {
         id: 26,
-        name: "Serviço de Recepção (Meet & Greet - Inglês)",
-        description: "Tenha uma recepção VIP no Aeroporto Internacional de Dubai (DXB) com assistência em inglês. Um membro da equipe irá encontrá-lo dentro do terminal para agilizar os procedimentos de chegada, incluindo imigração e bagagem. (Valor total pelo serviço)",
-        price: 217.98,
+        name: "Serviços de recepção dentro do Terminal DXB - Inglês",
+        description: "Recepção personalizada dentro da imigração no Terminal 3 (Dubai). Profissional da Emirates acompanha até a saída do terminal. Atendimento em inglês. Válido apenas para chegadas em voos da Emirates.",
+        price: 800.00,
         imageUrl: "img/toursdubai/26.jpg",
         category: "TRASLADO"
     },
     {
         id: 27,
-        name: "Translado Aeroporto DXB ↔ Hotel Dubai (1 Trecho)",
-        description: "Garanta seu transporte privativo e confortável entre o Aeroporto Internacional de Dubai (DXB) e seu hotel em Dubai. Serviço para um trecho (chegada ou partida). (Preço total por trecho para 1 pessoa. Consulte para mais pessoas ou tipos de veículo)",
-        price: 95.00,
+        name: "Traslado Aeroporto DXB-Hotel em Dubai (1 Trecho) - até 2 pessoas TT",
+        description: "Incluso: Veículo Toyota Previa (7 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
+        price: 389.00,
         imageUrl: "img/toursdubai/27.jpg",
         category: "TRASLADO"
     },
     {
         id: 28,
-        name: "Translado Aeroporto DXB ↔ Hotel Dubai (1 Trecho) - Ônibus Corporativo",
-        description: "Transporte privativo em ônibus com capacidade para até 35 pessoas entre o Aeroporto Internacional de Dubai (DXB) e hotéis em Dubai. Ideal para grupos grandes, eventos ou viagens corporativas. Serviço para um trecho. (Preço total pelo serviço do ônibus)",
-        price: 386.92,
+        name: "Traslado Aeroporto DXB-Hotel em Dubai (1 Trecho) - 3 a 7 pessoas TT",
+        description: "Incluso: Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
+        price: 499.00,
         imageUrl: "img/toursdubai/28.jpg",
         category: "TRASLADO"
     },
     {
         id: 29,
-        name: "Translado Abu Dhabi ↔ Dubai (1 Trecho)",
-        description: "Transporte privativo e confortável entre Abu Dhabi e Dubai (ou vice-versa). Serviço para um trecho, ideal para quem chega ou parte por aeroportos diferentes ou deseja se deslocar entre as cidades. (Preço total por trecho para 1-3 pessoas. Consulte para grupos maiores)",
-        price: 190.74,
+        name: "Traslado Aeroporto DXB-Hotel em Dubai (1 Trecho) - 8 a 14 pessoas TT",
+        description: "Incluso: 2 Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
+        price: 1000.00,
         imageUrl: "img/toursdubai/29.jpg",
         category: "TRASLADO"
     },
@@ -210,15 +218,71 @@ export const toursData = [
         category: "AVENTURAS AQUÁTICAS"
     },
     {
-        id: 42,
-        name: "Yacht 44 pés (3 horas)",
-        description: "Alugue um iate privativo de 44 pés por 3 horas para o seu grupo. Com capacidade para até 12 pessoas, é perfeito para celebrações, passeios relaxantes ou simplesmente para desfrutar do luxo e das vistas de Dubai a partir do mar. (Valor total pelo aluguel do iate)",
-        price: 600.00,
-        imageUrl: "img/toursdubai/42.jpg",
+        id: 300,
+        name: "1 Jetski (30 min) - até 2 pessoas TT",
+        description: "Aproveite 30 minutos de emoção em um jetski para até 2 pessoas nas águas de Dubai. Ideal para casais ou amigos.",
+        price: 300.94,
+        imageUrl: "img/toursdubai/jetski2p.jpg",
         category: "AVENTURAS AQUÁTICAS"
     },
     {
-        id: 43,
+        id: 301,
+        name: "1 Jetcar (30 min) - até 2 pessoas TT",
+        description: "Experimente um passeio de Jetcar por 30 minutos para até 2 pessoas. Diversão garantida em um veículo aquático exclusivo.",
+        price: 1009.25,
+        imageUrl: "img/toursdubai/jetcar2p.jpg",
+        category: "AVENTURAS AQUÁTICAS"
+    },
+    {
+        id: 302,
+        name: "1 Parasailing (30 min) - 1 pessoa PP",
+        description: "Viva a experiência de parasailing por 30 minutos e admire Dubai do alto. Uma aventura inesquecível para uma pessoa.",
+        price: 300.94,
+        imageUrl: "img/toursdubai/parasailing1p.jpg",
+        category: "AVENTURAS AQUÁTICAS"
+    },
+    {
+        id: 303,
+        name: "Iate para até 6 pessoas - valor por hora (mínimo de 3 horas)",
+        description: "Iate privativo para até 6 pessoas. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente.",
+        price: 550.00,
+        imageUrl: "img/toursdubai/yacht6p.jpg",
+        category: "AVENTURAS AQUÁTICAS"
+    },
+    {
+        id: 304,
+        name: "Iate até 15 pessoas - valor por hora (mínimo de 3 horas)",
+        description: "Iate privativo para até 15 pessoas. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente.",
+        price: 680.00,
+        imageUrl: "img/toursdubai/yacht15p.jpg",
+        category: "AVENTURAS AQUÁTICAS"
+    },
+    {
+        id: 305,
+        name: "Iate para até 20 pessoas - valor por hora (mínimo de 3 horas)",
+        description: "Iate privativo para até 20 pessoas. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente.",
+        price: 800.00,
+        imageUrl: "img/toursdubai/yacht20p.jpg",
+        category: "AVENTURAS AQUÁTICAS"
+    },
+    {
+        id: 306,
+        name: "Iate para até 30 pessoas - valor por hora (mínimo de 3 horas)",
+        description: "Iate privativo para até 30 pessoas. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente.",
+        price: 1000.00,
+        imageUrl: "img/toursdubai/yacht30p.jpg",
+        category: "AVENTURAS AQUÁTICAS"
+    },
+    {
+        id: 307,
+        name: "Iate para até 40 pessoas - valor por hora (mínimo de 3 horas)",
+        description: "Iate privativo para até 40 pessoas. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente.",
+        price: 2000.00,
+        imageUrl: "img/toursdubai/yacht40p.jpg",
+        category: "AVENTURAS AQUÁTICAS"
+    },
+    {
+        id: 308,
         name: "Mergulho em Dubai (30 Minutos)",
         description: "Descubra o mundo subaquático de Dubai com uma sessão de mergulho de 30 minutos. Ideal para iniciantes que querem experimentar o mergulho ou para mergulhadores experientes. Equipamento e acompanhamento inclusos. (Preço por pessoa, aplicável para adultos e crianças)",
         price: 132.00,
@@ -226,59 +290,123 @@ export const toursData = [
         category: "AVENTURAS AQUÁTICAS"
     },
     {
-        id: 44,
-        name: "Deep Diving - Mergulhadores Certificados (Pacote Padrão)",
-        description: "Mergulho profundo para mergulhadores certificados, explorando profundidades entre 12 e 30 metros por aproximadamente 40 minutos. Uma oportunidade para descobrir a vida marinha e estruturas subaquáticas. (Preço por pessoa)",
-        price: 330.00,
-        imageUrl: "img/toursdubai/44.jpg",
+        id: 309,
+        name: "Mergulho em Dubai PP - 30 Minutos / adulto ou kids",
+        description: "Descubra o mundo subaquático de Dubai com uma sessão de mergulho de 30 minutos. Equipamento e acompanhamento inclusos. (Preço por pessoa, adulto ou criança)",
+        price: 477.10,
+        imageUrl: "img/toursdubai/mergulho.jpg",
         category: "AVENTURAS AQUÁTICAS"
     },
     {
-        id: 45,
-        name: "Deep Diving - Mergulhadores Certificados (Pacote c/ Certificado)",
-        description: "Mergulho profundo para mergulhadores certificados (12-30m, 40 min) com a inclusão de um certificado de participação. Ideal para quem quer registrar a experiência ou precisa comprovar o mergulho. (Preço por pessoa)",
-        price: 654.00,
-        imageUrl: "img/toursdubai/45.jpg",
+        id: 310,
+        name: "Tour de Barco nas Ilhas de Dubai PP - 100 min",
+        description: "Tour de barco pelas ilhas de Dubai por 100 minutos. Uma experiência relaxante e panorâmica pelas águas da cidade.",
+        price: 300.94,
+        imageUrl: "img/toursdubai/barcoilhas.jpg",
         category: "AVENTURAS AQUÁTICAS"
     },
     {
-        id: 46,
-        name: "Helicóptero 12 min - 1 adulto",
-        description: "Desfrute de um voo panorâmico de helicóptero de 12 minutos sobre Dubai, com vistas aéreas incríveis dos principais marcos como Burj Khalifa, Palm Jumeirah e a costa. Uma perspectiva única da cidade. (Preço por pessoa)",
-        price: 194.00,
-        imageUrl: "img/toursdubai/46.jpg",
+        id: 311,
+        name: "Iate Compartilhado c/ Churrasco PP - adulto ou kids",
+        description: "Passeio de iate compartilhado com churrasco incluso. Ideal para adultos e crianças aproveitarem juntos.",
+        price: 477.10,
+        imageUrl: "img/toursdubai/iatechurrasco.jpg",
+        category: "AVENTURAS AQUÁTICAS"
+    },
+    {
+        id: 312,
+        name: "Deep Diving - Mergulhadores Sem Experiência / Pacote Padrão 12-30 m (40 min)",
+        description: "Mergulho profundo para quem não tem experiência, entre 12 e 30 metros, por 40 minutos. Inclui acompanhamento especializado.",
+        price: 1800.00,
+        imageUrl: "img/toursdubai/deepdivingsemexp.jpg",
+        category: "AVENTURAS AQUÁTICAS"
+    },
+    {
+        id: 313,
+        name: "Deep Diving - Mergulhadores Sem Experiência / Pacote c/ Certificado 12-30 m (40 min)",
+        description: "Mergulho profundo para iniciantes com certificado incluso, entre 12 e 30 metros, por 40 minutos.",
+        price: 2400.00,
+        imageUrl: "img/toursdubai/deepdivingsemexpcert.jpg",
+        category: "AVENTURAS AQUÁTICAS"
+    },
+    {
+        id: 314,
+        name: "Deep Diving - Mergulhadores Certificados / Pacote Padrão 12-30 m (40 min)",
+        description: "Mergulho profundo para mergulhadores certificados, entre 12 e 30 metros, por 40 minutos.",
+        price: 1800.00,
+        imageUrl: "img/toursdubai/deepdivingcert.jpg",
+        category: "AVENTURAS AQUÁTICAS"
+    },
+    {
+        id: 315,
+        name: "Deep Diving - Mergulhadores Certificados / Pacote c/ Certificado 12-30 m (40 min)",
+        description: "Mergulho profundo para mergulhadores certificados com certificado incluso, entre 12 e 30 metros, por 40 minutos.",
+        price: 2400.00,
+        imageUrl: "img/toursdubai/deepdivingcertcert.jpg",
+        category: "AVENTURAS AQUÁTICAS"
+    },
+    {
+        id: 400,
+        name: "Helicóptero 12 min Compartilhado - 1 adulto",
+        description: "Voo panorâmico de helicóptero compartilhado por 12 minutos sobre Dubai. Experiência única para 1 adulto.",
+        price: 711.98,
+        imageUrl: "img/toursdubai/heli12comp.jpg",
         category: "EXPERIENCIAS AÉREAS"
     },
     {
-        id: 47,
-        name: "Helicóptero 17 min - 1 adulto",
-        description: "Voo panorâmico de helicóptero de 17 minutos, cobrindo uma área maior de Dubai e permitindo mais tempo para apreciar as vistas espetaculares da cidade e seus arredores. (Preço por pessoa)",
-        price: 260.00,
-        imageUrl: "img/toursdubai/47.jpg",
+        id: 401,
+        name: "Helicóptero 17 min Compartilhado - 1 adulto",
+        description: "Voo panorâmico de helicóptero compartilhado por 17 minutos sobre Dubai. Experiência única para 1 adulto.",
+        price: 954.20,
+        imageUrl: "img/toursdubai/heli17comp.jpg",
         category: "EXPERIENCIAS AÉREAS"
     },
     {
-        id: 48,
-        name: "Helicóptero 22 min - 1 adulto",
-        description: "Um voo panorâmico mais extenso de 22 minutos, ideal para quem deseja ver mais de Dubai do alto, incluindo a Palm Jumeirah completa, World Islands e outros pontos distantes. (Preço por pessoa)",
-        price: 355.00,
-        imageUrl: "img/toursdubai/48.jpg",
+        id: 402,
+        name: "Helicóptero 22 min Compartilhado - 1 adulto",
+        description: "Voo panorâmico de helicóptero compartilhado por 22 minutos sobre Dubai. Experiência única para 1 adulto.",
+        price: 1302.85,
+        imageUrl: "img/toursdubai/heli22comp.jpg",
         category: "EXPERIENCIAS AÉREAS"
     },
     {
-        id: 49,
-        name: "Helicóptero 30 min - 1 adulto",
-        description: "O voo panorâmico mais completo de helicóptero, com 30 minutos para explorar Dubai do alto, cobrindo todos os principais marcos e oferecendo uma experiência inesquecível. (Preço por pessoa)",
-        price: 383.00,
-        imageUrl: "img/toursdubai/49.jpg",
+        id: 403,
+        name: "Helicóptero 30 min Compartilhado - 1 adulto",
+        description: "Voo panorâmico de helicóptero compartilhado por 30 minutos sobre Dubai. Experiência única para 1 adulto.",
+        price: 2000.00,
+        imageUrl: "img/toursdubai/heli30comp.jpg",
         category: "EXPERIENCIAS AÉREAS"
     },
     {
-        id: 50,
-        name: "Balão no Deserto ao Nascer do Sol",
-        description: "Experimente a magia do deserto de Dubai em um voo de balão ao nascer do sol. Desfrute de vistas panorâmicas incríveis das dunas e da vida selvagem, seguido de um café da manhã. Uma experiência tranquila e memorável. (Preço por pessoa, aplicável para adultos)",
-        price: 545.00,
-        imageUrl: "img/toursdubai/50.jpg",
+        id: 404,
+        name: "Helicóptero 12 min Privativo - até 5 pessoas TT",
+        description: "Voo privativo de helicóptero por 12 minutos para até 5 pessoas. Exclusividade e conforto.",
+        price: 3600.00,
+        imageUrl: "img/toursdubai/heli12priv.jpg",
+        category: "EXPERIENCIAS AÉREAS"
+    },
+    {
+        id: 405,
+        name: "Helicóptero 17 min Privativo - até 5 pessoas TT",
+        description: "Voo privativo de helicóptero por 17 minutos para até 5 pessoas. Exclusividade e conforto.",
+        price: 4800.00,
+        imageUrl: "img/toursdubai/heli17priv.jpg",
+        category: "EXPERIENCIAS AÉREAS"
+    },
+    {
+        id: 406,
+        name: "Helicóptero 22 min Privativo - até 5 pessoas TT",
+        description: "Voo privativo de helicóptero por 22 minutos para até 5 pessoas. Exclusividade e conforto.",
+        price: 6500.00,
+        imageUrl: "img/toursdubai/heli22priv.jpg",
+        category: "EXPERIENCIAS AÉREAS"
+    },
+    {
+        id: 407,
+        name: "Helicóptero 30 min Privativo - até 5 pessoas TT",
+        description: "Voo privativo de helicóptero por 30 minutos para até 5 pessoas. Exclusividade e conforto.",
+        price: 8900.00,
+        imageUrl: "img/toursdubai/heli30priv.jpg",
         category: "EXPERIENCIAS AÉREAS"
     },
     {
@@ -752,5 +880,237 @@ export const toursData = [
         price: 100,
         imageUrl: "img/toursdubai/.jpg",
         category: "TOUR DUBAI"
+    },
+    {
+        id: 'tour-jebel-hatta-dia-todo-10h',
+        name: "Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)",
+        description: "Tour privativo de 10 horas para Jebel Jais ou Hatta com veículo, motorista, guia brasileiro(a) licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
+        price: 631.24, // Valor base para 4+ pessoas, será sobrescrito pelo cálculo dinâmico
+        imageUrl: "img/toursdubai/23.jpg", // Use uma imagem apropriada
+        category: "TOUR RAK"
+    },
+    {
+        id: 'traslado-dubai-abu-dhabi-2p',
+        name: "Traslado Dubai-Abu Dhabi (1 Trecho) - até 2 pessoas TT",
+        description: "Incluso: Veículo Toyota Previa (7 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
+        price: 650.00,
+        imageUrl: "img/toursdubai/27.jpg",
+        category: "TRASLADO"
+    },
+    {
+        id: 'traslado-dubai-abu-dhabi-3-7p',
+        name: "Traslado Dubai-Abu Dhabi (1 Trecho) - 3 a 7 pessoas TT",
+        description: "Incluso: Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
+        price: 750.00,
+        imageUrl: "img/toursdubai/28.jpg",
+        category: "TRASLADO"
+    },
+    {
+        id: 'traslado-dubai-abu-dhabi-8-14p',
+        name: "Traslado Dubai-Abu Dhabi (1 Trecho) - 8 a 14 pessoas TT",
+        description: "Incluso: 2 Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
+        price: 1500.00,
+        imageUrl: "img/toursdubai/29.jpg",
+        category: "TRASLADO"
+    },
+    {
+        id: 'transporte-dubai-5h-ate-5p',
+        name: "Transporte c/ Motorista em Dubai Meio Periodo (5h) até 5 pessoas",
+        description: "Incluso: Veículo Toyota Previa 7 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        price: 800.00,
+        imageUrl: "img/toursdubai/27.jpg",
+        category: "CARRO COM MOTORISTA"
+    },
+    {
+        id: 'transporte-dubai-5h-6-11p',
+        name: "Transporte c/ Motorista em Dubai Meio Periodo (5h) 6 a 11 pessoas",
+        description: "Incluso: Veículo Hiace vehicle 13 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        price: 950.00,
+        imageUrl: "img/toursdubai/28.jpg",
+        category: "CARRO COM MOTORISTA"
+    },
+    {
+        id: 'transporte-dubai-5h-12-20p',
+        name: "Transporte c/ Motorista em Dubai Meio Periodo (5h) 12 a 20 pessoas",
+        description: "Incluso: Ônibus Executivo Yutong (2024) – 22 lugares, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        price: 1600.00,
+        imageUrl: "img/toursdubai/29.jpg",
+        category: "CARRO COM MOTORISTA"
+    },
+    {
+        id: 'transporte-dubai-10h-ate-5p',
+        name: "Transporte c/ Motorista em Dubai - Dia Todo (10h) até 5 pessoas",
+        description: "Incluso: Veículo Toyota Previa 7 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        price: 1200.00,
+        imageUrl: "img/toursdubai/27.jpg",
+        category: "CARRO COM MOTORISTA"
+    },
+    {
+        id: 'transporte-dubai-10h-6-11p',
+        name: "Transporte c/ Motorista em Dubai - Dia Todo (10h) 6 a 11 pessoas",
+        description: "Incluso: Veículo Hiace vehicle 13 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        price: 1400.00,
+        imageUrl: "img/toursdubai/28.jpg",
+        category: "CARRO COM MOTORISTA"
+    },
+    {
+        id: 'transporte-dubai-10h-12-20p',
+        name: "Transporte c/ Motorista em Dubai - Dia Todo (10h) 12 a 20 pessoas",
+        description: "Incluso: Ônibus Executivo Yutong (2024) – 22 lugares, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        price: 1800.00,
+        imageUrl: "img/toursdubai/29.jpg",
+        category: "CARRO COM MOTORISTA"
+    },
+    {
+        id: 'transporte-abu-dhabi-10h-ate-5p',
+        name: "Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h) até 5 pessoas",
+        description: "Incluso: Veículo Toyota Previa 7 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        price: 1450.00,
+        imageUrl: "img/toursdubai/27.jpg",
+        category: "ABU DHABI CARRO"
+    },
+    {
+        id: 'transporte-abu-dhabi-10h-6-11p',
+        name: "Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h) 6 a 11 pessoas",
+        description: "Incluso: Veículo Hiace vehicle 13 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        price: 1950.00,
+        imageUrl: "img/toursdubai/28.jpg",
+        category: "ABU DHABI CARRO"
+    },
+    {
+        id: 'transporte-abu-dhabi-10h-12-20p',
+        name: "Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h) 12 a 20 pessoas",
+        description: "Incluso: Ônibus Executivo Yutong (2024) – 22 lugares, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        price: 2650.00,
+        imageUrl: "img/toursdubai/29.jpg",
+        category: "ABU DHABI CARRO"
+    },
+    {
+        id: 200,
+        name: "Quadriciclo 90 CC - 1 pessoa 20 min",
+        description: "Aventure-se no deserto pilotando um quadriciclo 90 CC por 20 minutos. Ideal para quem busca emoção e diversão nas dunas.",
+        price: 165.00,
+        imageUrl: "img/toursdubai/quadriciclo90cc.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 201,
+        name: "Buggy 1000 CC - até 2 pessoas 30 min",
+        description: "Desfrute de um passeio emocionante de buggy 1000 CC por 30 minutos, com capacidade para até 2 pessoas. Sinta a adrenalina nas dunas do deserto.",
+        price: 860.00,
+        imageUrl: "img/toursdubai/buggy1000cc2p.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 202,
+        name: "Buggy 1000 CC - até 4 pessoas 30 min",
+        description: "Passeio de buggy 1000 CC por 30 minutos para até 4 pessoas. Uma experiência divertida e cheia de aventura nas dunas.",
+        price: 1100.00,
+        imageUrl: "img/toursdubai/buggy1000cc4p.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 203,
+        name: "Adicional Guia em Português para Safari no Deserto (Valor Único) TT",
+        description: "Adicione um guia falando português à sua experiência de Safari no Deserto para informações e acompanhamento personalizado durante todo o passeio.",
+        price: 1025.00,
+        imageUrl: "img/toursdubai/guiaportugues.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 204,
+        name: "Safari no Deserto Premium - Transporte Compartilhado PP",
+        description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        price: 450.00,
+        imageUrl: "img/toursdubai/premiumcompartilhado.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 205,
+        name: "Safari no Deserto Premium - Transporte Privativo TT",
+        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        price: 2282.74,
+        imageUrl: "img/toursdubai/premiumprivativo.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 206,
+        name: "Safari no Deserto Gold - Transporte Compartilhado PP",
+        description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé. *Será privativo quando houver 6 pessoas do mesmo grupo.",
+        price: 690.00,
+        imageUrl: "img/toursdubai/goldcompartilhado.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 207,
+        name: "Safari no Deserto Gold - Transporte Privativo - 2 pessoas PP",
+        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        price: 1256.25,
+        imageUrl: "img/toursdubai/goldprivativo2p.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 208,
+        name: "Safari no Deserto Gold - Transporte Privativo - 3 pessoas PP",
+        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        price: 950.00,
+        imageUrl: "img/toursdubai/goldprivativo3p.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 209,
+        name: "Safari no Deserto Gold - Transporte Privativo - 4 a 5 pessoas PP",
+        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        price: 805.00,
+        imageUrl: "img/toursdubai/goldprivativo4p.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 210,
+        name: "Safari no Deserto Platinum - Transporte Compartilhado PP",
+        description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé. *Será privativo quando houver 6 pessoas do mesmo grupo.",
+        price: 795.00,
+        imageUrl: "img/toursdubai/platinumcompartilhado.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 211,
+        name: "Safari no Deserto Platinum - Transporte Privativo - 2 pessoas PP",
+        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        price: 1361.25,
+        imageUrl: "img/toursdubai/platinumprivativo2p.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 212,
+        name: "Safari no Deserto Platinum - Transporte Privativo - 3 pessoas PP",
+        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        price: 1121.18,
+        imageUrl: "img/toursdubai/platinumprivativo3p.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 213,
+        name: "Safari no Deserto Platinum - Transporte Privativo - 4 a 5 pessoas PP",
+        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        price: 895.00,
+        imageUrl: "img/toursdubai/platinumprivativo4p.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 214,
+        name: "Safari no Deserto All Inclusive (Bebidas alcoólicas) - Transporte Compartilhado PP",
+        description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, parada para fotos, Passeio simples de Camelo, Jantar tipo Buffet, Danças e Show, bebidas alcoólicas e não alcoólicas. Não incluso: narguilé.",
+        price: 640.50,
+        imageUrl: "img/toursdubai/allinclusivecompartilhado.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 215,
+        name: "Safari no Deserto Emirate (Heritage) - Transporte Compartilhado PP",
+        description: "Incluso: Transfer compartilhado ida e volta do Hotel, Rota no Deserto de Land Rover Vintage ou 30 Min de Camelo, Passeio simples de Camelo, Jantar tipo Buffet tradicional Emirate, Danças Típicas Emirate, Experiência sob as estrelas, bebidas alcoólicas tradicionais, acampamento beduíno.",
+        price: 796.00,
+        imageUrl: "img/toursdubai/emirateheritage.jpg",
+        category: "DESERTO"
     },
 ];
