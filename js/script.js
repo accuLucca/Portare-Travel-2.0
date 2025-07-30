@@ -312,360 +312,397 @@ document.addEventListener('DOMContentLoaded', () => {
             // Remove duplicados em inglês do Tour Dubai Meio Periodo (4h) e Dia Todo (8h)
             if (tour.name.includes("Dubai Half-Day Tour") || tour.name.includes("Dubai Full-Day Tour")) return false;
             // Não renderiza os cards fixos, só os dinâmicos
-            if (tour.id === 'tour-dubai-meio-periodo' || tour.id === 'tour-dubai-dia-todo') return false;
-            return selectedSubcategory === 'all' || tour.category === selectedSubcategory;
+            if (tour.id === 'tour-dubai-meio-periodo' || tour.id === 'tour-dubai-dia-todo' || tour.id === 'tour-abu-dhabi-dia-todo-10h' || tour.id === 'tour-jebel-hatta-dia-todo-10h') return false;
+            // Filtro de subcategoria
+            if (!(selectedSubcategory === 'all' || tour.category === selectedSubcategory)) return false;
+            // Filtro de pesquisa
+            if (searchQuery && !(
+                tour.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                tour.description.toLowerCase().includes(searchQuery.toLowerCase())
+            )) return false;
+            return true;
         });
 
+        // Função para verificar se o card dinâmico deve aparecer pelo filtro de pesquisa
+        function dynamicCardMatches(name, desc) {
+            if (!searchQuery) return true;
+            const q = searchQuery.toLowerCase();
+            return name.toLowerCase().includes(q) || desc.toLowerCase().includes(q);
+        }
+
+        // Array para guardar os cards dinâmicos que devem aparecer
+        const dynamicCards = [];
+
         // Card dinâmico Tour Dubai Meio Periodo (4h)
-        if (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR DUBAI') {
-            const tourCard = document.createElement('div');
-            tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+        if (
+            (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR DUBAI') &&
+            dynamicCardMatches("Tour Dubai Meio Periodo (4h)", "Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
-            const img = document.createElement('img');
-            img.src = "img/toursdubai/19.jpg";
-            img.alt = "Tour Dubai Meio Periodo (4h)";
-            img.className = 'w-full h-48 object-cover object-center';
-            img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Tour+Dubai+Meio+Periodo`; };
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/19.jpg";
+                img.alt = "Tour Dubai Meio Periodo (4h)";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Tour+Dubai+Meio+Periodo`; };
 
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
 
-            const textDiv = document.createElement('div');
-            const nameH3 = document.createElement('h3');
-            nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
-            nameH3.textContent = "Tour Dubai Meio Periodo (4h)";
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Tour Dubai Meio Periodo (4h)";
 
-            const descP = document.createElement('p');
-            descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
-            descP.innerHTML = `Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente).<br>
-            Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)<br>
-            <span class="font-bold">Selecione o número de pessoas para calcular o valor:</span>`;
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente).<br>
+                Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)<br>
+                <span class="font-bold">Selecione o número de pessoas para calcular o valor:</span>`;
 
-            textDiv.appendChild(nameH3);
-            textDiv.appendChild(descP);
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
 
-            const actionDiv = document.createElement('div');
-            actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
 
-            const priceAndButtonDiv = document.createElement('div');
-            priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
 
-            const priceSpan = document.createElement('span');
-            priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
 
-            const quantityInput = document.createElement('input');
-            quantityInput.type = 'number';
-            quantityInput.value = 1;
-            quantityInput.min = 1;
-            quantityInput.max = 20;
-            quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 20;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
 
-            function updatePrice() {
-                const price = getTourDubaiMeioPeriodoPrice(quantityInput.value);
-                priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa`;
-            }
-            quantityInput.addEventListener('input', updatePrice);
-            updatePrice();
-
-            const addButton = document.createElement('button');
-            addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6C] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
-            addButton.textContent = 'Adicionar';
-            addButton.onclick = (e) => {
-                e.stopPropagation();
-                const numPeople = parseInt(quantityInput.value, 10);
-                if (numPeople > 0 && numPeople <= 20) {
-                    const price = getTourDubaiMeioPeriodoPrice(numPeople);
-                    handleAddToCart({
-                        id: 'tour-dubai-meio-periodo',
-                        name: 'Tour Dubai Meio Periodo (4h)',
-                        description: 'Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)',
-                        price: price,
-                        imageUrl: "img/toursdubai/19.jpg",
-                        category: "TOUR DUBAI"
-                    }, numPeople);
-                } else {
-                    showConfirmationMessage("Selecione entre 1 e 20 pessoas.");
+                function updatePrice() {
+                    const price = getTourDubaiMeioPeriodoPrice(quantityInput.value);
+                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa`;
                 }
-            };
+                quantityInput.addEventListener('input', updatePrice);
+                updatePrice();
 
-            const quantityControlDiv = document.createElement('div');
-            quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
-            quantityControlDiv.appendChild(quantityInput);
-            quantityControlDiv.appendChild(addButton);
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6C] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const numPeople = parseInt(quantityInput.value, 10);
+                    if (numPeople > 0 && numPeople <= 20) {
+                        const price = getTourDubaiMeioPeriodoPrice(numPeople);
+                        handleAddToCart({
+                            id: 'tour-dubai-meio-periodo',
+                            name: 'Tour Dubai Meio Periodo (4h)',
+                            description: 'Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)',
+                            price: price,
+                            imageUrl: "img/toursdubai/19.jpg",
+                            category: "TOUR DUBAI"
+                        }, numPeople);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 20 pessoas.");
+                    }
+                };
 
-            priceAndButtonDiv.appendChild(priceSpan);
-            priceAndButtonDiv.appendChild(quantityControlDiv);
-            actionDiv.appendChild(priceAndButtonDiv);
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
 
-            contentDiv.appendChild(textDiv);
-            contentDiv.appendChild(actionDiv);
-            tourCard.appendChild(img);
-            tourCard.appendChild(contentDiv);
-            toursGridTarget.appendChild(tourCard);
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
         }
 
         // Card dinâmico Tour Dubai Dia Todo (8h)
-        if (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR DUBAI') {
-            const tourCard = document.createElement('div');
-            tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+        if (
+            (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR DUBAI') &&
+            dynamicCardMatches("Tour Dubai Dia Todo (8h)", "Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
-            const img = document.createElement('img');
-            img.src = "img/toursdubai/20.jpg";
-            img.alt = "Tour Dubai Dia Todo (8h)";
-            img.className = 'w-full h-48 object-cover object-center';
-            img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Tour+Dubai+Dia+Todo`; };
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/20.jpg";
+                img.alt = "Tour Dubai Dia Todo (8h)";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Tour+Dubai+Dia+Todo`; };
 
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
 
-            const textDiv = document.createElement('div');
-            const nameH3 = document.createElement('h3');
-            nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
-            nameH3.textContent = "Tour Dubai Dia Todo (8h)";
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Tour Dubai Dia Todo (8h)";
 
-            const descP = document.createElement('p');
-            descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
-            descP.innerHTML = `Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente).<br>
-            Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)<br>
-            <span class="font-bold">Selecione o número de pessoas para calcular o valor:</span>`;
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente).<br>
+                Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)<br>
+                <span class="font-bold">Selecione o número de pessoas para calcular o valor:</span>`;
 
-            textDiv.appendChild(nameH3);
-            textDiv.appendChild(descP);
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
 
-            const actionDiv = document.createElement('div');
-            actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
 
-            const priceAndButtonDiv = document.createElement('div');
-            priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
 
-            const priceSpan = document.createElement('span');
-            priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
 
-            const quantityInput = document.createElement('input');
-            quantityInput.type = 'number';
-            quantityInput.value = 1;
-            quantityInput.min = 1;
-            quantityInput.max = 20;
-            quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 20;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
 
-            function updatePrice() {
-                const price = getTourDubaiDiaTodoPrice(quantityInput.value);
-                priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa`;
-            }
-            quantityInput.addEventListener('input', updatePrice);
-            updatePrice();
-
-            const addButton = document.createElement('button');
-            addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6C] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
-            addButton.textContent = 'Adicionar';
-            addButton.onclick = (e) => {
-                e.stopPropagation();
-                const numPeople = parseInt(quantityInput.value, 10);
-                if (numPeople > 0 && numPeople <= 20) {
-                    const price = getTourDubaiDiaTodoPrice(numPeople);
-                    handleAddToCart({
-                        id: 'tour-dubai-dia-todo',
-                        name: 'Tour Dubai Dia Todo (8h)',
-                        description: 'Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)',
-                        price: price,
-                        imageUrl: "img/toursdubai/20.jpg",
-                        category: "TOUR DUBAI"
-                    }, numPeople);
-                } else {
-                    showConfirmationMessage("Selecione entre 1 e 20 pessoas.");
+                function updatePrice() {
+                    const price = getTourDubaiDiaTodoPrice(quantityInput.value);
+                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa`;
                 }
-            };
+                quantityInput.addEventListener('input', updatePrice);
+                updatePrice();
 
-            const quantityControlDiv = document.createElement('div');
-            quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
-            quantityControlDiv.appendChild(quantityInput);
-            quantityControlDiv.appendChild(addButton);
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6C] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const numPeople = parseInt(quantityInput.value, 10);
+                    if (numPeople > 0 && numPeople <= 20) {
+                        const price = getTourDubaiDiaTodoPrice(numPeople);
+                        handleAddToCart({
+                            id: 'tour-dubai-dia-todo',
+                            name: 'Tour Dubai Dia Todo (8h)',
+                            description: 'Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)',
+                            price: price,
+                            imageUrl: "img/toursdubai/20.jpg",
+                            category: "TOUR DUBAI"
+                        }, numPeople);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 20 pessoas.");
+                    }
+                };
 
-            priceAndButtonDiv.appendChild(priceSpan);
-            priceAndButtonDiv.appendChild(quantityControlDiv);
-            actionDiv.appendChild(priceAndButtonDiv);
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
 
-            contentDiv.appendChild(textDiv);
-            contentDiv.appendChild(actionDiv);
-            tourCard.appendChild(img);
-            tourCard.appendChild(contentDiv);
-            toursGridTarget.appendChild(tourCard);
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
         }
 
         // Card dinâmico Tour Abu Dhabi Dia Todo (10h)
-        if (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR ABU DHABI') {
-            const tourCard = document.createElement('div');
-            tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+        if (
+            (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR ABU DHABI') &&
+            dynamicCardMatches("Tour Abu Dhabi Dia Todo (10h)", "Incluso: Veículo Toyota Previa 7 assentos, Motorista e Guia Brasileiro(a) Licenciado(a), reserva da Grande Mesquita e recomendação de Itinerário (outros ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
-            const img = document.createElement('img');
-            img.src = "img/toursdubai/21.jpg";
-            img.alt = "Tour Abu Dhabi Dia Todo (10h)";
-            img.className = 'w-full h-48 object-cover object-center';
-            img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Tour+Abu+Dhabi+Dia+Todo+10h`; };
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/21.jpg";
+                img.alt = "Tour Abu Dhabi Dia Todo (10h)";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Tour+Abu+Dhabi+Dia+Todo+10h`; };
 
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
 
-            const textDiv = document.createElement('div');
-            const nameH3 = document.createElement('h3');
-            nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
-            nameH3.textContent = "Tour Abu Dhabi Dia Todo (10h)";
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Tour Abu Dhabi Dia Todo (10h)";
 
-            const descP = document.createElement('p');
-            descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
-            descP.innerHTML = `Incluso: Veículo Toyota Previa 7 assentos, Motorista e Guia Brasileiro(a) Licenciado(a), reserva da Grande Mesquita e recomendação de Itinerário (outros ingressos vendidos separadamente).<br>
-            Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)<br>
-            <span class="font-bold">Selecione o número de pessoas para calcular o valor:</span>`;
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Incluso: Veículo Toyota Previa 7 assentos, Motorista e Guia Brasileiro(a) Licenciado(a), reserva da Grande Mesquita e recomendação de Itinerário (outros ingressos vendidos separadamente).<br>
+                Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)<br>
+                <span class="font-bold">Selecione o número de pessoas para calcular o valor:</span>`;
 
-            textDiv.appendChild(nameH3);
-            textDiv.appendChild(descP);
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
 
-            const actionDiv = document.createElement('div');
-            actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
 
-            const priceAndButtonDiv = document.createElement('div');
-            priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
 
-            const priceSpan = document.createElement('span');
-            priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
 
-            const quantityInput = document.createElement('input');
-            quantityInput.type = 'number';
-            quantityInput.value = 1;
-            quantityInput.min = 1;
-            quantityInput.max = 20;
-            quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 20;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
 
-            function updatePrice() {
-                const price = getTourAbuDhabiDiaTodo10hPrice(quantityInput.value);
-                priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa`;
-            }
-            quantityInput.addEventListener('input', updatePrice);
-            updatePrice();
-
-            const addButton = document.createElement('button');
-            addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6C] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
-            addButton.textContent = 'Adicionar';
-            addButton.onclick = (e) => {
-                e.stopPropagation();
-                const numPeople = parseInt(quantityInput.value, 10);
-                if (numPeople > 0 && numPeople <= 20) {
-                    const price = getTourAbuDhabiDiaTodo10hPrice(numPeople);
-                    handleAddToCart({
-                        id: 'tour-abu-dhabi-dia-todo-10h',
-                        name: 'Tour Abu Dhabi Dia Todo (10h)',
-                        description: 'Incluso: Veículo Toyota Previa 7 assentos, Motorista e Guia Brasileiro(a) Licenciado(a), reserva da Grande Mesquita e recomendação de Itinerário (outros ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)',
-                        price: price,
-                        imageUrl: "img/toursdubai/21.jpg",
-                        category: "TOUR ABU DHABI"
-                    }, numPeople);
-                } else {
-                    showConfirmationMessage("Selecione entre 1 e 20 pessoas.");
+                function updatePrice() {
+                    const price = getTourAbuDhabiDiaTodo10hPrice(quantityInput.value);
+                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa`;
                 }
-            };
+                quantityInput.addEventListener('input', updatePrice);
+                updatePrice();
 
-            const quantityControlDiv = document.createElement('div');
-            quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
-            quantityControlDiv.appendChild(quantityInput);
-            quantityControlDiv.appendChild(addButton);
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6C] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const numPeople = parseInt(quantityInput.value, 10);
+                    if (numPeople > 0 && numPeople <= 20) {
+                        const price = getTourAbuDhabiDiaTodo10hPrice(numPeople);
+                        handleAddToCart({
+                            id: 'tour-abu-dhabi-dia-todo-10h',
+                            name: 'Tour Abu Dhabi Dia Todo (10h)',
+                            description: 'Incluso: Veículo Toyota Previa 7 assentos, Motorista e Guia Brasileiro(a) Licenciado(a), reserva da Grande Mesquita e recomendação de Itinerário (outros ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)',
+                            price: price,
+                            imageUrl: "img/toursdubai/21.jpg",
+                            category: "TOUR ABU DHABI"
+                        }, numPeople);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 20 pessoas.");
+                    }
+                };
 
-            priceAndButtonDiv.appendChild(priceSpan);
-            priceAndButtonDiv.appendChild(quantityControlDiv);
-            actionDiv.appendChild(priceAndButtonDiv);
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
 
-            contentDiv.appendChild(textDiv);
-            contentDiv.appendChild(actionDiv);
-            tourCard.appendChild(img);
-            tourCard.appendChild(contentDiv);
-            toursGridTarget.appendChild(tourCard);
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
         }
 
         // Card dinâmico Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)
-        if (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR RAK') {
-            const tourCard = document.createElement('div');
-            tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+        if (
+            (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR RAK') &&
+            dynamicCardMatches("Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)", "Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
-            const img = document.createElement('img');
-            img.src = "img/toursdubai/23.jpg";
-            img.alt = "Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)";
-            img.className = 'w-full h-48 object-cover object-center';
-            img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Jebel+Jais+ou+Hatta+10h`; };
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/23.jpg";
+                img.alt = "Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Jebel+Jais+ou+Hatta+10h`; };
 
-            const contentDiv = document.createElement('div');
-            contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
 
-            const textDiv = document.createElement('div');
-            const nameH3 = document.createElement('h3');
-            nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
-            nameH3.textContent = "Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)";
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)";
 
-            const descP = document.createElement('p');
-            descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
-            descP.innerHTML = `Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente).<br>
-            Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)<br>
-            <span class="font-bold">Selecione o número de pessoas para calcular o valor:</span>`;
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente).<br>
+                Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)<br>
+                <span class="font-bold">Selecione o número de pessoas para calcular o valor:</span>`;
 
-            textDiv.appendChild(nameH3);
-            textDiv.appendChild(descP);
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
 
-            const actionDiv = document.createElement('div');
-            actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
 
-            const priceAndButtonDiv = document.createElement('div');
-            priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
 
-            const priceSpan = document.createElement('span');
-            priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
 
-            const quantityInput = document.createElement('input');
-            quantityInput.type = 'number';
-            quantityInput.value = 1;
-            quantityInput.min = 1;
-            quantityInput.max = 20;
-            quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 20;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
 
-            function updatePrice() {
-                const price = getTourJebelHattaDiaTodo10hPrice(quantityInput.value);
-                priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa`;
-            }
-            quantityInput.addEventListener('input', updatePrice);
-            updatePrice();
-
-            const addButton = document.createElement('button');
-            addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6C] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
-            addButton.textContent = 'Adicionar';
-            addButton.onclick = (e) => {
-                e.stopPropagation();
-                const numPeople = parseInt(quantityInput.value, 10);
-                if (numPeople > 0 && numPeople <= 20) {
-                    const price = getTourJebelHattaDiaTodo10hPrice(numPeople);
-                    handleAddToCart({
-                        id: 'tour-jebel-hatta-dia-todo-10h',
-                        name: 'Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)',
-                        description: 'Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)',
-                        price: price,
-                        imageUrl: "img/toursdubai/23.jpg",
-                        category: "TOUR RAK"
-                    }, numPeople);
-                } else {
-                    showConfirmationMessage("Selecione entre 1 e 20 pessoas.");
+                function updatePrice() {
+                    const price = getTourJebelHattaDiaTodo10hPrice(quantityInput.value);
+                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa`;
                 }
-            };
+                quantityInput.addEventListener('input', updatePrice);
+                updatePrice();
 
-            const quantityControlDiv = document.createElement('div');
-            quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
-            quantityControlDiv.appendChild(quantityInput);
-            quantityControlDiv.appendChild(addButton);
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6C] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const numPeople = parseInt(quantityInput.value, 10);
+                    if (numPeople > 0 && numPeople <= 20) {
+                        const price = getTourJebelHattaDiaTodo10hPrice(numPeople);
+                        handleAddToCart({
+                            id: 'tour-jebel-hatta-dia-todo-10h',
+                            name: 'Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)',
+                            description: 'Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)',
+                            price: price,
+                            imageUrl: "img/toursdubai/23.jpg",
+                            category: "TOUR RAK"
+                        }, numPeople);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 20 pessoas.");
+                    }
+                };
 
-            priceAndButtonDiv.appendChild(priceSpan);
-            priceAndButtonDiv.appendChild(quantityControlDiv);
-            actionDiv.appendChild(priceAndButtonDiv);
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
 
-            contentDiv.appendChild(textDiv);
-            contentDiv.appendChild(actionDiv);
-            tourCard.appendChild(img);
-            tourCard.appendChild(contentDiv);
-            toursGridTarget.appendChild(tourCard);
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
         }
 
         // Renderiza os demais passeios normalmente
