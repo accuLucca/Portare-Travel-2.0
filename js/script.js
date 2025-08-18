@@ -228,11 +228,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Tabela de preços do Tour Dubai Meio Periodo (4h)
     const tourDubaiMeioPeriodoPriceTable = [
-        { min: 1, max: 1, price: 1284.50 },
-        { min: 2, max: 2, price: 642.25 },
-        { min: 3, max: 3, price: 428.17 },
-        { min: 4, max: 11, price: 321.13 },
-        { min: 12, max: 20, price: 293.60 }
+        { min: 1, max: 4, price: 353.68 },
+        { min: 5, max: 11, price: 539.51 },
+        { min: 12, max: 20, price: 659.40 },
+        { min: 21, max: 30, price: 779.29 },
+        { min: 31, max: 47, price: 854.22 }
     ];
 
     function getTourDubaiMeioPeriodoPrice(numPeople) {
@@ -242,6 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return entry.price;
             }
         }
+        // Se acima de 47, retorna o maior valor
         return tourDubaiMeioPeriodoPriceTable[tourDubaiMeioPeriodoPriceTable.length - 1].price;
     }
 
@@ -311,8 +312,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let filteredTours = allTours.filter(tour => {
             // Remove duplicados em inglês do Tour Dubai Meio Periodo (4h) e Dia Todo (8h)
             if (tour.name.includes("Dubai Half-Day Tour") || tour.name.includes("Dubai Full-Day Tour")) return false;
-            // Não renderiza os cards fixos, só os dinâmicos
-            if (tour.id === 'tour-dubai-meio-periodo' || tour.id === 'tour-dubai-dia-todo' || tour.id === 'tour-abu-dhabi-dia-todo-10h' || tour.id === 'tour-jebel-hatta-dia-todo-10h') return false;
+            // Não renderiza os cards fixos (IDs numéricos dos itens estáticos do dataset), só os dinâmicos
+            if (tour.id === 19 || tour.id === 20 || tour.id === 21 || tour.id === 111) return false;
             // Filtro de subcategoria
             if (!(selectedSubcategory === 'all' || tour.category === selectedSubcategory)) return false;
             // Filtro de pesquisa
@@ -374,18 +375,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 const priceSpan = document.createElement('span');
                 priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
 
+                // No card dinâmico Tour Dubai Meio Periodo (4h), ajuste o input para permitir até 47 pessoas:
                 const quantityInput = document.createElement('input');
                 quantityInput.type = 'number';
                 quantityInput.value = 1;
                 quantityInput.min = 1;
-                quantityInput.max = 20;
+                quantityInput.max = 47;
                 quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
 
                 function updatePrice() {
-                    const price = getTourDubaiMeioPeriodoPrice(quantityInput.value);
+                    const numPeople = parseInt(quantityInput.value, 10);
+                    const price = getTourDubaiMeioPeriodoPrice(numPeople);
                     priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa`;
                 }
+                // garantir que atualize em vários eventos
                 quantityInput.addEventListener('input', updatePrice);
+                quantityInput.addEventListener('change', updatePrice);
+                quantityInput.addEventListener('blur', updatePrice);
                 updatePrice();
 
                 const addButton = document.createElement('button');
@@ -394,18 +400,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 addButton.onclick = (e) => {
                     e.stopPropagation();
                     const numPeople = parseInt(quantityInput.value, 10);
-                    if (numPeople > 0 && numPeople <= 20) {
+                    if (numPeople > 0 && numPeople <= 47) {
                         const price = getTourDubaiMeioPeriodoPrice(numPeople);
                         handleAddToCart({
                             id: 'tour-dubai-meio-periodo',
                             name: 'Tour Dubai Meio Periodo (4h)',
-                            description: 'Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)',
+                            description: 'Incluso: Veículo e motorista conforme o tamanho do grupo, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)',
                             price: price,
                             imageUrl: "img/toursdubai/19.jpg",
                             category: "TOUR DUBAI"
                         }, numPeople);
                     } else {
-                        showConfirmationMessage("Selecione entre 1 e 20 pessoas.");
+                        showConfirmationMessage("Selecione entre 1 e 47 pessoas.");
                     }
                 };
 
@@ -704,6 +710,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 toursGridTarget.appendChild(tourCard);
             });
         }
+
+        // RENDER: executar/mostrar os cards dinâmicos criados
+        dynamicCards.forEach(fn => {
+            try { fn(); } catch (err) { console.error('Erro ao renderizar card dinâmico:', err); }
+        });
 
         // Renderiza os demais passeios normalmente
         filteredTours.forEach(tour => {

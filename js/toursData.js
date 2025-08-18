@@ -34,7 +34,7 @@ export const toursData = [
     },
     // TOUR DUBAI
     {
-        id: 'tour-dubai-meio-periodo',
+        id: 19,
         name: "Tour Dubai Meio Periodo (4h)",
         description: "Tour privativo de 4 horas por Dubai com veículo, motorista, guia licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
         price: 321.13, // Valor base para 4+ pessoas, mas será sobrescrito pelo cálculo dinâmico
@@ -42,7 +42,7 @@ export const toursData = [
         category: "TOUR DUBAI"
     },
     {
-        id: 'tour-dubai-dia-todo',
+        id: 20,
         name: "Tour Dubai Dia Todo (8h)",
         description: "Tour privativo de 8 horas por Dubai com veículo, motorista, guia brasileiro(a) licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
         price: 504.63, // Valor base para 4+ pessoas, será sobrescrito pelo cálculo dinâmico
@@ -50,7 +50,7 @@ export const toursData = [
         category: "TOUR DUBAI"
     },
     {
-        id: 'tour-abu-dhabi-dia-todo-10h',
+        id: 21,
         name: "Tour Abu Dhabi Dia Todo (10h)",
         description: "Tour privativo de 10 horas por Abu Dhabi com veículo, motorista e guia brasileiro(a) licenciado(a), reserva da Grande Mesquita e recomendação de itinerário. Outros ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
         price: 631.24, // Valor base para 4+ pessoas, será sobrescrito pelo cálculo dinâmico
@@ -882,7 +882,7 @@ export const toursData = [
         category: "TOUR DUBAI"
     },
     {
-        id: 'tour-jebel-hatta-dia-todo-10h',
+        id: 111,
         name: "Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)",
         description: "Tour privativo de 10 horas para Jebel Jais ou Hatta com veículo, motorista, guia brasileiro(a) licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
         price: 631.24, // Valor base para 4+ pessoas, será sobrescrito pelo cálculo dinâmico
@@ -890,7 +890,7 @@ export const toursData = [
         category: "TOUR RAK"
     },
     {
-        id: 'traslado-dubai-abu-dhabi-2p',
+        id: 112,
         name: "Traslado Dubai-Abu Dhabi (1 Trecho) - até 2 pessoas TT",
         description: "Incluso: Veículo Toyota Previa (7 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
         price: 650.00,
@@ -898,7 +898,7 @@ export const toursData = [
         category: "TRASLADO"
     },
     {
-        id: 'traslado-dubai-abu-dhabi-3-7p',
+        id: 113,
         name: "Traslado Dubai-Abu Dhabi (1 Trecho) - 3 a 7 pessoas TT",
         description: "Incluso: Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
         price: 750.00,
@@ -906,7 +906,7 @@ export const toursData = [
         category: "TRASLADO"
     },
     {
-        id: 'traslado-dubai-abu-dhabi-8-14p',
+        id: 114,
         name: "Traslado Dubai-Abu Dhabi (1 Trecho) - 8 a 14 pessoas TT",
         description: "Incluso: 2 Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
         price: 1500.00,
@@ -914,7 +914,7 @@ export const toursData = [
         category: "TRASLADO"
     },
     {
-        id: 'transporte-dubai-5h-ate-5p',
+        id: 115,
         name: "Transporte c/ Motorista em Dubai Meio Periodo (5h) até 5 pessoas",
         description: "Incluso: Veículo Toyota Previa 7 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
         price: 800.00,
@@ -922,7 +922,7 @@ export const toursData = [
         category: "CARRO COM MOTORISTA"
     },
     {
-        id: 'transporte-dubai-5h-6-11p',
+        id: 116,
         name: "Transporte c/ Motorista em Dubai Meio Periodo (5h) 6 a 11 pessoas",
         description: "Incluso: Veículo Hiace vehicle 13 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
         price: 950.00,
@@ -930,7 +930,7 @@ export const toursData = [
         category: "CARRO COM MOTORISTA"
     },
     {
-        id: 'transporte-dubai-5h-12-20p',
+        id: 117,
         name: "Transporte c/ Motorista em Dubai Meio Periodo (5h) 12 a 20 pessoas",
         description: "Incluso: Ônibus Executivo Yutong (2024) – 22 lugares, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
         price: 1600.00,
@@ -938,7 +938,7 @@ export const toursData = [
         category: "CARRO COM MOTORISTA"
     },
     {
-        id: 'transporte-dubai-10h-ate-5p',
+        id: 118,
         name: "Transporte c/ Motorista em Dubai - Dia Todo (10h) até 5 pessoas",
         description: "Incluso: Veículo Toyota Previa 7 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
         price: 1200.00,
@@ -946,7 +946,7 @@ export const toursData = [
         category: "CARRO COM MOTORISTA"
     },
     {
-        id: 'transporte-dubai-10h-6-11p',
+        id: 119,
         name: "Transporte c/ Motorista em Dubai - Dia Todo (10h) 6 a 11 pessoas",
         description: "Incluso: Veículo Hiace vehicle 13 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
         price: 1400.00,
@@ -954,7 +954,7 @@ export const toursData = [
         category: "CARRO COM MOTORISTA"
     },
     {
-        id: 'transporte-dubai-10h-12-20p',
+        id: 120,
         name: "Transporte c/ Motorista em Dubai - Dia Todo (10h) 12 a 20 pessoas",
         description: "Incluso: Ônibus Executivo Yutong (2024) – 22 lugares, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
         price: 1800.00,
@@ -962,7 +962,7 @@ export const toursData = [
         category: "CARRO COM MOTORISTA"
     },
     {
-        id: 'transporte-abu-dhabi-10h-ate-5p',
+        id: 121,
         name: "Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h) até 5 pessoas",
         description: "Incluso: Veículo Toyota Previa 7 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
         price: 1450.00,
@@ -970,7 +970,7 @@ export const toursData = [
         category: "ABU DHABI CARRO"
     },
     {
-        id: 'transporte-abu-dhabi-10h-6-11p',
+        id: 122,
         name: "Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h) 6 a 11 pessoas",
         description: "Incluso: Veículo Hiace vehicle 13 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
         price: 1950.00,
@@ -978,7 +978,7 @@ export const toursData = [
         category: "ABU DHABI CARRO"
     },
     {
-        id: 'transporte-abu-dhabi-10h-12-20p',
+        id: 123,
         name: "Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h) 12 a 20 pessoas",
         description: "Incluso: Ônibus Executivo Yutong (2024) – 22 lugares, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
         price: 2650.00,
