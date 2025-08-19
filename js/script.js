@@ -317,6 +317,63 @@ document.addEventListener('DOMContentLoaded', () => {
         return tourJebelHattaDiaTodo10hPriceTable[tourJebelHattaDiaTodo10hPriceTable.length - 1].price;
     }
 
+    // Tabela de preços do Transporte c/ Motorista em Dubai Meio Periodo (5h)
+    const transporteDubaiMeioPeriodo5hPriceTable = [
+        { min: 1, max: 5, price: 800.00 },
+        { min: 6, max: 11, price: 950.00 },
+        { min: 12, max: 20, price: 1600.00 },
+        { min: 21, max: 30, price: 1760.00 },
+        { min: 31, max: 47, price: 2090.00 }
+    ];
+
+    function getTransporteDubaiMeioPeriodo5hPrice(numPeople) {
+        numPeople = parseInt(numPeople, 10);
+        for (const entry of transporteDubaiMeioPeriodo5hPriceTable) {
+            if (numPeople >= entry.min && numPeople <= entry.max) {
+                return entry.price;
+            }
+        }
+        return transporteDubaiMeioPeriodo5hPriceTable[transporteDubaiMeioPeriodo5hPriceTable.length - 1].price;
+    }
+
+    // Tabela de preços do Transporte c/ Motorista em Dubai - Dia Todo (10h)
+    const transporteDubaiDiaTodo10hPriceTable = [
+        { min: 1, max: 5, price: 1200.00 },
+        { min: 6, max: 11, price: 1400.00 },
+        { min: 12, max: 20, price: 1800.00 },
+        { min: 21, max: 30, price: 2530.00 },
+        { min: 31, max: 47, price: 2750.00 }
+    ];
+
+    function getTransporteDubaiDiaTodo10hPrice(numPeople) {
+        numPeople = parseInt(numPeople, 10);
+        for (const entry of transporteDubaiDiaTodo10hPriceTable) {
+            if (numPeople >= entry.min && numPeople <= entry.max) {
+                return entry.price;
+            }
+        }
+        return transporteDubaiDiaTodo10hPriceTable[transporteDubaiDiaTodo10hPriceTable.length - 1].price;
+    }
+
+    // Tabela de preços do Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h)
+    const transporteAbuDhabiDiaTodo10hPriceTable = [
+        { min: 1, max: 5, price: 1450.00 },
+        { min: 6, max: 11, price: 1950.00 },
+        { min: 12, max: 20, price: 2650.00 },
+        { min: 21, max: 30, price: 2530.00 },
+        { min: 31, max: 47, price: 2750.00 }
+    ];
+
+    function getTransporteAbuDhabiDiaTodo10hPrice(numPeople) {
+        numPeople = parseInt(numPeople, 10);
+        for (const entry of transporteAbuDhabiDiaTodo10hPriceTable) {
+            if (numPeople >= entry.min && numPeople <= entry.max) {
+                return entry.price;
+            }
+        }
+        return transporteAbuDhabiDiaTodo10hPriceTable[transporteAbuDhabiDiaTodo10hPriceTable.length - 1].price;
+    }
+
     function renderTours() {
         const toursGridTarget = document.getElementById('tours-grid');
         if (!toursGridTarget) return;
@@ -327,7 +384,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Remove duplicados em inglês do Tour Dubai Meio Periodo (4h) e Dia Todo (8h)
             if (tour.name.includes("Dubai Half-Day Tour") || tour.name.includes("Dubai Full-Day Tour")) return false;
             // Não renderiza os cards fixos (IDs numéricos dos itens estáticos do dataset), só os dinâmicos
-            if (tour.id === 19 || tour.id === 20 || tour.id === 21 || tour.id === 111) return false;
+            if (tour.id === 19 || tour.id === 20 || tour.id === 21 || tour.id === 111 || 
+                tour.id === 30 || tour.id === 31 || tour.id === 32 || 
+                tour.id === 115 || tour.id === 116 || tour.id === 117 || tour.id === 118 || 
+                tour.id === 119 || tour.id === 120 || tour.id === 121 || tour.id === 122 || tour.id === 123) return false;
             // Filtro de subcategoria
             if (!(selectedSubcategory === 'all' || tour.category === selectedSubcategory)) return false;
             // Filtro de pesquisa
@@ -348,8 +408,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // Array para guardar os cards dinâmicos que devem aparecer
         const dynamicCards = [];
 
-        // Card dinâmico Tour Dubai Meio Periodo (4h)
+        // Card dinâmico Tour Dubai Meio Periodo (4h) - apenas para Dubai e Abu Dhabi
         if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
             (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR PRIVATIVO') &&
             dynamicCardMatches("Tour Dubai Meio Periodo (4h)", "Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)")
         ) {
@@ -446,8 +507,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Card dinâmico Tour Dubai Dia Todo (8h)
+        // Card dinâmico Tour Dubai Dia Todo (8h) - apenas para Dubai e Abu Dhabi
         if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
             (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR PRIVATIVO') &&
             dynamicCardMatches("Tour Dubai Dia Todo (8h)", "Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)")
         ) {
@@ -539,8 +601,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Card dinâmico Tour Abu Dhabi Dia Todo (10h)
+        // Card dinâmico Tour Abu Dhabi Dia Todo (10h) - apenas para Dubai e Abu Dhabi
         if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
             (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR PRIVATIVO') &&
             dynamicCardMatches("Tour Abu Dhabi Dia Todo (10h)", "Incluso: Veículo Toyota Previa 7 assentos, Motorista e Guia Brasileiro(a) Licenciado(a), reserva da Grande Mesquita e recomendação de Itinerário (outros ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)")
         ) {
@@ -632,8 +695,9 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Card dinâmico Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)
+        // Card dinâmico Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h) - apenas para Dubai e Abu Dhabi
         if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
             (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR PRIVATIVO') &&
             dynamicCardMatches("Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)", "Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)")
         ) {
@@ -705,6 +769,297 @@ document.addEventListener('DOMContentLoaded', () => {
                         }, numPeople);
                     } else {
                         showConfirmationMessage("Selecione entre 1 e 20 pessoas.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Transporte c/ Motorista em Dubai Meio Periodo (5h) - apenas para Dubai e Abu Dhabi
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'CARRO COM MOTORISTA') &&
+            dynamicCardMatches("Transporte c/ Motorista em Dubai Meio Periodo (5h)", "Incluso: Veículo conforme o tamanho do grupo, Motorista, recomendação de Itinerário. Não inclui Guia - Apenas Motorista no Idioma Inglês.")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/27.jpg";
+                img.alt = "Transporte c/ Motorista em Dubai Meio Periodo (5h)";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Transporte+Dubai+Meio+Periodo`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Transporte c/ Motorista em Dubai Meio Periodo (5h)";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Incluso: Veículo conforme o tamanho do grupo, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente).<br>
+                Não inclui Guia - Apenas Motorista no Idioma Inglês.<br>
+                <span class="font-bold">Selecione o número de pessoas para calcular o valor:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 47;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updatePrice() {
+                    const numPeople = parseInt(quantityInput.value, 10);
+                    const price = getTransporteDubaiMeioPeriodo5hPrice(numPeople);
+                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} total`;
+                }
+                quantityInput.addEventListener('input', updatePrice);
+                quantityInput.addEventListener('change', updatePrice);
+                quantityInput.addEventListener('blur', updatePrice);
+                updatePrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const numPeople = parseInt(quantityInput.value, 10);
+                    if (numPeople > 0 && numPeople <= 47) {
+                        const price = getTransporteDubaiMeioPeriodo5hPrice(numPeople);
+                        handleAddToCart({
+                            id: 'transporte-dubai-meio-periodo-5h',
+                            name: 'Transporte c/ Motorista em Dubai Meio Periodo (5h)',
+                            description: 'Incluso: Veículo conforme o tamanho do grupo, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.',
+                            price: price,
+                            imageUrl: "img/toursdubai/27.jpg",
+                            category: "CARRO COM MOTORISTA"
+                        }, 1);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 47 pessoas.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Transporte c/ Motorista em Dubai - Dia Todo (10h) - apenas para Dubai e Abu Dhabi
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'CARRO COM MOTORISTA') &&
+            dynamicCardMatches("Transporte c/ Motorista em Dubai - Dia Todo (10h)", "Incluso: Veículo conforme o tamanho do grupo, Motorista, recomendação de Itinerário. Não inclui Guia - Apenas Motorista no Idioma Inglês.")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/28.jpg";
+                img.alt = "Transporte c/ Motorista em Dubai - Dia Todo (10h)";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Transporte+Dubai+Dia+Todo`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Transporte c/ Motorista em Dubai - Dia Todo (10h)";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Incluso: Veículo conforme o tamanho do grupo, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente).<br>
+                Não inclui Guia - Apenas Motorista no Idioma Inglês.<br>
+                <span class="font-bold">Selecione o número de pessoas para calcular o valor:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 47;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updatePrice() {
+                    const numPeople = parseInt(quantityInput.value, 10);
+                    const price = getTransporteDubaiDiaTodo10hPrice(numPeople);
+                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} total`;
+                }
+                quantityInput.addEventListener('input', updatePrice);
+                quantityInput.addEventListener('change', updatePrice);
+                quantityInput.addEventListener('blur', updatePrice);
+                updatePrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const numPeople = parseInt(quantityInput.value, 10);
+                    if (numPeople > 0 && numPeople <= 47) {
+                        const price = getTransporteDubaiDiaTodo10hPrice(numPeople);
+                        handleAddToCart({
+                            id: 'transporte-dubai-dia-todo-10h',
+                            name: 'Transporte c/ Motorista em Dubai - Dia Todo (10h)',
+                            description: 'Incluso: Veículo conforme o tamanho do grupo, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.',
+                            price: price,
+                            imageUrl: "img/toursdubai/28.jpg",
+                            category: "CARRO COM MOTORISTA"
+                        }, 1);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 47 pessoas.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h) - apenas para Dubai e Abu Dhabi
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'CARRO COM MOTORISTA') &&
+            dynamicCardMatches("Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h)", "Incluso: Veículo conforme o tamanho do grupo, Motorista, recomendação de Itinerário. Não inclui Guia - Apenas Motorista no Idioma Inglês.")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/29.jpg";
+                img.alt = "Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h)";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Transporte+Abu+Dhabi+Dia+Todo`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h)";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Incluso: Veículo conforme o tamanho do grupo, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente).<br>
+                Não inclui Guia - Apenas Motorista no Idioma Inglês.<br>
+                <span class="font-bold">Selecione o número de pessoas para calcular o valor:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 47;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updatePrice() {
+                    const numPeople = parseInt(quantityInput.value, 10);
+                    const price = getTransporteAbuDhabiDiaTodo10hPrice(numPeople);
+                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} total`;
+                }
+                quantityInput.addEventListener('input', updatePrice);
+                quantityInput.addEventListener('change', updatePrice);
+                quantityInput.addEventListener('blur', updatePrice);
+                updatePrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const numPeople = parseInt(quantityInput.value, 10);
+                    if (numPeople > 0 && numPeople <= 47) {
+                        const price = getTransporteAbuDhabiDiaTodo10hPrice(numPeople);
+                        handleAddToCart({
+                            id: 'transporte-abu-dhabi-dia-todo-10h',
+                            name: 'Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h)',
+                            description: 'Incluso: Veículo conforme o tamanho do grupo, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.',
+                            price: price,
+                            imageUrl: "img/toursdubai/29.jpg",
+                            category: "CARRO COM MOTORISTA"
+                        }, 1);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 47 pessoas.");
                     }
                 };
 
