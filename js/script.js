@@ -61,13 +61,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // allTours = toursData; // Remove this line, data is loaded on country selection
 
     const subcategories = [
-        { label: "Todos", value: "all" }, { label: "TOUR EM GRUPO", value: "TOUR EM GRUPO" }, { label: "TOUR DUBAI", value: "TOUR DUBAI" }, { label: "TOUR ABU DHABI", value: "TOUR ABU DHABI" }, { label: "TOUR RAK", value: "TOUR RAK" },  { label: "HATTA", value: "HATTA" }, { label: "TRASLADO", value: "TRASLADO" }, { label: "CARRO COM MOTORISTA", value: "CARRO COM MOTORISTA" }, { label: "ABU DHABI CARRO", value: "ABU DHABI CARRO" },  { label: "DESERTO", value: "DESERTO" }, { label: "WATER", value: "WATER" }, { label: "AIR", value: "AIR" }, { label: "DUBAI TICKETS", value: "DUBAI TICKETS" }, { label: "DUBAI PARKS", value: "DUBAI PARKS" }, { label: "ABU DHABI TICKETS", value: "ABU DHABI TICKETS" }, { label: "ABU DHABI PARKS", value: "ABU DHABI PARKS" }, { label: "LA PERLE", value: "LA PERLE" }, { label: "PORTARE SERVIÇOS", value: "PORTARE SERVIÇOS" },  { label: "EVENTOS", value: "EVENTOS" },
+        { label: "Todos", value: "all" }, { label: "TOUR EM GRUPO", value: "TOUR EM GRUPO" }, { label: "TOUR DUBAI", value: "TOUR DUBAI" }, { label: "TOUR ABU DHABI", value: "TOUR ABU DHABI" }, { label: "TOUR RAK", value: "TOUR RAK" },  { label: "HATTA", value: "HATTA" }, { label: "TRASLADO", value: "TRASLADO" }, { label: "CARRO COM MOTORISTA", value: "CARRO COM MOTORISTA" },  { label: "DESERTO", value: "DESERTO" }, { label: "WATER", value: "WATER" }, { label: "AIR", value: "AIR" }, { label: "DUBAI TICKETS", value: "DUBAI TICKETS" }, { label: "DUBAI PARKS", value: "DUBAI PARKS" }, { label: "ABU DHABI TICKETS", value: "ABU DHABI TICKETS" }, { label: "ABU DHABI PARKS", value: "ABU DHABI PARKS" }, { label: "LA PERLE", value: "LA PERLE" }, { label: "PORTARE SERVIÇOS", value: "PORTARE SERVIÇOS" },  { label: "EVENTOS", value: "EVENTOS" },
     ];
 
     // Define subcategories per country
     const countrySubcategories = {
         'Dubai e Abu Dhabi': [
-            { label: "Todos", value: "all" }, { label: "TOUR EM GRUPO", value: "TOUR EM GRUPO" }, { label: "TOUR DUBAI", value: "TOUR DUBAI" }, { label: "TOUR ABU DHABI", value: "TOUR ABU DHABI" }, { label: "TOUR RAK", value: "TOUR RAK" },  { label: "HATTA", value: "HATTA" }, { label: "TRASLADO", value: "TRASLADO" }, { label: "CARRO COM MOTORISTA", value: "CARRO COM MOTORISTA" }, { label: "ABU DHABI CARRO", value: "ABU DHABI CARRO" },  { label: "DESERTO", value: "DESERTO" }, { label: "AVENTURAS AQUÁTICAS", value: "AVENTURAS AQUÁTICAS" }, { label: "EXPERIÊNCIAS AÉREAS", value: "EXPERIENCIAS AÉREAS" }, { label: "DUBAI TICKETS", value: "DUBAI TICKETS" }, { label: "DUBAI PARKS", value: "DUBAI PARKS" }, { label: "ABU DHABI TICKETS", value: "ABU DHABI TICKETS" }, { label: "ABU DHABI PARKS", value: "ABU DHABI PARKS" }, { label: "LA PERLE", value: "LA PERLE" }, { label: "PORTARE SERVIÇOS", value: "PORTARE SERVIÇOS" },  { label: "EVENTOS", value: "EVENTOS" },
+            { label: "Todos", value: "all" },
+            { label: "TOUR EM GRUPO", value: "TOUR EM GRUPO" },
+            { label: "TOUR PRIVATIVO", value: "TOUR PRIVATIVO" },
+            { label: "TRASLADO", value: "TRASLADO" },
+            { label: "CARRO COM MOTORISTA", value: "CARRO COM MOTORISTA" },
+            { label: "DESERTO", value: "DESERTO" },
+            { label: "AVENTURAS AQUÁTICAS", value: "AVENTURAS AQUÁTICAS" },
+            { label: "EXPERIÊNCIAS AÉREAS", value: "EXPERIENCIAS AÉREAS" },
+            { label: "DUBAI TICKETS", value: "DUBAI TICKETS" },
+            { label: "DUBAI PARKS", value: "DUBAI PARKS" },
+            { label: "ABU DHABI TICKETS", value: "ABU DHABI TICKETS" },
+            { label: "ABU DHABI PARKS", value: "ABU DHABI PARKS" },
+            { label: "LA PERLE", value: "LA PERLE" },
+            { label: "PORTARE SERVIÇOS", value: "PORTARE SERVIÇOS" },
+            { label: "EVENTOS", value: "EVENTOS" },
         ],
         'Egito': [
              { label: "Todos", value: "all" }, { label: "Tour em grupo", value: "Tour em grupo" }, { label: "Tour privativo", value: "Tour privativo" },
@@ -228,11 +242,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Tabela de preços do Tour Dubai Meio Periodo (4h)
     const tourDubaiMeioPeriodoPriceTable = [
-        { min: 1, max: 4, price: 353.68 },
-        { min: 5, max: 11, price: 539.51 },
-        { min: 12, max: 20, price: 659.40 },
-        { min: 21, max: 30, price: 779.29 },
-        { min: 31, max: 47, price: 854.22 }
+        { min: 1, max: 1, price: 1284.50 },
+        { min: 2, max: 2, price: 642.25 },
+        { min: 3, max: 3, price: 428.17 },
+        { min: 4, max: 11, price: 321.13 },
+        { min: 12, max: 20, price: 293.60 }
     ];
 
     function getTourDubaiMeioPeriodoPrice(numPeople) {
@@ -336,7 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Card dinâmico Tour Dubai Meio Periodo (4h)
         if (
-            (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR DUBAI') &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR PRIVATIVO') &&
             dynamicCardMatches("Tour Dubai Meio Periodo (4h)", "Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)")
         ) {
             dynamicCards.push(() => {
@@ -395,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updatePrice();
 
                 const addButton = document.createElement('button');
-                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6C] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
                 addButton.textContent = 'Adicionar';
                 addButton.onclick = (e) => {
                     e.stopPropagation();
@@ -408,7 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             description: 'Incluso: Veículo e motorista conforme o tamanho do grupo, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)',
                             price: price,
                             imageUrl: "img/toursdubai/19.jpg",
-                            category: "TOUR DUBAI"
+                            category: "TOUR PRIVATIVO"
                         }, numPeople);
                     } else {
                         showConfirmationMessage("Selecione entre 1 e 47 pessoas.");
@@ -434,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Card dinâmico Tour Dubai Dia Todo (8h)
         if (
-            (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR DUBAI') &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR PRIVATIVO') &&
             dynamicCardMatches("Tour Dubai Dia Todo (8h)", "Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)")
         ) {
             dynamicCards.push(() => {
@@ -488,7 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updatePrice();
 
                 const addButton = document.createElement('button');
-                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6C] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
                 addButton.textContent = 'Adicionar';
                 addButton.onclick = (e) => {
                     e.stopPropagation();
@@ -501,7 +515,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             description: 'Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)',
                             price: price,
                             imageUrl: "img/toursdubai/20.jpg",
-                            category: "TOUR DUBAI"
+                            category: "TOUR PRIVATIVO"
                         }, numPeople);
                     } else {
                         showConfirmationMessage("Selecione entre 1 e 20 pessoas.");
@@ -527,7 +541,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Card dinâmico Tour Abu Dhabi Dia Todo (10h)
         if (
-            (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR ABU DHABI') &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR PRIVATIVO') &&
             dynamicCardMatches("Tour Abu Dhabi Dia Todo (10h)", "Incluso: Veículo Toyota Previa 7 assentos, Motorista e Guia Brasileiro(a) Licenciado(a), reserva da Grande Mesquita e recomendação de Itinerário (outros ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)")
         ) {
             dynamicCards.push(() => {
@@ -581,7 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updatePrice();
 
                 const addButton = document.createElement('button');
-                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6C] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
                 addButton.textContent = 'Adicionar';
                 addButton.onclick = (e) => {
                     e.stopPropagation();
@@ -594,7 +608,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             description: 'Incluso: Veículo Toyota Previa 7 assentos, Motorista e Guia Brasileiro(a) Licenciado(a), reserva da Grande Mesquita e recomendação de Itinerário (outros ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)',
                             price: price,
                             imageUrl: "img/toursdubai/21.jpg",
-                            category: "TOUR ABU DHABI"
+                            category: "TOUR PRIVATIVO"
                         }, numPeople);
                     } else {
                         showConfirmationMessage("Selecione entre 1 e 20 pessoas.");
@@ -620,7 +634,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Card dinâmico Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)
         if (
-            (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR RAK') &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR PRIVATIVO') &&
             dynamicCardMatches("Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)", "Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)")
         ) {
             dynamicCards.push(() => {
@@ -674,7 +688,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 updatePrice();
 
                 const addButton = document.createElement('button');
-                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6C] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
                 addButton.textContent = 'Adicionar';
                 addButton.onclick = (e) => {
                     e.stopPropagation();
@@ -687,7 +701,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             description: 'Incluso: Veículo Toyota Previa 7 assentos, Motorista, Guia Brasileiro(a) Licenciado(a) e recomendação de Itinerário (ingressos vendidos separadamente). Hora Extra: AED 220 (Toyota) / AED 350 (Ônibus)',
                             price: price,
                             imageUrl: "img/toursdubai/23.jpg",
-                            category: "TOUR RAK"
+                            category: "TOUR PRIVATIVO"
                         }, numPeople);
                     } else {
                         showConfirmationMessage("Selecione entre 1 e 20 pessoas.");
@@ -810,7 +824,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             const addButton = document.createElement('button');
-            addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6C] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+            addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
             addButton.textContent = 'Adicionar';
             addButton.onclick = (e) => {
                 e.stopPropagation();
@@ -1292,4 +1306,5 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
     renderCart(); // Fornece estado inicial do carrinho
     renderTravelStyleButtons();
 });
+// Fim do JavaScript
 // Fim do JavaScript

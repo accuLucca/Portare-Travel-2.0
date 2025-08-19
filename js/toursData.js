@@ -39,7 +39,7 @@ export const toursData = [
         description: "Tour privativo de 4 horas por Dubai com veículo, motorista, guia licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
         price: 321.13, // Valor base para 4+ pessoas, mas será sobrescrito pelo cálculo dinâmico
         imageUrl: "img/toursdubai/19.jpg",
-        category: "TOUR DUBAI"
+        category: "TOUR PRIVATIVO"
     },
     {
         id: 20,
@@ -47,7 +47,7 @@ export const toursData = [
         description: "Tour privativo de 8 horas por Dubai com veículo, motorista, guia brasileiro(a) licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
         price: 504.63, // Valor base para 4+ pessoas, será sobrescrito pelo cálculo dinâmico
         imageUrl: "img/toursdubai/20.jpg",
-        category: "TOUR DUBAI"
+        category: "TOUR PRIVATIVO"
     },
     {
         id: 21,
@@ -55,37 +55,13 @@ export const toursData = [
         description: "Tour privativo de 10 horas por Abu Dhabi com veículo, motorista e guia brasileiro(a) licenciado(a), reserva da Grande Mesquita e recomendação de itinerário. Outros ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
         price: 631.24, // Valor base para 4+ pessoas, será sobrescrito pelo cálculo dinâmico
         imageUrl: "img/toursdubai/21.jpg", // Use uma imagem apropriada
-        category: "TOUR ABU DHABI"
-    },
-    {
-        id: 22,
-        name: "Tour Abu Dhabi (8h)",
-        description: "Descubra Abu Dhabi com um tour privativo de dia inteiro (8 horas), com guia e carro exclusivos para o seu grupo. Visite a Grande Mesquita, o Palácio Presidencial, o Museu do Louvre (vista externa) e outros locais de interesse com total conforto e personalização. (Preço por pessoa, baseado em 4+ pessoas. Consulte para outros tamanhos de grupo)",
-        price: 172.00,
-        imageUrl: "img/toursdubai/22.jpg",
-        category: "TOUR ABU DHABI"
-    },
-    {
-        id: 23,
-        name: "Tour Jebel Jais - Montanhas (Dia Todo - 8h)",
-        description: "Aventure-se nas montanhas de Ras Al Khaimah com um tour privativo de dia inteiro (8 horas) até Jebel Jais, o pico mais alto dos Emirados Árabes Unidos. Desfrute de paisagens desérticas e montanhosas únicas. Ideal para quem busca natureza e vistas panorâmicas. (Preço por pessoa, baseado em 4+ pessoas. Mínimo de 2 pessoas. Consulte para outros tamanhos de grupo)",
-        price: 172.00,
-        imageUrl: "img/toursdubai/23.jpg",
-        category: "TOUR RAK"
-    },
-    {
-        id: 24,
-        name: "Tour Hatta Montanhas (Dia Todo - 8h)",
-        description: "Explore a beleza natural de Hatta, uma região montanhosa próxima a Dubai, em um tour privativo de dia inteiro (8 horas). Visite a represa de Hatta, o vilarejo histórico e desfrute das paisagens. Uma fuga da agitação da cidade. (Preço por pessoa, baseado em 4+ pessoas. Mínimo de 2 pessoas. Consulte para outros tamanhos de grupo)",
-        price: 172.00,
-        imageUrl: "img/toursdubai/24.jpg",
-        category: "HATTA"
+        category: "TOUR PRIVATIVO"
     },
     {
         id: 25,
         name: "Representante em Português no Aeroporto - fora da imigração",
         description: "Profissional aguardará os clientes após a retirada da bagagem, recepção no terminal e auxílio no check in do hotel (não inclui serviços dentro da imigração). Serviço válido apenas na contratação conjunta do translado aeroporto-hotel.",
-        price: 600.00,
+        price: 500.00,
         imageUrl: "img/toursdubai/25.jpg",
         category: "TRASLADO"
     },
@@ -99,15 +75,15 @@ export const toursData = [
     },
     {
         id: 27,
-        name: "Traslado Aeroporto DXB-Hotel em Dubai (1 Trecho) - até 2 pessoas TT",
-        description: "Incluso: Veículo Toyota Previa (7 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
+        name: "Traslado Aeroporto DXB-Hotel em Dubai (1 Trecho) - até 2 pessoas",
+        description: " ",
         price: 389.00,
         imageUrl: "img/toursdubai/27.jpg",
         category: "TRASLADO"
     },
     {
         id: 28,
-        name: "Traslado Aeroporto DXB-Hotel em Dubai (1 Trecho) - 3 a 7 pessoas TT",
+        name: "Traslado Aeroporto DXB-Hotel em Dubai (1 Trecho) - 3 a 7 pessoas",
         description: "Incluso: Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
         price: 499.00,
         imageUrl: "img/toursdubai/28.jpg",
@@ -115,7 +91,7 @@ export const toursData = [
     },
     {
         id: 29,
-        name: "Traslado Aeroporto DXB-Hotel em Dubai (1 Trecho) - 8 a 14 pessoas TT",
+        name: "Traslado Aeroporto DXB-Hotel em Dubai (1 Trecho) - 8 a 14 pessoas",
         description: "Incluso: 2 Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
         price: 1000.00,
         imageUrl: "img/toursdubai/29.jpg",
@@ -123,7 +99,7 @@ export const toursData = [
     },
     {
         id: 30,
-        name: "Carro c/ Motorista (Sem Guia) - Meio Período (4h)",
+        name: "Dubai Carro c/ Motorista (Sem Guia) - Meio Período (4h)",
         description: "Tenha um carro privativo com motorista à sua disposição em Dubai por 4 horas. Ideal para deslocamentos flexíveis, visitas a múltiplos locais ou compras, sem a necessidade de um guia turístico. (Preço total pelo serviço do carro para 1-5 pessoas)",
         price: 190.74,
         imageUrl: "img/toursdubai/30.jpg",
@@ -131,7 +107,7 @@ export const toursData = [
     },
     {
         id: 31,
-        name: "Carro c/ Motorista (Sem Guia) - Dia Todo (8h)",
+        name: "Dubai Carro c/ Motorista (Sem Guia) - Dia Todo (8h)",
         description: "Tenha um carro privativo com motorista à sua disposição em Dubai por 8 horas. Máxima flexibilidade para seus deslocamentos, reuniões ou visitas pela cidade ao longo do dia. (Preço total pelo serviço do carro para 1-5 pessoas)",
         price: 299.73,
         imageUrl: "img/toursdubai/31.jpg",
@@ -139,41 +115,25 @@ export const toursData = [
     },
     {
         id: 32,
-        name: "Carro c/ Motorista (Sem Guia) - Dia Todo (8h) - Abu Dhabi",
+        name: "Abu Dhabi - Carro c/ Motorista (Sem Guia) - Dia Todo (8h)",
         description: "Tenha um carro privativo com motorista à sua disposição em Abu Dhabi por 8 horas (serviço iniciando e terminando em Abu Dhabi). Ideal para explorar a capital com flexibilidade. (Preço total pelo serviço do carro para 1-5 pessoas)",
         price: 299.73,
         imageUrl: "img/toursdubai/32.jpg",
-        category: "ABU DHABI CARRO"
+        category: "CARRO COM MOTORISTA"
     },
     {
         id: 33,
         name: "Safari no Deserto Compartilhado",
-        description: "Uma experiência clássica e emocionante no deserto de Dubai. Inclui dune bashing (passeio radical nas dunas), sandboard, passeio de camelo curto, pintura de henna, show de danças típicas (Tanoura e Belly Dance) e um jantar buffet completo em um acampamento beduíno. Bebidas alcoólicas são cobradas à parte. (Preço por pessoa)",
-        price: 110.00,
+        description: "Inclui transfer em carro 4x4 ida e volta do hotel rally nas dunas vermelhas sandboard e parada para fotos apresentação com falcão passeio simples de camelo mesa em área premium na terceira fileira jantar buffet danças e show além de bebidas não alcoólicas - Não inclui bebidas alcoólicas e narguilé que podem ser adquiridos à parte",
+        price: 450.00,
         imageUrl: "img/toursdubai/33.jpg",
-        category: "DESERTO"
-    },
-    {
-        id: 34,
-        name: "Adicional Guia em Português para Safari",
-        description: "Adicione um guia falando português à sua experiência de Safari no Deserto VIP Privativo para ter informações e acompanhamento personalizado durante todo o passeio. (Valor total adicional pelo serviço de guia)",
-        price: 280.00,
-        imageUrl: "img/toursdubai/34.jpg",
-        category: "DESERTO"
-    },
-    {
-        id: 35,
-        name: "Adicional Menu Chef 5 Estrelas",
-        description: "Faça um upgrade no seu jantar durante o Safari no Deserto com um menu especial preparado por um chef 5 estrelas. Uma experiência gastronômica diferenciada no coração do deserto. (Valor adicional por pessoa)",
-        price: 163.49,
-        imageUrl: "img/toursdubai/35.jpg",
         category: "DESERTO"
     },
     {
         id: 36,
         name: "Safari no Deserto VIP Privativo",
-        description: "Desfrute de um Safari no Deserto exclusivo para o seu grupo em um carro VIP privativo. Inclui todas as atividades do safari tradicional (dune bashing, shows, etc.) e jantar, com a privacidade e conforto de um serviço dedicado. (Preço por pessoa, baseado em 6 pessoas. Consulte para outros tamanhos de grupo)",
-        price: 110.00,
+        description: "Inclui transfer em carro 4x4 exclusivo com 6 assentos ida e volta do hotel rally nas dunas vermelhas sandboard e parada para fotos apresentação com falcão passeio simples de camelo mesa em área premium na terceira fileira jantar buffet danças e show além de bebidas não alcoólicas - Não inclui bebidas alcoólicas e narguilé que podem ser adquiridos à parte (Valor para grupo de ate 6 pessoas)",
+        price: 2282.74,
         imageUrl: "img/toursdubai/36.jpg",
         category: "DESERTO"
     },
@@ -219,7 +179,7 @@ export const toursData = [
     },
     {
         id: 300,
-        name: "1 Jetski (30 min) - até 2 pessoas TT",
+        name: "1 Jetski (30 min) - até 2 pessoas",
         description: "Aproveite 30 minutos de emoção em um jetski para até 2 pessoas nas águas de Dubai. Ideal para casais ou amigos.",
         price: 300.94,
         imageUrl: "img/toursdubai/jetski2p.jpg",
@@ -227,7 +187,7 @@ export const toursData = [
     },
     {
         id: 301,
-        name: "1 Jetcar (30 min) - até 2 pessoas TT",
+        name: "1 Jetcar (30 min) - até 2 pessoas",
         description: "Experimente um passeio de Jetcar por 30 minutos para até 2 pessoas. Diversão garantida em um veículo aquático exclusivo.",
         price: 1009.25,
         imageUrl: "img/toursdubai/jetcar2p.jpg",
@@ -379,7 +339,7 @@ export const toursData = [
     },
     {
         id: 404,
-        name: "Helicóptero 12 min Privativo - até 5 pessoas TT",
+        name: "Helicóptero 12 min Privativo - até 5 pessoas",
         description: "Voo privativo de helicóptero por 12 minutos para até 5 pessoas. Exclusividade e conforto.",
         price: 3600.00,
         imageUrl: "img/toursdubai/heli12priv.jpg",
@@ -387,7 +347,7 @@ export const toursData = [
     },
     {
         id: 405,
-        name: "Helicóptero 17 min Privativo - até 5 pessoas TT",
+        name: "Helicóptero 17 min Privativo - até 5 pessoas",
         description: "Voo privativo de helicóptero por 17 minutos para até 5 pessoas. Exclusividade e conforto.",
         price: 4800.00,
         imageUrl: "img/toursdubai/heli17priv.jpg",
@@ -395,7 +355,7 @@ export const toursData = [
     },
     {
         id: 406,
-        name: "Helicóptero 22 min Privativo - até 5 pessoas TT",
+        name: "Helicóptero 22 min Privativo - até 5 pessoas",
         description: "Voo privativo de helicóptero por 22 minutos para até 5 pessoas. Exclusividade e conforto.",
         price: 6500.00,
         imageUrl: "img/toursdubai/heli22priv.jpg",
@@ -403,7 +363,7 @@ export const toursData = [
     },
     {
         id: 407,
-        name: "Helicóptero 30 min Privativo - até 5 pessoas TT",
+        name: "Helicóptero 30 min Privativo - até 5 pessoas",
         description: "Voo privativo de helicóptero por 30 minutos para até 5 pessoas. Exclusividade e conforto.",
         price: 8900.00,
         imageUrl: "img/toursdubai/heli30priv.jpg",
@@ -876,10 +836,10 @@ export const toursData = [
     {
         id: 109,
         name: "Adicional Carro Premium",
-        description: "Adicional Carro Premium 100 USD – Total até 4 pessoas 200 USD – Total até 12 Pessoas",
-        price: 100,
+        description: "Adicional Carro Premium / Valor a consultar",
+        price: 0,
         imageUrl: "img/toursdubai/.jpg",
-        category: "TOUR DUBAI"
+        category: "TOUR PRIVATIVO"
     },
     {
         id: 111,
@@ -887,11 +847,11 @@ export const toursData = [
         description: "Tour privativo de 10 horas para Jebel Jais ou Hatta com veículo, motorista, guia brasileiro(a) licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
         price: 631.24, // Valor base para 4+ pessoas, será sobrescrito pelo cálculo dinâmico
         imageUrl: "img/toursdubai/23.jpg", // Use uma imagem apropriada
-        category: "TOUR RAK"
+        category: "TOUR PRIVATIVO"
     },
     {
         id: 112,
-        name: "Traslado Dubai-Abu Dhabi (1 Trecho) - até 2 pessoas TT",
+        name: "Traslado Dubai-Abu Dhabi (1 Trecho) - até 2 pessoas",
         description: "Incluso: Veículo Toyota Previa (7 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
         price: 650.00,
         imageUrl: "img/toursdubai/27.jpg",
@@ -899,7 +859,7 @@ export const toursData = [
     },
     {
         id: 113,
-        name: "Traslado Dubai-Abu Dhabi (1 Trecho) - 3 a 7 pessoas TT",
+        name: "Traslado Dubai-Abu Dhabi (1 Trecho) - 3 a 7 pessoas",
         description: "Incluso: Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
         price: 750.00,
         imageUrl: "img/toursdubai/28.jpg",
@@ -907,7 +867,7 @@ export const toursData = [
     },
     {
         id: 114,
-        name: "Traslado Dubai-Abu Dhabi (1 Trecho) - 8 a 14 pessoas TT",
+        name: "Traslado Dubai-Abu Dhabi (1 Trecho) - 8 a 14 pessoas",
         description: "Incluso: 2 Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
         price: 1500.00,
         imageUrl: "img/toursdubai/29.jpg",
@@ -963,27 +923,27 @@ export const toursData = [
     },
     {
         id: 121,
-        name: "Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h) até 5 pessoas",
+        name: "Abu Dhabi - Transporte c/ Motorista - Dia Todo (10h) até 5 pessoas",
         description: "Incluso: Veículo Toyota Previa 7 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
         price: 1450.00,
         imageUrl: "img/toursdubai/27.jpg",
-        category: "ABU DHABI CARRO"
+        category: "CARRO COM MOTORISTA"
     },
     {
         id: 122,
-        name: "Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h) 6 a 11 pessoas",
+        name: "Abu Dhabi - Transporte c/ Motorista - Dia Todo (10h) 6 a 11 pessoas",
         description: "Incluso: Veículo Hiace vehicle 13 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
         price: 1950.00,
         imageUrl: "img/toursdubai/28.jpg",
-        category: "ABU DHABI CARRO"
+        category: "CARRO COM MOTORISTA"
     },
     {
         id: 123,
-        name: "Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h) 12 a 20 pessoas",
+        name: "Abu Dhabi - Transporte c/ Motorista - Dia Todo (10h) 12 a 20 pessoas",
         description: "Incluso: Ônibus Executivo Yutong (2024) – 22 lugares, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
         price: 2650.00,
         imageUrl: "img/toursdubai/29.jpg",
-        category: "ABU DHABI CARRO"
+        category: "CARRO COM MOTORISTA"
     },
     {
         id: 200,
@@ -1011,8 +971,8 @@ export const toursData = [
     },
     {
         id: 203,
-        name: "Adicional Guia em Português para Safari no Deserto (Valor Único) TT",
-        description: "Adicione um guia falando português à sua experiência de Safari no Deserto para informações e acompanhamento personalizado durante todo o passeio.",
+        name: "Adicional Guia em Português para Safari no Deserto (Valor Único)",
+        description: "Adicione um guia falando português à sua experiência de Safari no Deserto para informações e acompanhamento personalizado durante todo o passeio. (Valor independete do número de pessoas no grupo)",
         price: 1025.00,
         imageUrl: "img/toursdubai/guiaportugues.jpg",
         category: "DESERTO"
@@ -1027,7 +987,7 @@ export const toursData = [
     },
     {
         id: 205,
-        name: "Safari no Deserto Premium - Transporte Privativo TT",
+        name: "Safari no Deserto Premium - Transporte Privativo",
         description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
         price: 2282.74,
         imageUrl: "img/toursdubai/premiumprivativo.jpg",
