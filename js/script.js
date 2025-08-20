@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toursPageTitle = document.getElementById('tours-page-title'); // Get the tours page title element
     const toursPageHero = document.getElementById('hero-section'); // Get the hero section element
     const tourSearchInput = document.getElementById('tour-search-input'); // Get the search input element
+    const loadingOverlay = document.getElementById('loading-overlay'); // Loading overlay
 
     // Estado da Aplicação
     let allTours = []; // This will now hold data for the selected country
@@ -98,6 +99,33 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: "Aventura", value: "Aventura" }, { label: "Relaxante", value: "Relaxante" }, { label: "Cultural", value: "Cultural" }, { label: "Romântico", value: "Romântico" }, { label: "Família", value: "Família com crianças" }, { label: "Luxo", value: "Luxo" },
     ];
 
+    // Funções de Loading e UX
+    function showLoadingOverlay(message = 'Carregando...') {
+        const loadingText = loadingOverlay.querySelector('p');
+        if (loadingText) {
+            loadingText.textContent = message;
+        }
+        loadingOverlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function hideLoadingOverlay() {
+        loadingOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    function animateElement(element, animationClass, delay = 0) {
+        setTimeout(() => {
+            element.classList.add(animationClass);
+        }, delay);
+    }
+
+    function addStaggeredAnimation(elements, animationClass, staggerDelay = 100) {
+        elements.forEach((element, index) => {
+            animateElement(element, animationClass, index * staggerDelay);
+        });
+    }
+
     // Funções Auxiliares
     function showConfirmationMessage(message) {
         confirmationMessageGlobal.textContent = message;
@@ -135,7 +163,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return html;
     }
 
-
     // Funções de Renderização da UI
     function renderPage() {
         if (currentPage === 'countrySelection') {
@@ -165,16 +192,22 @@ document.addEventListener('DOMContentLoaded', () => {
             { name: "Japão", image: "img/japao.jpg", message: 'Passeios para Japão em breve!' }, // Using japao.jpg
         ];
 
+        const countryElements = [];
+
         countriesData.forEach(country => {
             const countryDiv = document.createElement('div');
-            countryDiv.className = "bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col items-center text-center p-4";
+            countryDiv.className = "country-card bg-white rounded-xl shadow-lg overflow-hidden cursor-pointer transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col items-center text-center p-4";
             countryDiv.onclick = () => {
                 if (country.targetPage === 'tours') {
-                    currentCountry = country; // Set the current country
-                    allTours = country.data; // Load data for the selected country
-                    selectedSubcategory = 'all'; // Reset subcategory filter
-                    currentPage = country.targetPage;
-                    renderPage();
+                    showLoadingOverlay('Carregando destinos...');
+                    setTimeout(() => {
+                        currentCountry = country; // Set the current country
+                        allTours = country.data; // Load data for the selected country
+                        selectedSubcategory = 'all'; // Reset subcategory filter
+                        currentPage = country.targetPage;
+                        renderPage();
+                        hideLoadingOverlay();
+                    }, 500);
                 } else if (country.message) {
                     showConfirmationMessage(country.message);
                 }
@@ -194,7 +227,11 @@ document.addEventListener('DOMContentLoaded', () => {
             countryDiv.appendChild(img);
             countryDiv.appendChild(h3);
             countriesGrid.appendChild(countryDiv);
+            countryElements.push(countryDiv);
         });
+
+        // Animar entrada dos cards
+        addStaggeredAnimation(countryElements, 'animate-fade-in-scale', 150);
     }
 
     function updateToursPageHeader() {
@@ -229,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSubcategories.forEach(cat => {
             const button = document.createElement('button');
             // Update the class list here
-            button.className = `px-3 py-2 sm:px-5 sm:py-2 rounded-full font-semibold text-xs sm:text-sm transition duration-300 ease-in-out font-geologica-light ${selectedSubcategory === cat.value ? 'bg-[#0D7C6D] text-white shadow-md' : 'bg-[#33C4B6] text-[#0D7C6D] hover:bg-[#0D7C6C] hover:text-white'}`;
+            button.className = `subcategory-button px-3 py-2 sm:px-5 sm:py-2 rounded-full font-semibold text-xs sm:text-sm transition duration-300 ease-in-out font-geologica-light ${selectedSubcategory === cat.value ? 'bg-[#0D7C6D] text-white shadow-md' : 'bg-[#33C4B6] text-[#0D7C6D] hover:bg-[#0D7C6C] hover:text-white'}`;
             button.textContent = cat.label;
             button.onclick = () => {
                 selectedSubcategory = cat.value;
@@ -377,26 +414,48 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderTours() {
         const toursGridTarget = document.getElementById('tours-grid');
         if (!toursGridTarget) return;
-        toursGridTarget.innerHTML = '';
+        
+        // Mostrar loading skeleton enquanto carrega
+        toursGridTarget.innerHTML = `
+            <div class="col-span-full">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    ${Array(6).fill().map(() => `
+                        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                            <div class="loading-skeleton h-48"></div>
+                            <div class="p-6">
+                                <div class="loading-skeleton h-6 mb-2"></div>
+                                <div class="loading-skeleton h-4 mb-2"></div>
+                                <div class="loading-skeleton h-4 mb-4"></div>
+                                <div class="loading-skeleton h-8 w-24"></div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
 
-        // Filtra passeios duplicados em inglês e mantém apenas os cards dinâmicos
-        let filteredTours = allTours.filter(tour => {
-            // Remove duplicados em inglês do Tour Dubai Meio Periodo (4h) e Dia Todo (8h)
-            if (tour.name.includes("Dubai Half-Day Tour") || tour.name.includes("Dubai Full-Day Tour")) return false;
-            // Não renderiza os cards fixos (IDs numéricos dos itens estáticos do dataset), só os dinâmicos
-            if (tour.id === 19 || tour.id === 20 || tour.id === 21 || tour.id === 111 || 
-                tour.id === 30 || tour.id === 31 || tour.id === 32 || 
-                tour.id === 115 || tour.id === 116 || tour.id === 117 || tour.id === 118 || 
-                tour.id === 119 || tour.id === 120 || tour.id === 121 || tour.id === 122 || tour.id === 123) return false;
-            // Filtro de subcategoria
-            if (!(selectedSubcategory === 'all' || tour.category === selectedSubcategory)) return false;
-            // Filtro de pesquisa
-            if (searchQuery && !(
-                tour.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                tour.description.toLowerCase().includes(searchQuery.toLowerCase())
-            )) return false;
-            return true;
-        });
+        // Pequeno delay para mostrar o loading
+        setTimeout(() => {
+            toursGridTarget.innerHTML = '';
+
+            // Filtra passeios duplicados em inglês e mantém apenas os cards dinâmicos
+            let filteredTours = allTours.filter(tour => {
+                // Remove duplicados em inglês do Tour Dubai Meio Periodo (4h) e Dia Todo (8h)
+                if (tour.name.includes("Dubai Half-Day Tour") || tour.name.includes("Dubai Full-Day Tour")) return false;
+                // Não renderiza os cards fixos (IDs numéricos dos itens estáticos do dataset), só os dinâmicos
+                if (tour.id === 19 || tour.id === 20 || tour.id === 21 || tour.id === 111 || 
+                    tour.id === 30 || tour.id === 31 || tour.id === 32 || 
+                    tour.id === 115 || tour.id === 116 || tour.id === 117 || tour.id === 118 || 
+                    tour.id === 119 || tour.id === 120 || tour.id === 121 || tour.id === 122 || tour.id === 123) return false;
+                // Filtro de subcategoria
+                if (!(selectedSubcategory === 'all' || tour.category === selectedSubcategory)) return false;
+                // Filtro de pesquisa
+                if (searchQuery && !(
+                    tour.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    tour.description.toLowerCase().includes(searchQuery.toLowerCase())
+                )) return false;
+                return true;
+            });
 
         // Função para verificar se o card dinâmico deve aparecer pelo filtro de pesquisa
         function dynamicCardMatches(name, desc) {
@@ -416,7 +475,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ) {
             dynamicCards.push(() => {
                 const tourCard = document.createElement('div');
-                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+                tourCard.className = 'tour-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
                 const img = document.createElement('img');
                 img.src = "img/toursdubai/19.jpg";
@@ -1088,7 +1147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Renderiza os demais passeios normalmente
         filteredTours.forEach(tour => {
             const tourCard = document.createElement('div');
-            tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+            tourCard.className = 'tour-card bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
             const img = document.createElement('img');
             img.src = tour.imageUrl;
@@ -1239,6 +1298,11 @@ document.addEventListener('DOMContentLoaded', () => {
             tourCard.appendChild(contentDiv);
             toursGridTarget.appendChild(tourCard);
         });
+
+        // Animar entrada dos cards de tour
+        const tourCards = toursGridTarget.querySelectorAll('.bg-white.rounded-xl');
+        addStaggeredAnimation(Array.from(tourCards), 'animate-fade-in-up', 100);
+        }); // Fim do setTimeout
     }
 
     function renderCart() {
@@ -1529,21 +1593,44 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
     }
 
     backToCountryButton.addEventListener('click', () => {
-        currentPage = 'countrySelection';
-        cart = []; // Clear cart when going back to country selection
-        renderCart(); // Update cart display
-        searchQuery = ''; // Clear search query
-        if (tourSearchInput) tourSearchInput.value = ''; // Clear search input field
-        renderPage();
+        showLoadingOverlay('Voltando...');
+        setTimeout(() => {
+            currentPage = 'countrySelection';
+            cart = []; // Clear cart when going back to country selection
+            renderCart(); // Update cart display
+            searchQuery = ''; // Clear search query
+            if (tourSearchInput) tourSearchInput.value = ''; // Clear search input field
+            renderPage();
+            hideLoadingOverlay();
+        }, 300);
     });
 
     // Add event listener for the header logo
     headerLogo.addEventListener('click', () => {
-        currentPage = 'countrySelection';
-        cart = []; // Clear cart when going back to country selection
-        renderCart(); // Update cart display
-        renderPage();
+        showLoadingOverlay('Carregando...');
+        setTimeout(() => {
+            currentPage = 'countrySelection';
+            cart = []; // Clear cart when going back to country selection
+            renderCart(); // Update cart display
+            renderPage();
+            hideLoadingOverlay();
+        }, 300);
     });
+
+    // Add event listener for the header title
+    const headerTitle = document.querySelector('h1');
+    if (headerTitle) {
+        headerTitle.addEventListener('click', () => {
+            showLoadingOverlay('Carregando...');
+            setTimeout(() => {
+                currentPage = 'countrySelection';
+                cart = []; // Clear cart when going back to country selection
+                renderCart(); // Update cart display
+                renderPage();
+                hideLoadingOverlay();
+            }, 300);
+        });
+    }
 
     // Close modals when clicking outside
     itineraryModalOverlay.addEventListener('click', (event) => {
