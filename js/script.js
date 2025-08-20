@@ -956,7 +956,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
                 const img = document.createElement('img');
-                img.src = "img/toursdubai/28.jpg";
+                img.src = "img/toursdubai/118.jpg";
                 img.alt = "Transporte c/ Motorista em Dubai - Dia Todo (10h)";
                 img.className = 'w-full h-48 object-cover object-center';
                 img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Transporte+Dubai+Dia+Todo`; };
@@ -1053,7 +1053,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
                 const img = document.createElement('img');
-                img.src = "img/toursdubai/29.jpg";
+                img.src = "img/toursdubai/121.jpg";
                 img.alt = "Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h)";
                 img.className = 'w-full h-48 object-cover object-center';
                 img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Transporte+Abu+Dhabi+Dia+Todo`; };
@@ -1114,7 +1114,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             name: 'Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h)',
                             description: 'Incluso: Veículo conforme o tamanho do grupo, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.',
                             price: price,
-                            imageUrl: "img/toursdubai/29.jpg",
+                            imageUrl: "img/toursdubai/121.jpg",
                             category: "CARRO COM MOTORISTA"
                         }, 1);
                     } else {

@@ -2,8 +2,8 @@ export const toursData = [
     // TOUR EM GRUPO
     {
         id: 110,
-        name: "Tour Dubai Compartilhado - No Idioma Da Sua Preferencia (6h)",
-        description: "Tour compartilhado pelos principais pontos de Dubai com guia. Incluso: Guia em seu idioma nativo, Transporte do Hotel. Solicite Itinerário completo. Adulto ou kids +3 anos. PP.",
+        name: "Tour Dubai Compartilhado - No Idioma Da Sua Preferência (6h)",
+        description: "Tour compartilhado pelos principais pontos de Dubai com guia. Incluso: Guia em seu idioma nativo, Transporte do Hotel. Solicite Itinerário completo. Adulto ou kids +3 anos.",
         price: 550.50,
         imageUrl: "img/toursdubai/15.jpg",
         category: "TOUR EM GRUPO"
@@ -11,7 +11,7 @@ export const toursData = [
     {
         id: 16,
         name: "Tour Abu Dhabi Compartilhado - Tradicional / Dia Todo (8h)",
-        description: "Tour compartilhado tradicional em Abu Dhabi. Incluso: Guia em Inglês, 1 Ingresso (à escolher), Transporte do Hotel (Dubai). Solicite Itinerário completo. Adulto ou kids +3 anos. PP.",
+        description: "Tour compartilhado tradicional em Abu Dhabi. Incluso: Guia em Inglês, 1 Ingresso (à escolher), Transporte do Hotel (Dubai). Solicite Itinerário completo. Adulto ou kids +3 anos.",
         price: 367.00,
         imageUrl: "img/toursdubai/16.jpg",
         category: "TOUR EM GRUPO"
@@ -19,24 +19,16 @@ export const toursData = [
     {
         id: 17,
         name: "Tour Abu Dhabi Compartilhado c/ 1 Parque à sua escolha - Dia Todo (8h)",
-        description: "Tour compartilhado em Abu Dhabi com parque à escolha. Incluso: Guia em Inglês, Ingresso Mesquita + 1 Parque (consultar opções), Transporte do Hotel (Dubai). Adulto ou kids +3 anos. PP.",
+        description: "Tour compartilhado em Abu Dhabi com parque à escolha. Incluso: Guia em Inglês, Ingresso Mesquita + 1 Parque (consultar opções), Transporte do Hotel (Dubai). Adulto ou kids +3 anos.",
         price: 734.00,
         imageUrl: "img/toursdubai/17.jpg",
-        category: "TOUR EM GRUPO"
-    },
-    {
-        id: 18,
-        name: "Iate Compartilhado c/ Churrasco",
-        description: "Desfrute de um passeio de iate compartilhado pelas águas de Dubai, com vistas deslumbrantes do skyline e da Palm Jumeirah. Inclui um delicioso churrasco a bordo para uma experiência relaxante e divertida no mar. (Preço por pessoa, aplicável para adultos e crianças)",
-        price: 132.00,
-        imageUrl: "img/toursdubai/18.jpg",
         category: "TOUR EM GRUPO"
     },
     // TOUR DUBAI
     {
         id: 19,
         name: "Tour Dubai Meio Periodo (4h)",
-        description: "Tour privativo de 4 horas por Dubai com veículo, motorista, guia licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
+        description: "Tour privativo de 4 horas por Dubai com veículo, motorista, guia licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 220 (Ônibus). O valor por pessoa depende do número de participantes.",
         price: 321.13, // Valor base para 4+ pessoas, mas será sobrescrito pelo cálculo dinâmico
         imageUrl: "img/toursdubai/19.jpg",
         category: "TOUR PRIVATIVO"
@@ -44,7 +36,7 @@ export const toursData = [
     {
         id: 20,
         name: "Tour Dubai Dia Todo (8h)",
-        description: "Tour privativo de 8 horas por Dubai com veículo, motorista, guia brasileiro(a) licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
+        description: "Tour privativo de 8 horas por Dubai com veículo, motorista, guia brasileiro(a) licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 220 (Ônibus). O valor por pessoa depende do número de participantes.",
         price: 504.63, // Valor base para 4+ pessoas, será sobrescrito pelo cálculo dinâmico
         imageUrl: "img/toursdubai/20.jpg",
         category: "TOUR PRIVATIVO"
@@ -52,7 +44,7 @@ export const toursData = [
     {
         id: 21,
         name: "Tour Abu Dhabi Dia Todo (10h)",
-        description: "Tour privativo de 10 horas por Abu Dhabi com veículo, motorista e guia brasileiro(a) licenciado(a), reserva da Grande Mesquita e recomendação de itinerário. Outros ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
+        description: "Tour privativo de 10 horas por Abu Dhabi com veículo, motorista e guia brasileiro(a) licenciado(a), reserva da Grande Mesquita e recomendação de itinerário. Outros ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 220 (Ônibus). O valor por pessoa depende do número de participantes.",
         price: 631.24, // Valor base para 4+ pessoas, será sobrescrito pelo cálculo dinâmico
         imageUrl: "img/toursdubai/21.jpg", // Use uma imagem apropriada
         category: "TOUR PRIVATIVO"
@@ -67,7 +59,7 @@ export const toursData = [
     },
     {
         id: 26,
-        name: "Serviços de recepção dentro do Terminal DXB - Inglês",
+        name: "Serviços de recepção dentro do AeroportO Dubai - Inglês",
         description: "Recepção personalizada dentro da imigração no Terminal 3 (Dubai). Profissional da Emirates acompanha até a saída do terminal. Atendimento em inglês. Válido apenas para chegadas em voos da Emirates.",
         price: 800.00,
         imageUrl: "img/toursdubai/26.jpg",
@@ -75,7 +67,7 @@ export const toursData = [
     },
     {
         id: 27,
-        name: "Traslado Aeroporto DXB-Hotel em Dubai (1 Trecho) - até 2 pessoas",
+        name: "Traslado Aeroporto Dubai - Hotel em Dubai (1 Trecho) - até 2 pessoas",
         description: " ",
         price: 389.00,
         imageUrl: "img/toursdubai/27.jpg",
@@ -83,7 +75,7 @@ export const toursData = [
     },
     {
         id: 28,
-        name: "Traslado Aeroporto DXB-Hotel em Dubai (1 Trecho) - 3 a 7 pessoas",
+        name: "Traslado Aeroporto Dubai - Hotel em Dubai (1 Trecho) - 3 a 7 pessoas",
         description: "Incluso: Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
         price: 499.00,
         imageUrl: "img/toursdubai/28.jpg",
@@ -91,7 +83,7 @@ export const toursData = [
     },
     {
         id: 29,
-        name: "Traslado Aeroporto DXB-Hotel em Dubai (1 Trecho) - 8 a 14 pessoas",
+        name: "Traslado Aeroporto Dubai - Hotel em Dubai (1 Trecho) - 8 a 14 pessoas",
         description: "Incluso: 2 Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
         price: 1000.00,
         imageUrl: "img/toursdubai/29.jpg",
@@ -138,51 +130,11 @@ export const toursData = [
         category: "DESERTO"
     },
     {
-        id: 37,
-        name: "Safari no Deserto com Jantar (Bebidas Inclusas)",
-        description: "Aproveite a experiência completa do Safari no Deserto, incluindo todas as atividades e o jantar buffet, com a conveniência de ter bebidas (seleção de bebidas alcoólicas e não alcoólicas) já inclusas no pacote. (Preço por pessoa)",
-        price: 220.00,
-        imageUrl: "img/toursdubai/37.jpg",
-        category: "DESERTO"
-    },
-    {
-        id: 38,
-        name: "1 Jetski (30 min) - 1 pessoa",
-        description: "Sinta a adrenalina pilotando um jetski sozinho por 30 minutos nas águas de Dubai, com vistas incríveis da costa e dos marcos da cidade. (Preço por pessoa)",
-        price: 82.00,
-        imageUrl: "img/toursdubai/38.jpg",
-        category: "AVENTURAS AQUÁTICAS"
-    },
-    {
-        id: 39,
-        name: "1 Jetski (30 min) - 2 pessoas",
-        description: "Compartilhe a emoção de um passeio de jetski por 30 minutos com um acompanhante. O preço é por pessoa, mas vocês dividem o mesmo jetski. Uma ótima opção para casais ou amigos. (Preço por pessoa)",
-        price: 41.00,
-        imageUrl: "img/toursdubai/39.jpg",
-        category: "AVENTURAS AQUÁTICAS"
-    },
-    {
-        id: 40,
-        name: "1 Jetcar (30 min) - 2 pessoas",
-        description: "Experimente a sensação única de pilotar um Jetcar, um veículo aquático que parece um carro esportivo, por 30 minutos. Capacidade para 2 pessoas. Uma atividade divertida e diferente nas águas de Dubai. (Valor total pelo aluguel do Jetcar)",
-        price: 275.00,
-        imageUrl: "img/toursdubai/40.jpg",
-        category: "AVENTURAS AQUÁTICAS"
-    },
-    {
-        id: 41,
-        name: "Parasailing (30 min) - 1 pessoa",
-        description: "Tenha uma vista aérea espetacular de Dubai enquanto voa de parasail por 30 minutos. Uma experiência emocionante e com paisagens inesquecíveis da costa. (Preço por pessoa para voo individual)",
-        price: 82.00,
-        imageUrl: "img/toursdubai/41.jpg",
-        category: "AVENTURAS AQUÁTICAS"
-    },
-    {
         id: 300,
         name: "1 Jetski (30 min) - até 2 pessoas",
         description: "Aproveite 30 minutos de emoção em um jetski para até 2 pessoas nas águas de Dubai. Ideal para casais ou amigos.",
         price: 300.94,
-        imageUrl: "img/toursdubai/jetski2p.jpg",
+        imageUrl: "img/toursdubai/300.jpg",
         category: "AVENTURAS AQUÁTICAS"
     },
     {
@@ -190,15 +142,15 @@ export const toursData = [
         name: "1 Jetcar (30 min) - até 2 pessoas",
         description: "Experimente um passeio de Jetcar por 30 minutos para até 2 pessoas. Diversão garantida em um veículo aquático exclusivo.",
         price: 1009.25,
-        imageUrl: "img/toursdubai/jetcar2p.jpg",
+        imageUrl: "img/toursdubai/301.jpg",
         category: "AVENTURAS AQUÁTICAS"
     },
     {
         id: 302,
-        name: "1 Parasailing (30 min) - 1 pessoa PP",
+        name: "1 Parasailing (30 min) - 1 pessoa",
         description: "Viva a experiência de parasailing por 30 minutos e admire Dubai do alto. Uma aventura inesquecível para uma pessoa.",
         price: 300.94,
-        imageUrl: "img/toursdubai/parasailing1p.jpg",
+        imageUrl: "img/toursdubai/302.jpg",
         category: "AVENTURAS AQUÁTICAS"
     },
     {
@@ -242,16 +194,8 @@ export const toursData = [
         category: "AVENTURAS AQUÁTICAS"
     },
     {
-        id: 308,
-        name: "Mergulho em Dubai (30 Minutos)",
-        description: "Descubra o mundo subaquático de Dubai com uma sessão de mergulho de 30 minutos. Ideal para iniciantes que querem experimentar o mergulho ou para mergulhadores experientes. Equipamento e acompanhamento inclusos. (Preço por pessoa, aplicável para adultos e crianças)",
-        price: 132.00,
-        imageUrl: "img/toursdubai/43.jpg",
-        category: "AVENTURAS AQUÁTICAS"
-    },
-    {
         id: 309,
-        name: "Mergulho em Dubai PP - 30 Minutos / adulto ou kids",
+        name: "Mergulho em Dubai - 30 Minutos / adulto ou kids",
         description: "Descubra o mundo subaquático de Dubai com uma sessão de mergulho de 30 minutos. Equipamento e acompanhamento inclusos. (Preço por pessoa, adulto ou criança)",
         price: 477.10,
         imageUrl: "img/toursdubai/mergulho.jpg",
@@ -259,7 +203,7 @@ export const toursData = [
     },
     {
         id: 310,
-        name: "Tour de Barco nas Ilhas de Dubai PP - 100 min",
+        name: "Tour de Barco nas Ilhas de Dubai - 100 min",
         description: "Tour de barco pelas ilhas de Dubai por 100 minutos. Uma experiência relaxante e panorâmica pelas águas da cidade.",
         price: 300.94,
         imageUrl: "img/toursdubai/barcoilhas.jpg",
@@ -267,7 +211,7 @@ export const toursData = [
     },
     {
         id: 311,
-        name: "Iate Compartilhado c/ Churrasco PP - adulto ou kids",
+        name: "Iate Compartilhado c/ Churrasco - adulto ou kids",
         description: "Passeio de iate compartilhado com churrasco incluso. Ideal para adultos e crianças aproveitarem juntos.",
         price: 477.10,
         imageUrl: "img/toursdubai/iatechurrasco.jpg",
@@ -310,7 +254,7 @@ export const toursData = [
         name: "Helicóptero 12 min Compartilhado - 1 adulto",
         description: "Voo panorâmico de helicóptero compartilhado por 12 minutos sobre Dubai. Experiência única para 1 adulto.",
         price: 711.98,
-        imageUrl: "img/toursdubai/heli12comp.jpg",
+        imageUrl: "img/toursdubai/400.jpg",
         category: "EXPERIENCIAS AÉREAS"
     },
     {
@@ -318,7 +262,7 @@ export const toursData = [
         name: "Helicóptero 17 min Compartilhado - 1 adulto",
         description: "Voo panorâmico de helicóptero compartilhado por 17 minutos sobre Dubai. Experiência única para 1 adulto.",
         price: 954.20,
-        imageUrl: "img/toursdubai/heli17comp.jpg",
+        imageUrl: "img/toursdubai/400.jpg",
         category: "EXPERIENCIAS AÉREAS"
     },
     {
@@ -326,7 +270,7 @@ export const toursData = [
         name: "Helicóptero 22 min Compartilhado - 1 adulto",
         description: "Voo panorâmico de helicóptero compartilhado por 22 minutos sobre Dubai. Experiência única para 1 adulto.",
         price: 1302.85,
-        imageUrl: "img/toursdubai/heli22comp.jpg",
+        imageUrl: "img/toursdubai/400.jpg",
         category: "EXPERIENCIAS AÉREAS"
     },
     {
@@ -334,7 +278,7 @@ export const toursData = [
         name: "Helicóptero 30 min Compartilhado - 1 adulto",
         description: "Voo panorâmico de helicóptero compartilhado por 30 minutos sobre Dubai. Experiência única para 1 adulto.",
         price: 2000.00,
-        imageUrl: "img/toursdubai/heli30comp.jpg",
+        imageUrl: "img/toursdubai/400.jpg",
         category: "EXPERIENCIAS AÉREAS"
     },
     {
@@ -342,7 +286,7 @@ export const toursData = [
         name: "Helicóptero 12 min Privativo - até 5 pessoas",
         description: "Voo privativo de helicóptero por 12 minutos para até 5 pessoas. Exclusividade e conforto.",
         price: 3600.00,
-        imageUrl: "img/toursdubai/heli12priv.jpg",
+        imageUrl: "img/toursdubai/400.jpg",
         category: "EXPERIENCIAS AÉREAS"
     },
     {
@@ -350,7 +294,7 @@ export const toursData = [
         name: "Helicóptero 17 min Privativo - até 5 pessoas",
         description: "Voo privativo de helicóptero por 17 minutos para até 5 pessoas. Exclusividade e conforto.",
         price: 4800.00,
-        imageUrl: "img/toursdubai/heli17priv.jpg",
+        imageUrl: "img/toursdubai/400.jpg",
         category: "EXPERIENCIAS AÉREAS"
     },
     {
@@ -358,7 +302,7 @@ export const toursData = [
         name: "Helicóptero 22 min Privativo - até 5 pessoas",
         description: "Voo privativo de helicóptero por 22 minutos para até 5 pessoas. Exclusividade e conforto.",
         price: 6500.00,
-        imageUrl: "img/toursdubai/heli22priv.jpg",
+        imageUrl: "img/toursdubai/400.jpg",
         category: "EXPERIENCIAS AÉREAS"
     },
     {
@@ -366,324 +310,332 @@ export const toursData = [
         name: "Helicóptero 30 min Privativo - até 5 pessoas",
         description: "Voo privativo de helicóptero por 30 minutos para até 5 pessoas. Exclusividade e conforto.",
         price: 8900.00,
-        imageUrl: "img/toursdubai/heli30priv.jpg",
+        imageUrl: "img/toursdubai/400.jpg",
         category: "EXPERIENCIAS AÉREAS"
     },
     {
         id: 51,
-        name: "Ingresso Global Village (Qualquer Dia)",
+        name: "Ingresso Global Village Adulto ou kids (Qualquer Dia)",
         description: "Acesso ao Global Village, um parque multicultural com pavilhões de diversos países, shows, comidas e compras. Válido para qualquer dia de funcionamento. (Preço por pessoa, aplicável para adultos e crianças a partir de 3 anos)",
-        price: 8.17,
+        price: 30,
         imageUrl: "img/toursdubai/51.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 52,
-        name: "Ingresso The View (Vista Palmeira) - Com Fila",
+        name: "Ingresso The View Adulto (Vista Palmeira) - Com Fila",
         description: "Acesso ao observatório The View at The Palm, localizado no topo da Palm Tower, com vistas 360 graus da Palm Jumeirah, do Golfo Pérsico e do skyline de Dubai. Ingresso padrão com tempo de espera na fila. (Preço por pessoa, aplicável para adultos)",
-        price: 29.97,
+        price: 110,
         imageUrl: "img/toursdubai/52.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 53,
-        name: "Ingresso The View (Vista Palmeira) - Com Fila",
+        name: "Ingresso The View Kids (Vista Palmeira) - Com Fila",
         description: "Acesso ao observatório The View at The Palm para crianças, com vistas espetaculares da Palm Jumeirah e arredores. Ingresso padrão com tempo de espera na fila. (Preço por pessoa, aplicável para crianças)",
-        price: 20.44,
-        imageUrl: "img/toursdubai/53.jpg",
+        price: 75,
+        imageUrl: "img/toursdubai/52.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 54,
-        name: "Ingresso The View (Vista Palmeira) - Sem Fila",
+        name: "Ingresso The View Adulto (Vista Palmeira) - Sem Fila",
         description: "Acesso rápido ao observatório The View at The Palm, evitando as filas. Desfrute das vistas panorâmicas da Palm Jumeirah e do skyline de Dubai com mais agilidade. (Preço por pessoa, aplicável para adultos)",
-        price: 48.00,
-        imageUrl: "img/toursdubai/54.jpg",
+        price:  176.16,
+        imageUrl: "img/toursdubai/52.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 55,
-        name: "Ingresso The View (Vista Palmeira) - Sem Fila",
+        name: "Ingresso The View Kids (Vista Palmeira) - Sem Fila",
         description: "Acesso rápido ao observatório The View at The Palm para crianças, sem a necessidade de esperar na fila. Vistas incríveis com mais conforto. (Preço por pessoa, aplicável para crianças)",
-        price: 33.00,
-        imageUrl: "img/toursdubai/55.jpg",
+        price: 120,
+        imageUrl: "img/toursdubai/52.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 56,
-        name: "Ingresso Burj Khalifa 124/125 c/ Fila (Após 14h)",
+        name: "Ingresso Burj Khalifa 124/125 c/ Fila (Após 11h) - Adulto",
         description: "Acesso aos andares 124 e 125 do Burj Khalifa, o edifício mais alto do mundo, com vistas panorâmicas de Dubai. Ingresso padrão com tempo de espera na fila, válido para visitas após as 14h. (Preço por pessoa, aplicável para adultos)",
-        price: 70.84,
+        price: 260,
         imageUrl: "img/toursdubai/56.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 57,
-        name: "Ingresso Burj Khalifa 124/125 c/ Fila (Após 14h)",
+        name: "Ingresso Burj Khalifa 124/125 c/ Fila (Após 11h) - Kids",
         description: "Acesso aos andares 124 e 125 do Burj Khalifa para crianças (3-8 anos), com vistas espetaculares de Dubai. Ingresso padrão com tempo de espera na fila, válido para visitas após as 14h. (Preço por pessoa, aplicável para crianças)",
-        price: 44.96,
+        price: 165,
         imageUrl: "img/toursdubai/57.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 58,
-        name: "Ingresso Burj Khalifa 124/125 c/ Fila (9h-14h)",
+        name: "Ingresso Burj Khalifa 124/125 c/ Fila (9h-11h) - Adulto",
         description: "Acesso aos andares 124 e 125 do Burj Khalifa com vistas panorâmicas de Dubai. Ingresso padrão com tempo de espera na fila, válido para visitas entre 9h e 14h. (Preço por pessoa, aplicável para adultos)",
-        price: 49.05,
+        price: 180,
         imageUrl: "img/toursdubai/58.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 59,
-        name: "Ingresso Burj Khalifa 124/125 c/ Fila (9h-14h)",
+        name: "Ingresso Burj Khalifa 124/125 c/ Fila (9h-11h) - Kids",
         description: "Acesso aos andares 124 e 125 do Burj Khalifa para crianças (3-8 anos), com vistas espetaculares de Dubai. Ingresso padrão com tempo de espera na fila, válido para visitas entre 9h e 14h. (Preço por pessoa, aplicável para crianças)",
-        price: 39.78,
+        price: 146,
         imageUrl: "img/toursdubai/59.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 60,
-        name: "Ingresso Burj Khalifa 124/125 c/ Fila + Aquário",
+        name: "Ingresso Burj Khalifa 124/125 c/ Fila + Aquário - Adulto",
         description: "Combine a visita aos andares 124 e 125 do Burj Khalifa com a entrada para o Dubai Aquarium & Underwater Zoo, localizado no Dubai Mall. Ingresso padrão com tempo de espera na fila para o Burj Khalifa. (Preço por pessoa, aplicável para adultos)",
-        price: 84.47,
+        price: 310,
         imageUrl: "img/toursdubai/60.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 61,
-        name: "Ingresso Burj Khalifa 124/125 c/ Fila + Aquário",
+        name: "Ingresso Burj Khalifa 124/125 c/ Fila + Aquário - Kids",
         description: "Combine a visita aos andares 124 e 125 do Burj Khalifa com a entrada para o Dubai Aquarium & Underwater Zoo para crianças (3-8 anos). Ingresso padrão com tempo de espera na fila para o Burj Khalifa. (Preço por pessoa, aplicável para crianças)",
-        price: 74.93,
+        price: 275,
         imageUrl: "img/toursdubai/61.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 62,
-        name: "Ingresso Burj Khalifa 124/125/148 s/ Fila (Após 14h)",
+        name: "Ingresso Burj Khalifa 124/125/148 s/ Fila (Após 11h) - Adulto ou Kids",
         description: "Acesso VIP sem fila aos andares 124, 125 e o exclusivo andar 148 do Burj Khalifa, o ponto de observação mais alto do mundo. Inclui lounge e bebidas. Válido para visitas após as 14h. (Preço por pessoa, aplicável para adultos e crianças)",
-        price: 152.00,
+        price: 557.84,
         imageUrl: "img/toursdubai/62.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 63,
-        name: "Ingresso Burj Khalifa 124/125/148 s/ Fila (9h-14h)",
+        name: "Ingresso Burj Khalifa 124/125/148 s/ Fila (9h-11h) - Adulto ou Kids",
         description: "Acesso VIP sem fila aos andares 124, 125 e o exclusivo andar 148 do Burj Khalifa. Inclui lounge e bebidas. Válido para visitas entre 9h e 14h. (Preço por pessoa, aplicável para adultos e crianças)",
-        price: 109.00,
+        price: 400.03,
         imageUrl: "img/toursdubai/63.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 64,
-        name: "Ingresso Burj Khalifa s/ Fila Andar 154",
+        name: "Ingresso Burj Khalifa s/ Fila Andar 154 - Adulto ou Kids",
         description: "Acesso exclusivo e sem fila ao luxuoso lounge no andar 154 do Burj Khalifa, o ponto mais alto acessível ao público. Desfrute de vistas incomparáveis e serviço premium. (Preço por pessoa, aplicável para adultos e crianças)",
-        price: 221.00,
+        price: 811.07,
         imageUrl: "img/toursdubai/64.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 65,
-        name: "Ingresso Sky Views Observatory + Escorregador",
+        name: "Ingresso Sky Views Observatory + Escorregador - Adulto ou Kids",
         description: "Acesso ao Sky Views Observatory, com vistas panorâmicas de Dubai, e uma descida emocionante pelo Glass Slide (escorregador de vidro) do 53º andar. Uma experiência única e com adrenalina. (Preço por pessoa, aplicável para adultos)",
-        price: 68.12,
+        price: 250.00,
         imageUrl: "img/toursdubai/65.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 66,
-        name: "Ingresso Museu do Futuro",
+        name: "Ingresso Museu do Futuro - Adulto ou Kids",
         description: "Explore o Museu do Futuro, um ícone arquitetônico e cultural de Dubai. Uma jornada imersiva pelas possibilidades do futuro, com exposições interativas e inovadoras. (Preço por pessoa, aplicável para adultos e crianças)",
-        price: 42.00,
+        price: 160,
         imageUrl: "img/toursdubai/66.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 67,
-        name: "Ingresso The Frame (Moldura Dourada)",
+        name: "Ingresso The Frame (Moldura Dourada) - Adulto",
         description: "Visite o The Dubai Frame, uma estrutura arquitetônica impressionante que oferece vistas únicas do 'velho' e do 'novo' Dubai. Suba ao topo para uma perspectiva panorâmica da cidade. (Preço por pessoa, aplicável para adultos)",
-        price: 15.00,
+        price: 55.05,
         imageUrl: "img/toursdubai/67.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 68,
-        name: "Ingresso The Frame (Moldura Dourada)",
+        name: "Ingresso The Frame (Moldura Dourada) - Kids",
         description: "Visite o The Dubai Frame com ingresso para crianças (3-12 anos). Uma forma divertida e educativa de ver a evolução de Dubai. (Preço por pessoa, aplicável para crianças)",
-        price: 6.94,
+        price: 25.00,
         imageUrl: "img/toursdubai/68.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 69,
-        name: "Ingresso Aquário Dubai Mall",
+        name: "Ingresso Aquário Dubai Mall - Adulto ou Kids",
         description: "Acesso ao Dubai Aquarium & Underwater Zoo, um dos maiores aquários suspensos do mundo, localizado no Dubai Mall. Observe uma variedade incrível de vida marinha. (Preço por pessoa, aplicável para adultos)",
-        price: 55.00,
+        price: 201.85,
         imageUrl: "img/toursdubai/69.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 70,
-        name: "Ingresso Miracle Garden",
+        name: "Ingresso Miracle Garden (Disponivel apenas de Outubro a Abril (Inverno)) - Adulto",
         description: "Visite o Dubai Miracle Garden, o maior jardim de flores naturais do mundo. Um espetáculo de cores e formas com milhões de flores arranjadas de maneira criativa. (Preço por pessoa, aplicável para adultos)",
-        price: 28.00,
+        price: 102.76,
         imageUrl: "img/toursdubai/70.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 71,
-        name: "Ingresso Miracle Garden",
+        name: "Ingresso Miracle Garden (Disponivel apenas de Outubro a Abril (Inverno)) - Kids",
         description: "Visite o Dubai Miracle Garden com ingresso para crianças (3-12 anos). Um lugar mágico e colorido para toda a família. (Preço por pessoa, aplicável para crianças)",
-        price: 23.16,
+        price: 85,
         imageUrl: "img/toursdubai/71.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 72,
-        name: "Ingresso Ski Dubai",
+        name: "Ingresso Ski Dubai - Adulto ou Kids",
         description: "O que está incluso: Entrada única para o Snow Park, permanência ilimitada. Aproveite as atividades do Snow Park, como nossa Caverna de Gelo. Bobsled ilimitado, passeio ilimitado na bola gigante, carrinhos bate-bate e descida de boia (tubbing) ilimitados.Uma vez no teleférico (Chairlift Ride).Uma vez na atração Mountain Thriller.Equipamentos de inverno fornecidos: jaqueta, calça, meias descartáveis, botas de neve e luvas de lã (fleece) gratuitas.Capacetes são obrigatórios para crianças menores de 13 anos.",
-        price: 100.00,
+        price: 367,
         imageUrl: "img/toursdubai/72.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 73,
-        name: "Tour Guiado Burj al Arab",
+        name: "Tour Guiado Burj al Arab - Adulto ou Kids",
         description: "Faça um tour guiado pelo interior do icônico hotel Burj Al Arab Jumeirah, considerado um dos mais luxuosos do mundo. Conheça sua arquitetura, história e interiores opulentos. (Preço por pessoa, aplicável para adultos)",
-        price: 68.12,
+        price: 250,
         imageUrl: "img/toursdubai/73.jpg",
+        category: "DUBAI TICKETS"
+    },
+    {
+        id: 731,
+        name: "Tour Guiado Burj al Arab + Cappuccino c/ Ouro - Adulto ou Kids",
+        description: "Faça um tour guiado pelo interior do icônico hotel Burj Al Arab Jumeirah, considerado um dos mais luxuosos do mundo. Conheça sua arquitetura, história e interiores opulentos. (Preço por pessoa, aplicável para adultos)",
+        price: 400,
+        imageUrl: "img/toursdubai/731.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 74,
         name: "Abra Lake Ride - Show das Águas",
         description: "Desfrute de um passeio tradicional de barco Abra no lago do Burj Khalifa durante o famoso show das fontes dançantes. Uma vista privilegiada e emocionante do espetáculo. (Preço por pessoa)",
-        price: 18.80,
+        price: 69,
         imageUrl: "img/toursdubai/74.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 75,
-        name: "Ingresso Roda Gigante Ain Dubai c/ Corta Fila",
+        name: "Ingresso Roda Gigante Ain Dubai c/ Corta Fila - Adulto",
         description: "Acesso rápido e sem fila para a Ain Dubai, a maior roda gigante de observação do mundo. Desfrute de vistas espetaculares de Dubai de uma cabine climatizada. (Preço por pessoa, aplicável para adultos, exceto horários de pico)",
-        price: 53.41,
+        price: 196,
         imageUrl: "img/toursdubai/75.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 76,
-        name: "Ingresso Roda Gigante Ain Dubai s/ Corta Fila",
+        name: "Ingresso Roda Gigante Ain Dubai s/ Corta Fila - Adulto",
         description: "Acesso padrão à Ain Dubai, a maior roda gigante de observação do mundo. Desfrute de vistas incríveis de Dubai. (Preço por pessoa, aplicável para adultos, exceto horários de pico)",
-        price: 39.51,
+        price: 145,
         imageUrl: "img/toursdubai/76.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 77,
-        name: "Ingresso Roda Gigante Ain Dubai s/ Corta Fila",
+        name: "Ingresso Roda Gigante Ain Dubai s/ Corta Fila - Kids",
         description: "Acesso padrão à Ain Dubai para crianças, a maior roda gigante de observação do mundo. Vistas espetaculares de Dubai. (Preço por pessoa, aplicável para crianças, exceto horários de pico)",
-        price: 31.34,
+        price: 115,
         imageUrl: "img/toursdubai/77.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 78,
-        name: "Ingresso Parque IMG Worlds of Adventure (Marvel)",
+        name: "Ingresso Parque IMG Worlds of Adventure (Marvel) - Adulto ou Kids",
         description: "Acesso ao IMG Worlds of Adventure, o maior parque temático indoor do mundo, com zonas dedicadas a personagens da Marvel, Cartoon Network e outras atrações originais. (Preço por pessoa, aplicável para adultos)",
-        price: 90.00,
+        price: 330,
         imageUrl: "img/toursdubai/78.jpg",
         category: "DUBAI PARKS"
     },
     {
         id: 79,
-        name: "Ingresso Legoland Dubai",
+        name: "Ingresso Legoland Dubai - Adulto ou Kids",
         description: "Acesso ao Legoland Dubai, um parque temático baseado nos famosos blocos de montar Lego, com atrações, shows e modelos construídos com Lego. Ideal para famílias com crianças de 2 a 12 anos. (Preço por pessoa, aplicável para adultos)",
-        price: 90.00,
+        price: 330,
         imageUrl: "img/toursdubai/79.jpg",
         category: "DUBAI PARKS"
     },
     {
         id: 80,
-        name: "Ingresso Parque Motiongate Dubai",
+        name: "Ingresso Parque Motiongate Dubai s/ Corta Fila - Adulto ou Kids",
         description: "Acesso ao Motiongate Dubai, um parque temático inspirado em Hollywood, com atrações baseadas em filmes e estúdios como DreamWorks Animation, Columbia Pictures e Lionsgate. (Preço por pessoa, aplicável para adultos)",
-        price: 80.38,
+        price: 295,
         imageUrl: "img/toursdubai/80.jpg",
         category: "DUBAI PARKS"
     },
     {
         id: 81,
-        name: "Ingresso Parque Motiongate Dubai c/ Corta Fila",
+        name: "Ingresso Parque Motiongate Dubai c/ Corta Fila - Adulto ou Kids",
         description: "Acesso rápido e sem fila ao Motiongate Dubai, permitindo que você aproveite as atrações inspiradas em Hollywood com mais agilidade. (Preço por pessoa, aplicável para adultos)",
-        price: 121.25,
+        price: 445,
         imageUrl: "img/toursdubai/81.jpg",
         category: "DUBAI PARKS"
     },
     {
         id: 82,
-        name: "Ingresso Legoland Water Park",
+        name: "Ingresso Legoland Water Park - Adulto ou Kids",
         description: "Acesso ao Legoland Water Park, um parque aquático projetado para famílias com crianças de 2 a 12 anos, com escorregadores, piscinas e atrações temáticas de Lego. (Preço por pessoa, aplicável para adultos)",
-        price: 90.00,
+        price: 330.30,
         imageUrl: "img/toursdubai/82.jpg",
         category: "DUBAI PARKS"
     },
     {
         id: 83,
-        name: "Ingresso Parque Real Madrid World",
+        name: "Ingresso Parque Real Madrid World - Adulto ou Kids",
         description: "Acesso ao Real Madrid World, o primeiro parque temático do Real Madrid no mundo. Desfrute de atrações, experiências e jogos inspirados no famoso clube de futebol. (Preço por pessoa, aplicável para adultos)",
-        price: 90.00,
+        price: 330.30,
         imageUrl: "img/toursdubai/83.jpg",
         category: "DUBAI PARKS"
     },
     {
         id: 84,
-        name: "Ingresso Parque Aquático Atlantis Aquaventure",
+        name: "Ingresso Parque Aquático Atlantis Aquaventure - Adulto ou Kids",
         description: "Acesso ao Atlantis Aquaventure Waterpark, um dos maiores e mais emocionantes parques aquáticos do mundo, localizado no Atlantis, The Palm. Desfrute de diversos escorregadores e atrações aquáticas. (Preço por pessoa, aplicável para adultos)",
-        price: 90.00,
+        price: 330.30,
         imageUrl: "img/toursdubai/84.jpg",
         category: "DUBAI PARKS"
     },
     {
         id: 85,
-        name: "Ingresso Parque Aquático Atlantis Aquaventure c/ Corta Fila",
+        name: "Ingresso Parque Aquático Atlantis Aquaventure c/ Corta Fila - Adulto ou Kids",
         description: "Acesso rápido e sem fila ao Atlantis Aquaventure Waterpark, permitindo que você maximize seu tempo e aproveite mais escorregadores e atrações. (Preço por pessoa, aplicável para adultos)",
-        price: 180.00,
+        price: 660.60,
         imageUrl: "img/toursdubai/85.jpg",
         category: "DUBAI PARKS"
     },
     {
         id: 86,
-        name: "Ingresso Dubai Safari Park Zoo",
+        name: "Ingresso Dubai Safari Park Zoo - Adulto",
         description: "Acesso ao Dubai Safari Park, um extenso parque de vida selvagem com diversas zonas que abrigam animais de diferentes habitats ao redor do mundo. (Preço por pessoa, aplicável para adultos)",
-        price: 14.99,
+        price: 55,
         imageUrl: "img/toursdubai/86.jpg",
         category: "DUBAI PARKS"
     },
     {
         id: 87,
-        name: "Ingresso Dubai Safari Park Zoo",
+        name: "Ingresso Dubai Safari Park Zoo - Kids",
         description: "Acesso ao Dubai Safari Park para crianças (3-12 anos). Uma oportunidade educativa e divertida para ver animais de perto. (Preço por pessoa, aplicável para crianças)",
-        price: 6.81,
+        price: 25,
         imageUrl: "img/toursdubai/87.jpg",
         category: "DUBAI PARKS"
     },
     {
         id: 88,
-        name: "Ingresso Experiência Dubai Safari Park Zoo",
+        name: "Ingresso Experiência Dubai Safari Park Zoo - Adulto",
         description: "Acesso completo ao Dubai Safari Park, incluindo o Safari Journey (passeio de ônibus pelas áreas de safari) e acesso a todas as vilas e shows. (Preço por pessoa, aplicável para adultos)",
-        price: 35.42,
+        price: 130,
         imageUrl: "img/toursdubai/88.jpg",
         category: "DUBAI PARKS"
     },
     {
         id: 89,
-        name: "Ingresso Experiência Dubai Safari Park Zoo",
+        name: "Ingresso Experiência Dubai Safari Park Zoo - Kids",
         description: "Acesso completo ao Dubai Safari Park para crianças (3-12 anos), incluindo o Safari Journey e acesso a todas as vilas e shows. (Preço por pessoa, aplicável para crianças)",
-        price: 27.25,
+        price: 100,
         imageUrl: "img/toursdubai/89.jpg",
         category: "DUBAI PARKS"
     },
     {
         id: 90,
-        name: "Ingresso Palácio Presidencial (Qasr Al Watan) - adulto",
+        name: "Ingresso Palácio Presidencial (Qasr Al Watan) - Adulto",
         description: "Visite o Qasr Al Watan, o magnífico Palácio Presidencial de Abu Dhabi. Explore a arquitetura deslumbrante, salões grandiosos e aprenda sobre a cultura e história dos Emirados Árabes Unidos.",
         price: 66.06,
         imageUrl: "img/toursdubai/90.jpg",
@@ -691,7 +643,7 @@ export const toursData = [
     },
     {
         id: 91,
-        name: "Ingresso Museu do Louvre Abu Dhabi - adulto",
+        name: "Ingresso Museu do Louvre Abu Dhabi - Adulto",
         description: "Acesso ao Museu do Louvre Abu Dhabi, uma obra-prima arquitetônica que abriga uma coleção de arte e artefatos que conectam diferentes culturas e civilizações.",
         price: 66.06,
         imageUrl: "img/toursdubai/91.jpg",
@@ -700,14 +652,14 @@ export const toursData = [
     {
         id: 92,
         name: "Ingresso Grande Mesquita",
-        description: "A entrada na Grande Mesquita Sheikh Zayed em Abu Dhabi é gratuita. Este item é apenas informativo. É altamente recomendado agendar sua visita online com antecedência.",
+        description: "A entrada na Grande Mesquita Sheikh Zayed em Abu Dhabi é gratuita. Este item é apenas informativo. É altamente recomendado agendar sua visita online com antecedência. (Incluso no tour Privativo)",
         price: 0.00,
         imageUrl: "img/toursdubai/92.jpg",
         category: "ABU DHABI TICKETS"
     },
     {
         id: 93,
-        name: "Etihad Tower Observation Deck - com café da tarde (adulto)",
+        name: "Etihad Tower Observation Deck - com café da tarde (Adulto)",
         description: "Desfrute de vistas panorâmicas de Abu Dhabi a partir do Observation Deck at 300, localizado nas Etihad Towers, incluindo um delicioso café da tarde.",
         price: 100.00,
         imageUrl: "img/toursdubai/93.jpg",
@@ -715,7 +667,7 @@ export const toursData = [
     },
     {
         id: 94,
-        name: "Ingresso Tour Yas Marina Circuit (2 horas) - adulto",
+        name: "Ingresso Tour Yas Marina Circuit (2 horas) - Adulto",
         description: "Faça um tour guiado pelo Yas Marina Circuit, o famoso circuito de Fórmula 1 em Abu Dhabi. Conheça os bastidores, boxes, sala de controle e sinta a atmosfera do automobilismo.",
         price: 160.00,
         imageUrl: "img/toursdubai/94.jpg",
@@ -723,9 +675,17 @@ export const toursData = [
     },
     {
         id: 95,
-        name: "Ingresso Parque da Ferrari Abu Dhabi - adulto",
+        name: "Ingresso Parque da Ferrari Abu Dhabi - Adulto",
         description: "Acesso ao Ferrari World Abu Dhabi, o primeiro parque temático da Ferrari no mundo. Desfrute de montanhas-russas emocionantes, simuladores e atrações que celebram a marca italiana.",
         price: 348.65,
+        imageUrl: "img/toursdubai/95.jpg",
+        category: "ABU DHABI PARKS"
+    },
+    {
+        id: 951,
+        name: "Ingresso Parque da Ferrari Abu Dhabi - Kids",
+        description: "Acesso ao Ferrari World Abu Dhabi, o primeiro parque temático da Ferrari no mundo. Desfrute de montanhas-russas emocionantes, simuladores e atrações que celebram a marca italiana.",
+        price: 295,
         imageUrl: "img/toursdubai/95.jpg",
         category: "ABU DHABI PARKS"
     },
@@ -734,6 +694,14 @@ export const toursData = [
         name: "Ingresso Parque Warner Bros - adulto",
         description: "Acesso ao Warner Bros. World Abu Dhabi, um parque temático indoor com zonas imersivas baseadas em personagens da Warner Bros., como Batman, Superman, Looney Tunes e Flintstones.",
         price: 381.68,
+        imageUrl: "img/toursdubai/96.jpg",
+        category: "ABU DHABI PARKS"
+    },    
+    {
+        id: 961,
+        name: "Ingresso Parque Warner Bros - Kids (Menor de 1.10m)",
+        description: "Acesso ao Warner Bros. World Abu Dhabi, um parque temático indoor com zonas imersivas baseadas em personagens da Warner Bros., como Batman, Superman, Looney Tunes e Flintstones.",
+        price: 295,
         imageUrl: "img/toursdubai/96.jpg",
         category: "ABU DHABI PARKS"
     },
@@ -746,8 +714,16 @@ export const toursData = [
         category: "ABU DHABI PARKS"
     },
     {
+        id: 971,
+        name: "Ingresso Sea World Abu Dhabi - Kids",
+        description: "Acesso ao SeaWorld Yas Island, Abu Dhabi, um parque temático marinho que oferece experiências imersivas com animais marinhos, shows e atrações educativas.",
+        price: 320,
+        imageUrl: "img/toursdubai/97.jpg",
+        category: "ABU DHABI PARKS"
+    },
+    {
         id: 98,
-        name: "Ingresso 2 Parques Abu Dhabi a escolher - adulto",
+        name: "Ingresso 2 Parques Abu Dhabi a escolher - Adulto ou Kids",
         description: "Acesso a dois parques temáticos na Ilha Yas, Abu Dhabi (Ferrari World, Warner Bros. World, SeaWorld ou Yas Waterworld - verificar opções disponíveis). Escolha seus dois parques favoritos para um dia de diversão.",
         price: 475.00,
         imageUrl: "img/toursdubai/98.jpg",
@@ -755,18 +731,10 @@ export const toursData = [
     },
     {
         id: 99,
-        name: "Ingresso 3 Parques Abu Dhabi a escolher - adulto",
+        name: "Ingresso 3 Parques Abu Dhabi a escolher - Adulto ou Kids",
         description: "Acesso a três parques temáticos na Ilha Yas, Abu Dhabi (Ferrari World, Warner Bros. World, SeaWorld ou Yas Waterworld - verificar opções disponíveis). Aproveite um combo para visitar três parques em dias diferentes.",
         price: 575.00,
         imageUrl: "img/toursdubai/99.jpg",
-        category: "ABU DHABI PARKS"
-    },
-    {
-        id: 100,
-        name: "Ingresso 2 Parques Abu Dhabi a escolher - criança",
-        description: "Acesso a dois parques temáticos na Ilha Yas, Abu Dhabi (Ferrari World, Warner Bros. World, SeaWorld ou Yas Waterworld - verificar opções disponíveis) para crianças. Escolha dois parques para a diversão dos pequenos.",
-        price: 475.00,
-        imageUrl: "img/toursdubai/100.jpg",
         category: "ABU DHABI PARKS"
     },
     {
@@ -876,7 +844,7 @@ export const toursData = [
     {
         id: 115,
         name: "Transporte c/ Motorista em Dubai Meio Periodo (5h) até 5 pessoas",
-        description: "Incluso: Veículo Toyota Previa 7 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        description: "Incluso: Veículo Toyota Previa 7 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.Hora extra: AED 100 (Toyota) / AED 200 (Ônibus).",
         price: 800.00,
         imageUrl: "img/toursdubai/27.jpg",
         category: "CARRO COM MOTORISTA"
@@ -884,23 +852,23 @@ export const toursData = [
     {
         id: 116,
         name: "Transporte c/ Motorista em Dubai Meio Periodo (5h) 6 a 11 pessoas",
-        description: "Incluso: Veículo Hiace vehicle 13 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        description: "Incluso: Veículo Hiace vehicle 13 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.Hora extra: AED 100 (Toyota) / AED 200 (Ônibus).",
         price: 950.00,
-        imageUrl: "img/toursdubai/28.jpg",
+        imageUrl: "img/toursdubai/27.jpg",
         category: "CARRO COM MOTORISTA"
     },
     {
         id: 117,
         name: "Transporte c/ Motorista em Dubai Meio Periodo (5h) 12 a 20 pessoas",
-        description: "Incluso: Ônibus Executivo Yutong (2024) – 22 lugares, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        description: "Incluso: Ônibus Executivo Yutong (2024) – 22 lugares, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.Hora extra: AED 100 (Toyota) / AED 200 (Ônibus).",
         price: 1600.00,
-        imageUrl: "img/toursdubai/29.jpg",
+        imageUrl: "img/toursdubai/27.jpg",
         category: "CARRO COM MOTORISTA"
     },
     {
         id: 118,
         name: "Transporte c/ Motorista em Dubai - Dia Todo (10h) até 5 pessoas",
-        description: "Incluso: Veículo Toyota Previa 7 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        description: "Incluso: Veículo Toyota Previa 7 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.Hora extra: AED 100 (Toyota) / AED 200 (Ônibus).",
         price: 1200.00,
         imageUrl: "img/toursdubai/27.jpg",
         category: "CARRO COM MOTORISTA"
@@ -908,41 +876,41 @@ export const toursData = [
     {
         id: 119,
         name: "Transporte c/ Motorista em Dubai - Dia Todo (10h) 6 a 11 pessoas",
-        description: "Incluso: Veículo Hiace vehicle 13 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        description: "Incluso: Veículo Hiace vehicle 13 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.Hora extra: AED 100 (Toyota) / AED 200 (Ônibus).",
         price: 1400.00,
-        imageUrl: "img/toursdubai/28.jpg",
+        imageUrl: "img/toursdubai/118.jpg",
         category: "CARRO COM MOTORISTA"
     },
     {
         id: 120,
         name: "Transporte c/ Motorista em Dubai - Dia Todo (10h) 12 a 20 pessoas",
-        description: "Incluso: Ônibus Executivo Yutong (2024) – 22 lugares, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        description: "Incluso: Ônibus Executivo Yutong (2024) – 22 lugares, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.Hora extra: AED 100 (Toyota) / AED 200 (Ônibus).",
         price: 1800.00,
-        imageUrl: "img/toursdubai/29.jpg",
+        imageUrl: "img/toursdubai/118.jpg",
         category: "CARRO COM MOTORISTA"
     },
     {
         id: 121,
         name: "Abu Dhabi - Transporte c/ Motorista - Dia Todo (10h) até 5 pessoas",
-        description: "Incluso: Veículo Toyota Previa 7 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        description: "Incluso: Veículo Toyota Previa 7 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.Hora extra: AED 100 (Toyota) / AED 200 (Ônibus).",
         price: 1450.00,
-        imageUrl: "img/toursdubai/27.jpg",
+        imageUrl: "img/toursdubai/121.jpg",
         category: "CARRO COM MOTORISTA"
     },
     {
         id: 122,
         name: "Abu Dhabi - Transporte c/ Motorista - Dia Todo (10h) 6 a 11 pessoas",
-        description: "Incluso: Veículo Hiace vehicle 13 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        description: "Incluso: Veículo Hiace vehicle 13 assentos, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.Hora extra: AED 100 (Toyota) / AED 200 (Ônibus).",
         price: 1950.00,
-        imageUrl: "img/toursdubai/28.jpg",
+        imageUrl: "img/toursdubai/121.jpg",
         category: "CARRO COM MOTORISTA"
     },
     {
         id: 123,
         name: "Abu Dhabi - Transporte c/ Motorista - Dia Todo (10h) 12 a 20 pessoas",
-        description: "Incluso: Ônibus Executivo Yutong (2024) – 22 lugares, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.",
+        description: "Incluso: Ônibus Executivo Yutong (2024) – 22 lugares, Motorista, recomendação de Itinerário (roteiro detalhado e ingressos vendidos separadamente). Não inclui Guia - Apenas Motorista no Idioma Inglês.Hora extra: AED 100 (Toyota) / AED 200 (Ônibus).",
         price: 2650.00,
-        imageUrl: "img/toursdubai/29.jpg",
+        imageUrl: "img/toursdubai/121.jpg",
         category: "CARRO COM MOTORISTA"
     },
     {
@@ -979,7 +947,7 @@ export const toursData = [
     },
     {
         id: 204,
-        name: "Safari no Deserto Premium - Transporte Compartilhado PP",
+        name: "Safari no Deserto Premium - Transporte Compartilhado - Valor por pessoa",
         description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
         price: 450.00,
         imageUrl: "img/toursdubai/premiumcompartilhado.jpg",
@@ -987,7 +955,7 @@ export const toursData = [
     },
     {
         id: 205,
-        name: "Safari no Deserto Premium - Transporte Privativo",
+        name: "Safari no Deserto Premium - Transporte Privativo - Valor total para até 6 pessoas",
         description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
         price: 2282.74,
         imageUrl: "img/toursdubai/premiumprivativo.jpg",
@@ -995,7 +963,7 @@ export const toursData = [
     },
     {
         id: 206,
-        name: "Safari no Deserto Gold - Transporte Compartilhado PP",
+        name: "Safari no Deserto Gold - Transporte Compartilhado - Valor por pessoa",
         description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé. *Será privativo quando houver 6 pessoas do mesmo grupo.",
         price: 690.00,
         imageUrl: "img/toursdubai/goldcompartilhado.jpg",
@@ -1003,7 +971,7 @@ export const toursData = [
     },
     {
         id: 207,
-        name: "Safari no Deserto Gold - Transporte Privativo - 2 pessoas PP",
+        name: "Safari no Deserto Gold - Transporte Privativo - 2 pessoas",
         description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
         price: 1256.25,
         imageUrl: "img/toursdubai/goldprivativo2p.jpg",
@@ -1011,7 +979,7 @@ export const toursData = [
     },
     {
         id: 208,
-        name: "Safari no Deserto Gold - Transporte Privativo - 3 pessoas PP",
+        name: "Safari no Deserto Gold - Transporte Privativo - 3 pessoas",
         description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
         price: 950.00,
         imageUrl: "img/toursdubai/goldprivativo3p.jpg",
@@ -1019,7 +987,7 @@ export const toursData = [
     },
     {
         id: 209,
-        name: "Safari no Deserto Gold - Transporte Privativo - 4 a 5 pessoas PP",
+        name: "Safari no Deserto Gold - Transporte Privativo - 4 a 5 pessoas",
         description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
         price: 805.00,
         imageUrl: "img/toursdubai/goldprivativo4p.jpg",
@@ -1027,7 +995,7 @@ export const toursData = [
     },
     {
         id: 210,
-        name: "Safari no Deserto Platinum - Transporte Compartilhado PP",
+        name: "Safari no Deserto Platinum - Transporte Compartilhado - Valor por pessoa",
         description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé. *Será privativo quando houver 6 pessoas do mesmo grupo.",
         price: 795.00,
         imageUrl: "img/toursdubai/platinumcompartilhado.jpg",
@@ -1035,7 +1003,7 @@ export const toursData = [
     },
     {
         id: 211,
-        name: "Safari no Deserto Platinum - Transporte Privativo - 2 pessoas PP",
+        name: "Safari no Deserto Platinum - Transporte Privativo - 2 pessoas",
         description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
         price: 1361.25,
         imageUrl: "img/toursdubai/platinumprivativo2p.jpg",
@@ -1043,7 +1011,7 @@ export const toursData = [
     },
     {
         id: 212,
-        name: "Safari no Deserto Platinum - Transporte Privativo - 3 pessoas PP",
+        name: "Safari no Deserto Platinum - Transporte Privativo - 3 pessoas",
         description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
         price: 1121.18,
         imageUrl: "img/toursdubai/platinumprivativo3p.jpg",
@@ -1051,7 +1019,7 @@ export const toursData = [
     },
     {
         id: 213,
-        name: "Safari no Deserto Platinum - Transporte Privativo - 4 a 5 pessoas PP",
+        name: "Safari no Deserto Platinum - Transporte Privativo - 4 a 5 pessoas",
         description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
         price: 895.00,
         imageUrl: "img/toursdubai/platinumprivativo4p.jpg",
@@ -1059,7 +1027,7 @@ export const toursData = [
     },
     {
         id: 214,
-        name: "Safari no Deserto All Inclusive (Bebidas alcoólicas) - Transporte Compartilhado PP",
+        name: "Safari no Deserto All Inclusive (Bebidas alcoólicas) - Transporte Compartilhado",
         description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, parada para fotos, Passeio simples de Camelo, Jantar tipo Buffet, Danças e Show, bebidas alcoólicas e não alcoólicas. Não incluso: narguilé.",
         price: 640.50,
         imageUrl: "img/toursdubai/allinclusivecompartilhado.jpg",
@@ -1067,10 +1035,10 @@ export const toursData = [
     },
     {
         id: 215,
-        name: "Safari no Deserto Emirate (Heritage) - Transporte Compartilhado PP",
+        name: "Safari no Deserto Emirate (Heritage) - Transporte Compartilhado",
         description: "Incluso: Transfer compartilhado ida e volta do Hotel, Rota no Deserto de Land Rover Vintage ou 30 Min de Camelo, Passeio simples de Camelo, Jantar tipo Buffet tradicional Emirate, Danças Típicas Emirate, Experiência sob as estrelas, bebidas alcoólicas tradicionais, acampamento beduíno.",
         price: 796.00,
-        imageUrl: "img/toursdubai/emirateheritage.jpg",
+        imageUrl: "img/toursdubai/215.jpg",
         category: "DESERTO"
     },
 ];
