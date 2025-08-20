@@ -59,7 +59,7 @@ export const toursData = [
     },
     {
         id: 26,
-        name: "Serviços de recepção dentro do AeroportO Dubai - Inglês",
+        name: "Serviços de recepção dentro do Aeroporto Dubai - Inglês",
         description: "Recepção personalizada dentro da imigração no Terminal 3 (Dubai). Profissional da Emirates acompanha até a saída do terminal. Atendimento em inglês. Válido apenas para chegadas em voos da Emirates.",
         price: 800.00,
         imageUrl: "img/toursdubai/26.jpg",
