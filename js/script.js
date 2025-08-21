@@ -1178,7 +1178,118 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const priceSpan = document.createElement('span');
             priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
-            priceSpan.textContent = `AED ${tour.price.toFixed(2)}`;
+            
+            // Seletor de tempo para passeios de helicóptero
+            let selectedTimeOption = null;
+            if (tour.hasTimeSelector && tour.timeOptions) {
+                selectedTimeOption = tour.timeOptions[0]; // Primeira opção como padrão
+                priceSpan.textContent = `AED ${selectedTimeOption.price.toFixed(2)}`;
+                
+                // Criar seletor de tempo
+                const timeSelectorDiv = document.createElement('div');
+                timeSelectorDiv.className = 'mb-3 flex flex-col items-start';
+                
+                const timeLabel = document.createElement('label');
+                timeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                timeLabel.textContent = 'Escolha a duração do voo:';
+                
+                const timeSelect = document.createElement('select');
+                timeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light w-full';
+                timeSelect.addEventListener('click', (e) => e.stopPropagation());
+                
+                tour.timeOptions.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.minutes;
+                    optionElement.textContent = `${option.minutes} minutos - AED ${option.price.toFixed(2)}`;
+                    timeSelect.appendChild(optionElement);
+                });
+                
+                timeSelect.onchange = function() {
+                    const selectedMinutes = parseInt(timeSelect.value);
+                    selectedTimeOption = tour.timeOptions.find(opt => opt.minutes === selectedMinutes);
+                    if (selectedTimeOption) {
+                        priceSpan.textContent = `AED ${selectedTimeOption.price.toFixed(2)}`;
+                    }
+                };
+                
+                timeSelectorDiv.appendChild(timeLabel);
+                timeSelectorDiv.appendChild(timeSelect);
+                
+                // Inserir o seletor antes do preço
+                priceAndButtonDiv.insertBefore(timeSelectorDiv, priceAndButtonDiv.firstChild);
+            } else {
+                priceSpan.textContent = `AED ${tour.price.toFixed(2)}`;
+            }
+
+
+
+            // Seletor para Iates
+            let selectedYachtOption = null;
+            if (tour.hasYachtSelector && tour.yachtOptions) {
+                selectedYachtOption = tour.yachtOptions[0];
+                priceSpan.textContent = `AED ${selectedYachtOption.price.toFixed(2)}`;
+                
+                const yachtSelectorDiv = document.createElement('div');
+                yachtSelectorDiv.className = 'mb-3 flex flex-col items-start';
+                
+                const yachtLabel = document.createElement('label');
+                yachtLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                yachtLabel.textContent = 'Escolha a capacidade:';
+                
+                const yachtSelect = document.createElement('select');
+                yachtSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light w-full';
+                yachtSelect.addEventListener('click', (e) => e.stopPropagation());
+                
+                tour.yachtOptions.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = JSON.stringify(option);
+                    optionElement.textContent = `${option.capacidade} - AED ${option.price.toFixed(2)}`;
+                    yachtSelect.appendChild(optionElement);
+                });
+                
+                yachtSelect.onchange = function() {
+                    selectedYachtOption = JSON.parse(yachtSelect.value);
+                    priceSpan.textContent = `AED ${selectedYachtOption.price.toFixed(2)}`;
+                };
+                
+                yachtSelectorDiv.appendChild(yachtLabel);
+                yachtSelectorDiv.appendChild(yachtSelect);
+                priceAndButtonDiv.insertBefore(yachtSelectorDiv, priceAndButtonDiv.firstChild);
+            }
+
+            // Seletor para Traslados
+            let selectedTransferOption = null;
+            if (tour.hasTransferSelector && tour.transferOptions) {
+                selectedTransferOption = tour.transferOptions[0];
+                priceSpan.textContent = `AED ${selectedTransferOption.price.toFixed(2)}`;
+                
+                const transferSelectorDiv = document.createElement('div');
+                transferSelectorDiv.className = 'mb-3 flex flex-col items-start';
+                
+                const transferLabel = document.createElement('label');
+                transferLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                transferLabel.textContent = 'Escolha o número de pessoas:';
+                
+                const transferSelect = document.createElement('select');
+                transferSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light w-full';
+                transferSelect.addEventListener('click', (e) => e.stopPropagation());
+                
+                tour.transferOptions.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = JSON.stringify(option);
+                    optionElement.textContent = `${option.pessoas} - AED ${option.price.toFixed(2)}`;
+                    transferSelect.appendChild(optionElement);
+                });
+                
+                transferSelect.onchange = function() {
+                    selectedTransferOption = JSON.parse(transferSelect.value);
+                    priceSpan.textContent = `AED ${selectedTransferOption.price.toFixed(2)}`;
+                };
+                
+                transferSelectorDiv.appendChild(transferLabel);
+                transferSelectorDiv.appendChild(transferSelect);
+                priceAndButtonDiv.insertBefore(transferSelectorDiv, priceAndButtonDiv.firstChild);
+            }
 
             const quantityInput = document.createElement('input');
             quantityInput.type = 'number';
@@ -1255,6 +1366,34 @@ document.addEventListener('DOMContentLoaded', () => {
                             quantity
                         );
                         showConfirmationMessage(`${quantity}x ${tour.name} (${selectedLanguageFlag} ${selectedLanguageLabel}) adicionado(s) ao carrinho!`);
+                    } else if (tour.hasTimeSelector && selectedTimeOption) {
+                        // Para passeios de helicóptero, usar o preço selecionado
+                        const tourWithSelectedTime = {
+                            ...tour,
+                            price: selectedTimeOption.price,
+                            selectedTime: selectedTimeOption.minutes
+                        };
+                        handleAddToCart(tourWithSelectedTime, quantity);
+                        showConfirmationMessage(`${quantity}x ${tour.name} (${selectedTimeOption.minutes} min) adicionado(s) ao carrinho!`);
+
+                    } else if (tour.hasYachtSelector && selectedYachtOption) {
+                        // Para Iates, usar a capacidade selecionada
+                        const tourWithSelectedOptions = {
+                            ...tour,
+                            price: selectedYachtOption.price,
+                            selectedOptions: selectedYachtOption
+                        };
+                        handleAddToCart(tourWithSelectedOptions, quantity);
+                        showConfirmationMessage(`${quantity}x ${tour.name} (${selectedYachtOption.capacidade}) adicionado(s) ao carrinho!`);
+                    } else if (tour.hasTransferSelector && selectedTransferOption) {
+                        // Para Traslados, usar as opções selecionadas
+                        const tourWithSelectedOptions = {
+                            ...tour,
+                            price: selectedTransferOption.price,
+                            selectedOptions: selectedTransferOption
+                        };
+                        handleAddToCart(tourWithSelectedOptions, quantity);
+                        showConfirmationMessage(`${quantity}x ${tour.name} (${selectedTransferOption.pessoas}) adicionado(s) ao carrinho!`);
                     } else {
                         handleAddToCart(tour, quantity);
                         showConfirmationMessage(`${quantity}x ${tour.name} adicionado(s) ao carrinho!`);
@@ -1340,6 +1479,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     langDiv.className = 'text-xs text-gray-500 font-geologica-light';
                     langDiv.textContent = `Idioma: ${item.languageFlag} ${item.languageLabel}`;
                     itemInfoDiv.appendChild(langDiv);
+                }
+
+                // Exibe opções selecionadas para passeios dinâmicos
+                if (item.selectedTime) {
+                    const timeDiv = document.createElement('div');
+                    timeDiv.className = 'text-xs text-gray-500 font-geologica-light';
+                    timeDiv.textContent = `Duração: ${item.selectedTime} minutos`;
+                    itemInfoDiv.appendChild(timeDiv);
+                }
+
+                if (item.selectedOptions) {
+                    const optionsDiv = document.createElement('div');
+                    optionsDiv.className = 'text-xs text-gray-500 font-geologica-light';
+                    
+                    if (item.selectedOptions.capacidade) {
+                        // Iates
+                        optionsDiv.textContent = `Capacidade: ${item.selectedOptions.capacidade}`;
+                    } else if (item.selectedOptions.pessoas) {
+                        // Traslados
+                        optionsDiv.textContent = `Pessoas: ${item.selectedOptions.pessoas}`;
+                    }
+                    
+                    itemInfoDiv.appendChild(optionsDiv);
                 }
 
                 cartItemDiv.appendChild(itemInfoDiv);

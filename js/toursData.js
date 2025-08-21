@@ -67,27 +67,17 @@ export const toursData = [
     },
     {
         id: 27,
-        name: "Traslado Aeroporto Dubai - Hotel em Dubai (1 Trecho) - até 2 pessoas",
-        description: " ",
+        name: "Traslado Aeroporto Dubai - Hotel Dubai",
+        description: "Traslado do Aeroporto Dubai para Hotel em Dubai (1 trecho). Escolha o número de pessoas no seletor abaixo. Incluso: veículo adequado ao grupo e motorista no idioma inglês.",
         price: 389.00,
         imageUrl: "img/toursdubai/27.jpg",
-        category: "TRASLADO"
-    },
-    {
-        id: 28,
-        name: "Traslado Aeroporto Dubai - Hotel em Dubai (1 Trecho) - 3 a 7 pessoas",
-        description: "Incluso: Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
-        price: 499.00,
-        imageUrl: "img/toursdubai/28.jpg",
-        category: "TRASLADO"
-    },
-    {
-        id: 29,
-        name: "Traslado Aeroporto Dubai - Hotel em Dubai (1 Trecho) - 8 a 14 pessoas",
-        description: "Incluso: 2 Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
-        price: 1000.00,
-        imageUrl: "img/toursdubai/29.jpg",
-        category: "TRASLADO"
+        category: "TRASLADO",
+        hasTransferSelector: true,
+        transferOptions: [
+            { pessoas: "Até 2 pessoas", price: 389.00 },
+            { pessoas: "3 a 7 pessoas", price: 499.00 },
+            { pessoas: "8 a 14 pessoas", price: 1000.00 }
+        ]
     },
     {
         id: 30,
@@ -155,43 +145,19 @@ export const toursData = [
     },
     {
         id: 303,
-        name: "Iate para até 6 pessoas - valor por hora (mínimo de 3 horas)",
-        description: "Iate privativo para até 6 pessoas. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente.",
-        price: 550.00,
+        name: "Iate Privativo - Aluguel por Hora",
+        description: "Iate privativo para grupos de diferentes tamanhos. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente. Escolha a capacidade desejada no seletor abaixo.",
+        price: 1650.00,
         imageUrl: "img/toursdubai/yacht6p.jpg",
-        category: "AVENTURAS AQUÁTICAS"
-    },
-    {
-        id: 304,
-        name: "Iate até 15 pessoas - valor por hora (mínimo de 3 horas)",
-        description: "Iate privativo para até 15 pessoas. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente.",
-        price: 680.00,
-        imageUrl: "img/toursdubai/yacht15p.jpg",
-        category: "AVENTURAS AQUÁTICAS"
-    },
-    {
-        id: 305,
-        name: "Iate para até 20 pessoas - valor por hora (mínimo de 3 horas)",
-        description: "Iate privativo para até 20 pessoas. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente.",
-        price: 800.00,
-        imageUrl: "img/toursdubai/yacht20p.jpg",
-        category: "AVENTURAS AQUÁTICAS"
-    },
-    {
-        id: 306,
-        name: "Iate para até 30 pessoas - valor por hora (mínimo de 3 horas)",
-        description: "Iate privativo para até 30 pessoas. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente.",
-        price: 1000.00,
-        imageUrl: "img/toursdubai/yacht30p.jpg",
-        category: "AVENTURAS AQUÁTICAS"
-    },
-    {
-        id: 307,
-        name: "Iate para até 40 pessoas - valor por hora (mínimo de 3 horas)",
-        description: "Iate privativo para até 40 pessoas. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente.",
-        price: 2000.00,
-        imageUrl: "img/toursdubai/yacht40p.jpg",
-        category: "AVENTURAS AQUÁTICAS"
+        category: "AVENTURAS AQUÁTICAS",
+        hasYachtSelector: true,
+        yachtOptions: [
+            { capacidade: "Até 6 pessoas", price: 1650.00 },
+            { capacidade: "Até 15 pessoas", price: 2040.00 },
+            { capacidade: "Até 20 pessoas", price: 2400.00 },
+            { capacidade: "Até 30 pessoas", price: 3000.00 },
+            { capacidade: "Até 40 pessoas", price: 6000.00 }
+        ]
     },
     {
         id: 309,
@@ -251,67 +217,33 @@ export const toursData = [
     },
     {
         id: 400,
-        name: "Helicóptero 12 min Compartilhado - 1 adulto",
-        description: "Voo panorâmico de helicóptero compartilhado por 12 minutos sobre Dubai. Experiência única para 1 adulto.",
+        name: "Helicóptero Compartilhado - Voo Panorâmico Dubai",
+        description: "Voo panorâmico de helicóptero compartilhado sobre Dubai. Escolha a duração desejada no seletor abaixo. Experiência única para 1 adulto. Vistas espetaculares da cidade.",
         price: 711.98,
         imageUrl: "img/toursdubai/400.jpg",
-        category: "EXPERIENCIAS AÉREAS"
+        category: "EXPERIENCIAS AÉREAS",
+        hasTimeSelector: true,
+        timeOptions: [
+            { minutes: 12, price: 711.98 },
+            { minutes: 17, price: 954.20 },
+            { minutes: 22, price: 1302.85 },
+            { minutes: 30, price: 2000.00 }
+        ]
     },
     {
         id: 401,
-        name: "Helicóptero 17 min Compartilhado - 1 adulto",
-        description: "Voo panorâmico de helicóptero compartilhado por 17 minutos sobre Dubai. Experiência única para 1 adulto.",
-        price: 954.20,
-        imageUrl: "img/toursdubai/400.jpg",
-        category: "EXPERIENCIAS AÉREAS"
-    },
-    {
-        id: 402,
-        name: "Helicóptero 22 min Compartilhado - 1 adulto",
-        description: "Voo panorâmico de helicóptero compartilhado por 22 minutos sobre Dubai. Experiência única para 1 adulto.",
-        price: 1302.85,
-        imageUrl: "img/toursdubai/400.jpg",
-        category: "EXPERIENCIAS AÉREAS"
-    },
-    {
-        id: 403,
-        name: "Helicóptero 30 min Compartilhado - 1 adulto",
-        description: "Voo panorâmico de helicóptero compartilhado por 30 minutos sobre Dubai. Experiência única para 1 adulto.",
-        price: 2000.00,
-        imageUrl: "img/toursdubai/400.jpg",
-        category: "EXPERIENCIAS AÉREAS"
-    },
-    {
-        id: 404,
-        name: "Helicóptero 12 min Privativo - até 5 pessoas",
-        description: "Voo privativo de helicóptero por 12 minutos para até 5 pessoas. Exclusividade e conforto.",
+        name: "Helicóptero Privativo - Voo Exclusivo Dubai",
+        description: "Voo privativo de helicóptero sobre Dubai para até 5 pessoas. Escolha a duração desejada no seletor abaixo. Exclusividade e conforto total.",
         price: 3600.00,
         imageUrl: "img/toursdubai/400.jpg",
-        category: "EXPERIENCIAS AÉREAS"
-    },
-    {
-        id: 405,
-        name: "Helicóptero 17 min Privativo - até 5 pessoas",
-        description: "Voo privativo de helicóptero por 17 minutos para até 5 pessoas. Exclusividade e conforto.",
-        price: 4800.00,
-        imageUrl: "img/toursdubai/400.jpg",
-        category: "EXPERIENCIAS AÉREAS"
-    },
-    {
-        id: 406,
-        name: "Helicóptero 22 min Privativo - até 5 pessoas",
-        description: "Voo privativo de helicóptero por 22 minutos para até 5 pessoas. Exclusividade e conforto.",
-        price: 6500.00,
-        imageUrl: "img/toursdubai/400.jpg",
-        category: "EXPERIENCIAS AÉREAS"
-    },
-    {
-        id: 407,
-        name: "Helicóptero 30 min Privativo - até 5 pessoas",
-        description: "Voo privativo de helicóptero por 30 minutos para até 5 pessoas. Exclusividade e conforto.",
-        price: 8900.00,
-        imageUrl: "img/toursdubai/400.jpg",
-        category: "EXPERIENCIAS AÉREAS"
+        category: "EXPERIENCIAS AÉREAS",
+        hasTimeSelector: true,
+        timeOptions: [
+            { minutes: 12, price: 3600.00 },
+            { minutes: 17, price: 4800.00 },
+            { minutes: 22, price: 6500.00 },
+            { minutes: 30, price: 8900.00 }
+        ]
     },
     {
         id: 51,
@@ -323,110 +255,127 @@ export const toursData = [
     },
     {
         id: 52,
-        name: "Ingresso The View Adulto (Vista Palmeira) - Com Fila",
-        description: "Acesso ao observatório The View at The Palm, localizado no topo da Palm Tower, com vistas 360 graus da Palm Jumeirah, do Golfo Pérsico e do skyline de Dubai. Ingresso padrão com tempo de espera na fila. (Preço por pessoa, aplicável para adultos)",
-        price: 110,
+        name: "The View - Ingresso Com Fila - Kids",
+        description: "Acesso ao observatório The View at The Palm, localizado no topo da Palm Tower, com vistas 360 graus da Palm Jumeirah, do Golfo Pérsico e do skyline de Dubai. Ingresso com fila para crianças.",
+        price: 75.00,
         imageUrl: "img/toursdubai/52.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 53,
-        name: "Ingresso The View Kids (Vista Palmeira) - Com Fila",
-        description: "Acesso ao observatório The View at The Palm para crianças, com vistas espetaculares da Palm Jumeirah e arredores. Ingresso padrão com tempo de espera na fila. (Preço por pessoa, aplicável para crianças)",
-        price: 75,
+        name: "The View - Ingresso Com Fila - Adulto",
+        description: "Acesso ao observatório The View at The Palm, localizado no topo da Palm Tower, com vistas 360 graus da Palm Jumeirah, do Golfo Pérsico e do skyline de Dubai. Ingresso com fila para adultos.",
+        price: 110.00,
         imageUrl: "img/toursdubai/52.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 54,
-        name: "Ingresso The View Adulto (Vista Palmeira) - Sem Fila",
-        description: "Acesso rápido ao observatório The View at The Palm, evitando as filas. Desfrute das vistas panorâmicas da Palm Jumeirah e do skyline de Dubai com mais agilidade. (Preço por pessoa, aplicável para adultos)",
-        price:  176.16,
+        name: "The View - Ingresso Sem Fila - Kids",
+        description: "Acesso ao observatório The View at The Palm, localizado no topo da Palm Tower, com vistas 360 graus da Palm Jumeirah, do Golfo Pérsico e do skyline de Dubai. Ingresso sem fila para crianças.",
+        price: 120.00,
         imageUrl: "img/toursdubai/52.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 55,
-        name: "Ingresso The View Kids (Vista Palmeira) - Sem Fila",
-        description: "Acesso rápido ao observatório The View at The Palm para crianças, sem a necessidade de esperar na fila. Vistas incríveis com mais conforto. (Preço por pessoa, aplicável para crianças)",
-        price: 120,
+        name: "The View - Ingresso Sem Fila - Adulto",
+        description: "Acesso ao observatório The View at The Palm, localizado no topo da Palm Tower, com vistas 360 graus da Palm Jumeirah, do Golfo Pérsico e do skyline de Dubai. Ingresso sem fila para adultos.",
+        price: 176.16,
         imageUrl: "img/toursdubai/52.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 56,
-        name: "Ingresso Burj Khalifa 124/125 c/ Fila (Após 11h) - Adulto",
-        description: "Acesso aos andares 124 e 125 do Burj Khalifa, o edifício mais alto do mundo, com vistas panorâmicas de Dubai. Ingresso padrão com tempo de espera na fila, válido para visitas após as 14h. (Preço por pessoa, aplicável para adultos)",
-        price: 260,
+        name: "Burj Khalifa - Ingresso Com Fila 9h-11h - Kids",
+        description: "Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso com fila para crianças, horário 9h-11h, andares 124/125. Vistas panorâmicas espetaculares de Dubai.",
+        price: 146.00,
         imageUrl: "img/toursdubai/56.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 57,
-        name: "Ingresso Burj Khalifa 124/125 c/ Fila (Após 11h) - Kids",
-        description: "Acesso aos andares 124 e 125 do Burj Khalifa para crianças (3-8 anos), com vistas espetaculares de Dubai. Ingresso padrão com tempo de espera na fila, válido para visitas após as 14h. (Preço por pessoa, aplicável para crianças)",
-        price: 165,
-        imageUrl: "img/toursdubai/57.jpg",
+        name: "Burj Khalifa - Ingresso Com Fila 9h-11h - Adulto",
+        description: "Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso com fila para adultos, horário 9h-11h, andares 124/125. Vistas panorâmicas espetaculares de Dubai.",
+        price: 180.00,
+        imageUrl: "img/toursdubai/56.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 58,
-        name: "Ingresso Burj Khalifa 124/125 c/ Fila (9h-11h) - Adulto",
-        description: "Acesso aos andares 124 e 125 do Burj Khalifa com vistas panorâmicas de Dubai. Ingresso padrão com tempo de espera na fila, válido para visitas entre 9h e 14h. (Preço por pessoa, aplicável para adultos)",
-        price: 180,
-        imageUrl: "img/toursdubai/58.jpg",
+        name: "Burj Khalifa - Ingresso Com Fila Após 11h - Kids",
+        description: "Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso com fila para crianças, horário após 11h, andares 124/125. Vistas panorâmicas espetaculares de Dubai.",
+        price: 165.00,
+        imageUrl: "img/toursdubai/56.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 59,
-        name: "Ingresso Burj Khalifa 124/125 c/ Fila (9h-11h) - Kids",
-        description: "Acesso aos andares 124 e 125 do Burj Khalifa para crianças (3-8 anos), com vistas espetaculares de Dubai. Ingresso padrão com tempo de espera na fila, válido para visitas entre 9h e 14h. (Preço por pessoa, aplicável para crianças)",
-        price: 146,
-        imageUrl: "img/toursdubai/59.jpg",
+        name: "Burj Khalifa - Ingresso Com Fila Após 11h - Adulto",
+        description: "Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso com fila para adultos, horário após 11h, andares 124/125. Vistas panorâmicas espetaculares de Dubai.",
+        price: 260.00,
+        imageUrl: "img/toursdubai/56.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 60,
-        name: "Ingresso Burj Khalifa 124/125 c/ Fila + Aquário - Adulto",
-        description: "Combine a visita aos andares 124 e 125 do Burj Khalifa com a entrada para o Dubai Aquarium & Underwater Zoo, localizado no Dubai Mall. Ingresso padrão com tempo de espera na fila para o Burj Khalifa. (Preço por pessoa, aplicável para adultos)",
-        price: 310,
-        imageUrl: "img/toursdubai/60.jpg",
+        name: "Burj Khalifa - Ingresso Com Fila 9h-11h + Aquário - Kids",
+        description: "Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso com fila para crianças, horário 9h-11h, andares 124/125 + Aquário. Vistas panorâmicas espetaculares de Dubai.",
+        price: 275.00,
+        imageUrl: "img/toursdubai/56.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 61,
-        name: "Ingresso Burj Khalifa 124/125 c/ Fila + Aquário - Kids",
-        description: "Combine a visita aos andares 124 e 125 do Burj Khalifa com a entrada para o Dubai Aquarium & Underwater Zoo para crianças (3-8 anos). Ingresso padrão com tempo de espera na fila para o Burj Khalifa. (Preço por pessoa, aplicável para crianças)",
-        price: 275,
-        imageUrl: "img/toursdubai/61.jpg",
+        name: "Burj Khalifa - Ingresso Com Fila 9h-11h + Aquário - Adulto",
+        description: "Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso com fila para adultos, horário 9h-11h, andares 124/125 + Aquário. Vistas panorâmicas espetaculares de Dubai.",
+        price: 310.00,
+        imageUrl: "img/toursdubai/56.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 62,
-        name: "Ingresso Burj Khalifa 124/125/148 s/ Fila (Após 11h) - Adulto ou Kids",
-        description: "Acesso VIP sem fila aos andares 124, 125 e o exclusivo andar 148 do Burj Khalifa, o ponto de observação mais alto do mundo. Inclui lounge e bebidas. Válido para visitas após as 14h. (Preço por pessoa, aplicável para adultos e crianças)",
-        price: 557.84,
-        imageUrl: "img/toursdubai/62.jpg",
+        name: "Burj Khalifa - Ingresso Com Fila Após 11h + Aquário - Kids",
+        description: "Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso com fila para crianças, horário após 11h, andares 124/125 + Aquário. Vistas panorâmicas espetaculares de Dubai.",
+        price: 275.00,
+        imageUrl: "img/toursdubai/56.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 63,
-        name: "Ingresso Burj Khalifa 124/125/148 s/ Fila (9h-11h) - Adulto ou Kids",
-        description: "Acesso VIP sem fila aos andares 124, 125 e o exclusivo andar 148 do Burj Khalifa. Inclui lounge e bebidas. Válido para visitas entre 9h e 14h. (Preço por pessoa, aplicável para adultos e crianças)",
-        price: 400.03,
-        imageUrl: "img/toursdubai/63.jpg",
+        name: "Burj Khalifa - Ingresso Com Fila Após 11h + Aquário - Adulto",
+        description: "Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso com fila para adultos, horário após 11h, andares 124/125 + Aquário. Vistas panorâmicas espetaculares de Dubai.",
+        price: 310.00,
+        imageUrl: "img/toursdubai/56.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 64,
-        name: "Ingresso Burj Khalifa s/ Fila Andar 154 - Adulto ou Kids",
-        description: "Acesso exclusivo e sem fila ao luxuoso lounge no andar 154 do Burj Khalifa, o ponto mais alto acessível ao público. Desfrute de vistas incomparáveis e serviço premium. (Preço por pessoa, aplicável para adultos e crianças)",
-        price: 811.07,
-        imageUrl: "img/toursdubai/64.jpg",
+        name: "Burj Khalifa - Ingresso Sem Fila 9h-11h - 124/125/148",
+        description: "Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso sem fila, horário 9h-11h, andares 124/125/148. Vistas panorâmicas espetaculares de Dubai.",
+        price: 400.03,
+        imageUrl: "img/toursdubai/56.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 65,
+        name: "Burj Khalifa - Ingresso Sem Fila Após 11h - 124/125/148",
+        description: "Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso sem fila, horário após 11h, andares 124/125/148. Vistas panorâmicas espetaculares de Dubai.",
+        price: 557.84,
+        imageUrl: "img/toursdubai/56.jpg",
+        category: "DUBAI TICKETS"
+    },
+    {
+        id: 66,
+        name: "Burj Khalifa - Ingresso Sem Fila Qualquer Horário - 154",
+        description: "Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso sem fila, qualquer horário, andar 154. Vistas panorâmicas espetaculares de Dubai.",
+        price: 811.07,
+        imageUrl: "img/toursdubai/56.jpg",
+        category: "DUBAI TICKETS"
+    },
+
+    {
+        id: 67,
         name: "Ingresso Sky Views Observatory + Escorregador - Adulto ou Kids",
         description: "Acesso ao Sky Views Observatory, com vistas panorâmicas de Dubai, e uma descida emocionante pelo Glass Slide (escorregador de vidro) do 53º andar. Uma experiência única e com adrenalina. (Preço por pessoa, aplicável para adultos)",
         price: 250.00,
@@ -434,7 +383,7 @@ export const toursData = [
         category: "DUBAI TICKETS"
     },
     {
-        id: 66,
+        id: 68,
         name: "Ingresso Museu do Futuro - Adulto ou Kids",
         description: "Explore o Museu do Futuro, um ícone arquitetônico e cultural de Dubai. Uma jornada imersiva pelas possibilidades do futuro, com exposições interativas e inovadoras. (Preço por pessoa, aplicável para adultos e crianças)",
         price: 160,
@@ -442,7 +391,7 @@ export const toursData = [
         category: "DUBAI TICKETS"
     },
     {
-        id: 67,
+        id: 69,
         name: "Ingresso The Frame (Moldura Dourada) - Adulto",
         description: "Visite o The Dubai Frame, uma estrutura arquitetônica impressionante que oferece vistas únicas do 'velho' e do 'novo' Dubai. Suba ao topo para uma perspectiva panorâmica da cidade. (Preço por pessoa, aplicável para adultos)",
         price: 55.05,
@@ -450,7 +399,7 @@ export const toursData = [
         category: "DUBAI TICKETS"
     },
     {
-        id: 68,
+        id: 70,
         name: "Ingresso The Frame (Moldura Dourada) - Kids",
         description: "Visite o The Dubai Frame com ingresso para crianças (3-12 anos). Uma forma divertida e educativa de ver a evolução de Dubai. (Preço por pessoa, aplicável para crianças)",
         price: 25.00,
@@ -458,7 +407,7 @@ export const toursData = [
         category: "DUBAI TICKETS"
     },
     {
-        id: 69,
+        id: 71,
         name: "Ingresso Aquário Dubai Mall - Adulto ou Kids",
         description: "Acesso ao Dubai Aquarium & Underwater Zoo, um dos maiores aquários suspensos do mundo, localizado no Dubai Mall. Observe uma variedade incrível de vida marinha. (Preço por pessoa, aplicável para adultos)",
         price: 201.85,
@@ -466,7 +415,7 @@ export const toursData = [
         category: "DUBAI TICKETS"
     },
     {
-        id: 70,
+        id: 72,
         name: "Ingresso Miracle Garden (Disponivel apenas de Outubro a Abril (Inverno)) - Adulto",
         description: "Visite o Dubai Miracle Garden, o maior jardim de flores naturais do mundo. Um espetáculo de cores e formas com milhões de flores arranjadas de maneira criativa. (Preço por pessoa, aplicável para adultos)",
         price: 102.76,
@@ -474,11 +423,11 @@ export const toursData = [
         category: "DUBAI TICKETS"
     },
     {
-        id: 71,
+        id: 73,
         name: "Ingresso Miracle Garden (Disponivel apenas de Outubro a Abril (Inverno)) - Kids",
         description: "Visite o Dubai Miracle Garden com ingresso para crianças (3-12 anos). Um lugar mágico e colorido para toda a família. (Preço por pessoa, aplicável para crianças)",
         price: 85,
-        imageUrl: "img/toursdubai/71.jpg",
+        imageUrl: "img/toursdubai/70.jpg",
         category: "DUBAI TICKETS"
     },
     {
@@ -819,27 +768,17 @@ export const toursData = [
     },
     {
         id: 112,
-        name: "Traslado Dubai-Abu Dhabi (1 Trecho) - até 2 pessoas",
-        description: "Incluso: Veículo Toyota Previa (7 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
+        name: "Traslado Dubai - Abu Dhabi",
+        description: "Traslado de Dubai para Abu Dhabi (1 trecho). Escolha o número de pessoas no seletor abaixo. Incluso: veículo adequado ao grupo e motorista no idioma inglês.",
         price: 650.00,
         imageUrl: "img/toursdubai/27.jpg",
-        category: "TRASLADO"
-    },
-    {
-        id: 113,
-        name: "Traslado Dubai-Abu Dhabi (1 Trecho) - 3 a 7 pessoas",
-        description: "Incluso: Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
-        price: 750.00,
-        imageUrl: "img/toursdubai/28.jpg",
-        category: "TRASLADO"
-    },
-    {
-        id: 114,
-        name: "Traslado Dubai-Abu Dhabi (1 Trecho) - 8 a 14 pessoas",
-        description: "Incluso: 2 Hiace vehicle (13 assentos - espaço p/ bagagem) e motorista no idioma inglês.",
-        price: 1500.00,
-        imageUrl: "img/toursdubai/29.jpg",
-        category: "TRASLADO"
+        category: "TRASLADO",
+        hasTransferSelector: true,
+        transferOptions: [
+            { pessoas: "Até 2 pessoas", price: 650.00 },
+            { pessoas: "3 a 7 pessoas", price: 750.00 },
+            { pessoas: "8 a 14 pessoas", price: 1500.00 }
+        ]
     },
     {
         id: 115,
