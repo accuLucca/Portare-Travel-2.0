@@ -21,7 +21,7 @@ export const toursData = [
         id: 19,
         name: "Tour Dubai Meio Periodo (4h)",
         description: "Tour privativo de 4 horas por Dubai com veículo, motorista, guia licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 220 (Ônibus). O valor por pessoa depende do número de participantes.",
-        price: 321.13, // Valor base para 4+ pessoas, mas será sobrescrito pelo cálculo dinâmico
+        price: 321.13,
         imageUrl: "img/toursdubai/19.jpg",
         category: "TOUR PRIVATIVO"
     },
@@ -29,7 +29,7 @@ export const toursData = [
         id: 20,
         name: "Tour Dubai Dia Todo (8h)",
         description: "Tour privativo de 8 horas por Dubai com veículo, motorista, guia brasileiro(a) licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 220 (Ônibus). O valor por pessoa depende do número de participantes.",
-        price: 504.63, // Valor base para 4+ pessoas, será sobrescrito pelo cálculo dinâmico
+        price: 504.63,
         imageUrl: "img/toursdubai/20.jpg",
         category: "TOUR PRIVATIVO"
     },
@@ -37,8 +37,8 @@ export const toursData = [
         id: 21,
         name: "Tour Abu Dhabi Dia Todo (10h)",
         description: "Tour privativo de 10 horas por Abu Dhabi com veículo, motorista e guia brasileiro(a) licenciado(a), reserva da Grande Mesquita e recomendação de itinerário. Outros ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 220 (Ônibus). O valor por pessoa depende do número de participantes.",
-        price: 631.24, // Valor base para 4+ pessoas, será sobrescrito pelo cálculo dinâmico
-        imageUrl: "img/toursdubai/21.jpg", // Use uma imagem apropriada
+        price: 631.24,
+        imageUrl: "img/toursdubai/21.jpg",
         category: "TOUR PRIVATIVO"
     },
     {
@@ -628,8 +628,8 @@ export const toursData = [
         id: 111,
         name: "Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)",
         description: "Tour privativo de 10 horas para Jebel Jais ou Hatta com veículo, motorista, guia brasileiro(a) licenciado(a) e recomendação de itinerário. Ingressos vendidos separadamente. Hora extra: AED 220 (Toyota) / AED 350 (Ônibus). O valor por pessoa depende do número de participantes.",
-        price: 631.24, // Valor base para 4+ pessoas, será sobrescrito pelo cálculo dinâmico
-        imageUrl: "img/toursdubai/23.jpg", // Use uma imagem apropriada
+        price: 631.24,
+        imageUrl: "img/toursdubai/23.jpg",
         category: "TOUR PRIVATIVO"
     },
 

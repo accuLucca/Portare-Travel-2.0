@@ -3,7 +3,6 @@ import { egyptData } from './egyptData.js';
 import { maldivesData } from './maldivesData.js';
 import { japanData } from './japanData.js';
 
-// Início do JavaScript
 document.addEventListener('DOMContentLoaded', () => {
     // Elementos do DOM
     const pageContent = document.getElementById('page-content');
@@ -84,12 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
              { label: "Todos", value: "all" }, { label: "Tour em grupo", value: "Tour em grupo" }, { label: "Tour privativo", value: "Tour privativo" },
         ],
         'Maldivas': [
-            { label: "Todos", value: "all" },
-            // Subcategorias das Maldivas serão adicionadas no futuro
+            { label: "Todos", value: "all" }
         ],
         'Japão': [
-            { label: "Todos", value: "all" },
-            // Subcategorias do Japão serão adicionadas no futuro
+            { label: "Todos", value: "all" }
         ],
 
     };
@@ -149,16 +146,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function formatAIResponse(text) {
-        // Substitui múltiplos asteriscos por tags <strong> ou <em>, e quebras de linha
-        // Esta é uma simplificação. Uma conversão Markdown completa seria mais complexa.
         let html = text
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Negrito
-            .replace(/\*(.*?)\*/g, '<em>$1</em>')       // Itálico
-            .replace(/^- (.*)/gm, '<li>$1</li>');      // Itens de lista simples
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            .replace(/^- (.*)/gm, '<li>$1</li>');
 
-        // Agrupa <li>s em <ul>
         html = html.replace(/(<li>.*<\/li>)+/gs, '<ul>$&</ul>');
-        html = html.replace(/\n/g, '<br />'); // Quebras de linha
+        html = html.replace(/\n/g, '<br />');
         return html;
     }
 
@@ -173,11 +167,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (currentPage === 'tours') {
             countrySelectionPage.style.display = 'none';
             toursPage.style.display = 'block';
-            cartButton.style.display = 'flex'; // 'flex' para alinhar itens internos
+            cartButton.style.display = 'flex';
             backToCountryButton.style.display = 'flex';
-            renderSubcategoryButtons(); // Render buttons based on current country
-            renderTours(); // Render tours based on current country data
-            updateToursPageHeader(); // Update header text and image
+            renderSubcategoryButtons();
+            renderTours();
+            updateToursPageHeader();
         }
     }
 
@@ -201,9 +195,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (country.targetPage === 'tours') {
                     showLoadingOverlay('Carregando destinos...');
                     setTimeout(() => {
-                        currentCountry = country; // Set the current country
-                        allTours = country.data; // Load data for the selected country
-                        selectedSubcategory = 'all'; // Reset subcategory filter
+                                currentCountry = country;
+        allTours = country.data;
+        selectedSubcategory = 'all';
                         currentPage = country.targetPage;
                         renderPage();
                         hideLoadingOverlay();
@@ -217,8 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             img.src = country.image;
             img.alt = country.name;
             img.className = "w-full h-40 object-cover object-center rounded-lg mb-4";
-            // Keep the onerror as a fallback in case the local image is not found
-            img.onerror = (e) => { e.target.onerror = null; e.target.src = `https://placehold.co/400x250/CCCCCC/333333?text=${country.name.replace(/\s/g, '+')}`; };
+                    img.onerror = (e) => { e.target.onerror = null; e.target.src = `https://placehold.co/400x250/CCCCCC/333333?text=${country.name.replace(/\s/g, '+')}`; };
 
             const h3 = document.createElement('h3');
             h3.className = "text-2xl sm:text-3xl font-bold text-[#0D7C6C] font-geologica-bold";
@@ -230,26 +223,21 @@ document.addEventListener('DOMContentLoaded', () => {
             countryElements.push(countryDiv);
         });
 
-        // Animar entrada dos cards
         addStaggeredAnimation(countryElements, 'animate-fade-in-scale', 150);
     }
 
     function updateToursPageHeader() {
         if (currentCountry) {
-            // Update the hero section background image
             toursPageHero.style.backgroundImage = `url('${currentCountry.heroImage}')`;
 
-            // Update the hero section title and subtitle
             const heroTitleElement = toursPageHero.querySelector('h2');
             const heroSubtitleElement = toursPageHero.querySelector('p');
             if (heroTitleElement) heroTitleElement.innerHTML = currentCountry.heroTitle;
             if (heroSubtitleElement) heroSubtitleElement.innerHTML = currentCountry.heroSubtitle;
 
-            // Update the main section title
-            if (toursPageTitle) { // Check if the element exists
+            if (toursPageTitle) {
                  toursPageTitle.textContent = `Nossos Passeios em ${currentCountry.name}`;
             } else {
-                 // If tours-page-title doesn't exist, find the h2 inside main
                  const mainH2 = document.querySelector('#tours-page main h2');
                  if (mainH2) mainH2.textContent = `Nossos Passeios em ${currentCountry.name}`;
             }
@@ -260,24 +248,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderSubcategoryButtons() {
         subcategoryButtonsContainer.innerHTML = '';
-        // Use subcategories specific to the current country, default to empty if none found
         const currentSubcategories = currentCountry && countrySubcategories[currentCountry.name] ? countrySubcategories[currentCountry.name] : [{ label: "Todos", value: "all" }];
 
         currentSubcategories.forEach(cat => {
             const button = document.createElement('button');
-            // Update the class list here
             button.className = `subcategory-button px-3 py-2 sm:px-5 sm:py-2 rounded-full font-semibold text-xs sm:text-sm transition duration-300 ease-in-out font-geologica-light ${selectedSubcategory === cat.value ? 'bg-[#0D7C6D] text-white shadow-md' : 'bg-[#33C4B6] text-[#0D7C6D] hover:bg-[#0D7C6C] hover:text-white'}`;
             button.textContent = cat.label;
             button.onclick = () => {
                 selectedSubcategory = cat.value;
-                renderSubcategoryButtons(); // Re-render buttons to update active state
-                renderTours(); // Re-render tours based on new filter
+                renderSubcategoryButtons();
+                renderTours();
             };
             subcategoryButtonsContainer.appendChild(button);
         });
     }
 
-    // Tabela de preços do Tour Dubai Meio Periodo (4h)
     const tourDubaiMeioPeriodoPriceTable = [
         { min: 1, max: 1, price: 1284.50 },
         { min: 2, max: 2, price: 642.25 },
@@ -297,7 +282,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return tourDubaiMeioPeriodoPriceTable[tourDubaiMeioPeriodoPriceTable.length - 1].price;
     }
 
-    // Tabela de preços do Tour Dubai Dia Todo (8h)
     const tourDubaiDiaTodoPriceTable = [
         { min: 1, max: 1, price: 2018.50 },
         { min: 2, max: 2, price: 1009.25 },
@@ -316,7 +300,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return tourDubaiDiaTodoPriceTable[tourDubaiDiaTodoPriceTable.length - 1].price;
     }
 
-    // Tabela de preços do Tour Abu Dhabi Dia Todo (10h)
     const tourAbuDhabiDiaTodo10hPriceTable = [
         { min: 1, max: 1, price: 2513.95 },
         { min: 2, max: 2, price: 1256.98 },
@@ -335,7 +318,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return tourAbuDhabiDiaTodo10hPriceTable[tourAbuDhabiDiaTodo10hPriceTable.length - 1].price;
     }
 
-    // Tabela de preços do Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h)
     const tourJebelHattaDiaTodo10hPriceTable = [
         { min: 1, max: 1, price: 2513.95 },
         { min: 2, max: 2, price: 1256.97 },
@@ -354,7 +336,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return tourJebelHattaDiaTodo10hPriceTable[tourJebelHattaDiaTodo10hPriceTable.length - 1].price;
     }
 
-    // Tabela de preços do Transporte c/ Motorista em Dubai Meio Periodo (5h)
     const transporteDubaiMeioPeriodo5hPriceTable = [
         { min: 1, max: 5, price: 800.00 },
         { min: 6, max: 11, price: 950.00 },
@@ -373,7 +354,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return transporteDubaiMeioPeriodo5hPriceTable[transporteDubaiMeioPeriodo5hPriceTable.length - 1].price;
     }
 
-    // Tabela de preços do Transporte c/ Motorista em Dubai - Dia Todo (10h)
     const transporteDubaiDiaTodo10hPriceTable = [
         { min: 1, max: 5, price: 1200.00 },
         { min: 6, max: 11, price: 1400.00 },
@@ -392,7 +372,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return transporteDubaiDiaTodo10hPriceTable[transporteDubaiDiaTodo10hPriceTable.length - 1].price;
     }
 
-    // Tabela de preços do Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h)
     const transporteAbuDhabiDiaTodo10hPriceTable = [
         { min: 1, max: 5, price: 1450.00 },
         { min: 6, max: 11, price: 1950.00 },
@@ -415,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const toursGridTarget = document.getElementById('tours-grid');
         if (!toursGridTarget) return;
         
-        // Mostrar loading skeleton enquanto carrega
+
         toursGridTarget.innerHTML = `
             <div class="col-span-full">
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -434,31 +413,21 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
-        // Pequeno delay para mostrar o loading
         setTimeout(() => {
             toursGridTarget.innerHTML = '';
 
-                    // Filtra passeios duplicados em inglês e mantém apenas os cards dinâmicos
         let filteredTours = allTours.filter(tour => {
-            
-            // Não renderiza os cards fixos (IDs numéricos dos itens estáticos do dataset), só os dinâmicos
             if (tour.id === 19 || tour.id === 20 || tour.id === 21 || tour.id === 111 || 
                 tour.id === 30 || tour.id === 31 || tour.id === 32 || 
                 tour.id === 115 || tour.id === 116 || tour.id === 117 || tour.id === 118 || 
                 tour.id === 119 || tour.id === 120 || tour.id === 121 || tour.id === 122 || tour.id === 123 ||
-                // Remove os tours do Burj Khalifa fixos (IDs 56-66) para usar o card dinâmico
                 tour.id === 56 || tour.id === 57 || tour.id === 58 || tour.id === 59 || 
                 tour.id === 60 || tour.id === 61 || tour.id === 62 || tour.id === 63 || 
                 tour.id === 64 || tour.id === 65 || tour.id === 66 ||
-                // Remove os tours do The View fixos (IDs 52-55) para usar o card dinâmico
                 tour.id === 52 || tour.id === 53 || tour.id === 54 || tour.id === 55 ||
-                // Remove os tours do The Frame e Miracle Garden fixos (IDs 69, 72) para usar os cards dinâmicos
                 tour.id === 69 || tour.id === 72 ||
-                // Remove os tours que serão convertidos para cards dinâmicos (IDs 110, 27, 303, 400, 401, 112)
                 tour.id === 110 || tour.id === 27 || tour.id === 303 || tour.id === 400 || tour.id === 401 || tour.id === 112) return false;
-            // Filtro de subcategoria
             if (!(selectedSubcategory === 'all' || tour.category === selectedSubcategory)) return false;
-            // Filtro de pesquisa
             if (searchQuery && !(
                 tour.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 tour.description.toLowerCase().includes(searchQuery.toLowerCase())
@@ -466,17 +435,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return true;
         });
 
-        // Função para verificar se o card dinâmico deve aparecer pelo filtro de pesquisa
         function dynamicCardMatches(name, desc) {
             if (!searchQuery) return true;
             const q = searchQuery.toLowerCase();
             return name.toLowerCase().includes(q) || desc.toLowerCase().includes(q);
         }
 
-        // Array para guardar os cards dinâmicos que devem aparecer
         const dynamicCards = [];
-
-        // Card dinâmico Tour Dubai Meio Periodo (4h) - apenas para Dubai e Abu Dhabi
         if (
             currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
             (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR PRIVATIVO') &&
@@ -518,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const priceSpan = document.createElement('span');
                 priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
 
-                // No card dinâmico Tour Dubai Meio Periodo (4h), ajuste o input para permitir até 47 pessoas:
+
                 const quantityInput = document.createElement('input');
                 quantityInput.type = 'number';
                 quantityInput.value = 1;
@@ -531,7 +496,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const price = getTourDubaiMeioPeriodoPrice(numPeople);
                     priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa`;
                 }
-                // garantir que atualize em vários eventos
                 quantityInput.addEventListener('input', updatePrice);
                 quantityInput.addEventListener('change', updatePrice);
                 quantityInput.addEventListener('blur', updatePrice);
@@ -575,7 +539,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Card dinâmico Tour Dubai Dia Todo (8h) - apenas para Dubai e Abu Dhabi
+
         if (
             currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
             (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR PRIVATIVO') &&
@@ -669,7 +633,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Card dinâmico Tour Abu Dhabi Dia Todo (10h) - apenas para Dubai e Abu Dhabi
+
         if (
             currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
             (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR PRIVATIVO') &&
@@ -763,7 +727,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Card dinâmico Tour Jebel Jais ou Hatta - Montanhas / Dia Todo (10h) - apenas para Dubai e Abu Dhabi
+
         if (
             currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
             (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR PRIVATIVO') &&
@@ -857,7 +821,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Card dinâmico Transporte c/ Motorista em Dubai Meio Periodo (5h) - apenas para Dubai e Abu Dhabi
+
         if (
             currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
             (selectedSubcategory === 'all' || selectedSubcategory === 'CARRO COM MOTORISTA') &&
@@ -954,7 +918,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Card dinâmico Transporte c/ Motorista em Dubai - Dia Todo (10h) - apenas para Dubai e Abu Dhabi
+
         if (
             currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
             (selectedSubcategory === 'all' || selectedSubcategory === 'CARRO COM MOTORISTA') &&
@@ -1051,7 +1015,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Card dinâmico Transporte c/ Motorista em Abu Dhabi - Dia Todo (10h) - apenas para Dubai e Abu Dhabi
+
         if (
             currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
             (selectedSubcategory === 'all' || selectedSubcategory === 'CARRO COM MOTORISTA') &&
@@ -1183,7 +1147,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const actionDiv = document.createElement('div');
                 actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
 
-                // Tabela de preços do Burj Khalifa Com Fila
                 const burjKhalifaComFilaPrices = {
                     '9h-11h-adulto': 180.00,
                     '9h-11h-kids': 146.00,
@@ -1195,11 +1158,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     'apos-11h-aquario-kids': 275.00
                 };
 
-                // Seletores
                 const selectorsDiv = document.createElement('div');
                 selectorsDiv.className = 'mb-4 space-y-3';
 
-                // Seletor de horário
                 const timeDiv = document.createElement('div');
                 timeDiv.className = 'flex flex-col';
                 const timeLabel = document.createElement('label');
@@ -1215,7 +1176,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 timeDiv.appendChild(timeSelect);
                 selectorsDiv.appendChild(timeDiv);
 
-                // Seletor de tipo de pessoa
                 const personTypeDiv = document.createElement('div');
                 personTypeDiv.className = 'flex flex-col';
                 const personTypeLabel = document.createElement('label');
@@ -1231,7 +1191,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 personTypeDiv.appendChild(personTypeSelect);
                 selectorsDiv.appendChild(personTypeDiv);
 
-                // Seletor de Aquário
                 const aquariumDiv = document.createElement('div');
                 aquariumDiv.className = 'flex flex-col';
                 const aquariumLabel = document.createElement('label');
@@ -1247,7 +1206,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 aquariumDiv.appendChild(aquariumSelect);
                 selectorsDiv.appendChild(aquariumDiv);
 
-                // Preço e botão
                 const priceAndButtonDiv = document.createElement('div');
                 priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
 
@@ -1279,14 +1237,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
                 }
 
-                // Event listeners para atualizar preço
                 timeSelect.addEventListener('change', updateBurjKhalifaComFilaPrice);
                 personTypeSelect.addEventListener('change', updateBurjKhalifaComFilaPrice);
                 aquariumSelect.addEventListener('change', updateBurjKhalifaComFilaPrice);
                 quantityInput.addEventListener('input', updateBurjKhalifaComFilaPrice);
                 quantityInput.addEventListener('change', updateBurjKhalifaComFilaPrice);
 
-                // Atualizar preço inicial
                 updateBurjKhalifaComFilaPrice();
 
                 const addButton = document.createElement('button');
@@ -2310,7 +2266,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
                 const img = document.createElement('img');
-                img.src = "img/toursdubai/yacht6p.jpg";
+                img.src = "img/toursdubai/iatePrivativo.jpg";
                 img.alt = "Iate Privativo";
                 img.className = 'w-full h-48 object-cover object-center';
                 img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Iate+Privativo`; };
@@ -2408,7 +2364,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         name: iateName,
                         description: 'Iate privativo para grupos de diferentes tamanhos. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente.',
                         price: price,
-                        imageUrl: "img/toursdubai/yacht6p.jpg",
+                        imageUrl: "img/toursdubai/iatePrivativo.jpg",
                         category: "AVENTURAS AQUÁTICAS"
                     }, 1);
                 };
