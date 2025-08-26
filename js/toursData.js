@@ -1,14 +1,6 @@
 export const toursData = [
     // TOUR EM GRUPO
     {
-        id: 110,
-        name: "Tour Dubai Compartilhado - No Idioma Da Sua Preferência (6h)",
-        description: "Tour compartilhado pelos principais pontos de Dubai com guia. Incluso: Guia em seu idioma nativo, Transporte do Hotel. Solicite Itinerário completo. Adulto ou kids +3 anos.",
-        price: 550.50,
-        imageUrl: "img/toursdubai/15.jpg",
-        category: "TOUR EM GRUPO"
-    },
-    {
         id: 16,
         name: "Tour Abu Dhabi Compartilhado - Tradicional / Dia Todo (8h)",
         description: "Tour compartilhado tradicional em Abu Dhabi. Incluso: Guia em Inglês, 1 Ingresso (à escolher), Transporte do Hotel (Dubai). Solicite Itinerário completo. Adulto ou kids +3 anos.",
@@ -65,20 +57,7 @@ export const toursData = [
         imageUrl: "img/toursdubai/26.jpg",
         category: "TRASLADO"
     },
-    {
-        id: 27,
-        name: "Traslado Aeroporto Dubai - Hotel Dubai",
-        description: "Traslado do Aeroporto Dubai para Hotel em Dubai (1 trecho). Escolha o número de pessoas no seletor abaixo. Incluso: veículo adequado ao grupo e motorista no idioma inglês.",
-        price: 389.00,
-        imageUrl: "img/toursdubai/27.jpg",
-        category: "TRASLADO",
-        hasTransferSelector: true,
-        transferOptions: [
-            { pessoas: "Até 2 pessoas", price: 389.00 },
-            { pessoas: "3 a 7 pessoas", price: 499.00 },
-            { pessoas: "8 a 14 pessoas", price: 1000.00 }
-        ]
-    },
+
     {
         id: 30,
         name: "Dubai Carro c/ Motorista (Sem Guia) - Meio Período (4h)",
@@ -127,22 +106,7 @@ export const toursData = [
         imageUrl: "img/toursdubai/302.jpg",
         category: "AVENTURAS AQUÁTICAS"
     },
-    {
-        id: 303,
-        name: "Iate Privativo - Aluguel por Hora",
-        description: "Iate privativo para grupos de diferentes tamanhos. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente. Escolha a capacidade desejada no seletor abaixo.",
-        price: 1650.00,
-        imageUrl: "img/toursdubai/yacht6p.jpg",
-        category: "AVENTURAS AQUÁTICAS",
-        hasYachtSelector: true,
-        yachtOptions: [
-            { capacidade: "Até 6 pessoas", price: 1650.00 },
-            { capacidade: "Até 15 pessoas", price: 2040.00 },
-            { capacidade: "Até 20 pessoas", price: 2400.00 },
-            { capacidade: "Até 30 pessoas", price: 3000.00 },
-            { capacidade: "Até 40 pessoas", price: 6000.00 }
-        ]
-    },
+
     {
         id: 309,
         name: "Mergulho em Dubai - 30 Minutos / adulto ou kids",
@@ -199,36 +163,8 @@ export const toursData = [
         imageUrl: "img/toursdubai/deepdivingcertcert.jpg",
         category: "AVENTURAS AQUÁTICAS"
     },
-    {
-        id: 400,
-        name: "Helicóptero Compartilhado - Voo Panorâmico Dubai",
-        description: "Voo panorâmico de helicóptero compartilhado sobre Dubai. Escolha a duração desejada no seletor abaixo. Experiência única para 1 adulto. Vistas espetaculares da cidade.",
-        price: 711.98,
-        imageUrl: "img/toursdubai/400.jpg",
-        category: "EXPERIENCIAS AÉREAS",
-        hasTimeSelector: true,
-        timeOptions: [
-            { minutes: 12, price: 711.98 },
-            { minutes: 17, price: 954.20 },
-            { minutes: 22, price: 1302.85 },
-            { minutes: 30, price: 2000.00 }
-        ]
-    },
-    {
-        id: 401,
-        name: "Helicóptero Privativo - Voo Exclusivo Dubai",
-        description: "Voo privativo de helicóptero sobre Dubai para até 5 pessoas. Escolha a duração desejada no seletor abaixo. Exclusividade e conforto total.",
-        price: 3600.00,
-        imageUrl: "img/toursdubai/400.jpg",
-        category: "EXPERIENCIAS AÉREAS",
-        hasTimeSelector: true,
-        timeOptions: [
-            { minutes: 12, price: 3600.00 },
-            { minutes: 17, price: 4800.00 },
-            { minutes: 22, price: 6500.00 },
-            { minutes: 30, price: 8900.00 }
-        ]
-    },
+
+
     {
         id: 51,
         name: "Ingresso Global Village Adulto ou kids (Qualquer Dia)",
@@ -374,22 +310,7 @@ export const toursData = [
         imageUrl: "img/toursdubai/66.jpg",
         category: "DUBAI TICKETS"
     },
-    {
-        id: 69,
-        name: "Ingresso The Frame (Moldura Dourada) - Adulto",
-        description: "Visite o The Dubai Frame, uma estrutura arquitetônica impressionante que oferece vistas únicas do 'velho' e do 'novo' Dubai. Suba ao topo para uma perspectiva panorâmica da cidade. (Preço por pessoa, aplicável para adultos)",
-        price: 55.05,
-        imageUrl: "img/toursdubai/67.jpg",
-        category: "DUBAI TICKETS"
-    },
-    {
-        id: 70,
-        name: "Ingresso The Frame (Moldura Dourada) - Kids",
-        description: "Visite o The Dubai Frame com ingresso para crianças (3-12 anos). Uma forma divertida e educativa de ver a evolução de Dubai. (Preço por pessoa, aplicável para crianças)",
-        price: 25.00,
-        imageUrl: "img/toursdubai/68.jpg",
-        category: "DUBAI TICKETS"
-    },
+
     {
         id: 71,
         name: "Ingresso Aquário Dubai Mall - Adulto ou Kids",
@@ -398,24 +319,9 @@ export const toursData = [
         imageUrl: "img/toursdubai/69.jpg",
         category: "DUBAI TICKETS"
     },
-    {
-        id: 72,
-        name: "Ingresso Miracle Garden (Disponivel apenas de Outubro a Abril (Inverno)) - Adulto",
-        description: "Visite o Dubai Miracle Garden, o maior jardim de flores naturais do mundo. Um espetáculo de cores e formas com milhões de flores arranjadas de maneira criativa. (Preço por pessoa, aplicável para adultos)",
-        price: 102.76,
-        imageUrl: "img/toursdubai/70.jpg",
-        category: "DUBAI TICKETS"
-    },
+
     {
         id: 73,
-        name: "Ingresso Miracle Garden (Disponivel apenas de Outubro a Abril (Inverno)) - Kids",
-        description: "Visite o Dubai Miracle Garden com ingresso para crianças (3-12 anos). Um lugar mágico e colorido para toda a família. (Preço por pessoa, aplicável para crianças)",
-        price: 85,
-        imageUrl: "img/toursdubai/70.jpg",
-        category: "DUBAI TICKETS"
-    },
-    {
-        id: 72,
         name: "Ingresso Ski Dubai - Adulto ou Kids",
         description: "O que está incluso: Entrada única para o Snow Park, permanência ilimitada. Aproveite as atividades do Snow Park, como nossa Caverna de Gelo. Bobsled ilimitado, passeio ilimitado na bola gigante, carrinhos bate-bate e descida de boia (tubbing) ilimitados.Uma vez no teleférico (Chairlift Ride).Uma vez na atração Mountain Thriller.Equipamentos de inverno fornecidos: jaqueta, calça, meias descartáveis, botas de neve e luvas de lã (fleece) gratuitas.Capacetes são obrigatórios para crianças menores de 13 anos.",
         price: 367,
@@ -423,7 +329,7 @@ export const toursData = [
         category: "DUBAI TICKETS"
     },
     {
-        id: 73,
+        id: 74,
         name: "Tour Guiado Burj al Arab - Adulto ou Kids",
         description: "Faça um tour guiado pelo interior do icônico hotel Burj Al Arab Jumeirah, considerado um dos mais luxuosos do mundo. Conheça sua arquitetura, história e interiores opulentos. (Preço por pessoa, aplicável para adultos)",
         price: 250,
@@ -431,7 +337,7 @@ export const toursData = [
         category: "DUBAI TICKETS"
     },
     {
-        id: 731,
+        id: 75,
         name: "Tour Guiado Burj al Arab + Cappuccino c/ Ouro - Adulto ou Kids",
         description: "Faça um tour guiado pelo interior do icônico hotel Burj Al Arab Jumeirah, considerado um dos mais luxuosos do mundo. Conheça sua arquitetura, história e interiores opulentos. (Preço por pessoa, aplicável para adultos)",
         price: 400,
@@ -439,23 +345,15 @@ export const toursData = [
         category: "DUBAI TICKETS"
     },
     {
-        id: 74,
-        name: "Abra Lake Ride - Show das Águas",
+        id: 76,
+        name: "Abra Lake Ride - Show das Águas DESATIVADO TEMPORARIAMENTE",
         description: "Desfrute de um passeio tradicional de barco Abra no lago do Burj Khalifa durante o famoso show das fontes dançantes. Uma vista privilegiada e emocionante do espetáculo. (Preço por pessoa)",
-        price: 69,
+        price: 0,
         imageUrl: "img/toursdubai/74.jpg",
         category: "DUBAI TICKETS"
     },
     {
-        id: 75,
-        name: "Ingresso Roda Gigante Ain Dubai c/ Corta Fila - Adulto",
-        description: "Acesso rápido e sem fila para a Ain Dubai, a maior roda gigante de observação do mundo. Desfrute de vistas espetaculares de Dubai de uma cabine climatizada. (Preço por pessoa, aplicável para adultos, exceto horários de pico)",
-        price: 196,
-        imageUrl: "img/toursdubai/75.jpg",
-        category: "DUBAI TICKETS"
-    },
-    {
-        id: 76,
+        id: 78,
         name: "Ingresso Roda Gigante Ain Dubai s/ Corta Fila - Adulto",
         description: "Acesso padrão à Ain Dubai, a maior roda gigante de observação do mundo. Desfrute de vistas incríveis de Dubai. (Preço por pessoa, aplicável para adultos, exceto horários de pico)",
         price: 145,
@@ -463,7 +361,7 @@ export const toursData = [
         category: "DUBAI TICKETS"
     },
     {
-        id: 77,
+        id: 79,
         name: "Ingresso Roda Gigante Ain Dubai s/ Corta Fila - Kids",
         description: "Acesso padrão à Ain Dubai para crianças, a maior roda gigante de observação do mundo. Vistas espetaculares de Dubai. (Preço por pessoa, aplicável para crianças, exceto horários de pico)",
         price: 115,
@@ -471,7 +369,7 @@ export const toursData = [
         category: "DUBAI TICKETS"
     },
     {
-        id: 78,
+        id: 80,
         name: "Ingresso Parque IMG Worlds of Adventure (Marvel) - Adulto ou Kids",
         description: "Acesso ao IMG Worlds of Adventure, o maior parque temático indoor do mundo, com zonas dedicadas a personagens da Marvel, Cartoon Network e outras atrações originais. (Preço por pessoa, aplicável para adultos)",
         price: 330,
@@ -479,7 +377,7 @@ export const toursData = [
         category: "DUBAI PARKS"
     },
     {
-        id: 79,
+        id: 81,
         name: "Ingresso Legoland Dubai - Adulto ou Kids",
         description: "Acesso ao Legoland Dubai, um parque temático baseado nos famosos blocos de montar Lego, com atrações, shows e modelos construídos com Lego. Ideal para famílias com crianças de 2 a 12 anos. (Preço por pessoa, aplicável para adultos)",
         price: 330,
@@ -487,19 +385,11 @@ export const toursData = [
         category: "DUBAI PARKS"
     },
     {
-        id: 80,
-        name: "Ingresso Parque Motiongate Dubai s/ Corta Fila - Adulto ou Kids",
+        id: 82,
+        name: "Ingresso Parque Motiongate Dubai - Adulto ou Kids (Consultar opções de corta fila)",
         description: "Acesso ao Motiongate Dubai, um parque temático inspirado em Hollywood, com atrações baseadas em filmes e estúdios como DreamWorks Animation, Columbia Pictures e Lionsgate. (Preço por pessoa, aplicável para adultos)",
         price: 295,
         imageUrl: "img/toursdubai/80.jpg",
-        category: "DUBAI PARKS"
-    },
-    {
-        id: 81,
-        name: "Ingresso Parque Motiongate Dubai c/ Corta Fila - Adulto ou Kids",
-        description: "Acesso rápido e sem fila ao Motiongate Dubai, permitindo que você aproveite as atrações inspiradas em Hollywood com mais agilidade. (Preço por pessoa, aplicável para adultos)",
-        price: 445,
-        imageUrl: "img/toursdubai/81.jpg",
         category: "DUBAI PARKS"
     },
     {
@@ -520,18 +410,10 @@ export const toursData = [
     },
     {
         id: 84,
-        name: "Ingresso Parque Aquático Atlantis Aquaventure - Adulto ou Kids",
+        name: "Ingresso Parque Aquático Atlantis Aquaventure - Adulto ou Kids (Consultar opções de corta fila)",
         description: "Acesso ao Atlantis Aquaventure Waterpark, um dos maiores e mais emocionantes parques aquáticos do mundo, localizado no Atlantis, The Palm. Desfrute de diversos escorregadores e atrações aquáticas. (Preço por pessoa, aplicável para adultos)",
         price: 330.30,
         imageUrl: "img/toursdubai/84.jpg",
-        category: "DUBAI PARKS"
-    },
-    {
-        id: 85,
-        name: "Ingresso Parque Aquático Atlantis Aquaventure c/ Corta Fila - Adulto ou Kids",
-        description: "Acesso rápido e sem fila ao Atlantis Aquaventure Waterpark, permitindo que você maximize seu tempo e aproveite mais escorregadores e atrações. (Preço por pessoa, aplicável para adultos)",
-        price: 660.60,
-        imageUrl: "img/toursdubai/85.jpg",
         category: "DUBAI PARKS"
     },
     {
@@ -750,20 +632,7 @@ export const toursData = [
         imageUrl: "img/toursdubai/23.jpg", // Use uma imagem apropriada
         category: "TOUR PRIVATIVO"
     },
-    {
-        id: 112,
-        name: "Traslado Dubai - Abu Dhabi",
-        description: "Traslado de Dubai para Abu Dhabi (1 trecho). Escolha o número de pessoas no seletor abaixo. Incluso: veículo adequado ao grupo e motorista no idioma inglês.",
-        price: 650.00,
-        imageUrl: "img/toursdubai/27.jpg",
-        category: "TRASLADO",
-        hasTransferSelector: true,
-        transferOptions: [
-            { pessoas: "Até 2 pessoas", price: 650.00 },
-            { pessoas: "3 a 7 pessoas", price: 750.00 },
-            { pessoas: "8 a 14 pessoas", price: 1500.00 }
-        ]
-    },
+
     {
         id: 115,
         name: "Transporte c/ Motorista em Dubai Meio Periodo (5h) até 5 pessoas",

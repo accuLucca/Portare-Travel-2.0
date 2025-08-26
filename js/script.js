@@ -451,7 +451,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 tour.id === 60 || tour.id === 61 || tour.id === 62 || tour.id === 63 || 
                 tour.id === 64 || tour.id === 65 || tour.id === 66 ||
                 // Remove os tours do The View fixos (IDs 52-55) para usar o card dinâmico
-                tour.id === 52 || tour.id === 53 || tour.id === 54 || tour.id === 55) return false;
+                tour.id === 52 || tour.id === 53 || tour.id === 54 || tour.id === 55 ||
+                // Remove os tours do The Frame e Miracle Garden fixos (IDs 69, 72) para usar os cards dinâmicos
+                tour.id === 69 || tour.id === 72 ||
+                // Remove os tours que serão convertidos para cards dinâmicos (IDs 110, 27, 303, 400, 401, 112)
+                tour.id === 110 || tour.id === 27 || tour.id === 303 || tour.id === 400 || tour.id === 401 || tour.id === 112) return false;
             // Filtro de subcategoria
             if (!(selectedSubcategory === 'all' || tour.category === selectedSubcategory)) return false;
             // Filtro de pesquisa
@@ -1166,7 +1170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const textDiv = document.createElement('div');
                 const nameH3 = document.createElement('h3');
                 nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
-                nameH3.textContent = "Burj Khalifa - Ingresso Com Fila";
+                nameH3.textContent = "Burj Khalifa - Ingresso Com Fila andar 124/125";
 
                 const descP = document.createElement('p');
                 descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
@@ -1306,7 +1310,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const price = burjKhalifaComFilaPrices[priceKey] || 0;
                         
                         // Gerar nome do ingresso
-                        let ticketName = "Burj Khalifa - Ingresso Com Fila";
+                        let ticketName = "Burj Khalifa - Ingresso Com Fila andar 124/125";
                         ticketName += ` ${time === '9h-11h' ? '9h-11h' : 'Após 11h'}`;
                         if (aquarium === 'com') ticketName += ' + Aquário';
                         ticketName += ` - ${personType === 'adulto' ? 'Adulto' : 'Kids'}`;
@@ -1354,7 +1358,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
                 const img = document.createElement('img');
-                img.src = "img/toursdubai/56.jpg";
+                img.src = "img/toursdubai/57.jpg";
                 img.alt = "Burj Khalifa";
                 img.className = 'w-full h-48 object-cover object-center';
                 img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Burj+Khalifa`; };
@@ -1365,7 +1369,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const textDiv = document.createElement('div');
                 const nameH3 = document.createElement('h3');
                 nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
-                nameH3.textContent = "Burj Khalifa - Ingresso Sem Fila";
+                nameH3.textContent = "Burj Khalifa - Ingresso Sem Fila andar 148/154";
 
                 const descP = document.createElement('p');
                 descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
@@ -1447,7 +1451,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const price = burjKhalifaSemFilaPrices[timeFloor] || 0;
                         
                         // Gerar nome do ingresso
-                        let ticketName = "Burj Khalifa - Ingresso Sem Fila";
+                        let ticketName = "Burj Khalifa - Ingresso Sem Fila andar 148/154";
                         if (timeFloor === '9h-11h-124-125-148') {
                             ticketName += ' 9h-11h - 124/125/148';
                         } else if (timeFloor === 'apos-11h-124-125-148') {
@@ -1461,7 +1465,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             name: ticketName,
                             description: 'Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso sem fila com acesso prioritário. Vistas panorâmicas espetaculares de Dubai.',
                             price: price,
-                            imageUrl: "img/toursdubai/56.jpg",
+                            imageUrl: "img/toursdubai/57.jpg",
                             category: "DUBAI TICKETS"
                         }, quantity);
                     } else {
@@ -1762,6 +1766,1039 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // Card dinâmico Ingresso The Frame
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'DUBAI TICKETS') &&
+            dynamicCardMatches("Ingresso The Frame", "Visite o The Dubai Frame")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/67.jpg";
+                img.alt = "The Frame";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=The+Frame`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Ingresso The Frame (Moldura Dourada)";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Visite o The Dubai Frame, uma estrutura arquitetônica impressionante que oferece vistas únicas do 'velho' e do 'novo' Dubai. Suba ao topo para uma perspectiva panorâmica da cidade.<br>
+                <span class="font-bold">Personalize seu ingresso:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do The Frame
+                const theFramePrices = {
+                    'adulto': 55.05,
+                    'kids': 25.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de tipo de pessoa
+                const personTypeDiv = document.createElement('div');
+                personTypeDiv.className = 'flex flex-col';
+                const personTypeLabel = document.createElement('label');
+                personTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                personTypeLabel.textContent = 'Tipo:';
+                const personTypeSelect = document.createElement('select');
+                personTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                personTypeSelect.innerHTML = `
+                    <option value="adulto">Adulto</option>
+                    <option value="kids">Kids</option>
+                `;
+                personTypeDiv.appendChild(personTypeLabel);
+                personTypeDiv.appendChild(personTypeSelect);
+                selectorsDiv.appendChild(personTypeDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updateTheFramePrice() {
+                    const personType = personTypeSelect.value;
+                    const price = theFramePrices[personType] || 0;
+                    const quantity = parseInt(quantityInput.value, 10);
+                    const totalPrice = price * quantity;
+                    priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                personTypeSelect.addEventListener('change', updateTheFramePrice);
+                quantityInput.addEventListener('input', updateTheFramePrice);
+                quantityInput.addEventListener('change', updateTheFramePrice);
+
+                // Atualizar preço inicial
+                updateTheFramePrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const quantity = parseInt(quantityInput.value, 10);
+                    if (quantity > 0 && quantity <= 10) {
+                        const personType = personTypeSelect.value;
+                        const price = theFramePrices[personType] || 0;
+                        
+                        // Gerar nome do ingresso
+                        let ticketName = "Ingresso The Frame (Moldura Dourada)";
+                        ticketName += ` - ${personType === 'adulto' ? 'Adulto' : 'Kids'}`;
+
+                        handleAddToCart({
+                            id: `the-frame-${personType}`,
+                            name: ticketName,
+                            description: 'Visite o The Dubai Frame, uma estrutura arquitetônica impressionante que oferece vistas únicas do "velho" e do "novo" Dubai. Suba ao topo para uma perspectiva panorâmica da cidade.',
+                            price: price,
+                            imageUrl: "img/toursdubai/67.jpg",
+                            category: "DUBAI TICKETS"
+                        }, quantity);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 10 ingressos.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Ingresso Miracle Garden
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'DUBAI TICKETS') &&
+            dynamicCardMatches("Ingresso Miracle Garden", "Visite o Dubai Miracle Garden")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/70.jpg";
+                img.alt = "Miracle Garden";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Miracle+Garden`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Ingresso Miracle Garden (Disponível apenas de Outubro a Abril / Inverno)";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Visite o Dubai Miracle Garden, o maior jardim de flores naturais do mundo. Um espetáculo de cores e formas com milhões de flores arranjadas de maneira criativa.<br>
+                <span class="font-bold">Personalize seu ingresso:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do Miracle Garden
+                const miracleGardenPrices = {
+                    'adulto': 102.76,
+                    'kids': 85.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de tipo de pessoa
+                const personTypeDiv = document.createElement('div');
+                personTypeDiv.className = 'flex flex-col';
+                const personTypeLabel = document.createElement('label');
+                personTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                personTypeLabel.textContent = 'Tipo:';
+                const personTypeSelect = document.createElement('select');
+                personTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                personTypeSelect.innerHTML = `
+                    <option value="adulto">Adulto</option>
+                    <option value="kids">Kids</option>
+                `;
+                personTypeDiv.appendChild(personTypeLabel);
+                personTypeDiv.appendChild(personTypeSelect);
+                selectorsDiv.appendChild(personTypeDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updateMiracleGardenPrice() {
+                    const personType = personTypeSelect.value;
+                    const price = miracleGardenPrices[personType] || 0;
+                    const quantity = parseInt(quantityInput.value, 10);
+                    const totalPrice = price * quantity;
+                    priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                personTypeSelect.addEventListener('change', updateMiracleGardenPrice);
+                quantityInput.addEventListener('input', updateMiracleGardenPrice);
+                quantityInput.addEventListener('change', updateMiracleGardenPrice);
+
+                // Atualizar preço inicial
+                updateMiracleGardenPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const quantity = parseInt(quantityInput.value, 10);
+                    if (quantity > 0 && quantity <= 10) {
+                        const personType = personTypeSelect.value;
+                        const price = miracleGardenPrices[personType] || 0;
+                        
+                        // Gerar nome do ingresso
+                        let ticketName = "Ingresso Miracle Garden (Disponível apenas de Outubro a Abril / Inverno)";
+                        ticketName += ` - ${personType === 'adulto' ? 'Adulto' : 'Kids'}`;
+
+                        handleAddToCart({
+                            id: `miracle-garden-${personType}`,
+                            name: ticketName,
+                            description: 'Visite o Dubai Miracle Garden, o maior jardim de flores naturais do mundo. Um espetáculo de cores e formas com milhões de flores arranjadas de maneira criativa.',
+                            price: price,
+                            imageUrl: "img/toursdubai/70.jpg",
+                            category: "DUBAI TICKETS"
+                        }, quantity);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 10 ingressos.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Tour Dubai Compartilhado - No Idioma Da Sua Preferência (6h)
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR EM GRUPO') &&
+            dynamicCardMatches("Tour Dubai Compartilhado - No Idioma Da Sua Preferência (6h)", "Tour compartilhado pelos principais pontos de Dubai com guia")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/15.jpg";
+                img.alt = "Tour Dubai Compartilhado";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Tour+Dubai+Compartilhado`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Tour Dubai Compartilhado - No Idioma Da Sua Preferência (6h)";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Tour compartilhado pelos principais pontos de Dubai com guia. Incluso: Guia em seu idioma nativo, Transporte do Hotel. Solicite Itinerário completo.<br>
+                <span class="font-bold">Personalize seu tour:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do Tour Dubai Compartilhado
+                const tourDubaiCompartilhadoPrices = {
+                    'adulto': 550.50,
+                    'kids': 450.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de tipo de pessoa
+                const personTypeDiv = document.createElement('div');
+                personTypeDiv.className = 'flex flex-col';
+                const personTypeLabel = document.createElement('label');
+                personTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                personTypeLabel.textContent = 'Tipo:';
+                const personTypeSelect = document.createElement('select');
+                personTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                personTypeSelect.innerHTML = `
+                    <option value="adulto">Adulto</option>
+                    <option value="kids">Kids</option>
+                `;
+                personTypeDiv.appendChild(personTypeLabel);
+                personTypeDiv.appendChild(personTypeSelect);
+                selectorsDiv.appendChild(personTypeDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updateTourDubaiCompartilhadoPrice() {
+                    const personType = personTypeSelect.value;
+                    const price = tourDubaiCompartilhadoPrices[personType] || 0;
+                    const quantity = parseInt(quantityInput.value, 10);
+                    const totalPrice = price * quantity;
+                    priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                personTypeSelect.addEventListener('change', updateTourDubaiCompartilhadoPrice);
+                quantityInput.addEventListener('input', updateTourDubaiCompartilhadoPrice);
+                quantityInput.addEventListener('change', updateTourDubaiCompartilhadoPrice);
+
+                // Atualizar preço inicial
+                updateTourDubaiCompartilhadoPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const quantity = parseInt(quantityInput.value, 10);
+                    if (quantity > 0 && quantity <= 10) {
+                        const personType = personTypeSelect.value;
+                        const price = tourDubaiCompartilhadoPrices[personType] || 0;
+                        
+                        // Gerar nome do tour
+                        let tourName = "Tour Dubai Compartilhado - No Idioma Da Sua Preferência (6h)";
+                        tourName += ` - ${personType === 'adulto' ? 'Adulto' : 'Kids'}`;
+
+                        handleAddToCart({
+                            id: `tour-dubai-compartilhado-${personType}`,
+                            name: tourName,
+                            description: 'Tour compartilhado pelos principais pontos de Dubai com guia. Incluso: Guia em seu idioma nativo, Transporte do Hotel. Solicite Itinerário completo.',
+                            price: price,
+                            imageUrl: "img/toursdubai/15.jpg",
+                            category: "TOUR EM GRUPO"
+                        }, quantity);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 10 pessoas.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Traslado Aeroporto Dubai - Hotel Dubai
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'TRASLADO') &&
+            dynamicCardMatches("Traslado Aeroporto Dubai - Hotel Dubai", "Traslado do Aeroporto Dubai para Hotel em Dubai")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/27.jpg";
+                img.alt = "Traslado Aeroporto Dubai";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Traslado+Aeroporto`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Traslado Aeroporto Dubai - Hotel Dubai";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Traslado do Aeroporto Dubai para Hotel em Dubai (1 trecho). Incluso: veículo adequado ao grupo e motorista no idioma inglês.<br>
+                <span class="font-bold">Escolha o número de pessoas:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do Traslado Aeroporto Dubai
+                const trasladoAeroportoPrices = {
+                    '2pessoas': 389.00,
+                    '3a7pessoas': 499.00,
+                    '8a14pessoas': 1000.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de número de pessoas
+                const peopleDiv = document.createElement('div');
+                peopleDiv.className = 'flex flex-col';
+                const peopleLabel = document.createElement('label');
+                peopleLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                peopleLabel.textContent = 'Pessoas:';
+                const peopleSelect = document.createElement('select');
+                peopleSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                peopleSelect.innerHTML = `
+                    <option value="2pessoas">Até 2 pessoas</option>
+                    <option value="3a7pessoas">3 a 7 pessoas</option>
+                    <option value="8a14pessoas">8 a 14 pessoas</option>
+                `;
+                peopleDiv.appendChild(peopleLabel);
+                peopleDiv.appendChild(peopleSelect);
+                selectorsDiv.appendChild(peopleDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                function updateTrasladoAeroportoPrice() {
+                    const peopleType = peopleSelect.value;
+                    const price = trasladoAeroportoPrices[peopleType] || 0;
+                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                peopleSelect.addEventListener('change', updateTrasladoAeroportoPrice);
+
+                // Atualizar preço inicial
+                updateTrasladoAeroportoPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const peopleType = peopleSelect.value;
+                    const price = trasladoAeroportoPrices[peopleType] || 0;
+                    
+                    // Gerar nome do traslado
+                    let trasladoName = "Traslado Aeroporto Dubai - Hotel Dubai";
+                    let peopleText = "";
+                    if (peopleType === '2pessoas') peopleText = "Até 2 pessoas";
+                    else if (peopleType === '3a7pessoas') peopleText = "3 a 7 pessoas";
+                    else if (peopleType === '8a14pessoas') peopleText = "8 a 14 pessoas";
+                    trasladoName += ` - ${peopleText}`;
+
+                    handleAddToCart({
+                        id: `traslado-aeroporto-${peopleType}`,
+                        name: trasladoName,
+                        description: 'Traslado do Aeroporto Dubai para Hotel em Dubai (1 trecho). Incluso: veículo adequado ao grupo e motorista no idioma inglês.',
+                        price: price,
+                        imageUrl: "img/toursdubai/27.jpg",
+                        category: "TRASLADO"
+                    }, 1);
+                };
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(addButton);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Iate Privativo - Aluguel por Hora
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'AVENTURAS AQUÁTICAS') &&
+            dynamicCardMatches("Iate Privativo - Aluguel por Hora", "Iate privativo para grupos de diferentes tamanhos")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/yacht6p.jpg";
+                img.alt = "Iate Privativo";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Iate+Privativo`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Iate Privativo - Aluguel por Hora";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Iate privativo para grupos de diferentes tamanhos. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente.<br>
+                <span class="font-bold">Escolha a capacidade desejada:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do Iate Privativo
+                const iatePrivativoPrices = {
+                    '6pessoas': 1650.00,
+                    '15pessoas': 2040.00,
+                    '20pessoas': 2400.00,
+                    '30pessoas': 3000.00,
+                    '40pessoas': 6000.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de capacidade
+                const capacityDiv = document.createElement('div');
+                capacityDiv.className = 'flex flex-col';
+                const capacityLabel = document.createElement('label');
+                capacityLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                capacityLabel.textContent = 'Capacidade:';
+                const capacitySelect = document.createElement('select');
+                capacitySelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                capacitySelect.innerHTML = `
+                    <option value="6pessoas">Até 6 pessoas</option>
+                    <option value="15pessoas">Até 15 pessoas</option>
+                    <option value="20pessoas">Até 20 pessoas</option>
+                    <option value="30pessoas">Até 30 pessoas</option>
+                    <option value="40pessoas">Até 40 pessoas</option>
+                `;
+                capacityDiv.appendChild(capacityLabel);
+                capacityDiv.appendChild(capacitySelect);
+                selectorsDiv.appendChild(capacityDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                function updateIatePrivativoPrice() {
+                    const capacityType = capacitySelect.value;
+                    const price = iatePrivativoPrices[capacityType] || 0;
+                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por hora`;
+                }
+
+                // Event listeners para atualizar preço
+                capacitySelect.addEventListener('change', updateIatePrivativoPrice);
+
+                // Atualizar preço inicial
+                updateIatePrivativoPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const capacityType = capacitySelect.value;
+                    const price = iatePrivativoPrices[capacityType] || 0;
+                    
+                    // Gerar nome do iate
+                    let iateName = "Iate Privativo - Aluguel por Hora";
+                    let capacityText = "";
+                    if (capacityType === '6pessoas') capacityText = "Até 6 pessoas";
+                    else if (capacityType === '15pessoas') capacityText = "Até 15 pessoas";
+                    else if (capacityType === '20pessoas') capacityText = "Até 20 pessoas";
+                    else if (capacityType === '30pessoas') capacityText = "Até 30 pessoas";
+                    else if (capacityType === '40pessoas') capacityText = "Até 40 pessoas";
+                    iateName += ` - ${capacityText}`;
+
+                    handleAddToCart({
+                        id: `iate-privativo-${capacityType}`,
+                        name: iateName,
+                        description: 'Iate privativo para grupos de diferentes tamanhos. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente.',
+                        price: price,
+                        imageUrl: "img/toursdubai/yacht6p.jpg",
+                        category: "AVENTURAS AQUÁTICAS"
+                    }, 1);
+                };
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(addButton);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Helicóptero Compartilhado - Voo Panorâmico Dubai
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'EXPERIENCIAS AÉREAS') &&
+            dynamicCardMatches("Helicóptero Compartilhado - Voo Panorâmico Dubai", "Voo panorâmico de helicóptero compartilhado sobre Dubai")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/400.jpg";
+                img.alt = "Helicóptero Compartilhado";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Helicoptero+Compartilhado`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Helicóptero Compartilhado - Voo Panorâmico Dubai";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Voo panorâmico de helicóptero compartilhado sobre Dubai. Experiência única para 1 adulto. Vistas espetaculares da cidade.<br>
+                <span class="font-bold">Escolha a duração do voo:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do Helicóptero Compartilhado
+                const helicopteroCompartilhadoPrices = {
+                    '12min': 711.98,
+                    '17min': 954.20,
+                    '22min': 1302.85,
+                    '30min': 2000.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de duração
+                const durationDiv = document.createElement('div');
+                durationDiv.className = 'flex flex-col';
+                const durationLabel = document.createElement('label');
+                durationLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                durationLabel.textContent = 'Duração:';
+                const durationSelect = document.createElement('select');
+                durationSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                durationSelect.innerHTML = `
+                    <option value="12min">12 minutos</option>
+                    <option value="17min">17 minutos</option>
+                    <option value="22min">22 minutos</option>
+                    <option value="30min">30 minutos</option>
+                `;
+                durationDiv.appendChild(durationLabel);
+                durationDiv.appendChild(durationSelect);
+                selectorsDiv.appendChild(durationDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                function updateHelicopteroCompartilhadoPrice() {
+                    const durationType = durationSelect.value;
+                    const price = helicopteroCompartilhadoPrices[durationType] || 0;
+                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                durationSelect.addEventListener('change', updateHelicopteroCompartilhadoPrice);
+
+                // Atualizar preço inicial
+                updateHelicopteroCompartilhadoPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const durationType = durationSelect.value;
+                    const price = helicopteroCompartilhadoPrices[durationType] || 0;
+                    
+                    // Gerar nome do helicóptero
+                    let helicopterName = "Helicóptero Compartilhado - Voo Panorâmico Dubai";
+                    let durationText = "";
+                    if (durationType === '12min') durationText = "12 minutos";
+                    else if (durationType === '17min') durationText = "17 minutos";
+                    else if (durationType === '22min') durationText = "22 minutos";
+                    else if (durationType === '30min') durationText = "30 minutos";
+                    helicopterName += ` - ${durationText}`;
+
+                    handleAddToCart({
+                        id: `helicoptero-compartilhado-${durationType}`,
+                        name: helicopterName,
+                        description: 'Voo panorâmico de helicóptero compartilhado sobre Dubai. Experiência única para 1 adulto. Vistas espetaculares da cidade.',
+                        price: price,
+                        imageUrl: "img/toursdubai/400.jpg",
+                        category: "EXPERIENCIAS AÉREAS"
+                    }, 1);
+                };
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(addButton);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Helicóptero Privativo - Voo Exclusivo Dubai
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'EXPERIENCIAS AÉREAS') &&
+            dynamicCardMatches("Helicóptero Privativo - Voo Exclusivo Dubai", "Voo privativo de helicóptero sobre Dubai para até 5 pessoas")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/400.jpg";
+                img.alt = "Helicóptero Privativo";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Helicoptero+Privativo`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Helicóptero Privativo - Voo Exclusivo Dubai";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Voo privativo de helicóptero sobre Dubai para até 5 pessoas. Exclusividade e conforto total.<br>
+                <span class="font-bold">Escolha a duração do voo:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do Helicóptero Privativo
+                const helicopteroPrivativoPrices = {
+                    '12min': 3600.00,
+                    '17min': 4800.00,
+                    '22min': 6500.00,
+                    '30min': 8900.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de duração
+                const durationDiv = document.createElement('div');
+                durationDiv.className = 'flex flex-col';
+                const durationLabel = document.createElement('label');
+                durationLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                durationLabel.textContent = 'Duração:';
+                const durationSelect = document.createElement('select');
+                durationSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                durationSelect.innerHTML = `
+                    <option value="12min">12 minutos</option>
+                    <option value="17min">17 minutos</option>
+                    <option value="22min">22 minutos</option>
+                    <option value="30min">30 minutos</option>
+                `;
+                durationDiv.appendChild(durationLabel);
+                durationDiv.appendChild(durationSelect);
+                selectorsDiv.appendChild(durationDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                function updateHelicopteroPrivativoPrice() {
+                    const durationType = durationSelect.value;
+                    const price = helicopteroPrivativoPrices[durationType] || 0;
+                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                durationSelect.addEventListener('change', updateHelicopteroPrivativoPrice);
+
+                // Atualizar preço inicial
+                updateHelicopteroPrivativoPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const durationType = durationSelect.value;
+                    const price = helicopteroPrivativoPrices[durationType] || 0;
+                    
+                    // Gerar nome do helicóptero
+                    let helicopterName = "Helicóptero Privativo - Voo Exclusivo Dubai";
+                    let durationText = "";
+                    if (durationType === '12min') durationText = "12 minutos";
+                    else if (durationType === '17min') durationText = "17 minutos";
+                    else if (durationType === '22min') durationText = "22 minutos";
+                    else if (durationType === '30min') durationText = "30 minutos";
+                    helicopterName += ` - ${durationText}`;
+
+                    handleAddToCart({
+                        id: `helicoptero-privativo-${durationType}`,
+                        name: helicopterName,
+                        description: 'Voo privativo de helicóptero sobre Dubai para até 5 pessoas. Exclusividade e conforto total.',
+                        price: price,
+                        imageUrl: "img/toursdubai/400.jpg",
+                        category: "EXPERIENCIAS AÉREAS"
+                    }, 1);
+                };
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(addButton);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Traslado Dubai - Abu Dhabi
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'TRASLADO') &&
+            dynamicCardMatches("Traslado Dubai - Abu Dhabi", "Traslado de Dubai para Abu Dhabi")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/27.jpg";
+                img.alt = "Traslado Dubai - Abu Dhabi";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Traslado+Dubai+Abu+Dhabi`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Traslado Dubai - Abu Dhabi";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Traslado de Dubai para Abu Dhabi (1 trecho). Incluso: veículo adequado ao grupo e motorista no idioma inglês.<br>
+                <span class="font-bold">Escolha o número de pessoas:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do Traslado Dubai - Abu Dhabi
+                const trasladoDubaiAbuDhabiPrices = {
+                    '2pessoas': 650.00,
+                    '3a7pessoas': 750.00,
+                    '8a14pessoas': 1500.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de número de pessoas
+                const peopleDiv = document.createElement('div');
+                peopleDiv.className = 'flex flex-col';
+                const peopleLabel = document.createElement('label');
+                peopleLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                peopleLabel.textContent = 'Pessoas:';
+                const peopleSelect = document.createElement('select');
+                peopleSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                peopleSelect.innerHTML = `
+                    <option value="2pessoas">Até 2 pessoas</option>
+                    <option value="3a7pessoas">3 a 7 pessoas</option>
+                    <option value="8a14pessoas">8 a 14 pessoas</option>
+                `;
+                peopleDiv.appendChild(peopleLabel);
+                peopleDiv.appendChild(peopleSelect);
+                selectorsDiv.appendChild(peopleDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                function updateTrasladoDubaiAbuDhabiPrice() {
+                    const peopleType = peopleSelect.value;
+                    const price = trasladoDubaiAbuDhabiPrices[peopleType] || 0;
+                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                peopleSelect.addEventListener('change', updateTrasladoDubaiAbuDhabiPrice);
+
+                // Atualizar preço inicial
+                updateTrasladoDubaiAbuDhabiPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const peopleType = peopleSelect.value;
+                    const price = trasladoDubaiAbuDhabiPrices[peopleType] || 0;
+                    
+                    // Gerar nome do traslado
+                    let trasladoName = "Traslado Dubai - Abu Dhabi";
+                    let peopleText = "";
+                    if (peopleType === '2pessoas') peopleText = "Até 2 pessoas";
+                    else if (peopleType === '3a7pessoas') peopleText = "3 a 7 pessoas";
+                    else if (peopleType === '8a14pessoas') peopleText = "8 a 14 pessoas";
+                    trasladoName += ` - ${peopleText}`;
+
+                    handleAddToCart({
+                        id: `traslado-dubai-abudhabi-${peopleType}`,
+                        name: trasladoName,
+                        description: 'Traslado de Dubai para Abu Dhabi (1 trecho). Incluso: veículo adequado ao grupo e motorista no idioma inglês.',
+                        price: price,
+                        imageUrl: "img/toursdubai/27.jpg",
+                        category: "TRASLADO"
+                    }, 1);
+                };
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(addButton);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
         // RENDER: executar/mostrar os cards dinâmicos criados
         dynamicCards.forEach(fn => {
             try { fn(); } catch (err) { console.error('Erro ao renderizar card dinâmico:', err); }
@@ -1989,6 +3026,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             quantity
                         );
                         showConfirmationMessage(`${quantity}x ${tour.name} (${selectedLanguageFlag} ${selectedLanguageLabel}) adicionado(s) ao carrinho!`);
+
                     } else if (tour.hasTimeSelector && selectedTimeOption) {
                         // Para passeios de helicóptero, usar o preço selecionado
                         const tourWithSelectedTime = {
@@ -2034,12 +3072,6 @@ document.addEventListener('DOMContentLoaded', () => {
             priceAndButtonDiv.appendChild(priceSpan);
             priceAndButtonDiv.appendChild(quantityControlDiv);
             actionDiv.appendChild(priceAndButtonDiv);
-
-            const aiDetailsButton = document.createElement('button');
-            aiDetailsButton.className = "w-full bg-amber-400 hover:bg-amber-500 text-gray-800 font-semibold py-2 px-4 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-opacity-50 text-sm mt-2";
-            aiDetailsButton.textContent = "✨ Detalhes com IA";
-            aiDetailsButton.onclick = () => handleGenerateEnhancedDescription(tour);
-            actionDiv.appendChild(aiDetailsButton);
 
             // Add PDF button if pdfUrl exists
             if (tour.pdfUrl) {
@@ -2125,6 +3157,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     itemInfoDiv.appendChild(optionsDiv);
                 }
+
+
 
                 cartItemDiv.appendChild(itemInfoDiv);
                 cartItemDiv.appendChild(removeButton);
