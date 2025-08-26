@@ -1,5 +1,7 @@
 import { toursData } from './toursData.js';
-import { egyptData } from './egyptData.js'; // Import Egypt data
+import { egyptData } from './egyptData.js';
+import { maldivesData } from './maldivesData.js';
+import { japanData } from './japanData.js';
 
 // Início do JavaScript
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,11 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const enhancedDescModalContentArea = document.getElementById('enhanced-desc-modal-content-area');
     const closeEnhancedDescModalButton = document.getElementById('close-enhanced-desc-modal-button');
 
-    // New PDF Modal Elements
     const pdfModalOverlay = document.getElementById('pdf-modal-overlay');
     const pdfViewer = document.getElementById('pdf-viewer');
     const closePdfModalButton = document.getElementById('close-pdf-modal-button');
-    // End New PDF Modal Elements
 
     const confirmationMessageGlobal = document.getElementById('confirmation-message-global');
     const travelStyleButtonsContainer = document.getElementById('travel-style-buttons-container');
@@ -57,13 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let searchQuery = ''; // New state variable for search query
     let currentAbortController = null; // To manage ongoing API requests
 
-    const logoUrl = "./Marca.png"; // Certifique-se que este caminho está correto
 
-    // allTours = toursData; // Remove this line, data is loaded on country selection
 
-    const subcategories = [
-        { label: "Todos", value: "all" }, { label: "TOUR EM GRUPO", value: "TOUR EM GRUPO" }, { label: "TOUR DUBAI", value: "TOUR DUBAI" }, { label: "TOUR ABU DHABI", value: "TOUR ABU DHABI" }, { label: "TOUR RAK", value: "TOUR RAK" },  { label: "HATTA", value: "HATTA" }, { label: "TRASLADO", value: "TRASLADO" }, { label: "CARRO COM MOTORISTA", value: "CARRO COM MOTORISTA" },  { label: "DESERTO", value: "DESERTO" }, { label: "WATER", value: "WATER" }, { label: "AIR", value: "AIR" }, { label: "DUBAI TICKETS", value: "DUBAI TICKETS" }, { label: "DUBAI PARKS", value: "DUBAI PARKS" }, { label: "ABU DHABI TICKETS", value: "ABU DHABI TICKETS" }, { label: "ABU DHABI PARKS", value: "ABU DHABI PARKS" }, { label: "LA PERLE", value: "LA PERLE" }, { label: "PORTARE SERVIÇOS", value: "PORTARE SERVIÇOS" },  { label: "EVENTOS", value: "EVENTOS" },
-    ];
+
 
     // Define subcategories per country
     const countrySubcategories = {
@@ -88,11 +84,14 @@ document.addEventListener('DOMContentLoaded', () => {
              { label: "Todos", value: "all" }, { label: "Tour em grupo", value: "Tour em grupo" }, { label: "Tour privativo", value: "Tour privativo" },
         ],
         'Maldivas': [
-            { label: "Todos", value: "all" }, // Add Maldives specific categories later
+            { label: "Todos", value: "all" },
+            // Subcategorias das Maldivas serão adicionadas no futuro
         ],
         'Japão': [
-            { label: "Todos", value: "all" }, // Add Japan specific categories later
-        ]
+            { label: "Todos", value: "all" },
+            // Subcategorias do Japão serão adicionadas no futuro
+        ],
+
     };
 
     const travelStyles = [
@@ -188,8 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update image paths to point to your local img folder with correct filenames and extension
             { name: "Dubai e Abu Dhabi", image: "img/dubai.jpg", data: toursData, targetPage: 'tours', heroImage: 'img/dubaideserto.jpg', heroTitle: 'Sua Aventura em Dubai Começa Aqui!', heroSubtitle: 'Passeios inesquecíveis e experiências únicas.<br>Você sabia que o nome do País é Emirados Árabes Unidos?<br>São 7 Emirados para explorar:<br>Dubai – Abu Dhabi – Sharjah – Ras Al Khaimah (RAK) – Ajman – Fujairah – Umm Al Quwain' }, // Using dubai.jpg
             { name: "Egito", image: "img/egito.jpg", data: egyptData, targetPage: 'tours', heroImage: 'img/egito.jpg', heroTitle: 'Descubra os Mistérios do Egito!', heroSubtitle: 'Uma jornada pela terra dos faraós, pirâmides e templos ancestrais.' }, // Using egito.jpg
-            { name: "Maldivas", image: "img/maldivas.jpg", message: 'Passeios para Maldivas em breve!' }, // Using maldivas.jpg
-            { name: "Japão", image: "img/japao.jpg", message: 'Passeios para Japão em breve!' }, // Using japao.jpg
+            { name: "Maldivas", image: "img/maldivas.jpg", data: maldivesData, targetPage: 'message', message: 'Passeios para Maldivas em breve!', heroImage: 'img/maldivas.jpg', heroTitle: 'Paraíso nas Maldivas!', heroSubtitle: 'Descubra as ilhas mais deslumbrantes do mundo.' },
+            { name: "Japão", image: "img/japao.jpg", data: japanData, targetPage: 'message', message: 'Passeios para Japão em breve!', heroImage: 'img/japao.jpg', heroTitle: 'Terra do Sol Nascente!', heroSubtitle: 'Uma jornada pela cultura milenar japonesa.' },
+
         ];
 
         const countryElements = [];
@@ -440,8 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Filtra passeios duplicados em inglês e mantém apenas os cards dinâmicos
         let filteredTours = allTours.filter(tour => {
-            // Remove duplicados em inglês do Tour Dubai Meio Periodo (4h) e Dia Todo (8h)
-            if (tour.name.includes("Dubai Half-Day Tour") || tour.name.includes("Dubai Full-Day Tour")) return false;
+            
             // Não renderiza os cards fixos (IDs numéricos dos itens estáticos do dataset), só os dinâmicos
             if (tour.id === 19 || tour.id === 20 || tour.id === 21 || tour.id === 111 || 
                 tour.id === 30 || tour.id === 31 || tour.id === 32 || 
@@ -1777,7 +1776,7 @@ document.addEventListener('DOMContentLoaded', () => {
             img.src = tour.imageUrl;
             img.alt = tour.name;
             img.className = 'w-full h-48 object-cover object-center';
-            img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=${tour.name.replace(/\s/g, '+')}`; }; // Fallback to placeholder if local image fails
+            img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=${tour.name.replace(/\s/g, '+')}`; };
 
             const contentDiv = document.createElement('div');
             contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
@@ -1919,8 +1918,8 @@ document.addEventListener('DOMContentLoaded', () => {
             quantityInput.type = 'number';
             quantityInput.value = 1;
             quantityInput.min = 1;
-            quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2'; // Adicionado mr-2 para espaçamento
-            quantityInput.addEventListener('click', (e) => e.stopPropagation()); // Prevent card click when clicking input
+            quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+            quantityInput.addEventListener('click', (e) => e.stopPropagation());
 
             // Seletor de idioma para o passeio id 110
             let selectedLanguage = 'portugues';
@@ -2047,9 +2046,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const pdfButton = document.createElement('button');
                 pdfButton.className = "w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 text-sm mt-2";
                 pdfButton.textContent = "📄 Ver Roteiro Detalhado (PDF)";
-                // Modify the click handler to open the PDF modal
                 pdfButton.onclick = (e) => {
-                    e.stopPropagation(); // Prevent card click
+                    e.stopPropagation();
                     openPdfModal(tour.pdfUrl);
                 };
                 actionDiv.appendChild(pdfButton);
@@ -2192,7 +2190,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cartSidebar.classList.add('translate-x-full');
     }
 
-    // New PDF Modal Functions
     function openPdfModal(pdfUrl) {
         pdfViewer.src = pdfUrl;
         pdfModalOverlay.style.display = 'flex';
@@ -2200,16 +2197,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function closePdfModal() {
         pdfModalOverlay.style.display = 'none';
-        pdfViewer.src = ''; // Clear the iframe source when closing
+        pdfViewer.src = '';
     }
-    // End New PDF Modal Functions
 
 
     // Funções da API Gemini
     async function callGeminiAPI(prompt, signal) {
-        // NOTE: Hardcoding API keys directly in client-side code is a security risk.
-        // For a production application, consider using a backend proxy or environment variables.
-        const apiKey = "AIzaSyDpRyvbYUE4tDhBqw7v8GaFiA7m4760Ltk"; // API AQUI!!!
+        const apiKey = "AIzaSyDpRyvbYUE4tDhBqw7v8GaFiA7m4760Ltk";
         const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
         const payload = { contents: [{ role: "user", parts: [{ text: prompt }] }] };
 
@@ -2358,14 +2352,12 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
         }
     });
 
-    // New PDF Modal Event Listeners
     closePdfModalButton.addEventListener('click', closePdfModal);
     pdfModalOverlay.addEventListener('click', (event) => {
         if (event.target === pdfModalOverlay) {
             closePdfModal();
         }
     });
-    // End New PDF Modal Event Listeners
 
 
     generateItineraryButton.addEventListener('click', handleGenerateItinerary);
@@ -2433,11 +2425,10 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
 
     // Close cart sidebar when clicking outside
     document.body.addEventListener('click', (event) => {
-        // Check if the cart sidebar is open AND the click is outside the sidebar and not on the cart button itself
         if (!cartSidebar.classList.contains('translate-x-full') &&
             !cartSidebar.contains(event.target) &&
-            event.target !== cartButton && // Exclude the cart button
-            !cartButton.contains(event.target)) // Exclude elements inside the cart button
+            event.target !== cartButton &&
+            !cartButton.contains(event.target))
         {
             closeCartSidebar();
         }
@@ -2453,17 +2444,14 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
         const customerName = customerNameInput ? customerNameInput.value.trim() : 'Cliente';
         const numberOfPeople = numberOfPeopleInput ? parseInt(numberOfPeopleInput.value, 10) : 1;
 
-        // Generate Invoice Number (Simple format: DDMMYY-PT-001)
         const now = new Date();
         const day = String(now.getDate()).padStart(2, '0');
-        const month = String(now.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+        const month = String(now.getMonth() + 1).padStart(2, '0');
         const year = String(now.getFullYear()).slice(-2);
-        const invoiceNumber = `${day}${month}${year}-PT-001`; // Using a static counter 001
+        const invoiceNumber = `${day}${month}${year}-PT-001`;
 
-        // Format Invoice Date
-        const invoiceDate = now.toLocaleDateString('pt-BR'); // Format as DD/MM/YYYY
+        const invoiceDate = now.toLocaleDateString('pt-BR');
 
-        // Build the message using an array of lines for clarity
         const messageLines = [
             "INVOICE",
             "",
@@ -2485,9 +2473,8 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
             const itemTotal = item.price * item.quantity;
             subtotal += itemTotal;
 
-            let quantityText = `${item.quantity}x`; // Default format
+            let quantityText = `${item.quantity}x`;
 
-            // Check if the item's description indicates "per person" pricing
             if (item.description.includes("Preço por pessoa")) {
                  quantityText = `${item.quantity} pessoa(s)`;
             } else if (item.description.includes("Valor total pelo serviço")) {
@@ -2495,8 +2482,6 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
             } else if (item.description.includes("Valor total pelo aluguel")) {
                  quantityText = `${item.quantity} aluguel(is)`;
             }
-
-            // Simple formatting for item line - difficult to make a perfect table in plain text
             messageLines.push(`${item.name}`);
             messageLines.push(`  ${quantityText}     AED ${item.price.toFixed(2)}     AED ${itemTotal.toFixed(2)}`);
         });
@@ -2513,9 +2498,9 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
         messageLines.push("Obrigado por escolher a Portare Travel para sua viagem!");
 
 
-        const message = messageLines.join('\n'); // Join all lines with newline characters
+        const message = messageLines.join('\n');
 
-        const whatsappNumber = "+971523811226"; // Seu número do WhatsApp
+        const whatsappNumber = "+971523811226";
         const encodedMessage = encodeURIComponent(message);
         window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
     });
@@ -2526,13 +2511,9 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
         clearTravelStyleButton.classList.add('hidden');
     });
 
-    // Atualiza o ano no rodapé
     document.getElementById('current-year').textContent = new Date().getFullYear();
 
-    // Inicialização
     renderPage();
-    renderCart(); // Fornece estado inicial do carrinho
+    renderCart();
     renderTravelStyleButtons();
 });
-// Fim do JavaScript
-// Fim do JavaScript

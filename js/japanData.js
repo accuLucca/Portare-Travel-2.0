@@ -1,3 +1,4 @@
+// Dados dos passeios do Japão
 export const japanData = [
-    // Add Japan tour data here later
+    // Dados dos passeios do Japão serão adicionados aqui no futuro
 ];
