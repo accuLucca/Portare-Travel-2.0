@@ -438,24 +438,30 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             toursGridTarget.innerHTML = '';
 
-            // Filtra passeios duplicados em inglês e mantém apenas os cards dinâmicos
-            let filteredTours = allTours.filter(tour => {
-                // Remove duplicados em inglês do Tour Dubai Meio Periodo (4h) e Dia Todo (8h)
-                if (tour.name.includes("Dubai Half-Day Tour") || tour.name.includes("Dubai Full-Day Tour")) return false;
-                // Não renderiza os cards fixos (IDs numéricos dos itens estáticos do dataset), só os dinâmicos
-                if (tour.id === 19 || tour.id === 20 || tour.id === 21 || tour.id === 111 || 
-                    tour.id === 30 || tour.id === 31 || tour.id === 32 || 
-                    tour.id === 115 || tour.id === 116 || tour.id === 117 || tour.id === 118 || 
-                    tour.id === 119 || tour.id === 120 || tour.id === 121 || tour.id === 122 || tour.id === 123) return false;
-                // Filtro de subcategoria
-                if (!(selectedSubcategory === 'all' || tour.category === selectedSubcategory)) return false;
-                // Filtro de pesquisa
-                if (searchQuery && !(
-                    tour.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                    tour.description.toLowerCase().includes(searchQuery.toLowerCase())
-                )) return false;
-                return true;
-            });
+                    // Filtra passeios duplicados em inglês e mantém apenas os cards dinâmicos
+        let filteredTours = allTours.filter(tour => {
+            // Remove duplicados em inglês do Tour Dubai Meio Periodo (4h) e Dia Todo (8h)
+            if (tour.name.includes("Dubai Half-Day Tour") || tour.name.includes("Dubai Full-Day Tour")) return false;
+            // Não renderiza os cards fixos (IDs numéricos dos itens estáticos do dataset), só os dinâmicos
+            if (tour.id === 19 || tour.id === 20 || tour.id === 21 || tour.id === 111 || 
+                tour.id === 30 || tour.id === 31 || tour.id === 32 || 
+                tour.id === 115 || tour.id === 116 || tour.id === 117 || tour.id === 118 || 
+                tour.id === 119 || tour.id === 120 || tour.id === 121 || tour.id === 122 || tour.id === 123 ||
+                // Remove os tours do Burj Khalifa fixos (IDs 56-66) para usar o card dinâmico
+                tour.id === 56 || tour.id === 57 || tour.id === 58 || tour.id === 59 || 
+                tour.id === 60 || tour.id === 61 || tour.id === 62 || tour.id === 63 || 
+                tour.id === 64 || tour.id === 65 || tour.id === 66 ||
+                // Remove os tours do The View fixos (IDs 52-55) para usar o card dinâmico
+                tour.id === 52 || tour.id === 53 || tour.id === 54 || tour.id === 55) return false;
+            // Filtro de subcategoria
+            if (!(selectedSubcategory === 'all' || tour.category === selectedSubcategory)) return false;
+            // Filtro de pesquisa
+            if (searchQuery && !(
+                tour.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                tour.description.toLowerCase().includes(searchQuery.toLowerCase())
+            )) return false;
+            return true;
+        });
 
         // Função para verificar se o card dinâmico deve aparecer pelo filtro de pesquisa
         function dynamicCardMatches(name, desc) {
@@ -1129,6 +1135,624 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 priceAndButtonDiv.appendChild(priceSpan);
                 priceAndButtonDiv.appendChild(quantityControlDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Burj Khalifa - Com Fila
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'DUBAI TICKETS') &&
+            dynamicCardMatches("Burj Khalifa", "Acesso ao Burj Khalifa, o edifício mais alto do mundo")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/56.jpg";
+                img.alt = "Burj Khalifa";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Burj+Khalifa`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Burj Khalifa - Ingresso Com Fila";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso com fila, andares 124/125.<br>
+                <span class="font-bold">Personalize seu ingresso:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do Burj Khalifa Com Fila
+                const burjKhalifaComFilaPrices = {
+                    '9h-11h-adulto': 180.00,
+                    '9h-11h-kids': 146.00,
+                    'apos-11h-adulto': 260.00,
+                    'apos-11h-kids': 165.00,
+                    '9h-11h-aquario-adulto': 310.00,
+                    '9h-11h-aquario-kids': 275.00,
+                    'apos-11h-aquario-adulto': 310.00,
+                    'apos-11h-aquario-kids': 275.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de horário
+                const timeDiv = document.createElement('div');
+                timeDiv.className = 'flex flex-col';
+                const timeLabel = document.createElement('label');
+                timeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                timeLabel.textContent = 'Horário:';
+                const timeSelect = document.createElement('select');
+                timeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                timeSelect.innerHTML = `
+                    <option value="9h-11h">9h-11h</option>
+                    <option value="apos-11h">Após 11h</option>
+                `;
+                timeDiv.appendChild(timeLabel);
+                timeDiv.appendChild(timeSelect);
+                selectorsDiv.appendChild(timeDiv);
+
+                // Seletor de tipo de pessoa
+                const personTypeDiv = document.createElement('div');
+                personTypeDiv.className = 'flex flex-col';
+                const personTypeLabel = document.createElement('label');
+                personTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                personTypeLabel.textContent = 'Tipo:';
+                const personTypeSelect = document.createElement('select');
+                personTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                personTypeSelect.innerHTML = `
+                    <option value="adulto">Adulto</option>
+                    <option value="kids">Kids</option>
+                `;
+                personTypeDiv.appendChild(personTypeLabel);
+                personTypeDiv.appendChild(personTypeSelect);
+                selectorsDiv.appendChild(personTypeDiv);
+
+                // Seletor de Aquário
+                const aquariumDiv = document.createElement('div');
+                aquariumDiv.className = 'flex flex-col';
+                const aquariumLabel = document.createElement('label');
+                aquariumLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                aquariumLabel.textContent = 'Incluir Aquário:';
+                const aquariumSelect = document.createElement('select');
+                aquariumSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                aquariumSelect.innerHTML = `
+                    <option value="sem">Sem Aquário</option>
+                    <option value="com">Com Aquário</option>
+                `;
+                aquariumDiv.appendChild(aquariumLabel);
+                aquariumDiv.appendChild(aquariumSelect);
+                selectorsDiv.appendChild(aquariumDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updateBurjKhalifaComFilaPrice() {
+                    const time = timeSelect.value;
+                    const personType = personTypeSelect.value;
+                    const aquarium = aquariumSelect.value;
+
+                    let priceKey = '';
+                    if (aquarium === 'com') {
+                        priceKey = `${time}-aquario-${personType}`;
+                    } else {
+                        priceKey = `${time}-${personType}`;
+                    }
+
+                    const price = burjKhalifaComFilaPrices[priceKey] || 0;
+                    const quantity = parseInt(quantityInput.value, 10);
+                    const totalPrice = price * quantity;
+                    priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                timeSelect.addEventListener('change', updateBurjKhalifaComFilaPrice);
+                personTypeSelect.addEventListener('change', updateBurjKhalifaComFilaPrice);
+                aquariumSelect.addEventListener('change', updateBurjKhalifaComFilaPrice);
+                quantityInput.addEventListener('input', updateBurjKhalifaComFilaPrice);
+                quantityInput.addEventListener('change', updateBurjKhalifaComFilaPrice);
+
+                // Atualizar preço inicial
+                updateBurjKhalifaComFilaPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const quantity = parseInt(quantityInput.value, 10);
+                    if (quantity > 0 && quantity <= 10) {
+                        const time = timeSelect.value;
+                        const personType = personTypeSelect.value;
+                        const aquarium = aquariumSelect.value;
+
+                        let priceKey = '';
+                        if (aquarium === 'com') {
+                            priceKey = `${time}-aquario-${personType}`;
+                        } else {
+                            priceKey = `${time}-${personType}`;
+                        }
+
+                        const price = burjKhalifaComFilaPrices[priceKey] || 0;
+                        
+                        // Gerar nome do ingresso
+                        let ticketName = "Burj Khalifa - Ingresso Com Fila";
+                        ticketName += ` ${time === '9h-11h' ? '9h-11h' : 'Após 11h'}`;
+                        if (aquarium === 'com') ticketName += ' + Aquário';
+                        ticketName += ` - ${personType === 'adulto' ? 'Adulto' : 'Kids'}`;
+
+                        handleAddToCart({
+                            id: `burj-khalifa-com-fila-${priceKey}`,
+                            name: ticketName,
+                            description: 'Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso com fila, andares 124/125. Vistas panorâmicas espetaculares de Dubai.',
+                            price: price,
+                            imageUrl: "img/toursdubai/56.jpg",
+                            category: "DUBAI TICKETS"
+                        }, quantity);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 10 ingressos.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Burj Khalifa - Sem Fila
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'DUBAI TICKETS') &&
+            dynamicCardMatches("Burj Khalifa", "Acesso ao Burj Khalifa, o edifício mais alto do mundo")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/56.jpg";
+                img.alt = "Burj Khalifa";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Burj+Khalifa`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Burj Khalifa - Ingresso Sem Fila";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso sem fila com acesso prioritário.<br>
+                <span class="font-bold">Escolha seu horário e andar:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do Burj Khalifa Sem Fila
+                const burjKhalifaSemFilaPrices = {
+                    '9h-11h-124-125-148': 400.03,
+                    'apos-11h-124-125-148': 557.84,
+                    'qualquer-horario-154': 811.07
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de horário e andar
+                const timeFloorDiv = document.createElement('div');
+                timeFloorDiv.className = 'flex flex-col';
+                const timeFloorLabel = document.createElement('label');
+                timeFloorLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                timeFloorLabel.textContent = 'Horário e Andar:';
+                const timeFloorSelect = document.createElement('select');
+                timeFloorSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                timeFloorSelect.innerHTML = `
+                    <option value="9h-11h-124-125-148">9h-11h - Andares 124/125/148</option>
+                    <option value="apos-11h-124-125-148">Após 11h - Andares 124/125/148</option>
+                    <option value="qualquer-horario-154">Qualquer horário - Andar 154</option>
+                `;
+                timeFloorDiv.appendChild(timeFloorLabel);
+                timeFloorDiv.appendChild(timeFloorSelect);
+                selectorsDiv.appendChild(timeFloorDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updateBurjKhalifaSemFilaPrice() {
+                    const timeFloor = timeFloorSelect.value;
+                    const price = burjKhalifaSemFilaPrices[timeFloor] || 0;
+                    const quantity = parseInt(quantityInput.value, 10);
+                    const totalPrice = price * quantity;
+                    priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                timeFloorSelect.addEventListener('change', updateBurjKhalifaSemFilaPrice);
+                quantityInput.addEventListener('input', updateBurjKhalifaSemFilaPrice);
+                quantityInput.addEventListener('change', updateBurjKhalifaSemFilaPrice);
+
+                // Atualizar preço inicial
+                updateBurjKhalifaSemFilaPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const quantity = parseInt(quantityInput.value, 10);
+                    if (quantity > 0 && quantity <= 10) {
+                        const timeFloor = timeFloorSelect.value;
+                        const price = burjKhalifaSemFilaPrices[timeFloor] || 0;
+                        
+                        // Gerar nome do ingresso
+                        let ticketName = "Burj Khalifa - Ingresso Sem Fila";
+                        if (timeFloor === '9h-11h-124-125-148') {
+                            ticketName += ' 9h-11h - 124/125/148';
+                        } else if (timeFloor === 'apos-11h-124-125-148') {
+                            ticketName += ' Após 11h - 124/125/148';
+                        } else if (timeFloor === 'qualquer-horario-154') {
+                            ticketName += ' Qualquer Horário - 154';
+                        }
+
+                        handleAddToCart({
+                            id: `burj-khalifa-sem-fila-${timeFloor}`,
+                            name: ticketName,
+                            description: 'Acesso ao Burj Khalifa, o edifício mais alto do mundo. Ingresso sem fila com acesso prioritário. Vistas panorâmicas espetaculares de Dubai.',
+                            price: price,
+                            imageUrl: "img/toursdubai/56.jpg",
+                            category: "DUBAI TICKETS"
+                        }, quantity);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 10 ingressos.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico The View - Com Fila
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'DUBAI TICKETS') &&
+            dynamicCardMatches("The View", "Acesso ao observatório The View at The Palm")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/52.jpg";
+                img.alt = "The View";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=The+View`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "The View - Ingresso Com Fila";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Acesso ao observatório The View at The Palm, localizado no topo da Palm Tower, com vistas 360 graus da Palm Jumeirah, do Golfo Pérsico e do skyline de Dubai.<br>
+                <span class="font-bold">Personalize seu ingresso:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do The View Com Fila
+                const theViewComFilaPrices = {
+                    'adulto': 110.00,
+                    'kids': 75.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de tipo de pessoa
+                const personTypeDiv = document.createElement('div');
+                personTypeDiv.className = 'flex flex-col';
+                const personTypeLabel = document.createElement('label');
+                personTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                personTypeLabel.textContent = 'Tipo:';
+                const personTypeSelect = document.createElement('select');
+                personTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                personTypeSelect.innerHTML = `
+                    <option value="adulto">Adulto</option>
+                    <option value="kids">Kids</option>
+                `;
+                personTypeDiv.appendChild(personTypeLabel);
+                personTypeDiv.appendChild(personTypeSelect);
+                selectorsDiv.appendChild(personTypeDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updateTheViewComFilaPrice() {
+                    const personType = personTypeSelect.value;
+                    const price = theViewComFilaPrices[personType] || 0;
+                    const quantity = parseInt(quantityInput.value, 10);
+                    const totalPrice = price * quantity;
+                    priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                personTypeSelect.addEventListener('change', updateTheViewComFilaPrice);
+                quantityInput.addEventListener('input', updateTheViewComFilaPrice);
+                quantityInput.addEventListener('change', updateTheViewComFilaPrice);
+
+                // Atualizar preço inicial
+                updateTheViewComFilaPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const quantity = parseInt(quantityInput.value, 10);
+                    if (quantity > 0 && quantity <= 10) {
+                        const personType = personTypeSelect.value;
+                        const price = theViewComFilaPrices[personType] || 0;
+                        
+                        // Gerar nome do ingresso
+                        let ticketName = "The View - Ingresso Com Fila";
+                        ticketName += ` - ${personType === 'adulto' ? 'Adulto' : 'Kids'}`;
+
+                        handleAddToCart({
+                            id: `the-view-com-fila-${personType}`,
+                            name: ticketName,
+                            description: 'Acesso ao observatório The View at The Palm, localizado no topo da Palm Tower, com vistas 360 graus da Palm Jumeirah, do Golfo Pérsico e do skyline de Dubai. Ingresso com fila.',
+                            price: price,
+                            imageUrl: "img/toursdubai/52.jpg",
+                            category: "DUBAI TICKETS"
+                        }, quantity);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 10 ingressos.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico The View - Sem Fila
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'DUBAI TICKETS') &&
+            dynamicCardMatches("The View", "Acesso ao observatório The View at The Palm")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/52.jpg";
+                img.alt = "The View";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=The+View`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "The View - Ingresso Sem Fila";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Acesso ao observatório The View at The Palm, localizado no topo da Palm Tower, com vistas 360 graus da Palm Jumeirah, do Golfo Pérsico e do skyline de Dubai. Ingresso sem fila com acesso prioritário.<br>
+                <span class="font-bold">Personalize seu ingresso:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do The View Sem Fila
+                const theViewSemFilaPrices = {
+                    'adulto': 176.16,
+                    'kids': 120.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de tipo de pessoa
+                const personTypeDiv = document.createElement('div');
+                personTypeDiv.className = 'flex flex-col';
+                const personTypeLabel = document.createElement('label');
+                personTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                personTypeLabel.textContent = 'Tipo:';
+                const personTypeSelect = document.createElement('select');
+                personTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                personTypeSelect.innerHTML = `
+                    <option value="adulto">Adulto</option>
+                    <option value="kids">Kids</option>
+                `;
+                personTypeDiv.appendChild(personTypeLabel);
+                personTypeDiv.appendChild(personTypeSelect);
+                selectorsDiv.appendChild(personTypeDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updateTheViewSemFilaPrice() {
+                    const personType = personTypeSelect.value;
+                    const price = theViewSemFilaPrices[personType] || 0;
+                    const quantity = parseInt(quantityInput.value, 10);
+                    const totalPrice = price * quantity;
+                    priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                personTypeSelect.addEventListener('change', updateTheViewSemFilaPrice);
+                quantityInput.addEventListener('input', updateTheViewSemFilaPrice);
+                quantityInput.addEventListener('change', updateTheViewSemFilaPrice);
+
+                // Atualizar preço inicial
+                updateTheViewSemFilaPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const quantity = parseInt(quantityInput.value, 10);
+                    if (quantity > 0 && quantity <= 10) {
+                        const personType = personTypeSelect.value;
+                        const price = theViewSemFilaPrices[personType] || 0;
+                        
+                        // Gerar nome do ingresso
+                        let ticketName = "The View - Ingresso Sem Fila";
+                        ticketName += ` - ${personType === 'adulto' ? 'Adulto' : 'Kids'}`;
+
+                        handleAddToCart({
+                            id: `the-view-sem-fila-${personType}`,
+                            name: ticketName,
+                            description: 'Acesso ao observatório The View at The Palm, localizado no topo da Palm Tower, com vistas 360 graus da Palm Jumeirah, do Golfo Pérsico e do skyline de Dubai. Ingresso sem fila com acesso prioritário.',
+                            price: price,
+                            imageUrl: "img/toursdubai/52.jpg",
+                            category: "DUBAI TICKETS"
+                        }, quantity);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 10 ingressos.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+
+                actionDiv.appendChild(selectorsDiv);
                 actionDiv.appendChild(priceAndButtonDiv);
 
                 contentDiv.appendChild(textDiv);
