@@ -325,15 +325,15 @@ export const toursData = [
         name: "Ingresso Ski Dubai - Adulto ou Kids",
         description: "O que está incluso: Entrada única para o Snow Park, permanência ilimitada. Aproveite as atividades do Snow Park, como nossa Caverna de Gelo. Bobsled ilimitado, passeio ilimitado na bola gigante, carrinhos bate-bate e descida de boia (tubbing) ilimitados.Uma vez no teleférico (Chairlift Ride).Uma vez na atração Mountain Thriller.Equipamentos de inverno fornecidos: jaqueta, calça, meias descartáveis, botas de neve e luvas de lã (fleece) gratuitas.Capacetes são obrigatórios para crianças menores de 13 anos.",
         price: 367,
-        imageUrl: "img/toursdubai/72.jpg",
+        imageUrl: "img/toursdubai/skydubai.jpg",
         category: "DUBAI TICKETS"
     },
     {
         id: 74,
         name: "Tour Guiado Burj al Arab - Adulto ou Kids",
-        description: "Faça um tour guiado pelo interior do icônico hotel Burj Al Arab Jumeirah, considerado um dos mais luxuosos do mundo. Conheça sua arquitetura, história e interiores opulentos. (Preço por pessoa, aplicável para adultos)",
+        description: "Faça um tour guiado pelo interior do icônico hotel Burj Al Arab Jumeirah, considerado um dos mais luxuosos do mundo. Conheça sua arquitetura, história e interiores opulentos. (Preço por pessoa, aplicável para adultos) em inglês, em português apenas quando realizado durante o tour privativo com guia",
         price: 250,
-        imageUrl: "img/toursdubai/73.jpg",
+        imageUrl: "img/toursdubai/tourguiadoburjarab.jpg",
         category: "DUBAI TICKETS"
     },
     {
@@ -349,7 +349,7 @@ export const toursData = [
         name: "Abra Lake Ride - Show das Águas DESATIVADO TEMPORARIAMENTE",
         description: "Desfrute de um passeio tradicional de barco Abra no lago do Burj Khalifa durante o famoso show das fontes dançantes. Uma vista privilegiada e emocionante do espetáculo. (Preço por pessoa)",
         price: 0,
-        imageUrl: "img/toursdubai/74.jpg",
+        imageUrl: "img/toursdubai/abralakeride.jpg",
         category: "DUBAI TICKETS"
     },
     {
@@ -373,7 +373,7 @@ export const toursData = [
         name: "Ingresso Parque IMG Worlds of Adventure (Marvel) - Adulto ou Kids",
         description: "Acesso ao IMG Worlds of Adventure, o maior parque temático indoor do mundo, com zonas dedicadas a personagens da Marvel, Cartoon Network e outras atrações originais. (Preço por pessoa, aplicável para adultos)",
         price: 330,
-        imageUrl: "img/toursdubai/78.jpg",
+        imageUrl: "img/toursdubai/parkimg.jpg",
         category: "DUBAI PARKS"
     },
     {
@@ -381,7 +381,7 @@ export const toursData = [
         name: "Ingresso Legoland Dubai - Adulto ou Kids",
         description: "Acesso ao Legoland Dubai, um parque temático baseado nos famosos blocos de montar Lego, com atrações, shows e modelos construídos com Lego. Ideal para famílias com crianças de 2 a 12 anos. (Preço por pessoa, aplicável para adultos)",
         price: 330,
-        imageUrl: "img/toursdubai/79.jpg",
+        imageUrl: "img/toursdubai/parklegoland.jpg",
         category: "DUBAI PARKS"
     },
     {
@@ -389,7 +389,7 @@ export const toursData = [
         name: "Ingresso Parque Motiongate Dubai - Adulto ou Kids (Consultar opções de corta fila)",
         description: "Acesso ao Motiongate Dubai, um parque temático inspirado em Hollywood, com atrações baseadas em filmes e estúdios como DreamWorks Animation, Columbia Pictures e Lionsgate. (Preço por pessoa, aplicável para adultos)",
         price: 295,
-        imageUrl: "img/toursdubai/80.jpg",
+        imageUrl: "img/toursdubai/parkmotiongate.jpg",
         category: "DUBAI PARKS"
     },
     {
@@ -397,7 +397,7 @@ export const toursData = [
         name: "Ingresso Legoland Water Park - Adulto ou Kids",
         description: "Acesso ao Legoland Water Park, um parque aquático projetado para famílias com crianças de 2 a 12 anos, com escorregadores, piscinas e atrações temáticas de Lego. (Preço por pessoa, aplicável para adultos)",
         price: 330.30,
-        imageUrl: "img/toursdubai/82.jpg",
+        imageUrl: "img/toursdubai/legolandwater.jpg",
         category: "DUBAI PARKS"
     },
     {
@@ -405,7 +405,7 @@ export const toursData = [
         name: "Ingresso Parque Real Madrid World - Adulto ou Kids",
         description: "Acesso ao Real Madrid World, o primeiro parque temático do Real Madrid no mundo. Desfrute de atrações, experiências e jogos inspirados no famoso clube de futebol. (Preço por pessoa, aplicável para adultos)",
         price: 330.30,
-        imageUrl: "img/toursdubai/83.jpg",
+        imageUrl: "img/toursdubai/parkrealmadrid.jpg",
         category: "DUBAI PARKS"
     },
     {
@@ -413,7 +413,7 @@ export const toursData = [
         name: "Ingresso Parque Aquático Atlantis Aquaventure - Adulto ou Kids (Consultar opções de corta fila)",
         description: "Acesso ao Atlantis Aquaventure Waterpark, um dos maiores e mais emocionantes parques aquáticos do mundo, localizado no Atlantis, The Palm. Desfrute de diversos escorregadores e atrações aquáticas. (Preço por pessoa, aplicável para adultos)",
         price: 330.30,
-        imageUrl: "img/toursdubai/84.jpg",
+        imageUrl: "img/toursdubai/atlantisaquaventure.jpg",
         category: "DUBAI PARKS"
     },
     {
@@ -421,7 +421,7 @@ export const toursData = [
         name: "Ingresso Dubai Safari Park Zoo - Adulto",
         description: "Acesso ao Dubai Safari Park, um extenso parque de vida selvagem com diversas zonas que abrigam animais de diferentes habitats ao redor do mundo. (Preço por pessoa, aplicável para adultos)",
         price: 55,
-        imageUrl: "img/toursdubai/86.jpg",
+        imageUrl: "img/toursdubai/dubaisafaripark.jpg",
         category: "DUBAI PARKS"
     },
     {
@@ -429,7 +429,7 @@ export const toursData = [
         name: "Ingresso Dubai Safari Park Zoo - Kids",
         description: "Acesso ao Dubai Safari Park para crianças (3-12 anos). Uma oportunidade educativa e divertida para ver animais de perto. (Preço por pessoa, aplicável para crianças)",
         price: 25,
-        imageUrl: "img/toursdubai/87.jpg",
+        imageUrl: "img/toursdubai/dubaisafaripark.jpg",
         category: "DUBAI PARKS"
     },
     {
@@ -437,7 +437,7 @@ export const toursData = [
         name: "Ingresso Experiência Dubai Safari Park Zoo - Adulto",
         description: "Acesso completo ao Dubai Safari Park, incluindo o Safari Journey (passeio de ônibus pelas áreas de safari) e acesso a todas as vilas e shows. (Preço por pessoa, aplicável para adultos)",
         price: 130,
-        imageUrl: "img/toursdubai/88.jpg",
+        imageUrl: "img/toursdubai/experienciadubaisafaripark.jpg",
         category: "DUBAI PARKS"
     },
     {
@@ -445,7 +445,7 @@ export const toursData = [
         name: "Ingresso Experiência Dubai Safari Park Zoo - Kids",
         description: "Acesso completo ao Dubai Safari Park para crianças (3-12 anos), incluindo o Safari Journey e acesso a todas as vilas e shows. (Preço por pessoa, aplicável para crianças)",
         price: 100,
-        imageUrl: "img/toursdubai/89.jpg",
+        imageUrl: "img/toursdubai/experienciadubaisafaripark.jpg",
         category: "DUBAI PARKS"
     },
     {
@@ -453,7 +453,7 @@ export const toursData = [
         name: "Ingresso Palácio Presidencial (Qasr Al Watan) - Adulto",
         description: "Visite o Qasr Al Watan, o magnífico Palácio Presidencial de Abu Dhabi. Explore a arquitetura deslumbrante, salões grandiosos e aprenda sobre a cultura e história dos Emirados Árabes Unidos.",
         price: 66.06,
-        imageUrl: "img/toursdubai/90.jpg",
+        imageUrl: "img/toursdubai/palaciopresidencialabudhabi.jpg",
         category: "ABU DHABI TICKETS"
     },
     {
@@ -461,7 +461,7 @@ export const toursData = [
         name: "Ingresso Museu do Louvre Abu Dhabi - Adulto",
         description: "Acesso ao Museu do Louvre Abu Dhabi, uma obra-prima arquitetônica que abriga uma coleção de arte e artefatos que conectam diferentes culturas e civilizações.",
         price: 66.06,
-        imageUrl: "img/toursdubai/91.jpg",
+        imageUrl: "img/toursdubai/museudolouvre.jpg",
         category: "ABU DHABI TICKETS"
     },
     {
@@ -477,7 +477,7 @@ export const toursData = [
         name: "Etihad Tower Observation Deck - com café da tarde (Adulto)",
         description: "Desfrute de vistas panorâmicas de Abu Dhabi a partir do Observation Deck at 300, localizado nas Etihad Towers, incluindo um delicioso café da tarde.",
         price: 100.00,
-        imageUrl: "img/toursdubai/93.jpg",
+        imageUrl: "img/toursdubai/etihadobservationtower.jpg",
         category: "ABU DHABI TICKETS"
     },
     {
@@ -485,7 +485,7 @@ export const toursData = [
         name: "Ingresso Tour Yas Marina Circuit (2 horas) - Adulto",
         description: "Faça um tour guiado pelo Yas Marina Circuit, o famoso circuito de Fórmula 1 em Abu Dhabi. Conheça os bastidores, boxes, sala de controle e sinta a atmosfera do automobilismo.",
         price: 160.00,
-        imageUrl: "img/toursdubai/94.jpg",
+        imageUrl: "img/toursdubai/yasmarinacircuit.jpg",
         category: "ABU DHABI TICKETS"
     },
     {
@@ -493,7 +493,7 @@ export const toursData = [
         name: "Ingresso Parque da Ferrari Abu Dhabi - Adulto",
         description: "Acesso ao Ferrari World Abu Dhabi, o primeiro parque temático da Ferrari no mundo. Desfrute de montanhas-russas emocionantes, simuladores e atrações que celebram a marca italiana.",
         price: 348.65,
-        imageUrl: "img/toursdubai/95.jpg",
+        imageUrl: "img/toursdubai/ferrariworld.jpg",
         category: "ABU DHABI PARKS"
     },
     {
@@ -501,7 +501,7 @@ export const toursData = [
         name: "Ingresso Parque da Ferrari Abu Dhabi - Kids",
         description: "Acesso ao Ferrari World Abu Dhabi, o primeiro parque temático da Ferrari no mundo. Desfrute de montanhas-russas emocionantes, simuladores e atrações que celebram a marca italiana.",
         price: 295,
-        imageUrl: "img/toursdubai/95.jpg",
+        imageUrl: "img/toursdubai/ferrariworld.jpg",
         category: "ABU DHABI PARKS"
     },
     {
@@ -509,7 +509,7 @@ export const toursData = [
         name: "Ingresso Parque Warner Bros - adulto",
         description: "Acesso ao Warner Bros. World Abu Dhabi, um parque temático indoor com zonas imersivas baseadas em personagens da Warner Bros., como Batman, Superman, Looney Tunes e Flintstones.",
         price: 381.68,
-        imageUrl: "img/toursdubai/96.jpg",
+        imageUrl: "img/toursdubai/warnerbrosworld.jpg",
         category: "ABU DHABI PARKS"
     },    
     {
@@ -517,7 +517,7 @@ export const toursData = [
         name: "Ingresso Parque Warner Bros - Kids (Menor de 1.10m)",
         description: "Acesso ao Warner Bros. World Abu Dhabi, um parque temático indoor com zonas imersivas baseadas em personagens da Warner Bros., como Batman, Superman, Looney Tunes e Flintstones.",
         price: 295,
-        imageUrl: "img/toursdubai/96.jpg",
+        imageUrl: "img/toursdubai/warnerbrosworld.jpg",
         category: "ABU DHABI PARKS"
     },
     {
@@ -525,7 +525,7 @@ export const toursData = [
         name: "Ingresso Sea World Abu Dhabi - adulto",
         description: "Acesso ao SeaWorld Yas Island, Abu Dhabi, um parque temático marinho que oferece experiências imersivas com animais marinhos, shows e atrações educativas.",
         price: 381.68,
-        imageUrl: "img/toursdubai/97.jpg",
+        imageUrl: "img/toursdubai/seaworldabudhabi.jpg",
         category: "ABU DHABI PARKS"
     },
     {
@@ -533,7 +533,7 @@ export const toursData = [
         name: "Ingresso Sea World Abu Dhabi - Kids",
         description: "Acesso ao SeaWorld Yas Island, Abu Dhabi, um parque temático marinho que oferece experiências imersivas com animais marinhos, shows e atrações educativas.",
         price: 320,
-        imageUrl: "img/toursdubai/97.jpg",
+        imageUrl: "img/toursdubai/seaworldabudhabi.jpg",
         category: "ABU DHABI PARKS"
     },
     {
@@ -541,7 +541,7 @@ export const toursData = [
         name: "Ingresso 2 Parques Abu Dhabi a escolher - Adulto ou Kids",
         description: "Acesso a dois parques temáticos na Ilha Yas, Abu Dhabi (Ferrari World, Warner Bros. World, SeaWorld ou Yas Waterworld - verificar opções disponíveis). Escolha seus dois parques favoritos para um dia de diversão.",
         price: 475.00,
-        imageUrl: "img/toursdubai/98.jpg",
+        imageUrl: "img/toursdubai/2a3parksescolha.jpg",
         category: "ABU DHABI PARKS"
     },
     {
@@ -549,7 +549,7 @@ export const toursData = [
         name: "Ingresso 3 Parques Abu Dhabi a escolher - Adulto ou Kids",
         description: "Acesso a três parques temáticos na Ilha Yas, Abu Dhabi (Ferrari World, Warner Bros. World, SeaWorld ou Yas Waterworld - verificar opções disponíveis). Aproveite um combo para visitar três parques em dias diferentes.",
         price: 575.00,
-        imageUrl: "img/toursdubai/99.jpg",
+        imageUrl: "img/toursdubai/2a3parksescolha.jpg",
         category: "ABU DHABI PARKS"
     },
     {
@@ -557,23 +557,23 @@ export const toursData = [
         name: "La Perle - Assento Normal",
         description: "Ingresso para o espetáculo aquático e acrobático La Perle by Dragone em Dubai. Escolha entre as categorias de assento Bronze, Silver ou Gold (verificar disponibilidade) para uma experiência visualmente deslumbrante.",
         price: 300.00,
-        imageUrl: "img/toursdubai/101.jpg",
-        category: "LA PERLE"
+        imageUrl: "img/toursdubai/laperle.jpg",
+        category: "DUBAI TICKETS"
     },
     {
         id: 102,
         name: "La Perle - Assento Platinum + Foods & Drinks",
         description: "Desfrute do espetáculo La Perle com os melhores assentos na categoria Platinum. Inclui acesso a um lounge VIP exclusivo com snacks e bebidas antes do show. Uma experiência premium.",
         price: 520.00,
-        imageUrl: "img/toursdubai/102.jpg",
-        category: "LA PERLE"
+        imageUrl: "img/toursdubai/laperle.jpg",
+        category: "DUBAI TICKETS"
     },
     {
         id: 103,
         name: "Serviço de Reservas e Indicações",
         description: "Recomendações e Reservas de Restaurantes, Day Use em Resorts e Beach Clubs de acordo com o seu perfil.",
         price: 183.50,
-        imageUrl: "img/toursdubai/103.jpg",
+        imageUrl: "img/toursdubai/servicoreservaeindicacoes.jpg",
         category: "PORTARE SERVIÇOS"
     },
     {
@@ -581,7 +581,7 @@ export const toursData = [
         name: "Roteiro Personalizado",
         description: "Descritivo completo de todo o itinerário, endereços com localizações clicáveis, explicação de como chegar e dicas. Sua viagem toda por escrito para tornar sua experiência ainda mais prática.",
         price: 734.00,
-        imageUrl: "img/toursdubai/104.jpg",
+        imageUrl: "img/toursdubai/roteiropersonalizado.jpg",
         category: "PORTARE SERVIÇOS"
     },
     {
@@ -589,7 +589,7 @@ export const toursData = [
         name: "Upgrade para Assistência Premium (valor por dia)",
         description: "Profissional disponível em tempo real por whatsapp (respostas imediatas) para dúvidas durante a viagem. Horário de atendimento: 09:00 AM às 06:00 PM.",
         price: 150.00,
-        imageUrl: "img/toursdubai/105.jpg",
+        imageUrl: "img/toursdubai/upgradeassistenciapremium.jpg",
         category: "PORTARE SERVIÇOS"
     },
     {
@@ -597,7 +597,7 @@ export const toursData = [
         name: "Upgrade para Assistência VIP (valor por dia)",
         description: "Profissional disponível em tempo real por whatsapp ou chamada de voz (respostas imediatas) para dúvidas durante a viagem. Horário de atendimento: 07:00 AM às 00:30 AM.",
         price: 350.00,
-        imageUrl: "img/toursdubai/106.jpg",
+        imageUrl: "img/toursdubai/upgradeVIP.jpg",
         category: "PORTARE SERVIÇOS"
     },
     {
@@ -621,7 +621,7 @@ export const toursData = [
         name: "Adicional Carro Premium",
         description: "Adicional Carro Premium / Valor a consultar",
         price: 0,
-        imageUrl: "img/toursdubai/.jpg",
+        imageUrl: "img/toursdubai/adicionalcarropremium.jpg",
         category: "TOUR PRIVATIVO"
     },
     {
@@ -718,7 +718,7 @@ export const toursData = [
         name: "Buggy 1000 CC - até 2 pessoas 30 min",
         description: "Desfrute de um passeio emocionante de buggy 1000 CC por 30 minutos, com capacidade para até 2 pessoas. Sinta a adrenalina nas dunas do deserto.",
         price: 860.00,
-        imageUrl: "img/toursdubai/buggy1000cc2p.jpg",
+        imageUrl: "img/toursdubai/buggy2lugares.jpg",
         category: "DESERTO"
     },
     {
@@ -726,7 +726,7 @@ export const toursData = [
         name: "Buggy 1000 CC - até 4 pessoas 30 min",
         description: "Passeio de buggy 1000 CC por 30 minutos para até 4 pessoas. Uma experiência divertida e cheia de aventura nas dunas.",
         price: 1100.00,
-        imageUrl: "img/toursdubai/buggy1000cc4p.jpg",
+        imageUrl: "img/toursdubai/buggy4pessoas.jpg",
         category: "DESERTO"
     },
     {

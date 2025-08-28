@@ -75,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
             { label: "DUBAI PARKS", value: "DUBAI PARKS" },
             { label: "ABU DHABI TICKETS", value: "ABU DHABI TICKETS" },
             { label: "ABU DHABI PARKS", value: "ABU DHABI PARKS" },
-            { label: "LA PERLE", value: "LA PERLE" },
             { label: "PORTARE SERVIÇOS", value: "PORTARE SERVIÇOS" },
             { label: "EVENTOS", value: "EVENTOS" },
         ],
@@ -426,7 +425,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 tour.id === 64 || tour.id === 65 || tour.id === 66 ||
                 tour.id === 52 || tour.id === 53 || tour.id === 54 || tour.id === 55 ||
                 tour.id === 69 || tour.id === 72 ||
-                tour.id === 110 || tour.id === 27 || tour.id === 303 || tour.id === 400 || tour.id === 401 || tour.id === 112) return false;
+                tour.id === 110 || tour.id === 27 || tour.id === 303 || tour.id === 400 || tour.id === 401 || tour.id === 112 ||
+                tour.id === 78 || tour.id === 79 || tour.id === 86 || tour.id === 87 || tour.id === 88 || tour.id === 89 || tour.id === 95 || tour.id === 951 ||
+                tour.id === 96 || tour.id === 961 || tour.id === 97 || tour.id === 971) return false;
             if (!(selectedSubcategory === 'all' || tour.category === selectedSubcategory)) return false;
             if (searchQuery && !(
                 tour.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -1448,7 +1449,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Card dinâmico The View - Com Fila
+        // Card dinâmico The View - Unificado (Com Fila e Sem Fila)
         if (
             currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
             (selectedSubcategory === 'all' || selectedSubcategory === 'DUBAI TICKETS') &&
@@ -1470,12 +1471,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const textDiv = document.createElement('div');
                 const nameH3 = document.createElement('h3');
                 nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
-                nameH3.textContent = "The View - Ingresso Com Fila";
+                nameH3.textContent = "The View - Ingresso";
 
                 const descP = document.createElement('p');
                 descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
                 descP.innerHTML = `Acesso ao observatório The View at The Palm, localizado no topo da Palm Tower, com vistas 360 graus da Palm Jumeirah, do Golfo Pérsico e do skyline de Dubai.<br>
-                <span class="font-bold">Personalize seu ingresso:</span>`;
+                <span class="font-bold">Escolha o tipo de ingresso:</span>`;
 
                 textDiv.appendChild(nameH3);
                 textDiv.appendChild(descP);
@@ -1483,152 +1484,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 const actionDiv = document.createElement('div');
                 actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
 
-                // Tabela de preços do The View Com Fila
-                const theViewComFilaPrices = {
-                    'adulto': 110.00,
-                    'kids': 75.00
-                };
-
-                // Seletores
-                const selectorsDiv = document.createElement('div');
-                selectorsDiv.className = 'mb-4 space-y-3';
-
-                // Seletor de tipo de pessoa
-                const personTypeDiv = document.createElement('div');
-                personTypeDiv.className = 'flex flex-col';
-                const personTypeLabel = document.createElement('label');
-                personTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
-                personTypeLabel.textContent = 'Tipo:';
-                const personTypeSelect = document.createElement('select');
-                personTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
-                personTypeSelect.innerHTML = `
-                    <option value="adulto">Adulto</option>
-                    <option value="kids">Kids</option>
-                `;
-                personTypeDiv.appendChild(personTypeLabel);
-                personTypeDiv.appendChild(personTypeSelect);
-                selectorsDiv.appendChild(personTypeDiv);
-
-                // Preço e botão
-                const priceAndButtonDiv = document.createElement('div');
-                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
-
-                const priceSpan = document.createElement('span');
-                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
-
-                const quantityInput = document.createElement('input');
-                quantityInput.type = 'number';
-                quantityInput.value = 1;
-                quantityInput.min = 1;
-                quantityInput.max = 10;
-                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
-
-                function updateTheViewComFilaPrice() {
-                    const personType = personTypeSelect.value;
-                    const price = theViewComFilaPrices[personType] || 0;
-                    const quantity = parseInt(quantityInput.value, 10);
-                    const totalPrice = price * quantity;
-                    priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
-                }
-
-                // Event listeners para atualizar preço
-                personTypeSelect.addEventListener('change', updateTheViewComFilaPrice);
-                quantityInput.addEventListener('input', updateTheViewComFilaPrice);
-                quantityInput.addEventListener('change', updateTheViewComFilaPrice);
-
-                // Atualizar preço inicial
-                updateTheViewComFilaPrice();
-
-                const addButton = document.createElement('button');
-                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
-                addButton.textContent = 'Adicionar';
-                addButton.onclick = (e) => {
-                    e.stopPropagation();
-                    const quantity = parseInt(quantityInput.value, 10);
-                    if (quantity > 0 && quantity <= 10) {
-                        const personType = personTypeSelect.value;
-                        const price = theViewComFilaPrices[personType] || 0;
-                        
-                        // Gerar nome do ingresso
-                        let ticketName = "The View - Ingresso Com Fila";
-                        ticketName += ` - ${personType === 'adulto' ? 'Adulto' : 'Kids'}`;
-
-                        handleAddToCart({
-                            id: `the-view-com-fila-${personType}`,
-                            name: ticketName,
-                            description: 'Acesso ao observatório The View at The Palm, localizado no topo da Palm Tower, com vistas 360 graus da Palm Jumeirah, do Golfo Pérsico e do skyline de Dubai. Ingresso com fila.',
-                            price: price,
-                            imageUrl: "img/toursdubai/52.jpg",
-                            category: "DUBAI TICKETS"
-                        }, quantity);
-                    } else {
-                        showConfirmationMessage("Selecione entre 1 e 10 ingressos.");
+                // Tabela de preços do The View
+                const theViewPrices = {
+                    'com-fila': {
+                        'adulto': 110.00,
+                        'kids': 75.00
+                    },
+                    'sem-fila': {
+                        'adulto': 176.16,
+                        'kids': 120.00
                     }
                 };
 
-                const quantityControlDiv = document.createElement('div');
-                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
-                quantityControlDiv.appendChild(quantityInput);
-                quantityControlDiv.appendChild(addButton);
-
-                priceAndButtonDiv.appendChild(priceSpan);
-                priceAndButtonDiv.appendChild(quantityControlDiv);
-
-                actionDiv.appendChild(selectorsDiv);
-                actionDiv.appendChild(priceAndButtonDiv);
-
-                contentDiv.appendChild(textDiv);
-                contentDiv.appendChild(actionDiv);
-                tourCard.appendChild(img);
-                tourCard.appendChild(contentDiv);
-                toursGridTarget.appendChild(tourCard);
-            });
-        }
-
-        // Card dinâmico The View - Sem Fila
-        if (
-            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
-            (selectedSubcategory === 'all' || selectedSubcategory === 'DUBAI TICKETS') &&
-            dynamicCardMatches("The View", "Acesso ao observatório The View at The Palm")
-        ) {
-            dynamicCards.push(() => {
-                const tourCard = document.createElement('div');
-                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
-
-                const img = document.createElement('img');
-                img.src = "img/toursdubai/52.jpg";
-                img.alt = "The View";
-                img.className = 'w-full h-48 object-cover object-center';
-                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=The+View`; };
-
-                const contentDiv = document.createElement('div');
-                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
-
-                const textDiv = document.createElement('div');
-                const nameH3 = document.createElement('h3');
-                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
-                nameH3.textContent = "The View - Ingresso Sem Fila";
-
-                const descP = document.createElement('p');
-                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
-                descP.innerHTML = `Acesso ao observatório The View at The Palm, localizado no topo da Palm Tower, com vistas 360 graus da Palm Jumeirah, do Golfo Pérsico e do skyline de Dubai. Ingresso sem fila com acesso prioritário.<br>
-                <span class="font-bold">Personalize seu ingresso:</span>`;
-
-                textDiv.appendChild(nameH3);
-                textDiv.appendChild(descP);
-
-                const actionDiv = document.createElement('div');
-                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
-
-                // Tabela de preços do The View Sem Fila
-                const theViewSemFilaPrices = {
-                    'adulto': 176.16,
-                    'kids': 120.00
-                };
-
                 // Seletores
                 const selectorsDiv = document.createElement('div');
                 selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de tipo de ingresso
+                const ticketTypeDiv = document.createElement('div');
+                ticketTypeDiv.className = 'flex flex-col';
+                const ticketTypeLabel = document.createElement('label');
+                ticketTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                ticketTypeLabel.textContent = 'Tipo de Ingresso:';
+                const ticketTypeSelect = document.createElement('select');
+                ticketTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                ticketTypeSelect.innerHTML = `
+                    <option value="com-fila">Com Fila</option>
+                    <option value="sem-fila">Sem Fila</option>
+                `;
+                ticketTypeDiv.appendChild(ticketTypeLabel);
+                ticketTypeDiv.appendChild(ticketTypeSelect);
+                selectorsDiv.appendChild(ticketTypeDiv);
 
                 // Seletor de tipo de pessoa
                 const personTypeDiv = document.createElement('div');
@@ -1660,21 +1546,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 quantityInput.max = 10;
                 quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
 
-                function updateTheViewSemFilaPrice() {
+                function updateTheViewPrice() {
+                    const ticketType = ticketTypeSelect.value;
                     const personType = personTypeSelect.value;
-                    const price = theViewSemFilaPrices[personType] || 0;
+                    const price = theViewPrices[ticketType][personType] || 0;
                     const quantity = parseInt(quantityInput.value, 10);
                     const totalPrice = price * quantity;
                     priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
                 }
 
                 // Event listeners para atualizar preço
-                personTypeSelect.addEventListener('change', updateTheViewSemFilaPrice);
-                quantityInput.addEventListener('input', updateTheViewSemFilaPrice);
-                quantityInput.addEventListener('change', updateTheViewSemFilaPrice);
+                ticketTypeSelect.addEventListener('change', updateTheViewPrice);
+                personTypeSelect.addEventListener('change', updateTheViewPrice);
+                quantityInput.addEventListener('input', updateTheViewPrice);
+                quantityInput.addEventListener('change', updateTheViewPrice);
 
                 // Atualizar preço inicial
-                updateTheViewSemFilaPrice();
+                updateTheViewPrice();
 
                 const addButton = document.createElement('button');
                 addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
@@ -1683,17 +1571,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     e.stopPropagation();
                     const quantity = parseInt(quantityInput.value, 10);
                     if (quantity > 0 && quantity <= 10) {
+                        const ticketType = ticketTypeSelect.value;
                         const personType = personTypeSelect.value;
-                        const price = theViewSemFilaPrices[personType] || 0;
+                        const price = theViewPrices[ticketType][personType] || 0;
                         
                         // Gerar nome do ingresso
-                        let ticketName = "The View - Ingresso Sem Fila";
+                        let ticketName = "The View - Ingresso";
+                        if (ticketType === 'com-fila') {
+                            ticketName += " Com Fila";
+                        } else if (ticketType === 'sem-fila') {
+                            ticketName += " Sem Fila";
+                        }
                         ticketName += ` - ${personType === 'adulto' ? 'Adulto' : 'Kids'}`;
 
+                        // Gerar descrição baseada no tipo de ingresso
+                        let description = 'Acesso ao observatório The View at The Palm, localizado no topo da Palm Tower, com vistas 360 graus da Palm Jumeirah, do Golfo Pérsico e do skyline de Dubai.';
+                        if (ticketType === 'com-fila') {
+                            description += ' Ingresso com fila.';
+                        } else if (ticketType === 'sem-fila') {
+                            description += ' Ingresso sem fila com acesso prioritário.';
+                        }
+
                         handleAddToCart({
-                            id: `the-view-sem-fila-${personType}`,
+                            id: `the-view-${ticketType}-${personType}`,
                             name: ticketName,
-                            description: 'Acesso ao observatório The View at The Palm, localizado no topo da Palm Tower, com vistas 360 graus da Palm Jumeirah, do Golfo Pérsico e do skyline de Dubai. Ingresso sem fila com acesso prioritário.',
+                            description: description,
                             price: price,
                             imageUrl: "img/toursdubai/52.jpg",
                             category: "DUBAI TICKETS"
@@ -1733,7 +1635,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
                 const img = document.createElement('img');
-                img.src = "img/toursdubai/67.jpg";
+                img.src = "img/toursdubai/theframe.jpg";
                 img.alt = "The Frame";
                 img.className = 'w-full h-48 object-cover object-center';
                 img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=The+Frame`; };
@@ -2621,6 +2523,852 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 priceAndButtonDiv.appendChild(priceSpan);
                 priceAndButtonDiv.appendChild(addButton);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Ingresso Roda Gigante Ain Dubai
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'DUBAI TICKETS') &&
+            dynamicCardMatches("Ingresso Roda Gigante Ain Dubai", "Acesso à Ain Dubai")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/rodagigante.jpg";
+                img.alt = "Ingresso Roda Gigante Ain Dubai";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Roda+Gigante+Ain+Dubai`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Ingresso Roda Gigante Ain Dubai";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Acesso à Ain Dubai, a maior roda gigante de observação do mundo. Desfrute de vistas incríveis de Dubai.<br>
+                <span class="font-bold">Escolha o tipo de ingresso:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços da Roda Gigante Ain Dubai
+                const rodaGigantePrices = {
+                    'adulto': 145.00,
+                    'kids': 115.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de tipo de pessoa
+                const personTypeDiv = document.createElement('div');
+                personTypeDiv.className = 'flex flex-col';
+                const personTypeLabel = document.createElement('label');
+                personTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                personTypeLabel.textContent = 'Tipo:';
+                const personTypeSelect = document.createElement('select');
+                personTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                personTypeSelect.innerHTML = `
+                    <option value="adulto">Adulto</option>
+                    <option value="kids">Kids</option>
+                `;
+                personTypeDiv.appendChild(personTypeLabel);
+                personTypeDiv.appendChild(personTypeSelect);
+                selectorsDiv.appendChild(personTypeDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updateRodaGigantePrice() {
+                    const personType = personTypeSelect.value;
+                    const price = rodaGigantePrices[personType] || 0;
+                    const quantity = parseInt(quantityInput.value, 10);
+                    const totalPrice = price * quantity;
+                    priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                personTypeSelect.addEventListener('change', updateRodaGigantePrice);
+                quantityInput.addEventListener('input', updateRodaGigantePrice);
+                quantityInput.addEventListener('change', updateRodaGigantePrice);
+
+                // Atualizar preço inicial
+                updateRodaGigantePrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const quantity = parseInt(quantityInput.value, 10);
+                    if (quantity > 0 && quantity <= 10) {
+                        const personType = personTypeSelect.value;
+                        const price = rodaGigantePrices[personType] || 0;
+                        
+                        // Gerar nome do ingresso
+                        let ticketName = "Ingresso Roda Gigante Ain Dubai";
+                        if (personType === 'adulto') {
+                            ticketName += ' - Adulto';
+                        } else if (personType === 'kids') {
+                            ticketName += ' - Kids';
+                        }
+
+                        handleAddToCart({
+                            id: `roda-gigante-ain-dubai-${personType}`,
+                            name: ticketName,
+                            description: 'Acesso à Ain Dubai, a maior roda gigante de observação do mundo. Desfrute de vistas incríveis de Dubai.',
+                            price: price,
+                            imageUrl: "img/toursdubai/76.jpg",
+                            category: "DUBAI TICKETS"
+                        }, quantity);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 10 ingressos.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Ingresso Dubai Safari Park Zoo
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'DUBAI PARKS') &&
+            dynamicCardMatches("Ingresso Dubai Safari Park Zoo", "Acesso ao Dubai Safari Park")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/dubaisafaripark.jpg";
+                img.alt = "Ingresso Dubai Safari Park Zoo";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Dubai+Safari+Park`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Ingresso Dubai Safari Park Zoo";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Acesso ao Dubai Safari Park, um extenso parque de vida selvagem com diversas zonas que abrigam animais de diferentes habitats ao redor do mundo.<br>
+                <span class="font-bold">Escolha o tipo de ingresso:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do Dubai Safari Park
+                const safariParkPrices = {
+                    'adulto': 55.00,
+                    'kids': 25.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de tipo de pessoa
+                const personTypeDiv = document.createElement('div');
+                personTypeDiv.className = 'flex flex-col';
+                const personTypeLabel = document.createElement('label');
+                personTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                personTypeLabel.textContent = 'Tipo:';
+                const personTypeSelect = document.createElement('select');
+                personTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                personTypeSelect.innerHTML = `
+                    <option value="adulto">Adulto</option>
+                    <option value="kids">Kids</option>
+                `;
+                personTypeDiv.appendChild(personTypeLabel);
+                personTypeDiv.appendChild(personTypeSelect);
+                selectorsDiv.appendChild(personTypeDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updateSafariParkPrice() {
+                    const personType = personTypeSelect.value;
+                    const price = safariParkPrices[personType] || 0;
+                    const quantity = parseInt(quantityInput.value, 10);
+                    const totalPrice = price * quantity;
+                    priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                personTypeSelect.addEventListener('change', updateSafariParkPrice);
+                quantityInput.addEventListener('input', updateSafariParkPrice);
+                quantityInput.addEventListener('change', updateSafariParkPrice);
+
+                // Atualizar preço inicial
+                updateSafariParkPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const quantity = parseInt(quantityInput.value, 10);
+                    if (quantity > 0 && quantity <= 10) {
+                        const personType = personTypeSelect.value;
+                        const price = safariParkPrices[personType] || 0;
+                        
+                        // Gerar nome do ingresso
+                        let ticketName = "Ingresso Dubai Safari Park Zoo";
+                        if (personType === 'adulto') {
+                            ticketName += ' - Adulto';
+                        } else if (personType === 'kids') {
+                            ticketName += ' - Kids';
+                        }
+
+                        handleAddToCart({
+                            id: `dubai-safari-park-${personType}`,
+                            name: ticketName,
+                            description: 'Acesso ao Dubai Safari Park, um extenso parque de vida selvagem com diversas zonas que abrigam animais de diferentes habitats ao redor do mundo.',
+                            price: price,
+                            imageUrl: "img/toursdubai/86.jpg",
+                            category: "DUBAI PARKS"
+                        }, quantity);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 10 ingressos.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Ingresso Parque da Ferrari Abu Dhabi
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'ABU DHABI PARKS') &&
+            dynamicCardMatches("Ingresso Parque da Ferrari Abu Dhabi", "Acesso ao Ferrari World Abu Dhabi")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/ferrariworld.jpg";
+                img.alt = "Ingresso Parque da Ferrari Abu Dhabi";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Ferrari+World+Abu+Dhabi`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Ingresso Parque da Ferrari Abu Dhabi";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Acesso ao Ferrari World Abu Dhabi, o primeiro parque temático da Ferrari no mundo. Desfrute de montanhas-russas emocionantes, simuladores e atrações que celebram a marca italiana.<br>
+                <span class="font-bold">Escolha o tipo de ingresso:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do Ferrari World
+                const ferrariWorldPrices = {
+                    'adulto': 348.65,
+                    'kids': 295.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de tipo de pessoa
+                const personTypeDiv = document.createElement('div');
+                personTypeDiv.className = 'flex flex-col';
+                const personTypeLabel = document.createElement('label');
+                personTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                personTypeLabel.textContent = 'Tipo:';
+                const personTypeSelect = document.createElement('select');
+                personTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                personTypeSelect.innerHTML = `
+                    <option value="adulto">Adulto</option>
+                    <option value="kids">Kids</option>
+                `;
+                personTypeDiv.appendChild(personTypeLabel);
+                personTypeDiv.appendChild(personTypeSelect);
+                selectorsDiv.appendChild(personTypeDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updateFerrariWorldPrice() {
+                    const personType = personTypeSelect.value;
+                    const price = ferrariWorldPrices[personType] || 0;
+                    const quantity = parseInt(quantityInput.value, 10);
+                    const totalPrice = price * quantity;
+                    priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                personTypeSelect.addEventListener('change', updateFerrariWorldPrice);
+                quantityInput.addEventListener('input', updateFerrariWorldPrice);
+                quantityInput.addEventListener('change', updateFerrariWorldPrice);
+
+                // Atualizar preço inicial
+                updateFerrariWorldPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const quantity = parseInt(quantityInput.value, 10);
+                    if (quantity > 0 && quantity <= 10) {
+                        const personType = personTypeSelect.value;
+                        const price = ferrariWorldPrices[personType] || 0;
+                        
+                        // Gerar nome do ingresso
+                        let ticketName = "Ingresso Parque da Ferrari Abu Dhabi";
+                        if (personType === 'adulto') {
+                            ticketName += ' - Adulto';
+                        } else if (personType === 'kids') {
+                            ticketName += ' - Kids';
+                        }
+
+                        handleAddToCart({
+                            id: `ferrari-world-${personType}`,
+                            name: ticketName,
+                            description: 'Acesso ao Ferrari World Abu Dhabi, o primeiro parque temático da Ferrari no mundo. Desfrute de montanhas-russas emocionantes, simuladores e atrações que celebram a marca italiana.',
+                            price: price,
+                            imageUrl: "img/toursdubai/95.jpg",
+                            category: "ABU DHABI PARKS"
+                        }, quantity);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 10 ingressos.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Ingresso Parque Warner Bros Abu Dhabi
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'ABU DHABI PARKS') &&
+            dynamicCardMatches("Ingresso Parque Warner Bros", "Acesso ao Warner Bros. World Abu Dhabi")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/warnerbrosworld.jpg";
+                img.alt = "Ingresso Parque Warner Bros Abu Dhabi";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Warner+Bros+World`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Ingresso Parque Warner Bros Abu Dhabi";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Acesso ao Warner Bros. World Abu Dhabi, um parque temático indoor com zonas imersivas baseadas em personagens da Warner Bros., como Batman, Superman, Looney Tunes e Flintstones.<br>
+                <span class="font-bold">Escolha o tipo de ingresso:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do Warner Bros World
+                const warnerBrosPrices = {
+                    'adulto': 381.68,
+                    'kids': 295.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de tipo de pessoa
+                const personTypeDiv = document.createElement('div');
+                personTypeDiv.className = 'flex flex-col';
+                const personTypeLabel = document.createElement('label');
+                personTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                personTypeLabel.textContent = 'Tipo:';
+                const personTypeSelect = document.createElement('select');
+                personTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                personTypeSelect.innerHTML = `
+                    <option value="adulto">Adulto</option>
+                    <option value="kids">Kids (Menor de 1.10m)</option>
+                `;
+                personTypeDiv.appendChild(personTypeLabel);
+                personTypeDiv.appendChild(personTypeSelect);
+                selectorsDiv.appendChild(personTypeDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updateWarnerBrosPrice() {
+                    const personType = personTypeSelect.value;
+                    const price = warnerBrosPrices[personType] || 0;
+                    const quantity = parseInt(quantityInput.value, 10);
+                    const totalPrice = price * quantity;
+                    priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                personTypeSelect.addEventListener('change', updateWarnerBrosPrice);
+                quantityInput.addEventListener('input', updateWarnerBrosPrice);
+                quantityInput.addEventListener('change', updateWarnerBrosPrice);
+
+                // Atualizar preço inicial
+                updateWarnerBrosPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const quantity = parseInt(quantityInput.value, 10);
+                    if (quantity > 0 && quantity <= 10) {
+                        const personType = personTypeSelect.value;
+                        const price = warnerBrosPrices[personType] || 0;
+                        
+                        // Gerar nome do ingresso
+                        let ticketName = "Ingresso Parque Warner Bros Abu Dhabi";
+                        if (personType === 'adulto') {
+                            ticketName += ' - Adulto';
+                        } else if (personType === 'kids') {
+                            ticketName += ' - Kids (Menor de 1.10m)';
+                        }
+
+                        handleAddToCart({
+                            id: `warner-bros-world-${personType}`,
+                            name: ticketName,
+                            description: 'Acesso ao Warner Bros. World Abu Dhabi, um parque temático indoor com zonas imersivas baseadas em personagens da Warner Bros., como Batman, Superman, Looney Tunes e Flintstones.',
+                            price: price,
+                            imageUrl: "img/toursdubai/warnerbrosworld.jpg",
+                            category: "ABU DHABI PARKS"
+                        }, quantity);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 10 ingressos.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Ingresso Sea World Abu Dhabi
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'ABU DHABI PARKS') &&
+            dynamicCardMatches("Ingresso Sea World Abu Dhabi", "Acesso ao SeaWorld Yas Island")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/seaworldabudhabi.jpg";
+                img.alt = "Ingresso Sea World Abu Dhabi";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Sea+World+Abu+Dhabi`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Ingresso Sea World Abu Dhabi";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Acesso ao SeaWorld Yas Island, Abu Dhabi, um parque temático marinho que oferece experiências imersivas com animais marinhos, shows e atrações educativas.<br>
+                <span class="font-bold">Escolha o tipo de ingresso:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços do Sea World
+                const seaWorldPrices = {
+                    'adulto': 381.68,
+                    'kids': 320.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de tipo de pessoa
+                const personTypeDiv = document.createElement('div');
+                personTypeDiv.className = 'flex flex-col';
+                const personTypeLabel = document.createElement('label');
+                personTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                personTypeLabel.textContent = 'Tipo:';
+                const personTypeSelect = document.createElement('select');
+                personTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                personTypeSelect.innerHTML = `
+                    <option value="adulto">Adulto</option>
+                    <option value="kids">Kids</option>
+                `;
+                personTypeDiv.appendChild(personTypeLabel);
+                personTypeDiv.appendChild(personTypeSelect);
+                selectorsDiv.appendChild(personTypeDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updateSeaWorldPrice() {
+                    const personType = personTypeSelect.value;
+                    const price = seaWorldPrices[personType] || 0;
+                    const quantity = parseInt(quantityInput.value, 10);
+                    const totalPrice = price * quantity;
+                    priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                personTypeSelect.addEventListener('change', updateSeaWorldPrice);
+                quantityInput.addEventListener('input', updateSeaWorldPrice);
+                quantityInput.addEventListener('change', updateSeaWorldPrice);
+
+                // Atualizar preço inicial
+                updateSeaWorldPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const quantity = parseInt(quantityInput.value, 10);
+                    if (quantity > 0 && quantity <= 10) {
+                        const personType = personTypeSelect.value;
+                        const price = seaWorldPrices[personType] || 0;
+                        
+                        // Gerar nome do ingresso
+                        let ticketName = "Ingresso Sea World Abu Dhabi";
+                        if (personType === 'adulto') {
+                            ticketName += ' - Adulto';
+                        } else if (personType === 'kids') {
+                            ticketName += ' - Kids';
+                        }
+
+                        handleAddToCart({
+                            id: `sea-world-abu-dhabi-${personType}`,
+                            name: ticketName,
+                            description: 'Acesso ao SeaWorld Yas Island, Abu Dhabi, um parque temático marinho que oferece experiências imersivas com animais marinhos, shows e atrações educativas.',
+                            price: price,
+                            imageUrl: "img/toursdubai/seaworldabudhabi.jpg",
+                            category: "ABU DHABI PARKS"
+                        }, quantity);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 10 ingressos.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Ingresso Experiência Dubai Safari Park Zoo
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'DUBAI PARKS') &&
+            dynamicCardMatches("Ingresso Experiência Dubai Safari Park Zoo", "Acesso completo ao Dubai Safari Park")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/experienciadubaisafaripark.jpg";
+                img.alt = "Ingresso Experiência Dubai Safari Park Zoo";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Experiencia+Dubai+Safari+Park`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Ingresso Experiência Dubai Safari Park Zoo";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Acesso completo ao Dubai Safari Park, incluindo o Safari Journey (passeio de ônibus pelas áreas de safari) e acesso a todas as vilas e shows.<br>
+                <span class="font-bold">Escolha o tipo de ingresso:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                // Tabela de preços da Experiência Dubai Safari Park
+                const experienciaSafariParkPrices = {
+                    'adulto': 130.00,
+                    'kids': 100.00
+                };
+
+                // Seletores
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de tipo de pessoa
+                const personTypeDiv = document.createElement('div');
+                personTypeDiv.className = 'flex flex-col';
+                const personTypeLabel = document.createElement('label');
+                personTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                personTypeLabel.textContent = 'Tipo:';
+                const personTypeSelect = document.createElement('select');
+                personTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                personTypeSelect.innerHTML = `
+                    <option value="adulto">Adulto</option>
+                    <option value="kids">Kids</option>
+                `;
+                personTypeDiv.appendChild(personTypeLabel);
+                personTypeDiv.appendChild(personTypeSelect);
+                selectorsDiv.appendChild(personTypeDiv);
+
+                // Preço e botão
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+                quantityInput.className = 'w-16 text-center border border-gray-300 rounded-md px-2 py-1 text-sm mr-2';
+
+                function updateExperienciaSafariParkPrice() {
+                    const personType = personTypeSelect.value;
+                    const price = experienciaSafariParkPrices[personType] || 0;
+                    const quantity = parseInt(quantityInput.value, 10);
+                    const totalPrice = price * quantity;
+                    priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+                }
+
+                // Event listeners para atualizar preço
+                personTypeSelect.addEventListener('change', updateExperienciaSafariParkPrice);
+                quantityInput.addEventListener('input', updateExperienciaSafariParkPrice);
+                quantityInput.addEventListener('change', updateExperienciaSafariParkPrice);
+
+                // Atualizar preço inicial
+                updateExperienciaSafariParkPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const quantity = parseInt(quantityInput.value, 10);
+                    if (quantity > 0 && quantity <= 10) {
+                        const personType = personTypeSelect.value;
+                        const price = experienciaSafariParkPrices[personType] || 0;
+                        
+                        // Gerar nome do ingresso
+                        let ticketName = "Ingresso Experiência Dubai Safari Park Zoo";
+                        if (personType === 'adulto') {
+                            ticketName += ' - Adulto';
+                        } else if (personType === 'kids') {
+                            ticketName += ' - Kids';
+                        }
+
+                        handleAddToCart({
+                            id: `experiencia-dubai-safari-park-${personType}`,
+                            name: ticketName,
+                            description: 'Acesso completo ao Dubai Safari Park, incluindo o Safari Journey (passeio de ônibus pelas áreas de safari) e acesso a todas as vilas e shows.',
+                            price: price,
+                            imageUrl: "img/toursdubai/experienciadubaisafaripark.jpg",
+                            category: "DUBAI PARKS"
+                        }, quantity);
+                    } else {
+                        showConfirmationMessage("Selecione entre 1 e 10 ingressos.");
+                    }
+                };
+
+                const quantityControlDiv = document.createElement('div');
+                quantityControlDiv.className = 'flex items-center mb-2 sm:mb-0';
+                quantityControlDiv.appendChild(quantityInput);
+                quantityControlDiv.appendChild(addButton);
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(quantityControlDiv);
 
                 actionDiv.appendChild(selectorsDiv);
                 actionDiv.appendChild(priceAndButtonDiv);
