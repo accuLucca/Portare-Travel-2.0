@@ -741,16 +741,16 @@ export const toursData = [
         id: 204,
         name: "Safari no Deserto Premium - Transporte Compartilhado - Valor por pessoa",
         description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
-        price: 450.00,
-        imageUrl: "img/toursdubai/premiumcompartilhado.jpg",
+        price: 500.00,
+        imageUrl: "img/toursdubai/safaricompartilhadopremium.jpg",
         category: "DESERTO"
     },
     {
         id: 205,
         name: "Safari no Deserto Premium - Transporte Privativo - Valor total para até 6 pessoas",
         description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
-        price: 2282.74,
-        imageUrl: "img/toursdubai/premiumprivativo.jpg",
+        price: 2383,
+        imageUrl: "img/toursdubai/safariprivativopremium.jpg",
         category: "DESERTO"
     },
     {

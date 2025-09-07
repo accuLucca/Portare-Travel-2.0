@@ -2194,10 +2194,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Tabela de preços do Iate Privativo
                 const iatePrivativoPrices = {
-                    '6pessoas': 1650.00,
-                    '15pessoas': 2040.00,
-                    '20pessoas': 2400.00,
-                    '30pessoas': 3000.00,
+                    '6pessoas': 2100.00,
+                    '15pessoas': 2500.00,
+                    '20pessoas': 3100.00,
+                    '30pessoas': 5000.00,
                     '40pessoas': 6000.00
                 };
 
