@@ -167,7 +167,7 @@ export const toursData = [
 
     {
         id: 51,
-        name: "Ingresso Global Village Adulto ou kids (Qualquer Dia)",
+        name: "Ingresso Global Village Adulto ou kids (Disponível apenas de Outubro a Abril / Inverno)",
         description: "Acesso ao Global Village, um parque multicultural com pavilhões de diversos países, shows, comidas e compras. Válido para qualquer dia de funcionamento. (Preço por pessoa, aplicável para adultos e crianças a partir de 3 anos)",
         price: 30,
         imageUrl: "img/toursdubai/51.jpg",
@@ -731,8 +731,8 @@ export const toursData = [
     },
     {
         id: 203,
-        name: "Adicional Guia em Português para Safari no Deserto (Valor Único)",
-        description: "Adicione um guia falando português à sua experiência de Safari no Deserto para informações e acompanhamento personalizado durante todo o passeio. (Valor independete do número de pessoas no grupo)",
+        name: "Adicional staff em Português para Safari no Deserto (Valor Único)",
+        description: "Adicione um guia falando português à sua experiência de Safari no Deserto para informações e acompanhamento personalizado durante todo o passeio. (Valor independente do número de pessoas no grupo)",
         price: 1025.00,
         imageUrl: "img/toursdubai/guiaportugues.jpg",
         category: "DESERTO"
@@ -740,7 +740,7 @@ export const toursData = [
     {
         id: 204,
         name: "Safari no Deserto Premium - Transporte Compartilhado - Valor por pessoa",
-        description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte.",
         price: 500.00,
         imageUrl: "img/toursdubai/safaricompartilhadopremium.jpg",
         category: "DESERTO"
@@ -748,7 +748,7 @@ export const toursData = [
     {
         id: 205,
         name: "Safari no Deserto Premium - Transporte Privativo - Valor total para até 6 pessoas",
-        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte.",
         price: 2383,
         imageUrl: "img/toursdubai/safariprivativopremium.jpg",
         category: "DESERTO"
@@ -756,7 +756,7 @@ export const toursData = [
     {
         id: 206,
         name: "Safari no Deserto Gold - Transporte Compartilhado - Valor por pessoa",
-        description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé. *Será privativo quando houver 6 pessoas do mesmo grupo.",
+        description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte. *Será privativo quando houver 6 pessoas do mesmo grupo.",
         price: 740.00,
         imageUrl: "img/toursdubai/goldcompartilhado.jpg",
         category: "DESERTO"
@@ -764,7 +764,7 @@ export const toursData = [
     {
         id: 207,
         name: "Safari no Deserto Gold - Transporte Privativo - 2 pessoas",
-        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte.",
         price: 1300,
         imageUrl: "img/toursdubai/goldprivativo2p.jpg",
         category: "DESERTO"
@@ -772,7 +772,7 @@ export const toursData = [
     {
         id: 208,
         name: "Safari no Deserto Gold - Transporte Privativo - 3 pessoas",
-        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte.",
         price: 1000.00,
         imageUrl: "img/toursdubai/goldprivativo3p.jpg",
         category: "DESERTO"
@@ -780,7 +780,7 @@ export const toursData = [
     {
         id: 209,
         name: "Safari no Deserto Gold - Transporte Privativo - 4 a 5 pessoas",
-        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte.",
         price: 850.00,
         imageUrl: "img/toursdubai/goldprivativo4p.jpg",
         category: "DESERTO"
@@ -788,7 +788,7 @@ export const toursData = [
     {
         id: 210,
         name: "Safari no Deserto Platinum - Transporte Compartilhado - Valor por pessoa",
-        description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé. *Será privativo quando houver 6 pessoas do mesmo grupo.",
+        description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte. *Será privativo quando houver 6 pessoas do mesmo grupo.",
         price: 850.00,
         imageUrl: "img/toursdubai/platinumcompartilhado.jpg",
         category: "DESERTO"
@@ -796,7 +796,7 @@ export const toursData = [
     {
         id: 211,
         name: "Safari no Deserto Platinum - Transporte Privativo - 2 pessoas",
-        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte.",
         price: 1400,
         imageUrl: "img/toursdubai/platinumprivativo2p.jpg",
         category: "DESERTO"
@@ -804,7 +804,7 @@ export const toursData = [
     {
         id: 212,
         name: "Safari no Deserto Platinum - Transporte Privativo - 3 pessoas",
-        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte.",
         price: 1200,
         imageUrl: "img/toursdubai/platinumprivativo3p.jpg",
         category: "DESERTO"
@@ -812,7 +812,7 @@ export const toursData = [
     {
         id: 213,
         name: "Safari no Deserto Platinum - Transporte Privativo - 4 a 5 pessoas",
-        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: disponíveis no local para comprar à parte - bebidas alcoólicas e narguilé.",
+        description: "Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte.",
         price: 950.00,
         imageUrl: "img/toursdubai/platinumprivativo4p.jpg",
         category: "DESERTO"
@@ -820,15 +820,15 @@ export const toursData = [
     {
         id: 214,
         name: "Safari no Deserto All Inclusive (Bebidas alcoólicas) - Transporte Compartilhado",
-        description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, parada para fotos, Passeio simples de Camelo, Jantar tipo Buffet, Danças e Show, bebidas alcoólicas e não alcoólicas. Não incluso: narguilé.",
+        description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, parada para fotos, Passeio simples de Camelo, Jantar tipo Buffet, Danças e Show, bebidas alcoólicas e não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte .",
         price: 640.50,
         imageUrl: "img/toursdubai/allinclusivecompartilhado.jpg",
         category: "DESERTO"
     },
     {
         id: 215,
-        name: "Safari no Deserto Emirate (Heritage) - Transporte Compartilhado",
-        description: "Incluso: Transfer compartilhado ida e volta do Hotel, Rota no Deserto de Land Rover Vintage ou 30 Min de Camelo, Passeio simples de Camelo, Jantar tipo Buffet tradicional Emirate, Danças Típicas Emirate, Experiência sob as estrelas, bebidas alcoólicas tradicionais, acampamento beduíno.",
+        name: "Safari no Deserto Emirati (Heritage) - Transporte Compartilhado",
+        description: "Incluso: Transfer compartilhado ida e volta do Hotel, Rota no Deserto de Land Rover Vintage ou 30 Min de Camelo, Passeio simples de Camelo, Jantar tipo Buffet tradicional Emirati, Danças Típicas Emirati, Experiência sob as estrelas, bebidas alcoólicas tradicionais, acampamento beduíno.",
         price: 796.00,
         imageUrl: "img/toursdubai/215.jpg",
         category: "DESERTO"

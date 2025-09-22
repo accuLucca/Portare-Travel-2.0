@@ -426,6 +426,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 tour.id === 52 || tour.id === 53 || tour.id === 54 || tour.id === 55 ||
                 tour.id === 69 || tour.id === 72 ||
                 tour.id === 110 || tour.id === 27 || tour.id === 303 || tour.id === 400 || tour.id === 401 || tour.id === 112 ||
+                // Oculta variações antigas dos Safáris Gold/Platinum Privativos (unificação em cards dinâmicos)
+                tour.id === 207 || tour.id === 208 || tour.id === 209 || // Gold Privativo 2p/3p/4-5p
+                tour.id === 211 || tour.id === 212 || tour.id === 213 || // Platinum Privativo 2p/3p/4-5p
                 tour.id === 78 || tour.id === 79 || tour.id === 86 || tour.id === 87 || tour.id === 88 || tour.id === 89 || tour.id === 95 || tour.id === 951 ||
                 tour.id === 96 || tour.id === 961 || tour.id === 97 || tour.id === 971) return false;
             if (!(selectedSubcategory === 'all' || tour.category === selectedSubcategory)) return false;
@@ -3487,6 +3490,284 @@ document.addEventListener('DOMContentLoaded', () => {
                         imageUrl: "img/toursdubai/27.jpg",
                         category: "TRASLADO"
                     }, 1);
+                };
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(addButton);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Safari no Deserto Gold - Transporte Privativo (2, 3, 4-5 pessoas)
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'DESERTO') &&
+            dynamicCardMatches("Safari no Deserto Gold - Transporte Privativo", "Transfer privativo em carro 4X4")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/goldprivativo4p.jpg";
+                img.alt = "Safari no Deserto Gold - Transporte Privativo";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Safari+Gold+Privativo`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Safari no Deserto Gold - Transporte Privativo";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.<br>
+                <span class="font-bold">Selecione o número de pessoas:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                // Opções e preços (total do serviço)
+                const goldPrivativoPrices = {
+                    '2pessoas': 1300,
+                    '3pessoas': 1000,
+                    '4a5pessoas': 850
+                };
+
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                const peopleDiv = document.createElement('div');
+                peopleDiv.className = 'flex flex-col';
+                const peopleLabel = document.createElement('label');
+                peopleLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                peopleLabel.textContent = 'Pessoas:';
+                const peopleSelect = document.createElement('select');
+                peopleSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                peopleSelect.innerHTML = `
+                    <option value="2pessoas">2 pessoas</option>
+                    <option value="3pessoas">3 pessoas</option>
+                    <option value="4a5pessoas">4 a 5 pessoas</option>
+                `;
+                peopleDiv.appendChild(peopleLabel);
+                peopleDiv.appendChild(peopleSelect);
+                selectorsDiv.appendChild(peopleDiv);
+
+                // seletor exato para 4-5 pessoas
+                const peopleExactDiv = document.createElement('div');
+                peopleExactDiv.className = 'flex flex-col';
+                const peopleExactLabel = document.createElement('label');
+                peopleExactLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                peopleExactLabel.textContent = 'Escolha a quantidade:';
+                const peopleExactSelect = document.createElement('select');
+                peopleExactSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                peopleExactSelect.innerHTML = `
+                    <option value="4">4 pessoas</option>
+                    <option value="5">5 pessoas</option>
+                `;
+                peopleExactDiv.appendChild(peopleExactLabel);
+                peopleExactDiv.appendChild(peopleExactSelect);
+                peopleExactDiv.style.display = 'none';
+                selectorsDiv.appendChild(peopleExactDiv);
+
+                function getGoldSelectedCount() {
+                    const tier = peopleSelect.value;
+                    if (tier === '2pessoas') return 2;
+                    if (tier === '3pessoas') return 3;
+                    return parseInt(peopleExactSelect.value, 10) || 4;
+                }
+
+                peopleSelect.addEventListener('change', () => {
+                    const showExact = peopleSelect.value === '4a5pessoas';
+                    peopleExactDiv.style.display = showExact ? 'flex' : 'none';
+                    updateGoldPrivativoPrice();
+                });
+
+                function updateGoldPrivativoPrice() {
+                    const key = peopleSelect.value;
+                    const price = goldPrivativoPrices[key] || 0;
+                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa`;
+                }
+                peopleSelect.addEventListener('change', updateGoldPrivativoPrice);
+                updateGoldPrivativoPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const key = peopleSelect.value;
+                    const price = goldPrivativoPrices[key] || 0;
+                    let peopleText = key === '2pessoas' ? '2 pessoas' : key === '3pessoas' ? '3 pessoas' : `${peopleExactSelect.value} pessoas`;
+                    const name = `Safari no Deserto Gold - Transporte Privativo - ${peopleText}`;
+                    const quantity = getGoldSelectedCount();
+                    handleAddToCart({
+                        id: `safari-gold-privativo-${key}`,
+                        name: name,
+                        description: 'Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.',
+                        price: price,
+                        imageUrl: "img/toursdubai/goldprivativo4p.jpg",
+                        category: "DESERTO"
+                    }, quantity);
+                };
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(addButton);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
+        // Card dinâmico Safari no Deserto Platinum - Transporte Privativo (2, 3, 4-5 pessoas)
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'DESERTO') &&
+            dynamicCardMatches("Safari no Deserto Platinum - Transporte Privativo", "Transfer privativo em carro 4X4")
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/platinumprivativo4p.jpg";
+                img.alt = "Safari no Deserto Platinum - Transporte Privativo";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Safari+Platinum+Privativo`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.textContent = "Safari no Deserto Platinum - Transporte Privativo";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.<br>
+                <span class="font-bold">Selecione o número de pessoas:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                // Opções e preços (total do serviço)
+                const platinumPrivativoPrices = {
+                    '2pessoas': 1400,
+                    '3pessoas': 1200,
+                    '4a5pessoas': 950
+                };
+
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                const peopleDiv = document.createElement('div');
+                peopleDiv.className = 'flex flex-col';
+                const peopleLabel = document.createElement('label');
+                peopleLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                peopleLabel.textContent = 'Pessoas:';
+                const peopleSelect = document.createElement('select');
+                peopleSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                peopleSelect.innerHTML = `
+                    <option value="2pessoas">2 pessoas</option>
+                    <option value="3pessoas">3 pessoas</option>
+                    <option value="4a5pessoas">4 a 5 pessoas</option>
+                `;
+                peopleDiv.appendChild(peopleLabel);
+                peopleDiv.appendChild(peopleSelect);
+                selectorsDiv.appendChild(peopleDiv);
+
+                // seletor exato para 4-5 pessoas
+                const peopleExactDiv2 = document.createElement('div');
+                peopleExactDiv2.className = 'flex flex-col';
+                const peopleExactLabel2 = document.createElement('label');
+                peopleExactLabel2.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                peopleExactLabel2.textContent = 'Escolha a quantidade:';
+                const peopleExactSelect2 = document.createElement('select');
+                peopleExactSelect2.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                peopleExactSelect2.innerHTML = `
+                    <option value="4">4 pessoas</option>
+                    <option value="5">5 pessoas</option>
+                `;
+                peopleExactDiv2.appendChild(peopleExactLabel2);
+                peopleExactDiv2.appendChild(peopleExactSelect2);
+                peopleExactDiv2.style.display = 'none';
+                selectorsDiv.appendChild(peopleExactDiv2);
+
+                function getPlatinumSelectedCount() {
+                    const tier = peopleSelect.value;
+                    if (tier === '2pessoas') return 2;
+                    if (tier === '3pessoas') return 3;
+                    return parseInt(peopleExactSelect2.value, 10) || 4;
+                }
+
+                peopleSelect.addEventListener('change', () => {
+                    const showExact = peopleSelect.value === '4a5pessoas';
+                    peopleExactDiv2.style.display = showExact ? 'flex' : 'none';
+                    updatePlatinumPrivativoPrice();
+                });
+
+                function updatePlatinumPrivativoPrice() {
+                    const key = peopleSelect.value;
+                    const price = platinumPrivativoPrices[key] || 0;
+                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa`;
+                }
+                peopleSelect.addEventListener('change', updatePlatinumPrivativoPrice);
+                updatePlatinumPrivativoPrice();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const key = peopleSelect.value;
+                    const price = platinumPrivativoPrices[key] || 0;
+                    let peopleText = key === '2pessoas' ? '2 pessoas' : key === '3pessoas' ? '3 pessoas' : `${peopleExactSelect2.value} pessoas`;
+                    const name = `Safari no Deserto Platinum - Transporte Privativo - ${peopleText}`;
+                    const quantity = getPlatinumSelectedCount();
+                    handleAddToCart({
+                        id: `safari-platinum-privativo-${key}`,
+                        name: name,
+                        description: 'Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.',
+                        price: price,
+                        imageUrl: "img/toursdubai/platinumprivativo4p.jpg",
+                        category: "DESERTO"
+                    }, quantity);
                 };
 
                 priceAndButtonDiv.appendChild(priceSpan);
