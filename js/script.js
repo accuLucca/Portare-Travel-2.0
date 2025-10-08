@@ -64,11 +64,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const countrySubcategories = {
         'Dubai e Abu Dhabi': [
             { label: "Todos", value: "all" },
-            { label: "TOUR EM GRUPO", value: "TOUR EM GRUPO" },
             { label: "TOUR PRIVATIVO", value: "TOUR PRIVATIVO" },
+            { label: "DESERTO", value: "DESERTO" },
             { label: "TRASLADO", value: "TRASLADO" },
             { label: "CARRO COM MOTORISTA", value: "CARRO COM MOTORISTA" },
-            { label: "DESERTO", value: "DESERTO" },
             { label: "AVENTURAS AQUÁTICAS", value: "AVENTURAS AQUÁTICAS" },
             { label: "EXPERIÊNCIAS AÉREAS", value: "EXPERIENCIAS AÉREAS" },
             { label: "DUBAI TICKETS", value: "DUBAI TICKETS" },
@@ -1903,12 +1902,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Card dinâmico Tour Dubai Compartilhado - No Idioma Da Sua Preferência (6h)
-        if (
-            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
-            (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR EM GRUPO') &&
-            dynamicCardMatches("Tour Dubai Compartilhado - No Idioma Da Sua Preferência (6h)", "Tour compartilhado pelos principais pontos de Dubai com guia")
-        ) {
+        // Card dinâmico Tour Dubai Compartilhado - REMOVIDO (categoria TOUR EM GRUPO removida)
+        if (false) {
             dynamicCards.push(() => {
                 const tourCard = document.createElement('div');
                 tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
@@ -3520,7 +3515,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
                 const img = document.createElement('img');
-                img.src = "img/toursdubai/goldprivativo4p.jpg";
+                img.src = "img/toursdubai/safarigold.jpg";
                 img.alt = "Safari no Deserto Gold";
                 img.className = 'w-full h-48 object-cover object-center';
                 img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Safari+Gold`; };
@@ -3717,7 +3712,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
                 const img = document.createElement('img');
-                img.src = "img/toursdubai/platinumprivativo4p.jpg";
+                img.src = "img/toursdubai/safariplatinum.jpg";
                 img.alt = "Safari no Deserto Platinum";
                 img.className = 'w-full h-48 object-cover object-center';
                 img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Safari+Platinum`; };

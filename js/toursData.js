@@ -1,21 +1,4 @@
 export const toursData = [
-    // TOUR EM GRUPO
-    {
-        id: 16,
-        name: "Tour Abu Dhabi Compartilhado - Tradicional / Dia Todo (8h)",
-        description: "Tour compartilhado tradicional em Abu Dhabi. Incluso: Guia em Inglês, 1 Ingresso (à escolher), Transporte do Hotel (Dubai). Solicite Itinerário completo. Adulto ou kids +3 anos.",
-        price: 550.50,
-        imageUrl: "img/toursdubai/16.jpg",
-        category: "TOUR EM GRUPO"
-    },
-    {
-        id: 17,
-        name: "Tour Abu Dhabi Compartilhado c/ 1 Parque à sua escolha - Dia Todo (8h)",
-        description: "Tour compartilhado em Abu Dhabi com parque à escolha. Incluso: Guia em Inglês, Ingresso Mesquita + 1 Parque (consultar opções), Transporte do Hotel (Dubai). Adulto ou kids +3 anos.",
-        price: 734.00,
-        imageUrl: "img/toursdubai/17.jpg",
-        category: "TOUR EM GRUPO"
-    },
     // TOUR DUBAI
     {
         id: 19,
@@ -706,38 +689,6 @@ export const toursData = [
         category: "CARRO COM MOTORISTA"
     },
     {
-        id: 200,
-        name: "Quadriciclo 90 CC - 1 pessoa 20 min",
-        description: "Aventure-se no deserto pilotando um quadriciclo 90 CC por 20 minutos. Ideal para quem busca emoção e diversão nas dunas.",
-        price: 165.00,
-        imageUrl: "img/toursdubai/quadriciclo90cc.jpg",
-        category: "DESERTO"
-    },
-    {
-        id: 201,
-        name: "Buggy 1000 CC - até 2 pessoas 30 min",
-        description: "Desfrute de um passeio emocionante de buggy 1000 CC por 30 minutos, com capacidade para até 2 pessoas. Sinta a adrenalina nas dunas do deserto.",
-        price: 860.00,
-        imageUrl: "img/toursdubai/buggy2lugares.jpg",
-        category: "DESERTO"
-    },
-    {
-        id: 202,
-        name: "Buggy 1000 CC - até 4 pessoas 30 min",
-        description: "Passeio de buggy 1000 CC por 30 minutos para até 4 pessoas. Uma experiência divertida e cheia de aventura nas dunas.",
-        price: 1100.00,
-        imageUrl: "img/toursdubai/buggy4pessoas.jpg",
-        category: "DESERTO"
-    },
-    {
-        id: 203,
-        name: "Adicional staff em Português para Safari no Deserto (Valor Único)",
-        description: "Adicione um guia falando português à sua experiência de Safari no Deserto para informações e acompanhamento personalizado durante todo o passeio. (Valor independente do número de pessoas no grupo)",
-        price: 1025.00,
-        imageUrl: "img/toursdubai/guiaportugues.jpg",
-        category: "DESERTO"
-    },
-    {
         id: 204,
         name: "Safari no Deserto Premium - Transporte Compartilhado - Valor por pessoa",
         description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte.",
@@ -831,6 +782,38 @@ export const toursData = [
         description: "Incluso: Transfer compartilhado ida e volta do Hotel, Rota no Deserto de Land Rover Vintage ou 30 Min de Camelo, Passeio simples de Camelo, Jantar tipo Buffet tradicional Emirati, Danças Típicas Emirati, Experiência sob as estrelas, bebidas alcoólicas tradicionais, acampamento beduíno.",
         price: 796.00,
         imageUrl: "img/toursdubai/215.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 203,
+        name: "Adicional staff em Português para Safari no Deserto (Valor Único)",
+        description: "Adicione um guia falando português à sua experiência de Safari no Deserto para informações e acompanhamento personalizado durante todo o passeio. (Valor independente do número de pessoas no grupo)",
+        price: 1025.00,
+        imageUrl: "img/toursdubai/guiaportugues.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 200,
+        name: "Quadriciclo 90 CC - 1 pessoa 20 min",
+        description: "Aventure-se no deserto pilotando um quadriciclo 90 CC por 20 minutos. Ideal para quem busca emoção e diversão nas dunas.",
+        price: 165.00,
+        imageUrl: "img/toursdubai/quadriciclo90cc.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 201,
+        name: "Buggy 1000 CC - até 2 pessoas 30 min",
+        description: "Desfrute de um passeio emocionante de buggy 1000 CC por 30 minutos, com capacidade para até 2 pessoas. Sinta a adrenalina nas dunas do deserto.",
+        price: 860.00,
+        imageUrl: "img/toursdubai/buggy2lugares.jpg",
+        category: "DESERTO"
+    },
+    {
+        id: 202,
+        name: "Buggy 1000 CC - até 4 pessoas 30 min",
+        description: "Passeio de buggy 1000 CC por 30 minutos para até 4 pessoas. Uma experiência divertida e cheia de aventura nas dunas.",
+        price: 1100.00,
+        imageUrl: "img/toursdubai/buggy4pessoas.jpg",
         category: "DESERTO"
     },
 ];
