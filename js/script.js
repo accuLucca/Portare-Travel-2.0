@@ -429,6 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Oculta variações antigas dos Safáris Gold/Platinum Privativos (unificação em cards dinâmicos)
                 tour.id === 206 || // Safari Gold Compartilhado (unificado com privativo)
                 tour.id === 207 || tour.id === 208 || tour.id === 209 || // Gold Privativo 2p/3p/4-5p
+                tour.id === 210 || // Safari Platinum Compartilhado (unificado com privativo)
                 tour.id === 211 || tour.id === 212 || tour.id === 213 || // Platinum Privativo 2p/3p/4-5p
                 tour.id === 78 || tour.id === 79 || tour.id === 86 || tour.id === 87 || tour.id === 88 || tour.id === 89 || tour.id === 95 || tour.id === 951 ||
                 tour.id === 96 || tour.id === 961 || tour.id === 97 || tour.id === 971) return false;
@@ -3704,11 +3705,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Card dinâmico Safari no Deserto Platinum - Transporte Privativo (2, 3, 4-5 pessoas)
+        // Card dinâmico Safari no Deserto Platinum - Unificado (Privativo e Compartilhado)
         if (
             currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
             (selectedSubcategory === 'all' || selectedSubcategory === 'DESERTO') &&
-            dynamicCardMatches("Safari no Deserto Platinum - Transporte Privativo", "Transfer privativo em carro 4X4")
+            (dynamicCardMatches("Safari no Deserto Platinum", "Transfer privativo em carro 4X4") || 
+             dynamicCardMatches("Safari no Deserto Platinum", "Transfer compartilhado em carro 4X4"))
         ) {
             dynamicCards.push(() => {
                 const tourCard = document.createElement('div');
@@ -3716,9 +3718,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const img = document.createElement('img');
                 img.src = "img/toursdubai/platinumprivativo4p.jpg";
-                img.alt = "Safari no Deserto Platinum - Transporte Privativo";
+                img.alt = "Safari no Deserto Platinum";
                 img.className = 'w-full h-48 object-cover object-center';
-                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Safari+Platinum+Privativo`; };
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Safari+Platinum`; };
 
                 const contentDiv = document.createElement('div');
                 contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
@@ -3726,12 +3728,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const textDiv = document.createElement('div');
                 const nameH3 = document.createElement('h3');
                 nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
-                nameH3.textContent = "Safari no Deserto Platinum - Transporte Privativo";
+                nameH3.textContent = "Safari no Deserto Platinum";
 
                 const descP = document.createElement('p');
                 descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
-                descP.innerHTML = `Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.<br>
-                <span class="font-bold">Selecione o número de pessoas:</span>`;
+                descP.innerHTML = `Incluso: Transfer em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.<br>
+                <span class="font-bold">Escolha o tipo de transporte e número de pessoas:</span>`;
 
                 textDiv.appendChild(nameH3);
                 textDiv.appendChild(descP);
@@ -3745,88 +3747,145 @@ document.addEventListener('DOMContentLoaded', () => {
                 const priceSpan = document.createElement('span');
                 priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
 
-                // Opções e preços (total do serviço)
-                const platinumPrivativoPrices = {
-                    '2pessoas': 1400,
-                    '3pessoas': 1200,
-                    '4a5pessoas': 950
+                // Opções e preços
+                const platinumPrices = {
+                    'compartilhado': 850.00, // Valor por pessoa
+                    'privativo': {
+                        '2pessoas': 1400, // Valor total
+                        '3pessoas': 1200, // Valor total
+                        '4pessoas': 950,  // Valor total
+                        '5pessoas': 950   // Valor total
+                    }
                 };
 
                 const selectorsDiv = document.createElement('div');
                 selectorsDiv.className = 'mb-4 space-y-3';
 
+                // Seletor de tipo de transporte
+                const transportTypeDiv = document.createElement('div');
+                transportTypeDiv.className = 'flex flex-col';
+                const transportTypeLabel = document.createElement('label');
+                transportTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                transportTypeLabel.textContent = 'Tipo de Transporte:';
+                const transportTypeSelect = document.createElement('select');
+                transportTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                transportTypeSelect.innerHTML = `
+                    <option value="compartilhado">Compartilhado - Valor por pessoa</option>
+                    <option value="privativo">Privativo - Valor por pessoa</option>
+                `;
+                transportTypeDiv.appendChild(transportTypeLabel);
+                transportTypeDiv.appendChild(transportTypeSelect);
+                selectorsDiv.appendChild(transportTypeDiv);
+
+                // Seletor de número de pessoas (aparece apenas para privativo)
                 const peopleDiv = document.createElement('div');
                 peopleDiv.className = 'flex flex-col';
+                peopleDiv.style.display = 'none'; // Inicialmente oculto
                 const peopleLabel = document.createElement('label');
                 peopleLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
-                peopleLabel.textContent = 'Pessoas:';
+                peopleLabel.textContent = 'Número de Pessoas:';
                 const peopleSelect = document.createElement('select');
                 peopleSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
                 peopleSelect.innerHTML = `
                     <option value="2pessoas">2 pessoas</option>
                     <option value="3pessoas">3 pessoas</option>
-                    <option value="4a5pessoas">4 a 5 pessoas</option>
+                    <option value="4pessoas">4 pessoas</option>
+                    <option value="5pessoas">5 pessoas</option>
                 `;
                 peopleDiv.appendChild(peopleLabel);
                 peopleDiv.appendChild(peopleSelect);
                 selectorsDiv.appendChild(peopleDiv);
 
-                // seletor exato para 4-5 pessoas
-                const peopleExactDiv2 = document.createElement('div');
-                peopleExactDiv2.className = 'flex flex-col';
-                const peopleExactLabel2 = document.createElement('label');
-                peopleExactLabel2.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
-                peopleExactLabel2.textContent = 'Escolha a quantidade:';
-                const peopleExactSelect2 = document.createElement('select');
-                peopleExactSelect2.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
-                peopleExactSelect2.innerHTML = `
-                    <option value="4">4 pessoas</option>
-                    <option value="5">5 pessoas</option>
-                `;
-                peopleExactDiv2.appendChild(peopleExactLabel2);
-                peopleExactDiv2.appendChild(peopleExactSelect2);
-                peopleExactDiv2.style.display = 'none';
-                selectorsDiv.appendChild(peopleExactDiv2);
+                // Seletor de quantidade para compartilhado
+                const quantityDiv = document.createElement('div');
+                quantityDiv.className = 'flex flex-col';
+                quantityDiv.style.display = 'none'; // Inicialmente oculto
+                const quantityLabel = document.createElement('label');
+                quantityLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                quantityLabel.textContent = 'Quantidade de Pessoas:';
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+                quantityInput.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                quantityDiv.appendChild(quantityLabel);
+                quantityDiv.appendChild(quantityInput);
+                selectorsDiv.appendChild(quantityDiv);
 
-                function getPlatinumSelectedCount() {
-                    const tier = peopleSelect.value;
-                    if (tier === '2pessoas') return 2;
-                    if (tier === '3pessoas') return 3;
-                    return parseInt(peopleExactSelect2.value, 10) || 4;
+                function updatePlatinumPrice() {
+                    const transportType = transportTypeSelect.value;
+                    
+                    if (transportType === 'compartilhado') {
+                        const quantity = parseInt(quantityInput.value, 10) || 1;
+                        const pricePerPerson = platinumPrices.compartilhado;
+                        const totalPrice = pricePerPerson * quantity;
+                        priceSpan.textContent = `AED ${pricePerPerson.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa (Total: AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })})`;
+                    } else {
+                        const key = peopleSelect.value;
+                        const totalPrice = platinumPrices.privativo[key] || 0;
+                        let peopleText = key.replace('pessoas', ' pessoas');
+                        priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa (${peopleText})`;
+                    }
                 }
 
-                peopleSelect.addEventListener('change', () => {
-                    const showExact = peopleSelect.value === '4a5pessoas';
-                    peopleExactDiv2.style.display = showExact ? 'flex' : 'none';
-                    updatePlatinumPrivativoPrice();
-                });
-
-                function updatePlatinumPrivativoPrice() {
-                    const key = peopleSelect.value;
-                    const price = platinumPrivativoPrices[key] || 0;
-                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa`;
+                function updateSelectorsVisibility() {
+                    const transportType = transportTypeSelect.value;
+                    
+                    if (transportType === 'compartilhado') {
+                        peopleDiv.style.display = 'none';
+                        quantityDiv.style.display = 'flex';
+                    } else {
+                        peopleDiv.style.display = 'flex';
+                        quantityDiv.style.display = 'none';
+                    }
+                    updatePlatinumPrice();
                 }
-                peopleSelect.addEventListener('change', updatePlatinumPrivativoPrice);
-                updatePlatinumPrivativoPrice();
+
+                // Event listeners
+                transportTypeSelect.addEventListener('change', updateSelectorsVisibility);
+                peopleSelect.addEventListener('change', updatePlatinumPrice);
+                quantityInput.addEventListener('input', updatePlatinumPrice);
+
+                // Inicializar
+                updateSelectorsVisibility();
 
                 const addButton = document.createElement('button');
                 addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
                 addButton.textContent = 'Adicionar';
                 addButton.onclick = (e) => {
                     e.stopPropagation();
-                    const key = peopleSelect.value;
-                    const price = platinumPrivativoPrices[key] || 0;
-                    let peopleText = key === '2pessoas' ? '2 pessoas' : key === '3pessoas' ? '3 pessoas' : `${peopleExactSelect2.value} pessoas`;
-                    const name = `Safari no Deserto Platinum - Transporte Privativo - ${peopleText}`;
-                    const quantity = getPlatinumSelectedCount();
-                    handleAddToCart({
-                        id: `safari-platinum-privativo-${key}`,
-                        name: name,
-                        description: 'Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.',
-                        price: price,
-                        imageUrl: "img/toursdubai/platinumprivativo4p.jpg",
-                        category: "DESERTO"
-                    }, quantity);
+                    const transportType = transportTypeSelect.value;
+                    
+                    if (transportType === 'compartilhado') {
+                        const quantity = parseInt(quantityInput.value, 10) || 1;
+                        const price = platinumPrices.compartilhado;
+                        const name = `Safari no Deserto Platinum - Transporte Compartilhado`;
+                        
+                        handleAddToCart({
+                            id: `safari-platinum-compartilhado`,
+                            name: name,
+                            description: 'Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.',
+                            price: price,
+                            imageUrl: "img/toursdubai/platinumprivativo4p.jpg",
+                            category: "DESERTO"
+                        }, quantity);
+                    } else {
+                        const key = peopleSelect.value;
+                        const price = platinumPrices.privativo[key];
+                        let peopleText = key.replace('pessoas', ' pessoas');
+                        const name = `Safari no Deserto Platinum - Transporte Privativo - ${peopleText}`;
+                        const quantity = parseInt(key.replace('pessoas', ''), 10);
+                        
+                        handleAddToCart({
+                            id: `safari-platinum-privativo-${key}`,
+                            name: name,
+                            description: 'Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.',
+                            price: price,
+                            imageUrl: "img/toursdubai/platinumprivativo4p.jpg",
+                            category: "DESERTO"
+                        }, quantity);
+                    }
                 };
 
                 priceAndButtonDiv.appendChild(priceSpan);
