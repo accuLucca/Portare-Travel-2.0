@@ -3503,6 +3503,172 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
+        // Card dinâmico Safari no Deserto Premium - Unificado (Compartilhado e Privativo)
+        if (
+            currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
+            (selectedSubcategory === 'all' || selectedSubcategory === 'DESERTO') &&
+            (dynamicCardMatches("Safari no Deserto Premium", "Transfer compartilhado em carro 4X4") || 
+             dynamicCardMatches("Safari no Deserto Premium", "Transfer privativo em carro 4X4"))
+        ) {
+            dynamicCards.push(() => {
+                const tourCard = document.createElement('div');
+                tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
+
+                const img = document.createElement('img');
+                img.src = "img/toursdubai/safaricompartilhadopremium.jpg";
+                img.alt = "Safari no Deserto Premium";
+                img.className = 'w-full h-48 object-cover object-center';
+                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Safari+Premium`; };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
+
+                const textDiv = document.createElement('div');
+                const nameH3 = document.createElement('h3');
+                nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
+                nameH3.innerHTML = "Safari no Deserto Premium <span class='text-yellow-500'>⭐⭐⭐</span>";
+
+                const descP = document.createElement('p');
+                descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
+                descP.innerHTML = `Incluso: Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas.<br>
+                <span class="font-bold">Escolha o tipo de transporte:</span>`;
+
+                textDiv.appendChild(nameH3);
+                textDiv.appendChild(descP);
+
+                const actionDiv = document.createElement('div');
+                actionDiv.className = 'mt-auto pt-4 border-t border-gray-100';
+
+                const selectorsDiv = document.createElement('div');
+                selectorsDiv.className = 'mb-4 space-y-3';
+
+                // Seletor de tipo de transporte
+                const transportTypeDiv = document.createElement('div');
+                transportTypeDiv.className = 'flex flex-col';
+                const transportTypeLabel = document.createElement('label');
+                transportTypeLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                transportTypeLabel.textContent = 'Tipo de Transporte:';
+                const transportTypeSelect = document.createElement('select');
+                transportTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                transportTypeSelect.innerHTML = `
+                    <option value="compartilhado">Compartilhado - Valor por pessoa</option>
+                    <option value="privativo">Privativo - Valor total para até 6 pessoas</option>
+                `;
+                transportTypeDiv.appendChild(transportTypeLabel);
+                transportTypeDiv.appendChild(transportTypeSelect);
+                selectorsDiv.appendChild(transportTypeDiv);
+
+                // Seletor de quantidade para compartilhado
+                const quantityDiv = document.createElement('div');
+                quantityDiv.className = 'flex flex-col';
+                quantityDiv.style.display = 'none'; // Inicialmente oculto
+                const quantityLabel = document.createElement('label');
+                quantityLabel.className = 'text-xs font-geologica-bold mb-1 text-gray-700';
+                quantityLabel.textContent = 'Quantidade de Pessoas:';
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.value = 1;
+                quantityInput.min = 1;
+                quantityInput.max = 10;
+                quantityInput.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
+                quantityDiv.appendChild(quantityLabel);
+                quantityDiv.appendChild(quantityInput);
+                selectorsDiv.appendChild(quantityDiv);
+
+                const priceAndButtonDiv = document.createElement('div');
+                priceAndButtonDiv.className = 'flex flex-col sm:flex-row justify-between items-center mb-3';
+
+                const priceSpan = document.createElement('span');
+                priceSpan.className = 'text-lg sm:text-xl font-extrabold text-[#0D7C6C] font-geologica-bold mb-2';
+
+                // Opções e preços
+                const premiumPrices = {
+                    'compartilhado': 500.00, // Valor por pessoa
+                    'privativo': 2383.00 // Valor total para até 6 pessoas
+                };
+
+                function updatePremiumPrice() {
+                    const transportType = transportTypeSelect.value;
+                    
+                    if (transportType === 'compartilhado') {
+                        const quantity = parseInt(quantityInput.value, 10) || 1;
+                        const pricePerPerson = premiumPrices.compartilhado;
+                        const totalPrice = pricePerPerson * quantity;
+                        priceSpan.textContent = `AED ${pricePerPerson.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por pessoa (Total: AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })})`;
+                    } else {
+                        const totalPrice = premiumPrices.privativo;
+                        priceSpan.textContent = `AED ${totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} (valor total para até 6 pessoas)`;
+                    }
+                }
+
+                function updateSelectorsVisibility() {
+                    const transportType = transportTypeSelect.value;
+                    
+                    if (transportType === 'compartilhado') {
+                        quantityDiv.style.display = 'flex';
+                    } else {
+                        quantityDiv.style.display = 'none';
+                    }
+                    updatePremiumPrice();
+                }
+
+                // Event listeners
+                transportTypeSelect.addEventListener('change', updateSelectorsVisibility);
+                quantityInput.addEventListener('input', updatePremiumPrice);
+
+                // Inicializar
+                updateSelectorsVisibility();
+
+                const addButton = document.createElement('button');
+                addButton.className = 'w-full sm:w-auto bg-[#33C4B6] hover:bg-[#0D7C6D] text-white font-semibold py-2 px-4 sm:px-5 rounded-full shadow-md transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#33C4B6] focus:ring-opacity-50 text-sm';
+                addButton.textContent = 'Adicionar';
+
+                addButton.onclick = (e) => {
+                    e.stopPropagation();
+                    const transportType = transportTypeSelect.value;
+                    
+                    if (transportType === 'compartilhado') {
+                        const quantity = parseInt(quantityInput.value, 10) || 1;
+                        const price = premiumPrices.compartilhado;
+                        const name = `Safari no Deserto Premium - Transporte Compartilhado`;
+                        
+                        handleAddToCart({
+                            id: `safari-premium-compartilhado`,
+                            name: name,
+                            description: 'Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte.',
+                            price: price,
+                            imageUrl: "img/toursdubai/safaricompartilhadopremium.jpg",
+                            category: "DESERTO"
+                        }, quantity);
+                    } else {
+                        const price = premiumPrices.privativo;
+                        const name = `Safari no Deserto Premium - Transporte Privativo - Valor total para até 6 pessoas`;
+                        
+                        handleAddToCart({
+                            id: `safari-premium-privativo`,
+                            name: name,
+                            description: 'Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte.',
+                            price: price,
+                            imageUrl: "img/toursdubai/safariprivativopremium.jpg",
+                            category: "DESERTO"
+                        }, 1);
+                    }
+                };
+
+                priceAndButtonDiv.appendChild(priceSpan);
+                priceAndButtonDiv.appendChild(addButton);
+
+                actionDiv.appendChild(selectorsDiv);
+                actionDiv.appendChild(priceAndButtonDiv);
+
+                contentDiv.appendChild(textDiv);
+                contentDiv.appendChild(actionDiv);
+                tourCard.appendChild(img);
+                tourCard.appendChild(contentDiv);
+                toursGridTarget.appendChild(tourCard);
+            });
+        }
+
         // Card dinâmico Safari no Deserto Gold - Unificado (Privativo e Compartilhado)
         if (
             currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
@@ -3526,7 +3692,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const textDiv = document.createElement('div');
                 const nameH3 = document.createElement('h3');
                 nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
-                nameH3.textContent = "Safari no Deserto Gold";
+                nameH3.innerHTML = "Safari no Deserto Gold <span class='text-yellow-500'>⭐⭐⭐⭐</span>";
 
                 const descP = document.createElement('p');
                 descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
@@ -3723,7 +3889,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const textDiv = document.createElement('div');
                 const nameH3 = document.createElement('h3');
                 nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
-                nameH3.textContent = "Safari no Deserto Platinum";
+                nameH3.innerHTML = "Safari no Deserto Platinum <span class='text-yellow-500'>⭐⭐⭐⭐⭐</span>";
 
                 const descP = document.createElement('p');
                 descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
