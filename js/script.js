@@ -3553,8 +3553,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
                 const premiumCarousel = createImageCarousel([
-                	"img/toursdubai/safaricompartilhadopremium.jpg",
-                	"img/toursdubai/safariprivativopremium.jpg"
+	                // Mantém imagens antigas primeiro
+	                "img/toursdubai/safaricompartilhadopremium.jpg",
+	                "img/toursdubai/safariprivativopremium.jpg",
+	                // Em seguida, as novas imagens da pasta
+	                "img/toursdubai/safaripremium/deserto1.jpg",
+	                "img/toursdubai/safaripremium/deserto2.jpg",
+	                "img/toursdubai/safaripremium/deserto3.jpg",
+	                "img/toursdubai/safaripremium/deserto4.jpg",
+	                "img/toursdubai/safaripremium/deserto6.jpg"
                 ], 'Safari no Deserto Premium');
 
                 const contentDiv = document.createElement('div');
@@ -3718,10 +3725,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
                 const goldCarousel = createImageCarousel([
-                	"img/toursdubai/safarigold.jpg",
-                	"img/toursdubai/goldprivativo2p.jpg",
-                	"img/toursdubai/goldprivativo3p.jpg",
-                	"img/toursdubai/goldprivativo4p.jpg"
+	                // Mantém imagem antiga primeiro
+	                "img/toursdubai/safarigold.jpg",
+	                // Em seguida, as novas imagens da pasta
+	                "img/toursdubai/safarigold/deserto1.jpg",
+	                "img/toursdubai/safarigold/deserto2.jpg",
+	                "img/toursdubai/safarigold/deserto3.jpg",
+	                "img/toursdubai/safarigold/deserto4.jpg",
+	                "img/toursdubai/safarigold/deserto6.jpg",
+	                "img/toursdubai/safarigold/comida (1).jpg",
+	                "img/toursdubai/safarigold/comida (2).jpg",
+	                "img/toursdubai/safarigold/comida (3).jpg",
+	                "img/toursdubai/safarigold/comida (4).jpg",
+	                "img/toursdubai/safarigold/comida (5).jpg",
+	                "img/toursdubai/safarigold/comida (6).jpg"
                 ], 'Safari no Deserto Gold');
 
                 const contentDiv = document.createElement('div');
@@ -3916,10 +3933,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
                 const platinumCarousel = createImageCarousel([
-                	"img/toursdubai/safariplatinum.jpg",
-                	"img/toursdubai/platinumprivativo2p.jpg",
-                	"img/toursdubai/platinumprivativo3p.jpg",
-                	"img/toursdubai/platinumprivativo4p.jpg"
+	                // Mantém imagem antiga primeiro
+	                "img/toursdubai/safariplatinum.jpg",
+	                // Em seguida, as novas imagens da pasta
+	                "img/toursdubai/safariplatinum/deserto1.jpg",
+	                "img/toursdubai/safariplatinum/deserto2.jpg",
+	                "img/toursdubai/safariplatinum/deserto3.jpg",
+	                "img/toursdubai/safariplatinum/deserto4.jpg",
+	                "img/toursdubai/safariplatinum/deserto6.jpg",
+	                "img/toursdubai/safariplatinum/comida (1).jpg",
+	                "img/toursdubai/safariplatinum/comida (2).jpg",
+	                "img/toursdubai/safariplatinum/comida (3).jpg",
+	                "img/toursdubai/safariplatinum/comida (4).jpg",
+	                "img/toursdubai/safariplatinum/comida (5).jpg",
+	                "img/toursdubai/safariplatinum/comida (6).jpg"
                 ], 'Safari no Deserto Platinum');
 
                 const contentDiv = document.createElement('div');
