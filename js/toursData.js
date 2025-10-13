@@ -66,6 +66,14 @@ export const toursData = [
         category: "CARRO COM MOTORISTA"
     },
     {
+        id: 311,
+        name: "Iate Compartilhado c/ Churrasco - adulto ou kids",
+        description: "Passeio de iate compartilhado com churrasco incluso. Ideal para adultos e crianças aproveitarem juntos.",
+        price: 477.10,
+        imageUrl: "img/toursdubai/iatechurrasco.jpg",
+        category: "AVENTURAS AQUÁTICAS"
+    },
+    {
         id: 300,
         name: "1 Jetski (30 min) - até 2 pessoas",
         description: "Aproveite 30 minutos de emoção em um jetski para até 2 pessoas nas águas de Dubai. Ideal para casais ou amigos.",
@@ -103,15 +111,7 @@ export const toursData = [
         name: "Tour de Barco nas Ilhas de Dubai - 100 min",
         description: "Tour de barco pelas ilhas de Dubai por 100 minutos. Uma experiência relaxante e panorâmica pelas águas da cidade.",
         price: 300.94,
-        imageUrl: "img/toursdubai/barcoilhas.jpg",
-        category: "AVENTURAS AQUÁTICAS"
-    },
-    {
-        id: 311,
-        name: "Iate Compartilhado c/ Churrasco - adulto ou kids",
-        description: "Passeio de iate compartilhado com churrasco incluso. Ideal para adultos e crianças aproveitarem juntos.",
-        price: 477.10,
-        imageUrl: "img/toursdubai/iatechurrasco.jpg",
+        imageUrl: "img/toursdubai/tourbarco100min.jpg",
         category: "AVENTURAS AQUÁTICAS"
     },
     {
@@ -119,7 +119,7 @@ export const toursData = [
         name: "Deep Diving - Mergulhadores Sem Experiência / Pacote Padrão 12-30 m (40 min)",
         description: "Mergulho profundo para quem não tem experiência, entre 12 e 30 metros, por 40 minutos. Inclui acompanhamento especializado.",
         price: 1800.00,
-        imageUrl: "img/toursdubai/deepdivingsemexp.jpg",
+        imageUrl: "img/toursdubai/mergulho4.jpg",
         category: "AVENTURAS AQUÁTICAS"
     },
     {
@@ -127,7 +127,7 @@ export const toursData = [
         name: "Deep Diving - Mergulhadores Sem Experiência / Pacote c/ Certificado 12-30 m (40 min)",
         description: "Mergulho profundo para iniciantes com certificado incluso, entre 12 e 30 metros, por 40 minutos.",
         price: 2400.00,
-        imageUrl: "img/toursdubai/deepdivingsemexpcert.jpg",
+        imageUrl: "img/toursdubai/mergulho3.jpg",
         category: "AVENTURAS AQUÁTICAS"
     },
     {
@@ -135,7 +135,7 @@ export const toursData = [
         name: "Deep Diving - Mergulhadores Certificados / Pacote Padrão 12-30 m (40 min)",
         description: "Mergulho profundo para mergulhadores certificados, entre 12 e 30 metros, por 40 minutos.",
         price: 1800.00,
-        imageUrl: "img/toursdubai/deepdivingcert.jpg",
+        imageUrl: "img/toursdubai/mergulho2.jpg",
         category: "AVENTURAS AQUÁTICAS"
     },
     {
@@ -143,7 +143,7 @@ export const toursData = [
         name: "Deep Diving - Mergulhadores Certificados / Pacote c/ Certificado 12-30 m (40 min)",
         description: "Mergulho profundo para mergulhadores certificados com certificado incluso, entre 12 e 30 metros, por 40 minutos.",
         price: 2400.00,
-        imageUrl: "img/toursdubai/deepdivingcertcert.jpg",
+        imageUrl: "img/toursdubai/mergulho5.jpg",
         category: "AVENTURAS AQUÁTICAS"
     },
 

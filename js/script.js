@@ -75,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
             { label: "ABU DHABI TICKETS", value: "ABU DHABI TICKETS" },
             { label: "ABU DHABI PARKS", value: "ABU DHABI PARKS" },
             { label: "PORTARE SERVIÇOS", value: "PORTARE SERVIÇOS" },
-            { label: "EVENTOS", value: "EVENTOS" },
         ],
         'Egito': [
              { label: "Todos", value: "all" }, { label: "Tour em grupo", value: "Tour em grupo" }, { label: "Tour privativo", value: "Tour privativo" },
