@@ -446,6 +446,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const dynamicCards = [];
+		// Helper: cria um carrossel simples com botões anterior/próximo
+		function createImageCarousel(imageUrls, altBaseText) {
+			const container = document.createElement('div');
+			container.className = 'relative w-full h-48 select-none';
+
+			const img = document.createElement('img');
+			img.className = 'w-full h-48 object-cover object-center cursor-pointer';
+
+			let currentIndex = 0;
+			function show(index) {
+				currentIndex = (index + imageUrls.length) % imageUrls.length;
+				img.src = imageUrls[currentIndex];
+				img.alt = `${altBaseText} - imagem ${currentIndex + 1}`;
+				img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=${encodeURIComponent(altBaseText)}`; };
+			}
+
+			const prevBtn = document.createElement('button');
+			prevBtn.type = 'button';
+			prevBtn.className = 'absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-black/60 transition';
+			prevBtn.innerHTML = '&#8249;'; // ‹
+			prevBtn.onclick = (e) => { e.stopPropagation(); show(currentIndex - 1); };
+
+			const nextBtn = document.createElement('button');
+			nextBtn.type = 'button';
+			nextBtn.className = 'absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white rounded-full w-8 h-8 flex items-center justify-center hover:bg-black/60 transition';
+			nextBtn.innerHTML = '&#8250;'; // ›
+			nextBtn.onclick = (e) => { e.stopPropagation(); show(currentIndex + 1); };
+
+			img.addEventListener('click', (e) => { e.stopPropagation(); show(currentIndex + 1); });
+
+			container.appendChild(img);
+			if (imageUrls.length > 1) {
+				container.appendChild(prevBtn);
+				container.appendChild(nextBtn);
+			}
+
+			show(0);
+			return container;
+		}
         if (
             currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
             (selectedSubcategory === 'all' || selectedSubcategory === 'TOUR PRIVATIVO') &&
@@ -3513,11 +3552,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const tourCard = document.createElement('div');
                 tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
-                const img = document.createElement('img');
-                img.src = "img/toursdubai/safaricompartilhadopremium.jpg";
-                img.alt = "Safari no Deserto Premium";
-                img.className = 'w-full h-48 object-cover object-center';
-                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Safari+Premium`; };
+                const premiumCarousel = createImageCarousel([
+                	"img/toursdubai/safaricompartilhadopremium.jpg",
+                	"img/toursdubai/safariprivativopremium.jpg"
+                ], 'Safari no Deserto Premium');
 
                 const contentDiv = document.createElement('div');
                 contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
@@ -3662,7 +3700,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 contentDiv.appendChild(textDiv);
                 contentDiv.appendChild(actionDiv);
-                tourCard.appendChild(img);
+                tourCard.appendChild(premiumCarousel);
                 tourCard.appendChild(contentDiv);
                 toursGridTarget.appendChild(tourCard);
             });
@@ -3679,11 +3717,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const tourCard = document.createElement('div');
                 tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
-                const img = document.createElement('img');
-                img.src = "img/toursdubai/safarigold.jpg";
-                img.alt = "Safari no Deserto Gold";
-                img.className = 'w-full h-48 object-cover object-center';
-                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Safari+Gold`; };
+                const goldCarousel = createImageCarousel([
+                	"img/toursdubai/safarigold.jpg",
+                	"img/toursdubai/goldprivativo2p.jpg",
+                	"img/toursdubai/goldprivativo3p.jpg",
+                	"img/toursdubai/goldprivativo4p.jpg"
+                ], 'Safari no Deserto Gold');
 
                 const contentDiv = document.createElement('div');
                 contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
@@ -3859,7 +3898,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 contentDiv.appendChild(textDiv);
                 contentDiv.appendChild(actionDiv);
-                tourCard.appendChild(img);
+                tourCard.appendChild(goldCarousel);
                 tourCard.appendChild(contentDiv);
                 toursGridTarget.appendChild(tourCard);
             });
@@ -3876,11 +3915,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const tourCard = document.createElement('div');
                 tourCard.className = 'bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-xl flex flex-col';
 
-                const img = document.createElement('img');
-                img.src = "img/toursdubai/safariplatinum.jpg";
-                img.alt = "Safari no Deserto Platinum";
-                img.className = 'w-full h-48 object-cover object-center';
-                img.onerror = () => { img.src = `https://placehold.co/400x250/CCCCCC/333333?text=Safari+Platinum`; };
+                const platinumCarousel = createImageCarousel([
+                	"img/toursdubai/safariplatinum.jpg",
+                	"img/toursdubai/platinumprivativo2p.jpg",
+                	"img/toursdubai/platinumprivativo3p.jpg",
+                	"img/toursdubai/platinumprivativo4p.jpg"
+                ], 'Safari no Deserto Platinum');
 
                 const contentDiv = document.createElement('div');
                 contentDiv.className = 'p-5 sm:p-6 flex-grow flex flex-col justify-between';
@@ -4056,7 +4096,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 contentDiv.appendChild(textDiv);
                 contentDiv.appendChild(actionDiv);
-                tourCard.appendChild(img);
+                tourCard.appendChild(platinumCarousel);
                 tourCard.appendChild(contentDiv);
                 toursGridTarget.appendChild(tourCard);
             });
