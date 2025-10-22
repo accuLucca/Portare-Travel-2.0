@@ -4817,12 +4817,12 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
         const invoiceDate = now.toLocaleDateString('pt-BR');
 
         const messageLines = [
-            "INVOICE",
+            "COTAÇÃO",
             "",
-            `Número do Invoice: ${invoiceNumber}`,
-            `Data do Invoice: ${invoiceDate}`,
+            `Cotação número: ${invoiceNumber}`,
+            `Data: ${invoiceDate}`,
             "",
-            "Faturado Para:",
+            "Nome do Cliente:",
             `${customerName}`,
             `${numberOfPeople} Pessoa(s)`,
             "--------------------------------------------------------------------------------",
@@ -4859,12 +4859,12 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
         messageLines.push(`Total:                                                          AED ${totalWithFee.toFixed(2)}`); // Add total after items
         messageLines.push("--------------------------------------------------------------------------------");
         messageLines.push("Observações:");
-        messageLines.push("Obrigado por escolher a Portare Travel para sua viagem!");
+        messageLines.push("Pagamentos por transferência bancária direta tem 5% de desconto, aceita pagamento pelo Wise Bank. Obrigado por escolher a Portare Travel para sua viagem!");
 
 
         const message = messageLines.join('\n');
 
-        const whatsappNumber = "+971523811226";
+        const whatsappNumber = "+971586126833";
         const encodedMessage = encodeURIComponent(message);
         window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
     });
