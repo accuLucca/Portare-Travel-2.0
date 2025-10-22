@@ -753,14 +753,6 @@ export const toursData = [
         category: "DESERTO"
     },
     {
-        id: 214,
-        name: "Safari no Deserto All Inclusive (Bebidas alcoólicas) - Transporte Compartilhado",
-        description: "Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, parada para fotos, Passeio simples de Camelo, Jantar tipo Buffet, Danças e Show, bebidas alcoólicas e não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte .",
-        price: 640.50,
-        imageUrl: "img/toursdubai/allinclusivecompartilhado.jpg",
-        category: "DESERTO"
-    },
-    {
         id: 215,
         name: "Safari no Deserto Emirati (Heritage) - Transporte Compartilhado",
         description: "Incluso: Transfer compartilhado ida e volta do Hotel, Rota no Deserto de Land Rover Vintage ou 30 Min de Camelo, Passeio simples de Camelo, Jantar tipo Buffet tradicional Emirati, Danças Típicas Emirati, Experiência sob as estrelas, bebidas alcoólicas tradicionais, acampamento beduíno.",
