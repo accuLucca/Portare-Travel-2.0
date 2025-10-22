@@ -2199,7 +2199,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (
             currentCountry && currentCountry.name === "Dubai e Abu Dhabi" &&
             (selectedSubcategory === 'all' || selectedSubcategory === 'AVENTURAS AQUÁTICAS') &&
-            dynamicCardMatches("Iate Privativo - Aluguel por Hora", "Iate privativo para grupos de diferentes tamanhos")
+            dynamicCardMatches("Iate Privativo - Aluguel 3 horas", "Iate privativo para grupos de diferentes tamanhos")
         ) {
             dynamicCards.push(() => {
                 const tourCard = document.createElement('div');
@@ -2217,11 +2217,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const textDiv = document.createElement('div');
                 const nameH3 = document.createElement('h3');
                 nameH3.className = 'text-xl sm:text-2xl font-bold text-[#0D7C6C] font-geologica-bold mb-2';
-                nameH3.textContent = "Iate Privativo - Aluguel por Hora";
+                nameH3.textContent = "Iate Privativo - Aluguel 3 horas";
 
                 const descP = document.createElement('p');
                 descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
-                descP.innerHTML = `Iate privativo para grupos de diferentes tamanhos. Valor por hora (mínimo de 3 horas). Comidas e bebidas vendidas separadamente.<br>
+                descP.innerHTML = `Iate privativo para grupos de diferentes tamanhos. Valor de 3 horas. Comidas e bebidas vendidas separadamente.<br>
                 <span class="font-bold">Escolha a capacidade desejada:</span>`;
 
                 textDiv.appendChild(nameH3);
@@ -2272,7 +2272,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 function updateIatePrivativoPrice() {
                     const capacityType = capacitySelect.value;
                     const price = iatePrivativoPrices[capacityType] || 0;
-                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })} por hora`;
+                    priceSpan.textContent = `AED ${price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
                 }
 
                 // Event listeners para atualizar preço
@@ -3574,7 +3574,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const descP = document.createElement('p');
                 descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
-                descP.innerHTML = `Incluso: Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas.<br>
+                descP.innerHTML = `Incluso: Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (4ª a 6ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas.<br>
                 <span class="font-bold">Escolha o tipo de transporte:</span>`;
 
                 textDiv.appendChild(nameH3);
@@ -3679,7 +3679,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         handleAddToCart({
                             id: `safari-premium-compartilhado`,
                             name: name,
-                            description: 'Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte.',
+                            description: 'Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (4ª a 6ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte.',
                             price: price,
                             imageUrl: "img/toursdubai/safaricompartilhadopremium.jpg",
                             category: "DESERTO"
@@ -3691,7 +3691,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         handleAddToCart({
                             id: `safari-premium-privativo`,
                             name: name,
-                            description: 'Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (3ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte.',
+                            description: 'Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área premium (4ª a 6ª fileira), Jantar tipo Buffet, Danças e Show, bebidas não alcoólicas. Não incluso: bebidas alcoólicas e narguilé - disponíveis no local para pagamento à parte.',
                             price: price,
                             imageUrl: "img/toursdubai/safariprivativopremium.jpg",
                             category: "DESERTO"
@@ -3751,7 +3751,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const descP = document.createElement('p');
                 descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
-                descP.innerHTML = `Incluso: Transfer em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.<br>
+                descP.innerHTML = `Incluso: Transfer em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (3ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.<br>
                 <span class="font-bold">Escolha o tipo de transporte e número de pessoas:</span>`;
 
                 textDiv.appendChild(nameH3);
@@ -3884,7 +3884,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         handleAddToCart({
                             id: `safari-gold-compartilhado`,
                             name: name,
-                            description: 'Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.',
+                            description: 'Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (3ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.',
                             price: price,
                             imageUrl: "img/toursdubai/goldprivativo4p.jpg",
                             category: "DESERTO"
@@ -3899,7 +3899,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         handleAddToCart({
                             id: `safari-gold-privativo-${key}`,
                             name: name,
-                            description: 'Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.',
+                            description: 'Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Gold (3ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.',
                             price: price,
                             imageUrl: "img/toursdubai/goldprivativo4p.jpg",
                             category: "DESERTO"
@@ -3959,7 +3959,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const descP = document.createElement('p');
                 descP.className = 'text-gray-700 mb-4 text-sm font-geologica-light leading-relaxed';
-                descP.innerHTML = `Incluso: Transfer em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.<br>
+                descP.innerHTML = `Incluso: Transfer em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.<br>
                 <span class="font-bold">Escolha o tipo de transporte e número de pessoas:</span>`;
 
                 textDiv.appendChild(nameH3);
@@ -4092,7 +4092,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         handleAddToCart({
                             id: `safari-platinum-compartilhado`,
                             name: name,
-                            description: 'Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.',
+                            description: 'Incluso: Transfer compartilhado em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.',
                             price: price,
                             imageUrl: "img/toursdubai/platinumprivativo4p.jpg",
                             category: "DESERTO"
@@ -4107,7 +4107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         handleAddToCart({
                             id: `safari-platinum-privativo-${key}`,
                             name: name,
-                            description: 'Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (1ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.',
+                            description: 'Incluso: Transfer privativo em carro 4X4 (6 assentos) ida e volta do Hotel, Rally nas dunas vermelhas, sandboard e parada para fotos, Falcão, Passeio simples de Camelo, Mesa área Platinum (2ª fileira), Menu especial do Chef 5★, servido à francesa, Danças e Show, bebidas não alcoólicas.',
                             price: price,
                             imageUrl: "img/toursdubai/platinumprivativo4p.jpg",
                             category: "DESERTO"
