@@ -69,7 +69,7 @@ export const toursData = [
         id: 311,
         name: "Iate Compartilhado c/ Churrasco - adulto ou kids",
         description: "Passeio de iate compartilhado com churrasco incluso. Ideal para adultos e crianças aproveitarem juntos.",
-        price: 477.10,
+        price: 592.0,
         imageUrl: "img/toursdubai/iatechurrasco.jpg",
         category: "AVENTURAS AQUÁTICAS"
     },
@@ -459,7 +459,7 @@ export const toursData = [
         id: 93,
         name: "Etihad Tower Observation Deck - com café da tarde (Adulto)",
         description: "Desfrute de vistas panorâmicas de Abu Dhabi a partir do Observation Deck at 300, localizado nas Etihad Towers, incluindo um delicioso café da tarde.",
-        price: 100.00,
+        price: 120.00,
         imageUrl: "img/toursdubai/etihadobservationtower.jpg",
         category: "ABU DHABI TICKETS"
     },

@@ -1195,8 +1195,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     '9h-11h-kids': 146.00,
                     'apos-11h-adulto': 260.00,
                     'apos-11h-kids': 165.00,
-                    '9h-11h-aquario-adulto': 310.00,
-                    '9h-11h-aquario-kids': 275.00,
+                    '9h-11h-aquario-adulto': 399.00,
+                    '9h-11h-aquario-kids': 300.00,
                     'apos-11h-aquario-adulto': 310.00,
                     'apos-11h-aquario-kids': 275.00
                 };
@@ -2110,8 +2110,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Tabela de preços do Traslado Aeroporto Dubai
                 const trasladoAeroportoPrices = {
-                    '2pessoas': 389.00,
-                    '3a7pessoas': 499.00,
+                    '2pessoas': 450.00,
+                    '3a7pessoas': 599.00,
                     '8a14pessoas': 1000.00
                 };
 
@@ -2232,8 +2232,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Tabela de preços do Iate Privativo
                 const iatePrivativoPrices = {
-                    '6pessoas': 2100.00,
-                    '15pessoas': 2500.00,
+                    '6pessoas': 2500.00,
+                    '15pessoas': 2800.00,
                     '20pessoas': 3100.00,
                     '30pessoas': 5000.00,
                     '40pessoas': 6000.00
@@ -3627,8 +3627,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Opções e preços
                 const premiumPrices = {
-                    'compartilhado': 500.00, // Valor por pessoa
-                    'privativo': 2383.00 // Valor total para até 6 pessoas
+                    'compartilhado': 550.00, // Valor por pessoa
+                    'privativo': 2500.00 // Valor total para até 6 pessoas
                 };
 
                 function updatePremiumPrice() {
