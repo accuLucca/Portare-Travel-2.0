@@ -2,6 +2,170 @@ import { toursData } from './toursData.js';
 import { egyptData } from './egyptData.js';
 import { maldivesData } from './maldivesData.js';
 import { japanData } from './japanData.js';
+import { uiTranslations, categoryTranslations, tourTranslations } from './translations.js';
+
+let currentLanguage = 'pt'; // Track language state globally
+
+function translateString(str) {
+    if (currentLanguage === 'pt' || !str) return str;
+    const cleanStr = str.trim();
+    
+    // 1. Try to find direct match in uiTranslations
+    for (const key of Object.keys(uiTranslations.pt)) {
+        if (uiTranslations.pt[key] === cleanStr) {
+            return uiTranslations.en[key];
+        }
+    }
+    
+    // 2. Try to find match in categoryTranslations
+    for (const ptCat of Object.keys(categoryTranslations.pt)) {
+        if (ptCat === cleanStr) {
+            return categoryTranslations.en[cleanStr];
+        }
+    }
+    
+    // 3. Try to find match in tourTranslations by comparing name or description
+    const tour = toursData.find(t => t.name === cleanStr || t.description === cleanStr) 
+              || egyptData.find(t => t.name === cleanStr || t.description === cleanStr);
+    
+    if (tour && tourTranslations[String(tour.id)]) {
+        if (tour.name === cleanStr) {
+            return tourTranslations[String(tour.id)].name;
+        } else if (tour.description === cleanStr) {
+            return tourTranslations[String(tour.id)].description;
+        }
+    }
+    
+    // 4. Try to find match in all tourTranslations for exact match (fallback)
+    for (const id of Object.keys(tourTranslations)) {
+        const origTour = toursData.find(t => String(t.id) === id) || egyptData.find(t => String(t.id) === id);
+        if (origTour) {
+            if (origTour.name === cleanStr) return tourTranslations[id].name;
+            if (origTour.description === cleanStr) return tourTranslations[id].description;
+        }
+    }
+    
+    // 5. Hardcoded substring replacements for dynamic/combined texts
+    let result = str;
+    if (currentLanguage === 'en') {
+        result = result
+            .replace(/por pessoa/gi, 'per person')
+            .replace(/Valor total para até (\d+) pessoas/gi, 'Total price for up to $1 people')
+            .replace(/valor total para até (\d+) pessoas/gi, 'total price for up to $1 people')
+            .replace(/Compartilhado/g, 'Shared')
+            .replace(/Privativo/g, 'Private')
+            .replace(/Quantidade de Pessoas:/gi, 'Number of People:')
+            .replace(/Duração:/gi, 'Duration:')
+            .replace(/minutos/gi, 'minutes')
+            .replace(/Escolha o tipo de transporte:/gi, 'Choose transport type:')
+            .replace(/Tipo de Transporte:/gi, 'Transport Type:')
+            .replace(/Selecione o número de pessoas para calcular o valor:/gi, 'Select the number of people to calculate price:')
+            .replace(/Idioma:/gi, 'Language:')
+            .replace(/Selecione entre (\d+) e (\d+) pessoas\./gi, 'Select between $1 and $2 people.')
+            .replace(/Adicione passeios ao carrinho para gerar um roteiro!/gi, 'Add tours to the cart to generate an itinerary!')
+            .replace(/Seu carrinho está vazio\./gi, 'Your cart is empty.')
+            .replace(/Carregando destinos\.\.\./gi, 'Loading destinations...')
+            .replace(/Voltando\.\.\./gi, 'Going back...')
+            .replace(/Gerando descrição detalhada\.\.\./gi, 'Generating detailed description...')
+            .replace(/Gerando seu roteiro\.\.\./gi, 'Generating your itinerary...')
+            .replace(/Ocorreu um erro:/gi, 'An error occurred:')
+            .replace(/Por favor, tente novamente\./gi, 'Please try again.')
+            .replace(/A quantidade deve ser pelo menos 1\./gi, 'Quantity must be at least 1.')
+            .replace(/adicionado\(s\) ao carrinho!/gi, 'added to cart!')
+            .replace(/Seu carrinho está vazio\. Adicione passeios antes de solicitar um orçamento\./gi, 'Your cart is empty. Add tours before requesting a quote.')
+            .replace(/Escolha a duração do voo:/gi, 'Choose flight duration:')
+            .replace(/Escolha a capacidade:/gi, 'Choose capacity:')
+            .replace(/Escolha o número de pessoas:/gi, 'Choose number of people:')
+            .replace(/Escolha o idioma do guia:/gi, 'Choose guide language:')
+            .replace(/Inglês/g, 'English')
+            .replace(/Chinês/g, 'Chinese')
+            .replace(/Espanhol/g, 'Spanish')
+            .replace(/Mandarim/g, 'Mandarin')
+            .replace(/Português/g, 'Portuguese')
+            .replace(/Alemão/g, 'German')
+            .replace(/Francês/g, 'French')
+            .replace(/Italiano/g, 'Italian')
+            .replace(/Russo/g, 'Russian')
+            .replace(/Árabe/g, 'Arabic')
+            .replace(/Hindi/g, 'Hindi')
+            .replace(/Bengali/g, 'Bengali')
+            .replace(/Passeios para Maldivas em breve!/gi, 'Tours to Maldives coming soon!')
+            .replace(/Passeios para Japão em breve!/gi, 'Tours to Japan coming soon!')
+            .replace(/Carregando\.\.\./g, 'Loading...')
+            .replace(/Roteiro/g, 'Itinerary')
+            .replace(/Ver Roteiro Detalhado \(PDF\)/g, 'View Detailed Itinerary (PDF)')
+            .replace(/Serviço/g, 'Service')
+            .replace(/Aluguel/g, 'Rental')
+            .replace(/pessoa\(s\)/g, 'person(s)')
+            .replace(/serviço\(s\)/g, 'service(s)')
+            .replace(/aluguel\(is\)/g, 'rental(s)')
+            .replace(/Cotação número:/g, 'Quote number:')
+            .replace(/Data:/g, 'Date:')
+            .replace(/Nome do Cliente:/g, 'Client Name:')
+            .replace(/Pessoa\(s\)/g, 'Person(s)')
+            .replace(/Descrição do Item/g, 'Item Description')
+            .replace(/Quantidade     Preço Unit.     Total/g, 'Quantity     Unit Price     Total')
+            .replace(/Subtotal:/g, 'Subtotal:')
+            .replace(/Taxa de Serviço \(15%\):/g, 'Service Fee (15%):')
+            .replace(/Total:/g, 'Total:')
+            .replace(/Observações:/g, 'Notes:')
+            .replace(/Pagamentos por transferência bancária direta tem 5% de desconto, aceita pagamento pelo Wise Bank\. Obrigado por escolher a Portare Travel para sua viagem!/g, 'Direct bank transfer payments receive a 5% discount, Wise Bank payments are accepted. Thank you for choosing Portare Travel for your trip!');
+    }
+    return result;
+}
+
+// Monkey patch Number.prototype.toLocaleString globally
+const originalToLocaleString = Number.prototype.toLocaleString;
+Number.prototype.toLocaleString = function(locale, options) {
+    if (locale === 'pt-BR' && currentLanguage === 'en') {
+        return originalToLocaleString.call(this, 'en-US', options);
+    }
+    return originalToLocaleString.call(this, locale, options);
+};
+
+// Monkey patch Node and Element prototypes globally
+const descTextContent = Object.getOwnPropertyDescriptor(Node.prototype, 'textContent');
+Object.defineProperty(Node.prototype, 'textContent', {
+    get: function() {
+        return descTextContent.get.call(this);
+    },
+    set: function(val) {
+        if (this.nodeType === Node.ELEMENT_NODE && ['SCRIPT', 'STYLE'].includes(this.tagName)) {
+            descTextContent.set.call(this, val);
+        } else {
+            descTextContent.set.call(this, translateString(val));
+        }
+    },
+    configurable: true
+});
+
+const descInnerHTML = Object.getOwnPropertyDescriptor(Element.prototype, 'innerHTML');
+Object.defineProperty(Element.prototype, 'innerHTML', {
+    get: function() {
+        return descInnerHTML.get.call(this);
+    },
+    set: function(val) {
+        if (['SCRIPT', 'STYLE'].includes(this.tagName)) {
+            descInnerHTML.set.call(this, val);
+        } else {
+            descInnerHTML.set.call(this, translateString(val));
+        }
+    },
+    configurable: true
+});
+
+const descPlaceholder = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'placeholder');
+if (descPlaceholder) {
+    Object.defineProperty(HTMLInputElement.prototype, 'placeholder', {
+        get: function() {
+            return descPlaceholder.get.call(this);
+        },
+        set: function(val) {
+            descPlaceholder.set.call(this, translateString(val));
+        },
+        configurable: true
+    });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     // Elementos do DOM
@@ -45,6 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toursPageHero = document.getElementById('hero-section'); // Get the hero section element
     const tourSearchInput = document.getElementById('tour-search-input'); // Get the search input element
     const loadingOverlay = document.getElementById('loading-overlay'); // Loading overlay
+    const languageSelector = document.getElementById('language-selector');
 
     // Estado da Aplicação
     let allTours = []; // This will now hold data for the selected country
@@ -92,11 +257,52 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: "Aventura", value: "Aventura" }, { label: "Relaxante", value: "Relaxante" }, { label: "Cultural", value: "Cultural" }, { label: "Romântico", value: "Romântico" }, { label: "Família", value: "Família com crianças" }, { label: "Luxo", value: "Luxo" },
     ];
 
+    function translateStaticElements() {
+        const lang = currentLanguage;
+        
+        const staticTranslations = {
+            'welcome-title': 'welcomeTitle',
+            'choose-destination-title': 'chooseDestination',
+            'discover-experiences-text': 'discoverExperiences',
+            'back-button-text': 'back',
+            'cart-button-text': 'cart',
+            'cart-title': 'cartTitle',
+            'travel-style-label': 'travelStyleLabel',
+            'clear-style-btn-text': 'clearStyleBtn',
+            'client-name-label': 'clientNameLabel',
+            'num-people-label': 'numPeopleLabel',
+            'total-label': 'total',
+            'whatsapp-quote-btn-text': 'whatsappQuoteBtn',
+            'generate-itinerary-btn-text': 'generateItineraryBtn',
+            'itinerary-title': 'itineraryTitle',
+            'ai-details-subtitle': 'aiDetailsSubtitle',
+            'footer-tagline': 'footerTagline',
+            'footer-copy': 'footerCopy'
+        };
+
+        for (const [id, key] of Object.entries(staticTranslations)) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.textContent = uiTranslations[lang][key];
+            }
+        }
+
+        const searchInput = document.getElementById('tour-search-input');
+        if (searchInput) {
+            searchInput.placeholder = uiTranslations[lang].searchPlaceholder;
+        }
+
+        const customerName = document.getElementById('customer-name');
+        if (customerName) {
+            customerName.placeholder = uiTranslations[lang].clientNamePlaceholder;
+        }
+    }
+
     // Funções de Loading e UX
     function showLoadingOverlay(message = 'Carregando...') {
         const loadingText = loadingOverlay.querySelector('p');
         if (loadingText) {
-            loadingText.textContent = message;
+            loadingText.textContent = translateString(message);
         }
         loadingOverlay.style.display = 'flex';
         document.body.style.overflow = 'hidden';
@@ -121,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Funções Auxiliares
     function showConfirmationMessage(message) {
-        confirmationMessageGlobal.textContent = message;
+        confirmationMessageGlobal.textContent = translateString(message);
         confirmationMessageGlobal.classList.remove('opacity-0', 'pointer-events-none');
         confirmationMessageGlobal.classList.add('opacity-100');
         setTimeout(() => {
@@ -229,14 +435,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const heroTitleElement = toursPageHero.querySelector('h2');
             const heroSubtitleElement = toursPageHero.querySelector('p');
-            if (heroTitleElement) heroTitleElement.innerHTML = currentCountry.heroTitle;
-            if (heroSubtitleElement) heroSubtitleElement.innerHTML = currentCountry.heroSubtitle;
+            
+            const prefixMap = {
+                "Dubai e Abu Dhabi": "heroDubai",
+                "Egito": "heroEgypt",
+                "Maldivas": "heroMaldives",
+                "Japão": "heroJapan"
+            };
+            const prefix = prefixMap[currentCountry.name];
+            
+            if (heroTitleElement) heroTitleElement.innerHTML = uiTranslations[currentLanguage][prefix + 'Title'] || currentCountry.heroTitle;
+            if (heroSubtitleElement) heroSubtitleElement.innerHTML = uiTranslations[currentLanguage][prefix + 'Subtitle'] || currentCountry.heroSubtitle;
 
+            const toursTitle = `${uiTranslations[currentLanguage].toursTitlePrefix} ${translateString(currentCountry.name)}`;
             if (toursPageTitle) {
-                 toursPageTitle.textContent = `Nossos Passeios em ${currentCountry.name}`;
+                 toursPageTitle.textContent = toursTitle;
             } else {
                  const mainH2 = document.querySelector('#tours-page main h2');
-                 if (mainH2) mainH2.textContent = `Nossos Passeios em ${currentCountry.name}`;
+                 if (mainH2) mainH2.textContent = toursTitle;
             }
 
         }
@@ -4613,16 +4829,26 @@ document.addEventListener('DOMContentLoaded', () => {
         currentAbortController = new AbortController();
         const signal = currentAbortController.signal;
 
-        enhancedDescModalTitle.textContent = tour.name;
+        enhancedDescModalTitle.textContent = translateString(tour.name);
         enhancedDescModalOverlay.style.display = 'flex';
         showLoading(enhancedDescModalContentArea, "Gerando descrição detalhada...");
 
-        const prompt = `Gere uma descrição detalhada e atraente para o seguinte passeio turístico em ${currentCountry ? currentCountry.name : 'Dubai/Abu Dhabi'}:
+        let prompt;
+        if (currentLanguage === 'en') {
+            prompt = `Generate a detailed and attractive description for the following tourist tour in ${currentCountry ? translateString(currentCountry.name) : 'Dubai/Abu Dhabi'}:
+Tour Name: ${translateString(tour.name)}
+Current Short Description: ${translateString(tour.description)}
+Price: AED ${tour.price.toFixed(2)}
+
+The description should be more elaborate, highlighting the main attractions, unique experiences, and what makes it special. Use an inviting and informative tone. If possible, add a curiosity or tip related to the tour. Format with paragraphs for easy reading. The response must be in English.`;
+        } else {
+            prompt = `Gere uma descrição detalhada e atraente para o seguinte passeio turístico em ${currentCountry ? currentCountry.name : 'Dubai/Abu Dhabi'}:
 Nome do Passeio: ${tour.name}
 Descrição Curta Atual: ${tour.description}
 Preço: AED ${tour.price.toFixed(2)}
 
-A descrição deve ser mais elaborada, destacando os principais atrativos, experiências únicas, e o que o torna especial. Use um tone convidativo e informativo. Se possível, adicione uma curiosidade ou dica relacionada ao passeio. Formate com parágrafos para fácil leitura.`;
+A descrição deve ser mais elaborada, destacando os principais atrativos, experiências únicas, e o que o torna especial. Use um tom convidativo e informativo. Se possível, adicione uma curiosidade ou dica relacionada ao passeio. Formate com parágrafos para fácil leitura.`;
+        }
 
         try {
             const description = await callGeminiAPI(prompt, signal);
@@ -4657,12 +4883,21 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
         itineraryModalOverlay.style.display = 'flex';
         showLoading(itineraryModalContentArea, "Gerando seu roteiro...");
 
-        const tourList = cart.map(item => `${item.name} (x${item.quantity})`).join(', ');
-        let prompt = `Crie um roteiro de viagem personalizado para ${currentCountry ? currentCountry.name : 'Dubai e/ou Abu Dhabi'} com base nos seguintes passeios selecionados: ${tourList}.`;
-        if (selectedTravelStyle) {
-            prompt += ` O estilo de viagem preferido é: ${selectedTravelStyle}.`;
+        const tourList = cart.map(item => `${translateString(item.name)} (x${item.quantity})`).join(', ');
+        let prompt;
+        if (currentLanguage === 'en') {
+            prompt = `Create a custom travel itinerary for ${currentCountry ? translateString(currentCountry.name) : 'Dubai and/or Abu Dhabi'} based on the following selected tours: ${tourList}.`;
+            if (selectedTravelStyle) {
+                prompt += ` The preferred travel style is: ${translateString(selectedTravelStyle)}.`;
+            }
+            prompt += ` Include a suggested order for the tours, considering logistics and schedules. Also add suggestions for complementary activities (such as restaurants, shopping, or other points of interest near the selected tours) and general tips to make the most of the trip. Format the response clearly and organized, with headings for each day or section. The response must be in English.`;
+        } else {
+            prompt = `Crie um roteiro de viagem personalizado para ${currentCountry ? currentCountry.name : 'Dubai e/ou Abu Dhabi'} com base nos seguintes passeios selecionados: ${tourList}.`;
+            if (selectedTravelStyle) {
+                prompt += ` O estilo de viagem preferido é: ${selectedTravelStyle}.`;
+            }
+            prompt += ` Inclua uma sugestão de ordem para os passeios, considerando a logística e horários. Adicione também sugestões de atividades complementares (como restaurantes, compras, ou outros pontos de interesse próximos aos passeios selecionados) e dicas gerais para aproveitar ao máximo a viagem aos Emirados Árabes. Formate a resposta de forma clara e organizada, com títulos para cada dia ou seção.`;
         }
-        prompt += ` Inclua uma sugestão de ordem para os passeios, considerando a logística e horários. Adicione também sugestões de atividades complementares (como restaurantes, compras, ou outros pontos de interesse próximos aos passeios selecionados) e dicas gerais para aproveitar ao máximo a viagem aos Emirados Árabes. Formate a resposta de forma clara e organizada, com títulos para cada dia ou seção.`;
 
         try {
             const itinerary = await callGeminiAPI(prompt, signal);
@@ -4798,6 +5033,21 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
         }
     });
 
+    if (languageSelector) {
+        languageSelector.value = currentLanguage;
+        languageSelector.addEventListener('change', (e) => {
+            currentLanguage = e.target.value;
+            translateStaticElements();
+            renderCountries();
+            if (currentPage === 'tours') {
+                updateToursPageHeader();
+                renderSubcategoryButtons();
+                renderTours();
+                renderTravelStyleButtons();
+            }
+            renderCart();
+        });
+    }
 
     whatsappQuoteButton.addEventListener('click', () => {
         if (cart.length === 0) {
@@ -4805,7 +5055,7 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
             return;
         }
 
-        const customerName = customerNameInput ? customerNameInput.value.trim() : 'Cliente';
+        const customerName = customerNameInput ? customerNameInput.value.trim() : (currentLanguage === 'pt' ? 'Cliente' : 'Client');
         const numberOfPeople = numberOfPeopleInput ? parseInt(numberOfPeopleInput.value, 10) : 1;
 
         const now = new Date();
@@ -4814,20 +5064,20 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
         const year = String(now.getFullYear()).slice(-2);
         const invoiceNumber = `${day}${month}${year}-PT-001`;
 
-        const invoiceDate = now.toLocaleDateString('pt-BR');
+        const invoiceDate = now.toLocaleDateString(currentLanguage === 'pt' ? 'pt-BR' : 'en-US');
 
         const messageLines = [
-            "COTAÇÃO",
+            currentLanguage === 'pt' ? "COTAÇÃO" : "QUOTE",
             "",
-            `Cotação número: ${invoiceNumber}`,
-            `Data: ${invoiceDate}`,
+            currentLanguage === 'pt' ? `Cotação número: ${invoiceNumber}` : `Quote number: ${invoiceNumber}`,
+            currentLanguage === 'pt' ? `Data: ${invoiceDate}` : `Date: ${invoiceDate}`,
             "",
-            "Nome do Cliente:",
+            currentLanguage === 'pt' ? "Nome do Cliente:" : "Client Name:",
             `${customerName}`,
-            `${numberOfPeople} Pessoa(s)`,
+            currentLanguage === 'pt' ? `${numberOfPeople} Pessoa(s)` : `${numberOfPeople} Person(s)`,
             "--------------------------------------------------------------------------------",
-            "Descrição do Item", // Header line 1
-            "Quantidade     Preço Unit.     Total", // Header line 2 (simplified alignment)
+            currentLanguage === 'pt' ? "Descrição do Item" : "Item Description",
+            currentLanguage === 'pt' ? "Quantidade     Preço Unit.     Total" : "Quantity     Unit Price     Total",
             "--------------------------------------------------------------------------------",
         ];
 
@@ -4840,14 +5090,15 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
             let quantityText = `${item.quantity}x`;
 
             if (item.description.includes("Preço por pessoa")) {
-                 quantityText = `${item.quantity} pessoa(s)`;
+                 quantityText = currentLanguage === 'pt' ? `${item.quantity} pessoa(s)` : `${item.quantity} person(s)`;
             } else if (item.description.includes("Valor total pelo serviço")) {
-                 quantityText = `${item.quantity} serviço(s)`;
+                 quantityText = currentLanguage === 'pt' ? `${item.quantity} serviço(s)` : `${item.quantity} service(s)`;
             } else if (item.description.includes("Valor total pelo aluguel")) {
-                 quantityText = `${item.quantity} aluguel(is)`;
+                 quantityText = currentLanguage === 'pt' ? `${item.quantity} aluguel(is)` : `${item.quantity} rental(s)`;
             }
-            messageLines.push(`${item.name}`);
-            messageLines.push(`  ${quantityText}     AED ${item.price.toFixed(2)}     AED ${itemTotal.toFixed(2)}`);
+            
+            messageLines.push(`${translateString(item.name)}`);
+            messageLines.push(`  ${translateString(quantityText)}     AED ${item.price.toFixed(2)}     AED ${itemTotal.toFixed(2)}`);
         });
 
         const serviceFee = subtotal * 0.15;
@@ -4855,11 +5106,13 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
 
         messageLines.push("--------------------------------------------------------------------------------");
         messageLines.push(`Subtotal:                                                              AED ${subtotal.toFixed(2)}`);
-        messageLines.push(`Taxa de Serviço (15%):                                                 AED ${serviceFee.toFixed(2)}`);
-        messageLines.push(`Total:                                                          AED ${totalWithFee.toFixed(2)}`); // Add total after items
+        messageLines.push(`${currentLanguage === 'pt' ? 'Taxa de Serviço (15%):' : 'Service Fee (15%):'}                                                 AED ${serviceFee.toFixed(2)}`);
+        messageLines.push(`Total:                                                          AED ${totalWithFee.toFixed(2)}`);
         messageLines.push("--------------------------------------------------------------------------------");
-        messageLines.push("Observações:");
-        messageLines.push("Pagamentos por transferência bancária direta tem 5% de desconto, aceita pagamento pelo Wise Bank. Obrigado por escolher a Portare Travel para sua viagem!");
+        messageLines.push(currentLanguage === 'pt' ? "Observações:" : "Notes:");
+        messageLines.push(currentLanguage === 'pt' 
+            ? "Pagamentos por transferência bancária direta tem 5% de desconto, aceita pagamento pelo Wise Bank. Obrigado por escolher a Portare Travel para sua viagem!"
+            : "Direct bank transfer payments receive a 5% discount, Wise Bank payments are accepted. Thank you for choosing Portare Travel for your trip!");
 
 
         const message = messageLines.join('\n');
