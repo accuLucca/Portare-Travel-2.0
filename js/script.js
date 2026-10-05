@@ -114,6 +114,28 @@ function translateString(str) {
     return result;
 }
 
+function cleanPriceText(str) {
+    if (typeof str !== 'string' || !str) return str;
+    return str
+        .replace(/Hora Extra:\s*AED\s*[\d.]+\s*\([^\)]*\)\s*\/\s*AED\s*[\d.]+\s*\([^\)]*\)(<br\s*\/?>)?/gi, '')
+        .replace(/Hora extra:\s*AED\s*[\d.]+\s*\([^\)]*\)\s*\/\s*AED\s*[\d.]+\s*\([^\)]*\)\.?/gi, '')
+        .replace(/Hora extra:\s*AED\s*[\d.]+\s*\([^\)]*\)\s*\/\s*AED\s*[\d.]+\s*\([^\)]*\)/gi, '')
+        .replace(/O valor por pessoa depende do número de participantes\.?/gi, '')
+        .replace(/The price per person depends on the number of participants\.?/gi, '')
+        .replace(/Selecione o número de pessoas para calcular o valor:/gi, 'Selecione o número de pessoas:')
+        .replace(/Select the number of people to calculate price:/gi, 'Select the number of people:')
+        .replace(/\(Preço por pessoa[^\)]*\)/gi, '')
+        .replace(/\(Price per person[^\)]*\)/gi, '')
+        .replace(/\(Preço total[^\)]*\)/gi, '')
+        .replace(/\(Total price[^\)]*\)/gi, '')
+        .replace(/\(Valor por pessoa[^\)]*\)/gi, '')
+        .replace(/\s*-\s*Valor por pessoa/gi, '')
+        .replace(/\s*-\s*Price per person/gi, '')
+        .replace(/\s*-\s*Valor total para até (\d+) pessoas/gi, ' (até $1 pessoas)')
+        .replace(/\s*-\s*Total price for up to (\d+) people/gi, ' (up to $1 people)')
+        .replace(/\s*-\s*AED\s*[\d.,]+/gi, '');
+}
+
 // Monkey patch Number.prototype.toLocaleString globally
 const originalToLocaleString = Number.prototype.toLocaleString;
 Number.prototype.toLocaleString = function(locale, options) {
@@ -132,8 +154,11 @@ Object.defineProperty(Node.prototype, 'textContent', {
     set: function(val) {
         if (this.nodeType === Node.ELEMENT_NODE && ['SCRIPT', 'STYLE'].includes(this.tagName)) {
             descTextContent.set.call(this, val);
+        } else if (this.nodeType === Node.ELEMENT_NODE && this.tagName === 'SPAN' && this.classList && this.classList.contains('font-extrabold')) {
+            this.style.display = 'none';
+            descTextContent.set.call(this, '');
         } else {
-            descTextContent.set.call(this, translateString(val));
+            descTextContent.set.call(this, cleanPriceText(translateString(val)));
         }
     },
     configurable: true
@@ -147,8 +172,11 @@ Object.defineProperty(Element.prototype, 'innerHTML', {
     set: function(val) {
         if (['SCRIPT', 'STYLE'].includes(this.tagName)) {
             descInnerHTML.set.call(this, val);
+        } else if (this.tagName === 'SPAN' && this.classList && this.classList.contains('font-extrabold')) {
+            this.style.display = 'none';
+            descInnerHTML.set.call(this, '');
         } else {
-            descInnerHTML.set.call(this, translateString(val));
+            descInnerHTML.set.call(this, cleanPriceText(translateString(val)));
         }
     },
     configurable: true
@@ -161,7 +189,7 @@ if (descPlaceholder) {
             return descPlaceholder.get.call(this);
         },
         set: function(val) {
-            descPlaceholder.set.call(this, translateString(val));
+            descPlaceholder.set.call(this, cleanPriceText(translateString(val)));
         },
         configurable: true
     });
@@ -271,7 +299,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'clear-style-btn-text': 'clearStyleBtn',
             'client-name-label': 'clientNameLabel',
             'num-people-label': 'numPeopleLabel',
-            'total-label': 'total',
             'whatsapp-quote-btn-text': 'whatsappQuoteBtn',
             'generate-itinerary-btn-text': 'generateItineraryBtn',
             'itinerary-title': 'itineraryTitle',
@@ -3811,8 +3838,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const transportTypeSelect = document.createElement('select');
                 transportTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
                 transportTypeSelect.innerHTML = `
-                    <option value="compartilhado">Compartilhado - Valor por pessoa</option>
-                    <option value="privativo">Privativo - Valor total para até 6 pessoas</option>
+                    <option value="compartilhado">Compartilhado</option>
+                    <option value="privativo">Privativo (até 6 pessoas)</option>
                 `;
                 transportTypeDiv.appendChild(transportTypeLabel);
                 transportTypeDiv.appendChild(transportTypeSelect);
@@ -3902,7 +3929,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }, quantity);
                     } else {
                         const price = premiumPrices.privativo;
-                        const name = `Safari no Deserto Premium - Transporte Privativo - Valor total para até 6 pessoas`;
+                        const name = `Safari no Deserto Premium - Transporte Privativo (até 6 pessoas)`;
                         
                         handleAddToCart({
                             id: `safari-premium-privativo`,
@@ -4005,8 +4032,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const transportTypeSelect = document.createElement('select');
                 transportTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
                 transportTypeSelect.innerHTML = `
-                    <option value="compartilhado">Compartilhado - Valor por pessoa</option>
-                    <option value="privativo">Privativo - Valor por pessoa</option>
+                    <option value="compartilhado">Compartilhado</option>
+                    <option value="privativo">Privativo</option>
                 `;
                 transportTypeDiv.appendChild(transportTypeLabel);
                 transportTypeDiv.appendChild(transportTypeSelect);
@@ -4213,8 +4240,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const transportTypeSelect = document.createElement('select');
                 transportTypeSelect.className = 'border border-gray-300 rounded-md px-2 py-1 text-sm font-geologica-light';
                 transportTypeSelect.innerHTML = `
-                    <option value="compartilhado">Compartilhado - Valor por pessoa</option>
-                    <option value="privativo">Privativo - Valor por pessoa</option>
+                    <option value="compartilhado">Compartilhado</option>
+                    <option value="privativo">Privativo</option>
                 `;
                 transportTypeDiv.appendChild(transportTypeLabel);
                 transportTypeDiv.appendChild(transportTypeSelect);
@@ -4406,7 +4433,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tour.timeOptions.forEach(option => {
                     const optionElement = document.createElement('option');
                     optionElement.value = option.minutes;
-                    optionElement.textContent = `${option.minutes} minutos - AED ${option.price.toFixed(2)}`;
+                    optionElement.textContent = `${option.minutes} minutos`;
                     timeSelect.appendChild(optionElement);
                 });
                 
@@ -4449,7 +4476,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tour.yachtOptions.forEach(option => {
                     const optionElement = document.createElement('option');
                     optionElement.value = JSON.stringify(option);
-                    optionElement.textContent = `${option.capacidade} - AED ${option.price.toFixed(2)}`;
+                    optionElement.textContent = `${option.capacidade}`;
                     yachtSelect.appendChild(optionElement);
                 });
                 
@@ -4483,7 +4510,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 tour.transferOptions.forEach(option => {
                     const optionElement = document.createElement('option');
                     optionElement.value = JSON.stringify(option);
-                    optionElement.textContent = `${option.pessoas} - AED ${option.price.toFixed(2)}`;
+                    optionElement.textContent = `${option.pessoas}`;
                     transferSelect.appendChild(optionElement);
                 });
                 
@@ -4663,7 +4690,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const itemPriceQuantity = document.createElement('p');
                 itemPriceQuantity.className = 'text-gray-600 text-xs sm:text-sm font-geologica-light';
-                itemPriceQuantity.textContent = `AED ${item.price.toFixed(2)} x ${item.quantity}`;
+                itemPriceQuantity.textContent = `Qtd: ${item.quantity}`;
 
                 itemInfoDiv.appendChild(itemName);
                 itemInfoDiv.appendChild(itemPriceQuantity);
@@ -4716,11 +4743,9 @@ document.addEventListener('DOMContentLoaded', () => {
             cartCountElement.style.display = totalQuantity > 0 ? 'flex' : 'none';
         }
 
-        const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-        const serviceFee = totalPrice * 0.15;
-        const totalWithFee = totalPrice + serviceFee;
-
-        cartTotalElement.textContent = `AED ${totalWithFee.toFixed(2)} (Inclui 15% Taxa de Serviço)`;
+        if (cartTotalElement && cartTotalElement.parentElement) {
+            cartTotalElement.parentElement.style.display = 'none';
+        }
     }
 
     function renderTravelStyleButtons() {
@@ -4838,14 +4863,12 @@ document.addEventListener('DOMContentLoaded', () => {
             prompt = `Generate a detailed and attractive description for the following tourist tour in ${currentCountry ? translateString(currentCountry.name) : 'Dubai/Abu Dhabi'}:
 Tour Name: ${translateString(tour.name)}
 Current Short Description: ${translateString(tour.description)}
-Price: AED ${tour.price.toFixed(2)}
 
 The description should be more elaborate, highlighting the main attractions, unique experiences, and what makes it special. Use an inviting and informative tone. If possible, add a curiosity or tip related to the tour. Format with paragraphs for easy reading. The response must be in English.`;
         } else {
             prompt = `Gere uma descrição detalhada e atraente para o seguinte passeio turístico em ${currentCountry ? currentCountry.name : 'Dubai/Abu Dhabi'}:
 Nome do Passeio: ${tour.name}
 Descrição Curta Atual: ${tour.description}
-Preço: AED ${tour.price.toFixed(2)}
 
 A descrição deve ser mais elaborada, destacando os principais atrativos, experiências únicas, e o que o torna especial. Use um tom convidativo e informativo. Se possível, adicione uma curiosidade ou dica relacionada ao passeio. Formate com parágrafos para fácil leitura.`;
         }
@@ -5067,52 +5090,58 @@ A descrição deve ser mais elaborada, destacando os principais atrativos, exper
         const invoiceDate = now.toLocaleDateString(currentLanguage === 'pt' ? 'pt-BR' : 'en-US');
 
         const messageLines = [
-            currentLanguage === 'pt' ? "COTAÇÃO" : "QUOTE",
+            currentLanguage === 'pt' ? "SOLICITAÇÃO DE ORÇAMENTO" : "QUOTE REQUEST",
             "",
-            currentLanguage === 'pt' ? `Cotação número: ${invoiceNumber}` : `Quote number: ${invoiceNumber}`,
+            currentLanguage === 'pt' ? `Solicitação nº: ${invoiceNumber}` : `Request nº: ${invoiceNumber}`,
             currentLanguage === 'pt' ? `Data: ${invoiceDate}` : `Date: ${invoiceDate}`,
             "",
-            currentLanguage === 'pt' ? "Nome do Cliente:" : "Client Name:",
+            currentLanguage === 'pt' ? "👤 Nome do Cliente:" : "👤 Client Name:",
             `${customerName}`,
-            currentLanguage === 'pt' ? `${numberOfPeople} Pessoa(s)` : `${numberOfPeople} Person(s)`,
-            "--------------------------------------------------------------------------------",
-            currentLanguage === 'pt' ? "Descrição do Item" : "Item Description",
-            currentLanguage === 'pt' ? "Quantidade     Preço Unit.     Total" : "Quantity     Unit Price     Total",
-            "--------------------------------------------------------------------------------",
+            currentLanguage === 'pt' ? `👥 Número de Pessoas: ${numberOfPeople}` : `👥 Number of People: ${numberOfPeople}`,
         ];
 
-        let subtotal = 0;
+        if (selectedTravelStyle) {
+            messageLines.push(currentLanguage === 'pt' ? `✨ Estilo de Viagem: ${translateString(selectedTravelStyle)}` : `✨ Travel Style: ${translateString(selectedTravelStyle)}`);
+        }
 
-        cart.forEach((item) => {
-            const itemTotal = item.price * item.quantity;
-            subtotal += itemTotal;
+        messageLines.push("--------------------------------------------------------------------------------");
+        messageLines.push(currentLanguage === 'pt' ? "📋 PASSEIOS / SERVIÇOS SELECIONADOS:" : "📋 SELECTED TOURS / SERVICES:");
+        messageLines.push("--------------------------------------------------------------------------------");
 
+        cart.forEach((item, index) => {
             let quantityText = `${item.quantity}x`;
 
-            if (item.description.includes("Preço por pessoa")) {
+            if (item.description && item.description.includes("Preço por pessoa")) {
                  quantityText = currentLanguage === 'pt' ? `${item.quantity} pessoa(s)` : `${item.quantity} person(s)`;
-            } else if (item.description.includes("Valor total pelo serviço")) {
+            } else if (item.description && item.description.includes("Valor total pelo serviço")) {
                  quantityText = currentLanguage === 'pt' ? `${item.quantity} serviço(s)` : `${item.quantity} service(s)`;
-            } else if (item.description.includes("Valor total pelo aluguel")) {
+            } else if (item.description && item.description.includes("Valor total pelo aluguel")) {
                  quantityText = currentLanguage === 'pt' ? `${item.quantity} aluguel(is)` : `${item.quantity} rental(s)`;
             }
             
-            messageLines.push(`${translateString(item.name)}`);
-            messageLines.push(`  ${translateString(quantityText)}     AED ${item.price.toFixed(2)}     AED ${itemTotal.toFixed(2)}`);
+            messageLines.push(`${index + 1}. ${translateString(item.name)}`);
+            messageLines.push(`   • ${currentLanguage === 'pt' ? 'Quantidade' : 'Quantity'}: ${translateString(quantityText)}`);
+
+            if (item.languageLabel && item.languageFlag) {
+                messageLines.push(`   • ${currentLanguage === 'pt' ? 'Idioma do Guia' : 'Guide Language'}: ${item.languageFlag} ${item.languageLabel}`);
+            }
+            if (item.selectedTime) {
+                messageLines.push(`   • ${currentLanguage === 'pt' ? 'Duração' : 'Duration'}: ${item.selectedTime} ${currentLanguage === 'pt' ? 'minutos' : 'minutes'}`);
+            }
+            if (item.selectedOptions) {
+                if (item.selectedOptions.capacidade) {
+                    messageLines.push(`   • ${currentLanguage === 'pt' ? 'Capacidade' : 'Capacity'}: ${item.selectedOptions.capacidade}`);
+                } else if (item.selectedOptions.pessoas) {
+                    messageLines.push(`   • ${currentLanguage === 'pt' ? 'Pessoas' : 'People'}: ${item.selectedOptions.pessoas}`);
+                }
+            }
+            messageLines.push("");
         });
 
-        const serviceFee = subtotal * 0.15;
-        const totalWithFee = subtotal + serviceFee;
-
         messageLines.push("--------------------------------------------------------------------------------");
-        messageLines.push(`Subtotal:                                                              AED ${subtotal.toFixed(2)}`);
-        messageLines.push(`${currentLanguage === 'pt' ? 'Taxa de Serviço (15%):' : 'Service Fee (15%):'}                                                 AED ${serviceFee.toFixed(2)}`);
-        messageLines.push(`Total:                                                          AED ${totalWithFee.toFixed(2)}`);
-        messageLines.push("--------------------------------------------------------------------------------");
-        messageLines.push(currentLanguage === 'pt' ? "Observações:" : "Notes:");
-        messageLines.push(currentLanguage === 'pt' 
-            ? "Pagamentos por transferência bancária direta tem 5% de desconto, aceita pagamento pelo Wise Bank. Obrigado por escolher a Portare Travel para sua viagem!"
-            : "Direct bank transfer payments receive a 5% discount, Wise Bank payments are accepted. Thank you for choosing Portare Travel for your trip!");
+        messageLines.push(currentLanguage === 'pt'
+            ? "Olá! Gostaria de receber um orçamento personalizado para os itens selecionados acima. Obrigado!"
+            : "Hello! I would like to receive a custom quote for the selected items above. Thank you!");
 
 
         const message = messageLines.join('\n');

@@ -765,3 +765,19 @@ footer img:hover {
     transform: translateZ(0);
     backface-visibility: hidden;
 }
+
+/* Ocultar preços em todo o site */
+span.font-extrabold.font-geologica-bold,
+#cart-total,
+#total-label,
+.price-tag,
+.tour-price {
+    display: none !important;
+}
+
+/* Alinhamento dos controles de quantidade e botão adicionar sem preços */
+.tour-card .mt-auto .flex.justify-between,
+.bg-white.rounded-xl .mt-auto .flex.justify-between {
+    justify-content: flex-end;
+}
+
